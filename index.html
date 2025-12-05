@@ -373,8 +373,34 @@
             border-top: 1px solid var(--border-color);
         }
         
+        .print-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .print-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
         @media print {
-            .language-switch {
+            .language-switch,
+            .print-button {
                 display: none !important;
             }
             body {
@@ -383,9 +409,40 @@
             }
             .resume-wrapper {
                 box-shadow: none;
+                max-width: 100%;
+                margin: 0;
             }
             .resume-header {
                 background: white !important;
+                padding: 2rem 2rem 1.5rem;
+            }
+            .resume-body {
+                display: grid !important;
+                grid-template-columns: 2fr 1fr !important;
+                gap: 2rem !important;
+                padding: 2rem !important;
+                page-break-inside: avoid;
+            }
+            .sidebar {
+                border-left: 1px solid var(--border-color) !important;
+                padding-left: 2rem !important;
+                border-top: none !important;
+                padding-top: 0 !important;
+            }
+            .main-content {
+                padding-right: 2rem !important;
+            }
+            .section-title {
+                page-break-after: avoid;
+            }
+            .timeline-item,
+            .education-item,
+            .project-item {
+                page-break-inside: avoid;
+            }
+            a {
+                color: var(--text-color) !important;
+                text-decoration: none;
             }
         }
         
@@ -411,6 +468,10 @@
     </style>
 </head>
 <body>
+    <button class="print-button" onclick="window.print()" title="Imprimir CV">
+        <i class="bi bi-printer"></i> Imprimir
+    </button>
+    
     <div class="language-switch">
         <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
         <button id="lang-en" onclick="switchLanguage('en')">EN</button>
