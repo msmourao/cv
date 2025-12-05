@@ -40,17 +40,7 @@
       "technologies": "Oracle SOA Suite (11g/12c → 12c/Fusion Middleware), Oracle Database (complex queries, performance optimization), SOA flows, log analysis and execution metrics. Environment: temporary consulting, working with large clients (agribusiness and aviation)."
     },
     "despegar1": {
-      "description": "I worked in the e-commerce architecture and development team, contributing to platform evolution, code review, and compliance with privacy requirements (LGPD), operating in a high-traffic environment with distributed teams.",
-      "bullets": [
-        "<strong>Architecture and new features:</strong> design and implementation focused on scalability and UX in e-commerce.",
-        "<strong>Code reviews:</strong> standardization of practices and quality across squads.",
-        "<strong>LGPD:</strong> data protection mechanisms, consent, and access controls.",
-        "<strong>Operational support:</strong> troubleshooting production incidents and stabilization during traffic peaks."
-      ],
-      "technologies": "Main stack: .NET 6 and 7, ASP.NET MVC, RabbitMQ, SQL Server, Couchbase, Azure DevOps (CI/CD, releases)."
-    },
-    "despegar2": {
-      "description": "I worked in the Despegar e-commerce architecture and development team, contributing to continuous platform evolution and compliance with new legal and performance requirements. My work involved both high-level technical responsibilities and operational support in large-scale critical systems.",
+      "description": "I worked in the Despegar e-commerce architecture and development team, contributing to continuous platform evolution and compliance with new legal and performance requirements. My work involved both high-level technical responsibilities and operational support in large-scale critical systems, operating in a high-traffic environment with distributed teams.",
       "bullets": [
         "<strong>Architecture and development:</strong> active participation in the architecture team, designing and implementing new features for e-commerce, focusing on scalability and user experience.",
         "<strong>Code reviews and best practices:</strong> code review across multiple teams, ensuring adherence to quality standards and promoting solid engineering culture.",
@@ -72,15 +62,16 @@
       "technologies": "Oracle SOA Suite (BPEL, Oracle Service Bus), Oracle SQL, asynchronous APIs, internal messaging. Practices: troubleshooting, legacy maintenance, SOA governance. Environment: large airline, high-availability critical systems."
     },
     "viajanet": {
-      "description": "I worked in API and feature development for ViajaNet's e-commerce, focusing on performance, scalability, and code quality. I also participated in technical reviews and continuous support in high-traffic systems.",
+      "description": "I worked in API and feature development for ViajaNet's e-commerce, focusing on performance, scalability, and code quality. I also participated in technical reviews and continuous support in high-traffic systems. My work involved FullStack development, integrations with multiple data sources, and performance optimization in queries and processes.",
       "bullets": [
-        "<strong>API development:</strong> implementation in .NET Core with Entity Framework Core, integrating data from multiple sources.",
-        "<strong>Integrations and messaging:</strong> use of RabbitMQ for asynchronous communication and Couchbase for distributed storage and caching.",
-        "<strong>E-commerce features:</strong> development of new features across the entire stack, ensuring better user experience.",
-        "<strong>Code reviews:</strong> review of other developers' code, promoting best practices and technical consistency.",
-        "<strong>Operational support:</strong> work in troubleshooting incidents and performance adjustments in SQL Server queries."
+        "<strong>API development:</strong> implementation in .NET Core with Entity Framework Core, integrating data from multiple sources and ensuring high performance.",
+        "<strong>Integrations and messaging:</strong> use of RabbitMQ for asynchronous communication and Couchbase for distributed storage and caching, ensuring scalability.",
+        "<strong>E-commerce features:</strong> development of new features across the entire stack, ensuring better user experience and high availability.",
+        "<strong>Code reviews:</strong> review of other developers' code, promoting best practices and technical consistency across teams.",
+        "<strong>Operational support:</strong> work in troubleshooting incidents and performance adjustments in SQL Server queries, ensuring stability during high-traffic periods.",
+        "<strong>Performance optimization:</strong> analysis and optimization of complex queries and business processes, reducing latency and improving user experience."
       ],
-      "technologies": ".NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Practices: code review, query optimization, troubleshooting. Environment: large-scale e-commerce, high transaction volume."
+      "technologies": ".NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Practices: code review, query optimization, troubleshooting, FullStack development. Environment: large-scale e-commerce, high transaction volume."
     },
     "claro": {
       "description": "I initially worked as a developer on a project to integrate Claro's service order system with Oracle Field Service, and after about two months I assumed architecture and technical leadership responsibilities, coordinating activities between different teams and technologies.",

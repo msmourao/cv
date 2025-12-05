@@ -40,17 +40,7 @@
       "technologies": "Oracle SOA Suite (11g/12c → 12c/Fusion Middleware), Oracle Database (queries complexas, otimização de performance), fluxos SOA, análise de logs e métricas de execução. Ambiente: consultoria temporária, atuação em clientes de grande porte (agro e aviação)."
     },
     "despegar1": {
-      "description": "Atuei no time de arquitetura e desenvolvimento do e‑commerce, contribuindo para evolução da plataforma, revisão de código e adequação a requisitos de privacidade (LGPD), com operação em ambiente de alto tráfego e equipes distribuídas.",
-      "bullets": [
-        "<strong>Arquitetura e novas funcionalidades:</strong> desenho e implementação focados em escalabilidade e UX no e‑commerce.",
-        "<strong>Code reviews:</strong> padronização de práticas e qualidade entre squads.",
-        "<strong>LGPD:</strong> mecanismos de proteção de dados, consentimento e controles de acesso.",
-        "<strong>Suporte operacional:</strong> troubleshooting de incidentes em produção e estabilização em picos de acesso."
-      ],
-      "technologies": "Stack principal: .NET 6 e 7, ASP.NET MVC, RabbitMQ, SQL Server, Couchbase, Azure DevOps (CI/CD, releases)."
-    },
-    "despegar2": {
-      "description": "Atuei no time de arquitetura e desenvolvimento do e‑commerce da Despegar, contribuindo para evolução contínua da plataforma e adequação às novas exigências legais e de performance. Minha atuação envolveu tanto responsabilidades técnicas de alto nível quanto suporte operacional em sistemas críticos de grande escala.",
+      "description": "Atuei no time de arquitetura e desenvolvimento do e‑commerce da Despegar, contribuindo para evolução contínua da plataforma e adequação às novas exigências legais e de performance. Minha atuação envolveu tanto responsabilidades técnicas de alto nível quanto suporte operacional em sistemas críticos de grande escala, com operação em ambiente de alto tráfego e equipes distribuídas.",
       "bullets": [
         "<strong>Arquitetura e desenvolvimento:</strong> participação ativa no time de arquitetura, desenhando e implementando novas funcionalidades para o e‑commerce, com foco em escalabilidade e experiência do usuário.",
         "<strong>Code reviews e boas práticas:</strong> revisão de código em múltiplos times, garantindo aderência a padrões de qualidade e promovendo cultura de engenharia sólida.",
