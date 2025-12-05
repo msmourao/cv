@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Marcelo Mourao</title>
+    <title id="page-title">Currículo - Marcelo Mourao</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -29,6 +29,42 @@
             max-width: 1000px;
             margin: 0 auto;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-switch button {
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .language-switch button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .language-switch button:hover {
+            background: var(--primary-color);
+            color: white;
         }
         
         .resume-header {
@@ -237,27 +273,6 @@
             color: var(--primary-color);
         }
         
-        .tech-stack-item {
-            margin-bottom: 1.25rem;
-        }
-        
-        .tech-stack-item .tech-name {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-            font-size: 0.95rem;
-        }
-        
-        .progress {
-            height: 8px;
-            border-radius: 4px;
-            background: var(--bg-light);
-        }
-        
-        .progress-bar {
-            background: var(--primary-color);
-        }
-        
         .soft-skills-list {
             list-style: none;
             padding: 0;
@@ -336,13 +351,6 @@
             gap: 0.75rem;
         }
         
-        .language-level-badge {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--primary-color);
-            min-width: 70px;
-        }
-        
         .language-dots {
             display: flex;
             gap: 0.35rem;
@@ -366,6 +374,9 @@
         }
         
         @media print {
+            .language-switch {
+                display: none !important;
+            }
             body {
                 background: white;
                 padding: 0;
@@ -379,6 +390,11 @@
         }
         
         @media (max-width: 768px) {
+            .language-switch {
+                top: 10px;
+                right: 10px;
+                padding: 0.4rem 0.8rem;
+            }
             .resume-body {
                 grid-template-columns: 1fr;
             }
@@ -395,409 +411,88 @@
     </style>
 </head>
 <body>
+    <div class="language-switch">
+        <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
+        <button id="lang-en" onclick="switchLanguage('en')">EN</button>
+    </div>
+    
     <div class="resume-wrapper">
         <div class="resume-header">
-            <img src="../marcelo.png" alt="Marcelo Mourao" class="profile-image">
-            <h1>Marcelo Mourao</h1>
-            <div class="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
-            <ul class="contact-list">
-                <li><i class="bi bi-geo-alt"></i>São Paulo, Brazil</li>
-                <li><i class="bi bi-telephone"></i>+55 11 98020-9215</li>
-                <li><i class="bi bi-envelope"></i><a href="mailto:msmourao@hotmail.com">msmourao@hotmail.com</a></li>
-                <li><i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/msmourao" target="_blank">linkedin.com/in/msmourao</a></li>
-                <li><i class="bi bi-github"></i><a href="https://github.com/msmourao" target="_blank">github.com/msmourao</a></li>
+            <img id="profile-image" src="marcelo.png" alt="Marcelo Mourao" class="profile-image">
+            <h1 id="name">Marcelo Mourao</h1>
+            <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
+            <ul class="contact-list" id="contact-list">
+                <!-- Populated by JavaScript -->
             </ul>
         </div>
         
         <div class="resume-body">
             <div class="main-content">
                 <section class="about-section">
-                    <h3 class="section-title"><i class="bi bi-person"></i>Sobre Mim</h3>
-                    <p>Desenvolvedor sênior e arquiteto de software com mais de 15 anos de experiência em projetos de alta complexidade e grande demanda por desempenho, atuando em setores como turismo, telecomunicações e financeiro. Especialista em arquitetura de microsserviços e soluções cloud, com forte domínio em mensageria distribuída e bancos relacionais e NoSQL. Experiência consolidada em ambientes críticos de e‑commerce e integrações corporativas, entregando soluções escaláveis e resilientes. Atualmente, vem aplicando inteligência artificial em projetos para otimização de processos e análise de dados, ampliando o impacto das soluções desenvolvidas. Reconhecido pela criatividade e capacidade de inovação técnica, com foco em construir sistemas modernos, eficientes e preparados para evolução contínua.</p>
+                    <h3 class="section-title"><i class="bi bi-person"></i><span id="section-about">Sobre Mim</span></h3>
+                    <p id="about-text">Loading...</p>
                 </section>
                 
                 <hr>
                 
                 <section class="work-experience-section">
-                    <h3 class="section-title"><i class="bi bi-briefcase"></i>Experiência Profissional</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Março 2024 – Presente</div>
-                            <div class="timeline-title">Arquiteto e Desenvolvedor Principal</div>
-                            <div class="timeline-company">EventsFinder (projeto pessoal)</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Idealizei e desenvolvi o EventsFinder, uma plataforma de busca e gerenciamento de eventos construída sobre uma arquitetura moderna e escalável. O projeto combina Clean Architecture, SOLID, CQRS e TDD com práticas avançadas de observabilidade e entrega contínua, resultando em uma solução robusta e preparada para evolução.</p>
-                            <ul>
-                                <li><strong>Backend:</strong> .NET 10 com ASP.NET Core, Entity Framework Core e PostgreSQL (incluindo PostGIS para geolocalização).</li>
-                                <li><strong>Frontend:</strong> React com TypeScript, Vite e Tailwind CSS, garantindo experiência moderna e responsiva.</li>
-                                <li><strong>Deploy e infraestrutura:</strong> Deploy unificado em AWS e Azure, uso de Lambda Functions / Azure Functions, API Gateway, SQS/Service Bus e aplicações serverless.</li>
-                                <li><strong>Integrações externas:</strong> Conectores para redes sociais (Instagram, Facebook, Twitter/X), Google Maps API para geolocalização e integração com OpenAI para enriquecimento inteligente de dados.</li>
-                                <li><strong>Automação de correção de bugs:</strong> Sistema integrado de captura, agregação e priorização de erros com correção automatizada via IA, reduzindo tempo de resolução e melhorando a qualidade do código.</li>
-                                <li><strong>CI/CD:</strong> GitHub Actions com builds incrementais, deploy seletivo e multi-ambiente (staging/production).</li>
-                                <li><strong>Práticas de qualidade:</strong> TDD, testes unitários e de integração, mocks configuráveis, Result Pattern para tratamento seguro de erros.</li>
-                                <li><strong>Observabilidade:</strong> OpenTelemetry end-to-end, métricas, tracing distribuído, health checks e integração com Application Insights.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> .NET 10, C# 12, ASP.NET Core, Entity Framework Core, PostgreSQL/PostGIS, React, TypeScript, Vite, Tailwind CSS, AWS Lambda, Azure Functions, API Gateway, Amazon SQS, Azure Service Bus, SNS, S3, OpenTelemetry, Application Insights, OpenAI (modelos e embeddings), GitHub Actions, Docker, Aspire, JWT Authentication, Terraform, Kubernetes.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Março 2024 — Julho 2025</div>
-                            <div class="timeline-title">Senior Software Engineer</div>
-                            <div class="timeline-company">UBS</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei em um time multinacional, com comunicação diária em inglês, responsável pela modernização de aplicações legadas e adequações de segurança exigidas pela integração da UBS com o Credit Suisse. Evangelizei e apresentei a proposta de modernização de sistemas críticos que rodavam em .NET Framework 4.8, migrando para .NET 8 e adotando uma arquitetura baseada em microsserviços. Minha experiência foi marcada por forte atuação em performance, modernização tecnológica e proximidade com stakeholders para alinhar requisitos de negócio e soluções técnicas.</p>
-                            <ul>
-                                <li><strong>Modernização de monólito para microsserviços:</strong> proposta arquitetural em .NET 8 com foco em modularidade e extensibilidade, migrando aplicações críticas do .NET Framework 4.8 para uma arquitetura baseada em microsserviços, garantindo compatibilidade, segurança e melhor desempenho.</li>
-                                <li><strong>Padronização MVVM em Windows Forms:</strong> implementação da padronização de MVVM (Model-View-ViewModel) em aplicações Windows Forms, substituindo o acesso direto ao banco de dados por comunicação via APIs, reduzindo acoplamento e melhorando testabilidade.</li>
-                                <li><strong>Aplicação de SOLID e design patterns:</strong> promoção e aplicação de princípios SOLID e design patterns para melhorar qualidade, manutenibilidade e consistência do código, resultando em ganhos significativos em tempo de desenvolvimento.</li>
-                                <li><strong>Performance em banco de dados:</strong> otimização de queries SQL em sistemas críticos, reduzindo tempos de execução em relatórios de milhares de registros de minutos para segundos.</li>
-                                <li><strong>Reestruturação de CRM:</strong> transformação de uma aplicação web legada em uma single page application utilizando ASP.NET MVC e JavaScript, melhorando usabilidade e tempo de resposta.</li>
-                                <li><strong>Função de cálculo de dias úteis:</strong> idealização e desenvolvimento de uma biblioteca local com atualização periódica de feriados, substituindo consultas a API e banco de dados; solução aplicada em relatórios massivos, reduzindo latência e carga de infraestrutura.</li>
-                                <li><strong>Integração com múltiplos bancos:</strong> trabalho com SQL Server e Couchbase, garantindo integração eficiente entre diferentes camadas de persistência na arquitetura moderna.</li>
-                                <li><strong>Colaboração com stakeholders:</strong> contato contínuo com áreas de negócio, revisão de requisitos e adaptação de soluções para atender necessidades específicas de compliance e operação.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> .NET 8, .NET Framework 4.8, ASP.NET MVC, JavaScript, Windows Forms, MVVM Pattern, SQL Server, Couchbase, Oracle. Práticas: migração de monólito para microsserviços, SOLID, design patterns, otimização de queries, refatoração de código. Ambiente: equipe multinacional, reuniões em inglês, contato direto com stakeholders.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Julho 2023 — Dezembro 2023</div>
-                            <div class="timeline-title">Consultor</div>
-                            <div class="timeline-company">Ninecon</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei como consultor em projetos temporários para clientes estratégicos, com foco em modernização de ambientes SOA e otimização de performance em sistemas críticos.</p>
-                            <ul>
-                                <li><strong>Frísia Agropecuária:</strong> conduzi projeto de atualização do ambiente Oracle SOA Suite, migrando versões legadas (11g/12c) para a versão mais recente em nuvem (Oracle SOA Suite 12c/Fusion Middleware), garantindo compatibilidade, suporte e integração com sistemas modernos.</li>
-                                <li><strong>Azul Linhas Aéreas:</strong> realizei análise detalhada de problemas em fluxos SOA, identificando gargalos e propondo correções; implementei melhorias de performance em queries Oracle, reduzindo tempos de execução e aumentando a confiabilidade dos processos de integração.</li>
-                                <li><strong>Integração e suporte:</strong> trabalhei em ambientes de missão crítica, garantindo continuidade operacional durante migrações e ajustes de performance.</li>
-                                <li><strong>Consultoria técnica:</strong> forneci recomendações de melhores práticas para equipes internas, apoiando na adoção de versões atualizadas e na mitigação de riscos de performance.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> Oracle SOA Suite (11g/12c → 12c/Fusion Middleware), Oracle Database (queries complexas, otimização de performance), fluxos SOA, análise de logs e métricas de execução. Ambiente: consultoria temporária, atuação em clientes de grande porte (agro e aviação).
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Março 2022 — Abril 2023</div>
-                            <div class="timeline-title">Software Engineer</div>
-                            <div class="timeline-company">Despegar</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei no time de arquitetura e desenvolvimento do e‑commerce, contribuindo para evolução da plataforma, revisão de código e adequação a requisitos de privacidade (LGPD), com operação em ambiente de alto tráfego e equipes distribuídas.</p>
-                            <ul>
-                                <li><strong>Arquitetura e novas funcionalidades:</strong> desenho e implementação focados em escalabilidade e UX no e‑commerce.</li>
-                                <li><strong>Code reviews:</strong> padronização de práticas e qualidade entre squads.</li>
-                                <li><strong>LGPD:</strong> mecanismos de proteção de dados, consentimento e controles de acesso.</li>
-                                <li><strong>Suporte operacional:</strong> troubleshooting de incidentes em produção e estabilização em picos de acesso.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Stack principal:</strong> .NET 6 e 7, ASP.NET MVC, RabbitMQ, SQL Server, Couchbase, Azure DevOps (CI/CD, releases).
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">2016–2019</div>
-                            <div class="timeline-title">Software Engineer</div>
-                            <div class="timeline-company">Despegar</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei no time de arquitetura e desenvolvimento do e‑commerce da Despegar, contribuindo para evolução contínua da plataforma e adequação às novas exigências legais e de performance. Minha atuação envolveu tanto responsabilidades técnicas de alto nível quanto suporte operacional em sistemas críticos de grande escala.</p>
-                            <ul>
-                                <li><strong>Arquitetura e desenvolvimento:</strong> participação ativa no time de arquitetura, desenhando e implementando novas funcionalidades para o e‑commerce, com foco em escalabilidade e experiência do usuário.</li>
-                                <li><strong>Code reviews e boas práticas:</strong> revisão de código em múltiplos times, garantindo aderência a padrões de qualidade e promovendo cultura de engenharia sólida.</li>
-                                <li><strong>Adequação à LGPD:</strong> implementação de mecanismos de proteção e privacidade de dados em conformidade com a legislação, incluindo anonimização, consentimento e controles de acesso.</li>
-                                <li><strong>Resolução de problemas ongoing:</strong> atuação contínua na análise e correção de incidentes em produção, garantindo estabilidade e disponibilidade da plataforma em períodos de alto tráfego.</li>
-                                <li><strong>Colaboração internacional:</strong> integração com equipes distribuídas e stakeholders, alinhando requisitos técnicos e de negócio em ambiente multicultural.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> .NET 6 e 7, ASP.NET MVC, SQL Server, Couchbase (NoSQL, caching e alta disponibilidade), RabbitMQ, Azure DevOps (pipelines de CI/CD, gestão de repositórios e releases). Práticas: code review, adequação à LGPD, troubleshooting em produção. Ambiente: e‑commerce de grande escala, colaboração internacional.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Agosto 2020 – Março 2022</div>
-                            <div class="timeline-title">Arquiteto SOA</div>
-                            <div class="timeline-company">Gol Airlines</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei como arquiteto SOA no desenvolvimento e suporte de APIs assíncronas críticas para diferentes áreas da companhia aérea. Minha atuação envolveu tanto manutenção de sistemas legados quanto implementação de novas integrações, garantindo escalabilidade e confiabilidade em fluxos internos de alto volume.</p>
-                            <ul>
-                                <li><strong>Desenvolvimento de APIs assíncronas:</strong> implementação de soluções em Oracle SOA Suite, utilizando BPEL e Oracle Service Bus para orquestração de processos internos.</li>
-                                <li><strong>Suporte a sistemas legados:</strong> análise e correção de problemas em integrações existentes, garantindo continuidade operacional e redução de falhas.</li>
-                                <li><strong>Integrações corporativas:</strong> criação de serviços para comunicação entre áreas internas da companhia, com foco em consistência e governança SOA.</li>
-                                <li><strong>Resolução de incidentes:</strong> atuação em troubleshooting de fluxos críticos, identificando gargalos e propondo soluções rápidas para manter disponibilidade.</li>
-                                <li><strong>Colaboração com equipes de negócio:</strong> alinhamento de requisitos e suporte técnico para atender demandas específicas de operação.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> Oracle SOA Suite (BPEL, Oracle Service Bus), Oracle SQL, APIs assíncronas, mensageria interna. Práticas: troubleshooting, manutenção de legados, governança SOA. Ambiente: companhia aérea de grande porte, sistemas críticos de alta disponibilidade.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Agosto 2019 – Março 2020</div>
-                            <div class="timeline-title">Programador Sênior</div>
-                            <div class="timeline-company">ViajaNet</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei no desenvolvimento de APIs e funcionalidades para o e‑commerce da ViajaNet, com foco em performance, escalabilidade e qualidade de código. Também participei de revisões técnicas e suporte contínuo em sistemas de alto tráfego.</p>
-                            <ul>
-                                <li><strong>Desenvolvimento de APIs:</strong> implementação em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes.</li>
-                                <li><strong>Integrações e mensageria:</strong> uso de RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído e caching.</li>
-                                <li><strong>Funcionalidades no e‑commerce:</strong> desenvolvimento de novas features em toda a stack, garantindo melhor experiência do usuário.</li>
-                                <li><strong>Code reviews:</strong> revisão de código de outros desenvolvedores, promovendo boas práticas e consistência técnica.</li>
-                                <li><strong>Suporte operacional:</strong> atuação em troubleshooting de incidentes e ajustes de performance em consultas SQL Server.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> .NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Práticas: code review, otimização de queries, troubleshooting. Ambiente: e‑commerce de grande porte, alto volume de transações.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Maio 2018 – Junho 2019</div>
-                            <div class="timeline-title">Líder Técnico</div>
-                            <div class="timeline-company">Claro Brasil</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei inicialmente como desenvolvedor em um projeto de integração do sistema de ordens de serviço da Claro com o Oracle Field Service, e após cerca de dois meses assumi responsabilidades de arquitetura e liderança técnica, coordenando atividades entre diferentes times e tecnologias.</p>
-                            <ul>
-                                <li><strong>Integração corporativa:</strong> desenvolvimento de soluções para conectar o sistema de controle de ordens de serviço ao Oracle Field Service, garantindo gestão eficiente de equipes de manutenção e agendamento de clientes.</li>
-                                <li><strong>Arquitetura e direcionamento técnico:</strong> assumi papel de liderança técnica, solucionando problemas de modelagem e arquitetura que impediam avanços do projeto.</li>
-                                <li><strong>Coordenação de equipes:</strong> organizei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes.</li>
-                                <li><strong>Suporte a infraestrutura:</strong> colaboração com o time de infraestrutura para deploy, handover e manutenção contínua.</li>
-                                <li><strong>Stakeholders e fornecedores:</strong> contato direto com o time da Oracle e stakeholders internos para definição de soluções e alinhamento de requisitos.</li>
-                                <li><strong>Tecnologias legadas:</strong> atuação em versões antigas do Oracle WebLogic Integration e AquaLogic Service Bus, antecessores do Oracle Service Bus, superando limitações de documentação e suporte.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> Oracle WebLogic Integration, AquaLogic Service Bus, Oracle SQL, Java, Visual Basic 6, Oracle Field Service. Práticas: arquitetura, coordenação técnica, troubleshooting de modelagem. Ambiente: telecomunicações, integração de sistemas corporativos de grande porte.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Maio 2013 – Maio 2018</div>
-                            <div class="timeline-title">Programador Sênior</div>
-                            <div class="timeline-company">CVC Viagens</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei em projetos estratégicos de e‑commerce e plataformas internas da CVC, evoluindo de desenvolvedor FullStack .NET para especialista em integrações SOA. Essa experiência consolidou meu domínio em ambientes complexos de turismo, com alto volume de transações e múltiplas integrações externas.</p>
-                            <ul>
-                                <li><strong>Plataforma de vendas para agentes de viagem:</strong> desenvolvimento FullStack em .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrando motor de busca de voos e sistemas de precificação.</li>
-                                <li><strong>Integrações externas:</strong> implementação de conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica.</li>
-                                <li><strong>Governança SOA:</strong> participação na adoção do Oracle SOA Suite, criando serviços de integração para suportar o front‑end e novos canais digitais.</li>
-                                <li><strong>Suporte contínuo:</strong> resolução de problemas de ambiente e manutenção de integrações críticas em produção.</li>
-                                <li><strong>Formação de novos desenvolvedores:</strong> sessões individuais de instrução em SOA, acelerando ramp‑up de equipe.</li>
-                                <li><strong>Finalização de projetos inacabados:</strong> entrega de soluções deixadas por consultorias externas, incluindo plataforma de turismo com Angular front‑end e back‑end em novas integrações SOA.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> ASP.NET, HTML, CSS, JavaScript, Angular, .NET Framework, Oracle SOA Suite (Service Bus, BPEL), Oracle SQL, Sabre, Amadeus, APIs de hotelaria e companhias aéreas. Práticas: governança SOA, troubleshooting, formação de equipe. Ambiente: turismo, e‑commerce de grande porte, alto volume de transações.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Março 2011 – Fevereiro 2013</div>
-                            <div class="timeline-title">Programador Sênior</div>
-                            <div class="timeline-company">B2W Viagens</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei como desenvolvedor FullStack .NET em soluções de plataforma de venda B2B voltadas para programas de fidelidade e recompensas. O foco foi criar sistemas que permitiam o resgate de pontos e milhas de parceiros em troca de produtos e serviços de viagem.</p>
-                            <ul>
-                                <li><strong>Plataforma B2B de fidelidade:</strong> desenvolvimento de soluções para resgate de pontos de cartão de crédito e milhas aéreas em passagens e reservas de hotéis.</li>
-                                <li><strong>Desenvolvimento FullStack:</strong> atuação em toda a stack de .NET Framework, incluindo front‑end e back‑end.</li>
-                                <li><strong>Integrações externas:</strong> implementação de serviços para comunicação com sistemas de parceiros e provedores de recompensas.</li>
-                                <li><strong>Performance e confiabilidade:</strong> otimização de consultas e processos para garantir estabilidade em alto volume de transações.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> .NET Framework (ASP.NET, C#), SQL Server, APIs de parceiros de fidelidade e milhas. Práticas: desenvolvimento FullStack, otimização de queries, integrações externas. Ambiente: plataforma B2B de turismo e fidelidade.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Março 2010 – Fevereiro 2011</div>
-                            <div class="timeline-title">Programador Júnior</div>
-                            <div class="timeline-company">Alafia Consultoria</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Atuei como programador em uma pequena agência de marketing, desenvolvendo páginas web e soluções simples para apoiar negócios locais. Essa experiência foi importante para consolidar minha base em desenvolvimento web e práticas de entrega rápida.</p>
-                            <ul>
-                                <li><strong>Desenvolvimento de páginas web:</strong> criação de sites institucionais e páginas de cadastro com recursos básicos de interação.</li>
-                                <li><strong>Formulários e mailing:</strong> implementação de formulários de inscrição e sistemas de envio de e‑mails para campanhas de marketing.</li>
-                                <li><strong>Suporte a pequenos negócios:</strong> entrega de soluções acessíveis e funcionais para clientes locais, com foco em simplicidade e agilidade.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> HTML, CSS, JavaScript, ASP.NET (recursos básicos), SQL Server (uso simples). Práticas: desenvolvimento rápido, suporte a clientes de pequeno porte. Ambiente: agência de marketing digital, projetos de baixo custo e alta rotatividade.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-period">Novembro 2007 – Fevereiro 2010</div>
-                            <div class="timeline-title">Programador Júnior</div>
-                            <div class="timeline-company">UOL Diveo</div>
-                        </div>
-                        <div class="timeline-content">
-                            <p>Primeira experiência profissional em tecnologia, iniciada como estagiário e rapidamente evoluída para programador júnior. Atuei em uma equipe dedicada a pesquisa e desenvolvimento de software, com foco em desempenho e segurança, além de desenvolvimento direto em sistemas corporativos.</p>
-                            <ul>
-                                <li><strong>Desenvolvimento em VB6:</strong> implementação de funcionalidades e manutenção de sistemas corporativos em Visual Basic 6.</li>
-                                <li><strong>Aplicações web:</strong> desenvolvimento em ASP clássico e ASP.NET 2.0, criando páginas dinâmicas e integrações para clientes internos.</li>
-                                <li><strong>Análise de código:</strong> participação em projetos de revisão de software em diversas linguagens, com recomendações de desempenho e segurança.</li>
-                                <li><strong>Ferramentas internas:</strong> criação de soluções para monitoramento de performance, geração de relatórios e registro de timesheet.</li>
-                                <li><strong>Crescimento acelerado:</strong> promoção de estagiário para programador em apenas três meses, devido à qualidade das entregas e aprendizado rápido.</li>
-                            </ul>
-                            <div class="technologies-box">
-                                <strong>Tecnologias e ferramentas:</strong> VB6, ASP, ASP.NET 2.0, C#, Java (em análises), SQL Server. Práticas: desenvolvimento web, análise de desempenho, segurança de código, automação de relatórios. Ambiente: escritório de TI corporativo, foco em pesquisa, suporte técnico e desenvolvimento de sistemas internos.
-                            </div>
-                        </div>
+                    <h3 class="section-title"><i class="bi bi-briefcase"></i><span id="section-work">Experiência Profissional</span></h3>
+                    <div id="work-experience">
+                        <!-- Populated by JavaScript -->
                     </div>
                 </section>
             </div>
             
             <div class="sidebar">
-                <section class="contact-section">
-                    <h3 class="section-title"><i class="bi bi-person-lines-fill"></i>Contato</h3>
-                    <ul class="list-unstyled contact-list">
-                        <li><i class="bi bi-geo-alt"></i>São Paulo, Brazil</li>
-                        <li><i class="bi bi-telephone"></i>+55 11 98020-9215</li>
-                        <li><i class="bi bi-envelope"></i><a href="mailto:msmourao@hotmail.com">msmourao@hotmail.com</a></li>
-                        <li><i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/msmourao" target="_blank">linkedin.com/in/msmourao</a></li>
-                        <li><i class="bi bi-github"></i><a href="https://github.com/msmourao" target="_blank">github.com/msmourao</a></li>
-                    </ul>
-                </section>
-                
-                <hr>
-                
                 <section class="tech-stack-section">
-                    <h3 class="section-title"><i class="bi bi-stack"></i>Tech Stack</h3>
-                    <ul class="soft-skills-list">
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> C# / .NET</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> React / TypeScript</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> AWS / Azure</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> PostgreSQL / SQL Server</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Docker / Kubernetes</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Terraform / IaC</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> DevOps</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> CI/CD</li>
+                    <h3 class="section-title"><i class="bi bi-stack"></i><span id="section-tech">Tech Stack</span></h3>
+                    <ul class="soft-skills-list" id="tech-stack">
+                        <!-- Populated by JavaScript -->
                     </ul>
                 </section>
                 
                 <hr>
                 
                 <section class="soft-skills-section">
-                    <h3 class="section-title"><i class="bi bi-gear-fill"></i>Soft Skills</h3>
-                    <ul class="soft-skills-list">
-                        <li>Solução Criativa de Problemas</li>
-                        <li>Otimização de Performance</li>
-                        <li>Autogerenciável</li>
-                        <li>Liderança Técnica</li>
+                    <h3 class="section-title"><i class="bi bi-person-gear"></i><span id="section-soft">Soft Skills</span></h3>
+                    <ul class="soft-skills-list" id="soft-skills">
+                        <!-- Populated by JavaScript -->
                     </ul>
                 </section>
                 
                 <hr>
                 
                 <section class="education-section">
-                    <h3 class="section-title"><i class="bi bi-mortarboard"></i>Formação</h3>
-                    <div class="education-item">
-                        <div class="edu-title">Bacharelado em Ciências da Computação</div>
-                        <div class="edu-institution">Universidade Paulista (UNIP)</div>
-                        <div class="edu-period">Janeiro 2006 – Dezembro 2009</div>
-                    </div>
-                    <div class="education-item">
-                        <div class="edu-title">MBA em Engenharia de Software SOA</div>
-                        <div class="edu-institution">FIAP</div>
-                        <div class="edu-period">Setembro 2012 – Setembro 2013</div>
-                        <small class="text-muted">(grade completa, não concluído formalmente)</small>
+                    <h3 class="section-title"><i class="bi bi-mortarboard"></i><span id="section-education">Formação</span></h3>
+                    <div id="education">
+                        <!-- Populated by JavaScript -->
                     </div>
                 </section>
                 
                 <hr>
                 
                 <section class="languages-section">
-                    <h3 class="section-title"><i class="bi bi-translate"></i>Idiomas</h3>
-                    <div class="language-item">
-                        <div class="language-name">Português: Nativo</div>
-                    </div>
-                    <div class="language-item">
-                        <div class="language-name">Inglês: Avançado</div>
-                        <div class="language-level">
-                            <div class="language-dots">
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot filled"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="language-item">
-                        <div class="language-name">Espanhol: Básico</div>
-                        <div class="language-level">
-                            <div class="language-dots">
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot filled"></div>
-                                <div class="language-dot"></div>
-                                <div class="language-dot"></div>
-                                <div class="language-dot"></div>
-                            </div>
-                        </div>
+                    <h3 class="section-title"><i class="bi bi-translate"></i><span id="section-languages">Idiomas</span></h3>
+                    <div id="languages">
+                        <!-- Populated by JavaScript -->
                     </div>
                 </section>
                 
                 <hr>
                 
                 <section class="projects-section">
-                    <h3 class="section-title"><i class="bi bi-folder"></i>Projetos</h3>
-                    
-                    <div class="project-item">
-                        <h4><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Events Finder</h4>
-                        <p>Plataforma completa de busca e gerenciamento de eventos com integração a redes sociais, geolocalização e enriquecimento inteligente de dados via IA. Inclui sistema de automação de correção de bugs, observabilidade end-to-end e CI/CD automatizado.</p>
-                    </div>
-                    
-                    <div class="project-item">
-                        <h4><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Framework Multi-cloud Ready</h4>
-                        <p>Framework reutilizável para abstração de cloud providers (AWS e Azure), permitindo deploy unificado com configuração dinâmica. Arquitetura baseada em Clean Architecture, SOLID, CQRS e DDD, com abstrações para message publishing, image upload, message queue consumption e serverless hosting. Suporta Terraform para IaC e Kubernetes para orquestração de containers, garantindo portabilidade e escalabilidade entre diferentes ambientes cloud.</p>
-                    </div>
-                    
-                    <div class="project-item">
-                        <h4><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Fluxo de Mensagens Assíncrono</h4>
-                        <p>Framework reutilizável para orquestração de fluxos complexos de mensagens assíncronas, com sistema de tracking e controle de mensagens pendentes. Implementa controle de estado de execução de pipelines, rastreamento de progresso, gerenciamento de dependências entre etapas e recuperação de falhas. Suporta handlers distribuídos, processamento paralelo e integração com múltiplos sistemas de mensageria (SQS, Service Bus), garantindo confiabilidade e escalabilidade em fluxos de trabalho complexos.</p>
+                    <h3 class="section-title"><i class="bi bi-folder"></i><span id="section-projects">Projetos</span></h3>
+                    <div id="projects">
+                        <!-- Populated by JavaScript -->
                     </div>
                 </section>
                 
                 <hr>
                 
                 <section class="hobbies-section">
-                    <h3 class="section-title"><i class="bi bi-heart"></i>Hobbies</h3>
-                    <ul class="soft-skills-list">
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Músico</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Artista Circense</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Teatro</li>
-                        <li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> Games</li>
+                    <h3 class="section-title"><i class="bi bi-heart"></i><span id="section-hobbies">Hobbies</span></h3>
+                    <ul class="soft-skills-list" id="hobbies">
+                        <!-- Populated by JavaScript -->
                     </ul>
                 </section>
             </div>
@@ -805,6 +500,185 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let cvData = null;
+        let descriptions = null;
+        let currentLang = 'pt';
+
+        // Detect language from querystring or browser
+        function detectLanguage() {
+            const params = new URLSearchParams(window.location.search);
+            const langParam = params.get('language');
+            
+            if (langParam === 'pt' || langParam === 'en') {
+                return langParam;
+            }
+            
+            // Auto-detect from browser
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('pt')) {
+                return 'pt';
+            }
+            return 'en';
+        }
+
+        // Load JSON files
+        async function loadData() {
+            try {
+                const [dataResponse, descResponse] = await Promise.all([
+                    fetch('cv-data.json'),
+                    fetch(`cv-descriptions-${currentLang}.json`)
+                ]);
+                
+                cvData = await dataResponse.json();
+                descriptions = await descResponse.json();
+                
+                renderCV();
+            } catch (error) {
+                console.error('Error loading CV data:', error);
+                document.body.innerHTML = '<div style="padding: 2rem; text-align: center;"><h2>Error loading CV data</h2><p>Please ensure cv-data.json and cv-descriptions-pt.json/cv-descriptions-en.json are available.</p></div>';
+            }
+        }
+
+        // Switch language
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            updateLanguageButtons();
+            loadData();
+        }
+
+        // Update language button states
+        function updateLanguageButtons() {
+            document.getElementById('lang-pt').classList.toggle('active', currentLang === 'pt');
+            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+        }
+
+        // Render CV content
+        function renderCV() {
+            if (!cvData || !descriptions) return;
+
+            // Update page title
+            document.getElementById('page-title').textContent = currentLang === 'pt' ? 'Currículo - Marcelo Mourao' : 'Resume - Marcelo Mourao';
+
+            // Header
+            document.getElementById('name').textContent = cvData.personal.name;
+            document.getElementById('tagline').textContent = cvData.personal.tagline[currentLang];
+            document.getElementById('profile-image').src = cvData.personal.photo;
+
+            // Contact list
+            const contactList = document.getElementById('contact-list');
+            contactList.innerHTML = `
+                <li><i class="bi bi-geo-alt"></i>${cvData.personal.location[currentLang]}</li>
+                <li><i class="bi bi-telephone"></i>${cvData.personal.phone}</li>
+                <li><i class="bi bi-envelope"></i><a href="mailto:${cvData.personal.email}">${cvData.personal.email}</a></li>
+                <li><i class="bi bi-linkedin"></i><a href="${cvData.personal.linkedin}" target="_blank">linkedin.com/in/msmourao</a></li>
+                <li><i class="bi bi-github"></i><a href="${cvData.personal.github}" target="_blank">github.com/msmourao</a></li>
+            `;
+
+            // Sections titles
+            document.getElementById('section-about').textContent = descriptions.sections.about;
+            document.getElementById('section-work').textContent = descriptions.sections.workExperience;
+            document.getElementById('section-tech').textContent = descriptions.sections.techStack;
+            document.getElementById('section-soft').textContent = descriptions.sections.softSkills;
+            document.getElementById('section-education').textContent = descriptions.sections.education;
+            document.getElementById('section-languages').textContent = descriptions.sections.languages;
+            document.getElementById('section-projects').textContent = descriptions.sections.projects;
+            document.getElementById('section-hobbies').textContent = descriptions.sections.hobbies;
+
+            // About
+            document.getElementById('about-text').textContent = descriptions.about;
+
+            // Work experience
+            const workExp = document.getElementById('work-experience');
+            workExp.innerHTML = cvData.workExperience.map(job => {
+                const jobDesc = descriptions.workExperience[job.key];
+                if (!jobDesc) return '';
+                
+                return `
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="timeline-period">${job.period[currentLang]}</div>
+                            <div class="timeline-title">${job.title[currentLang]}</div>
+                            <div class="timeline-company">${job.company}</div>
+                        </div>
+                        <div class="timeline-content">
+                            <p>${jobDesc.description}</p>
+                            <ul>
+                                ${jobDesc.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                            </ul>
+                            <div class="technologies-box">
+                                <strong>${currentLang === 'pt' ? 'Tecnologias e ferramentas:' : 'Technologies and tools:'}</strong> ${jobDesc.technologies}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Tech stack
+            const techStack = document.getElementById('tech-stack');
+            techStack.innerHTML = cvData.techStack.map(tech => 
+                `<li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> ${tech}</li>`
+            ).join('');
+
+            // Soft skills
+            const softSkills = document.getElementById('soft-skills');
+            softSkills.innerHTML = cvData.softSkills.map(skill => 
+                `<li>${skill[currentLang]}</li>`
+            ).join('');
+
+            // Education
+            const education = document.getElementById('education');
+            education.innerHTML = cvData.education.map(edu => `
+                <div class="education-item">
+                    <div class="edu-title">${edu.title[currentLang]}</div>
+                    <div class="edu-institution">${edu.institution}</div>
+                    <div class="edu-period">${edu.period[currentLang]}</div>
+                    ${edu.note ? `<small class="text-muted">${edu.note[currentLang]}</small>` : ''}
+                </div>
+            `).join('');
+
+            // Languages
+            const languages = document.getElementById('languages');
+            languages.innerHTML = cvData.languages.map(lang => {
+                const dots = Array(5).fill(0).map((_, i) => 
+                    `<div class="language-dot ${i < lang.dots ? 'filled' : ''}"></div>`
+                ).join('');
+                
+                return `
+                    <div class="language-item">
+                        <div class="language-name">${lang.name[currentLang]}: ${lang.level[currentLang]}</div>
+                        ${lang.dots < 5 ? `<div class="language-level"><div class="language-dots">${dots}</div></div>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            // Projects
+            const projects = document.getElementById('projects');
+            projects.innerHTML = cvData.projects.map(proj => {
+                const projDesc = descriptions.projects[proj.key];
+                if (!projDesc) return '';
+                
+                return `
+                    <div class="project-item">
+                        <h4><i class="bi ${proj.icon}" style="font-size: 0.5rem; color: var(--primary-color);"></i> ${projDesc.name}</h4>
+                        <p>${projDesc.description}</p>
+                    </div>
+                `;
+            }).join('');
+
+            // Hobbies
+            const hobbies = document.getElementById('hobbies');
+            hobbies.innerHTML = cvData.hobbies.map(hobby => 
+                `<li><i class="bi bi-circle-fill" style="font-size: 0.5rem; color: var(--primary-color);"></i> ${hobby[currentLang]}</li>`
+            ).join('');
+        }
+
+        // Initialize
+        currentLang = detectLanguage();
+        document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+        updateLanguageButtons();
+        loadData();
+    </script>
 </body>
 </html>
-
