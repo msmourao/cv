@@ -600,7 +600,7 @@
                         <div class="timeline-header">
                             <div class="timeline-period">${job.period[currentLang]}</div>
                             <div class="timeline-title">${job.title[currentLang]}</div>
-                            <div class="timeline-company">${job.company}</div>
+                            <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
                         </div>
                         <div class="timeline-content">
                             <p>${jobDesc.description}</p>

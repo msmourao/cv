@@ -25,7 +25,10 @@
         "pt": "Arquiteto e Desenvolvedor Principal",
         "en": "Principal Architect and Developer"
       },
-      "company": "EventsFinder (projeto pessoal)",
+      "company": {
+        "pt": "EventsFinder (projeto pessoal)",
+        "en": "EventsFinder (personal project)"
+      },
       "key": "eventsfinder"
     },
     {
@@ -37,7 +40,10 @@
         "pt": "Senior Software Engineer",
         "en": "Senior Software Engineer"
       },
-      "company": "UBS",
+      "company": {
+        "pt": "UBS",
+        "en": "UBS"
+      },
       "key": "ubs"
     },
     {
@@ -49,7 +55,10 @@
         "pt": "Consultor",
         "en": "Consultant"
       },
-      "company": "Ninecon",
+      "company": {
+        "pt": "Ninecon",
+        "en": "Ninecon"
+      },
       "key": "ninecon"
     },
     {
@@ -61,7 +70,10 @@
         "pt": "Software Engineer",
         "en": "Software Engineer"
       },
-      "company": "Despegar",
+      "company": {
+        "pt": "Despegar",
+        "en": "Despegar"
+      },
       "key": "despegar1"
     },
     {
@@ -73,7 +85,10 @@
         "pt": "Software Engineer",
         "en": "Software Engineer"
       },
-      "company": "Despegar",
+      "company": {
+        "pt": "Despegar",
+        "en": "Despegar"
+      },
       "key": "despegar2"
     },
     {
@@ -85,7 +100,10 @@
         "pt": "Arquiteto SOA",
         "en": "SOA Architect"
       },
-      "company": "Gol Airlines",
+      "company": {
+        "pt": "Gol Airlines",
+        "en": "Gol Airlines"
+      },
       "key": "gol"
     },
     {
@@ -97,7 +115,10 @@
         "pt": "Programador Sênior",
         "en": "Senior Programmer"
       },
-      "company": "ViajaNet",
+      "company": {
+        "pt": "ViajaNet",
+        "en": "ViajaNet"
+      },
       "key": "viajanet"
     },
     {
@@ -109,7 +130,10 @@
         "pt": "Líder Técnico",
         "en": "Technical Leader"
       },
-      "company": "Claro Brasil",
+      "company": {
+        "pt": "Claro Brasil",
+        "en": "Claro Brazil"
+      },
       "key": "claro"
     },
     {
@@ -121,7 +145,10 @@
         "pt": "Programador Sênior",
         "en": "Senior Programmer"
       },
-      "company": "CVC Viagens",
+      "company": {
+        "pt": "CVC Viagens",
+        "en": "CVC Travel"
+      },
       "key": "cvc"
     },
     {
@@ -133,7 +160,10 @@
         "pt": "Programador Sênior",
         "en": "Senior Programmer"
       },
-      "company": "B2W Viagens",
+      "company": {
+        "pt": "B2W Viagens",
+        "en": "B2W Travel"
+      },
       "key": "b2w"
     },
     {
@@ -145,7 +175,10 @@
         "pt": "Programador Júnior",
         "en": "Junior Programmer"
       },
-      "company": "Alafia Consultoria",
+      "company": {
+        "pt": "Alafia Consultoria",
+        "en": "Alafia Consulting"
+      },
       "key": "alafia"
     },
     {
@@ -157,7 +190,10 @@
         "pt": "Programador Júnior",
         "en": "Junior Programmer"
       },
-      "company": "UOL Diveo",
+      "company": {
+        "pt": "UOL Diveo",
+        "en": "UOL Diveo"
+      },
       "key": "uol"
     }
   ],
@@ -222,7 +258,7 @@
         "pt": "Básico",
         "en": "Basic"
       },
-      "dots": 2
+      "dots": 1
     }
   ],
   "techStack": [
