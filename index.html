@@ -556,15 +556,20 @@
                 background: var(--primary-color) !important;
                 display: block !important;
                 visibility: visible !important;
+                opacity: 1 !important;
                 content: '' !important;
                 position: absolute !important;
                 left: 0 !important;
                 top: 0.5rem !important;
                 border-radius: 50% !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             .timeline-item::after {
                 display: block !important;
                 visibility: visible !important;
+                opacity: 1 !important;
                 content: '' !important;
                 position: absolute !important;
                 left: 5px !important;
@@ -572,6 +577,9 @@
                 width: 2px !important;
                 height: calc(100% + 0.5rem) !important;
                 background: var(--border-color) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             .timeline-item:last-child::after {
                 display: none !important;
