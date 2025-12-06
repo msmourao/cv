@@ -442,8 +442,8 @@
                 display: grid !important;
                 grid-template-columns: 2fr 1fr !important;
                 gap: 1.5rem !important;
-                padding: 0.75rem 2rem 0.5rem 2rem !important;
-                page-break-inside: avoid;
+                padding: 0.5rem 2rem 0.25rem 2rem !important;
+                page-break-inside: auto !important;
                 margin-top: 0 !important;
             }
             .sidebar {
@@ -457,18 +457,20 @@
             }
             .section-title {
                 font-size: 1rem !important;
-                margin-bottom: 0.75rem !important;
-                margin-top: 0.5rem !important;
-                page-break-after: avoid;
+                margin-bottom: 0.5rem !important;
+                margin-top: 0.25rem !important;
+                page-break-after: avoid !important;
+                page-break-before: auto !important;
             }
             .about-section {
-                margin-bottom: 1rem !important;
+                margin-bottom: 0.5rem !important;
                 margin-top: 0 !important;
+                page-break-after: auto !important;
             }
             .about-section p {
                 font-size: 0.85rem !important;
-                line-height: 1.5 !important;
-                margin-bottom: 0.5rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 0.25rem !important;
             }
             .timeline-item {
                 margin-bottom: 1.5rem !important;
@@ -501,7 +503,9 @@
                 margin-bottom: 0.5rem !important;
             }
             hr {
-                margin: 0.75rem 0 !important;
+                margin: 0.4rem 0 !important;
+                page-break-after: avoid !important;
+                page-break-before: avoid !important;
             }
             a {
                 color: var(--text-color) !important;
