@@ -1012,6 +1012,64 @@
             document.getElementById('lang-pt').classList.toggle('active', currentLang === 'pt');
             document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
         }
+        
+        // Toggle share menu
+        function toggleShareMenu() {
+            const menu = document.getElementById('share-menu');
+            menu.classList.toggle('show');
+        }
+        
+        // Close share menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const shareWrapper = document.querySelector('.share-button-wrapper');
+            const shareMenu = document.getElementById('share-menu');
+            if (shareWrapper && shareMenu && !shareWrapper.contains(event.target)) {
+                shareMenu.classList.remove('show');
+            }
+        });
+        
+        // Share via WhatsApp
+        async function shareViaWhatsApp(event) {
+            event.preventDefault();
+            const menu = document.getElementById('share-menu');
+            menu.classList.remove('show');
+            
+            try {
+                // Format phone number for WhatsApp
+                const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
+                const message = descriptions.messages.whatsapp;
+                const url = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent(message + '\n\n' + window.location.href);
+                window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+            } catch (error) {
+                console.error('Error sharing via WhatsApp:', error);
+            }
+        }
+        
+        // Share via Email
+        async function shareViaEmail(event) {
+            event.preventDefault();
+            const menu = document.getElementById('share-menu');
+            menu.classList.remove('show');
+            
+            try {
+                const subject = encodeURIComponent(descriptions.messages.email.subject);
+                const body = encodeURIComponent(descriptions.messages.email.body + '\n\n' + window.location.href);
+                window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            } catch (error) {
+                console.error('Error sharing via email:', error);
+            }
+        }
+        
+        // Share via LinkedIn
+        function shareViaLinkedIn(event) {
+            event.preventDefault();
+            const menu = document.getElementById('share-menu');
+            menu.classList.remove('show');
+            
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
 
         // Render CV content
         function renderCV() {
