@@ -802,6 +802,48 @@
             loadData();
         }
 
+        // Download PDF function
+        async function downloadPDF() {
+            const element = document.querySelector('.resume-wrapper');
+            const opt = {
+                margin: [1.5, 0.2, 1.5, 0.2], // top, left, bottom, right (in cm)
+                filename: `CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'cm', 
+                    format: 'a4', 
+                    orientation: 'portrait',
+                    compress: true
+                }
+            };
+
+            try {
+                // Show loading indicator
+                const button = event.target.closest('.print-button');
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
+                button.disabled = true;
+
+                await html2pdf().set(opt).from(element).save();
+
+                // Restore button
+                button.innerHTML = originalIcon;
+                button.disabled = false;
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
+                const button = event.target.closest('.print-button');
+                button.innerHTML = '<i class="bi bi-file-earmark-pdf"></i>';
+                button.disabled = false;
+            }
+        }
+
         // Update language button states
         function updateLanguageButtons() {
             document.getElementById('lang-pt').classList.toggle('active', currentLang === 'pt');
