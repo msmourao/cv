@@ -505,11 +505,36 @@
             }
             .timeline-item {
                 margin-bottom: 1.5rem !important;
-                page-break-inside: avoid;
+                page-break-inside: avoid !important;
+                page-break-after: auto !important;
             }
             .timeline-item::before {
-                width: 10px !important;
-                height: 10px !important;
+                width: 12px !important;
+                height: 12px !important;
+                border: 3px solid #fff !important;
+                box-shadow: 0 0 0 2px var(--primary-color) !important;
+                background: var(--primary-color) !important;
+                display: block !important;
+                visibility: visible !important;
+                content: '' !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0.5rem !important;
+                border-radius: 50% !important;
+            }
+            .timeline-item::after {
+                display: block !important;
+                visibility: visible !important;
+                content: '' !important;
+                position: absolute !important;
+                left: 5px !important;
+                top: 1.5rem !important;
+                width: 2px !important;
+                height: calc(100% + 0.5rem) !important;
+                background: var(--border-color) !important;
+            }
+            .timeline-item:last-child::after {
+                display: none !important;
             }
             .timeline-header {
                 margin-bottom: 0.75rem !important;
