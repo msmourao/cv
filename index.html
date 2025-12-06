@@ -1002,44 +1002,79 @@
         }
 
         // Download PDF function
-        async function downloadPDF() {
+        async function downloadPDF(event) {
             const element = document.querySelector('.resume-wrapper');
+            
+            // Temporarily hide action buttons for PDF generation
+            const actionButtons = document.querySelector('.action-buttons');
+            const originalDisplay = actionButtons ? actionButtons.style.display : '';
+            if (actionButtons) {
+                actionButtons.style.display = 'none';
+            }
+            
+            // Wait a bit for the DOM to update
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
             const opt = {
-                margin: [1.5, 0.2, 1.5, 0.2], // top, left, bottom, right (in cm)
+                margin: [0.5, 0.2, 0.5, 0.2], // Reduced top/bottom margins to avoid blank pages
                 filename: `CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { 
                     scale: 2,
                     useCORS: true,
                     logging: false,
-                    letterRendering: true
+                    letterRendering: true,
+                    windowWidth: element.scrollWidth,
+                    windowHeight: element.scrollHeight,
+                    x: 0,
+                    y: 0,
+                    scrollX: 0,
+                    scrollY: 0
                 },
                 jsPDF: { 
                     unit: 'cm', 
                     format: 'a4', 
                     orientation: 'portrait',
                     compress: true
+                },
+                pagebreak: { 
+                    mode: ['avoid-all', 'css', 'legacy'],
+                    before: '.page-break-before',
+                    after: '.page-break-after',
+                    avoid: ['.timeline-item', '.section-title']
                 }
             };
 
             try {
                 // Show loading indicator
-                const button = event.target.closest('.download-button');
-                const originalIcon = button.innerHTML;
-                button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
-                button.disabled = true;
+                const button = event ? event.target.closest('.download-button') : null;
+                const originalIcon = button ? button.innerHTML : '';
+                if (button) {
+                    button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
+                    button.disabled = true;
+                }
 
+                // Generate PDF
                 await html2pdf().set(opt).from(element).save();
 
                 // Restore button
-                button.innerHTML = originalIcon;
-                button.disabled = false;
+                if (button) {
+                    button.innerHTML = originalIcon;
+                    button.disabled = false;
+                }
             } catch (error) {
                 console.error('Error generating PDF:', error);
                 alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
-                const button = event.target.closest('.download-button');
-                button.innerHTML = '<i class="bi bi-download"></i>';
-                button.disabled = false;
+                const button = event ? event.target.closest('.download-button') : null;
+                if (button) {
+                    button.innerHTML = '<i class="bi bi-download"></i>';
+                    button.disabled = false;
+                }
+            } finally {
+                // Restore action buttons
+                if (actionButtons) {
+                    actionButtons.style.display = originalDisplay;
+                }
             }
         }
 
