@@ -1003,62 +1003,79 @@
 
         // Download PDF function
         async function downloadPDF(event) {
-            const element = document.querySelector('.resume-wrapper');
+            const originalElement = document.querySelector('.resume-wrapper');
             
-            // Scroll to top to ensure we capture from the beginning
-            window.scrollTo(0, 0);
-            
-            // Temporarily hide action buttons for PDF generation
-            const actionButtons = document.querySelector('.action-buttons');
-            const originalDisplay = actionButtons ? actionButtons.style.display : '';
-            if (actionButtons) {
-                actionButtons.style.display = 'none';
+            // Show loading indicator
+            const button = event ? event.target.closest('.download-button') : null;
+            const originalIcon = button ? button.innerHTML : '';
+            if (button) {
+                button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
+                button.disabled = true;
             }
-            
-            // Wait a bit for the DOM to update and scroll to complete
-            await new Promise(resolve => setTimeout(resolve, 200));
-            
-            // Get element position relative to viewport
-            const rect = element.getBoundingClientRect();
-            
-            const opt = {
-                margin: [0.5, 0.2, 0.5, 0.2], // Reduced top/bottom margins to avoid blank pages
-                filename: `CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    letterRendering: true,
-                    backgroundColor: '#ffffff',
-                    removeContainer: true
-                },
-                jsPDF: { 
-                    unit: 'cm', 
-                    format: 'a4', 
-                    orientation: 'portrait',
-                    compress: true
-                },
-                pagebreak: { 
-                    mode: ['avoid-all', 'css', 'legacy'],
-                    before: '.page-break-before',
-                    after: '.page-break-after',
-                    avoid: ['.timeline-item', '.section-title']
-                }
-            };
 
             try {
-                // Show loading indicator
-                const button = event ? event.target.closest('.download-button') : null;
-                const originalIcon = button ? button.innerHTML : '';
-                if (button) {
-                    button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
-                    button.disabled = true;
+                // Create a clone of the element for PDF generation
+                const clone = originalElement.cloneNode(true);
+                
+                // Create a container for the clone
+                const container = document.createElement('div');
+                container.style.position = 'fixed';
+                container.style.left = '-9999px';
+                container.style.top = '0';
+                container.style.width = '210mm'; // A4 width
+                container.style.backgroundColor = '#ffffff';
+                container.appendChild(clone);
+                
+                // Apply print styles to the clone
+                clone.style.margin = '0';
+                clone.style.padding = '0';
+                clone.style.boxShadow = 'none';
+                clone.style.maxWidth = '100%';
+                clone.style.width = '100%';
+                
+                // Hide action buttons in clone if they exist
+                const cloneActionButtons = clone.querySelector('.action-buttons');
+                if (cloneActionButtons) {
+                    cloneActionButtons.style.display = 'none';
                 }
+                
+                // Append to body
+                document.body.appendChild(container);
+                
+                // Wait for rendering
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                const opt = {
+                    margin: [0.5, 0.2, 0.5, 0.2],
+                    filename: `CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        letterRendering: true,
+                        backgroundColor: '#ffffff',
+                        width: clone.scrollWidth,
+                        height: clone.scrollHeight
+                    },
+                    jsPDF: { 
+                        unit: 'cm', 
+                        format: 'a4', 
+                        orientation: 'portrait',
+                        compress: true
+                    },
+                    pagebreak: { 
+                        mode: ['avoid-all', 'css', 'legacy'],
+                        avoid: ['.timeline-item', '.section-title']
+                    }
+                };
 
-                // Generate PDF
-                await html2pdf().set(opt).from(element).save();
-
+                // Generate PDF from clone
+                await html2pdf().set(opt).from(clone).save();
+                
+                // Remove clone and container
+                document.body.removeChild(container);
+                
                 // Restore button
                 if (button) {
                     button.innerHTML = originalIcon;
@@ -1067,15 +1084,9 @@
             } catch (error) {
                 console.error('Error generating PDF:', error);
                 alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
-                const button = event ? event.target.closest('.download-button') : null;
                 if (button) {
                     button.innerHTML = '<i class="bi bi-download"></i>';
                     button.disabled = false;
-                }
-            } finally {
-                // Restore action buttons
-                if (actionButtons) {
-                    actionButtons.style.display = originalDisplay;
                 }
             }
         }
