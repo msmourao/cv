@@ -1013,37 +1013,45 @@
                 button.disabled = true;
             }
 
+            let container = null;
+            let clone = null;
+
             try {
                 // Create a clone of the element for PDF generation
-                const clone = originalElement.cloneNode(true);
-                
-                // Create a container for the clone
-                const container = document.createElement('div');
-                container.style.position = 'fixed';
-                container.style.left = '-9999px';
-                container.style.top = '0';
-                container.style.width = '210mm'; // A4 width
-                container.style.backgroundColor = '#ffffff';
-                container.appendChild(clone);
-                
-                // Apply print styles to the clone
-                clone.style.margin = '0';
-                clone.style.padding = '0';
-                clone.style.boxShadow = 'none';
-                clone.style.maxWidth = '100%';
-                clone.style.width = '100%';
+                clone = originalElement.cloneNode(true);
                 
                 // Hide action buttons in clone if they exist
                 const cloneActionButtons = clone.querySelector('.action-buttons');
                 if (cloneActionButtons) {
-                    cloneActionButtons.style.display = 'none';
+                    cloneActionButtons.remove();
                 }
+                
+                // Create a container for the clone positioned off-screen
+                container = document.createElement('div');
+                container.style.position = 'absolute';
+                container.style.left = '-9999px';
+                container.style.top = '0';
+                container.style.width = originalElement.offsetWidth + 'px';
+                container.style.backgroundColor = '#ffffff';
+                container.style.overflow = 'visible';
+                container.appendChild(clone);
+                
+                // Apply styles to ensure proper rendering
+                clone.style.margin = '0';
+                clone.style.padding = '0';
+                clone.style.boxShadow = 'none';
+                clone.style.position = 'relative';
+                clone.style.left = '0';
+                clone.style.top = '0';
                 
                 // Append to body
                 document.body.appendChild(container);
                 
+                // Force reflow to ensure dimensions are calculated
+                void container.offsetHeight;
+                
                 // Wait for rendering
-                await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 150));
                 
                 const opt = {
                     margin: [0.5, 0.2, 0.5, 0.2],
@@ -1054,9 +1062,7 @@
                         useCORS: true,
                         logging: false,
                         letterRendering: true,
-                        backgroundColor: '#ffffff',
-                        width: clone.scrollWidth,
-                        height: clone.scrollHeight
+                        backgroundColor: '#ffffff'
                     },
                     jsPDF: { 
                         unit: 'cm', 
@@ -1073,9 +1079,6 @@
                 // Generate PDF from clone
                 await html2pdf().set(opt).from(clone).save();
                 
-                // Remove clone and container
-                document.body.removeChild(container);
-                
                 // Restore button
                 if (button) {
                     button.innerHTML = originalIcon;
@@ -1087,6 +1090,11 @@
                 if (button) {
                     button.innerHTML = '<i class="bi bi-download"></i>';
                     button.disabled = false;
+                }
+            } finally {
+                // Clean up: remove clone and container
+                if (container && container.parentNode) {
+                    document.body.removeChild(container);
                 }
             }
         }
