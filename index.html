@@ -443,14 +443,14 @@
             border-top: 1px solid var(--border-color);
         }
         
-        .print-button, .share-button {
+        .print-button, .share-button, .download-button {
             background: white;
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 0.5rem;
+            padding: 0;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -459,13 +459,13 @@
             height: 40px;
         }
         
-        .print-button:hover, .share-button:hover {
+        .print-button:hover, .share-button:hover, .download-button:hover {
             background: var(--primary-color);
             color: white;
             transform: scale(1.1);
         }
         
-        .print-button:disabled {
+        .print-button:disabled, .download-button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
@@ -782,7 +782,7 @@
                 gap: 0.4rem;
             }
             
-            .print-button, .share-button {
+            .print-button, .share-button, .download-button {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
@@ -809,7 +809,8 @@
     </style>
 </head>
 <body>
-    <div class="action-buttons">
+    <!-- Template: Action Buttons Component -->
+    <div class="action-buttons" id="action-buttons-template">
         <div class="action-buttons-container">
             <div class="language-switch">
                 <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
@@ -820,28 +821,28 @@
             
             <div class="action-buttons-group">
                 <div class="share-button-wrapper">
-                    <button class="share-button" onclick="toggleShareMenu()" title="Compartilhar">
+                    <button class="share-button" onclick="toggleShareMenu()" id="share-button-title">
                         <i class="bi bi-share"></i>
                     </button>
                     <div class="share-menu" id="share-menu">
                         <a href="#" class="share-menu-item whatsapp" onclick="shareViaWhatsApp(event)">
                             <i class="bi bi-whatsapp"></i>
-                            <span>WhatsApp</span>
+                            <span id="share-whatsapp-label">WhatsApp</span>
                         </a>
                         <a href="#" class="share-menu-item email" onclick="shareViaEmail(event)">
                             <i class="bi bi-envelope"></i>
-                            <span>Email</span>
+                            <span id="share-email-label">Email</span>
                         </a>
                         <a href="#" class="share-menu-item linkedin" onclick="shareViaLinkedIn(event)">
                             <i class="bi bi-linkedin"></i>
-                            <span>LinkedIn</span>
+                            <span id="share-linkedin-label">LinkedIn</span>
                         </a>
                     </div>
                 </div>
-                <button class="print-button" onclick="downloadPDF()" title="Baixar PDF">
-                    <i class="bi bi-file-earmark-pdf"></i>
+                <button class="download-button" onclick="downloadPDF()" id="download-button-title">
+                    <i class="bi bi-download"></i>
                 </button>
-                <button class="print-button" onclick="window.print()" title="Imprimir CV">
+                <button class="print-button" onclick="window.print()" id="print-button-title">
                     <i class="bi bi-printer"></i>
                 </button>
             </div>
@@ -1043,8 +1044,7 @@
                 // Format phone number for WhatsApp
                 const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
                 const message = descriptions.messages.whatsapp;
-                const url = encodeURIComponent(window.location.href);
-                const text = encodeURIComponent(message + '\n\n' + window.location.href);
+                const text = encodeURIComponent(message);
                 window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
             } catch (error) {
                 console.error('Error sharing via WhatsApp:', error);
@@ -1059,7 +1059,7 @@
             
             try {
                 const subject = encodeURIComponent(descriptions.messages.email.subject);
-                const body = encodeURIComponent(descriptions.messages.email.body + '\n\n' + window.location.href);
+                const body = encodeURIComponent(descriptions.messages.email.body);
                 window.location.href = `mailto:?subject=${subject}&body=${body}`;
             } catch (error) {
                 console.error('Error sharing via email:', error);
@@ -1127,6 +1127,23 @@
             document.getElementById('section-languages').textContent = descriptions.sections.languages;
             document.getElementById('section-projects').textContent = descriptions.sections.projects;
             document.getElementById('section-hobbies').textContent = descriptions.sections.hobbies;
+            
+            // Update button titles and labels
+            if (descriptions.buttons) {
+                const shareButton = document.getElementById('share-button-title');
+                const downloadButton = document.getElementById('download-button-title');
+                const printButton = document.getElementById('print-button-title');
+                const whatsappLabel = document.getElementById('share-whatsapp-label');
+                const emailLabel = document.getElementById('share-email-label');
+                const linkedinLabel = document.getElementById('share-linkedin-label');
+                
+                if (shareButton) shareButton.title = descriptions.buttons.share;
+                if (downloadButton) downloadButton.title = descriptions.buttons.download;
+                if (printButton) printButton.title = descriptions.buttons.print;
+                if (whatsappLabel && descriptions.buttons.shareOptions) whatsappLabel.textContent = descriptions.buttons.shareOptions.whatsapp;
+                if (emailLabel && descriptions.buttons.shareOptions) emailLabel.textContent = descriptions.buttons.shareOptions.email;
+                if (linkedinLabel && descriptions.buttons.shareOptions) linkedinLabel.textContent = descriptions.buttons.shareOptions.linkedin;
+            }
 
             // About
             document.getElementById('about-text').textContent = descriptions.about;

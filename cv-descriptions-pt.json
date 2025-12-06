@@ -158,6 +158,16 @@
       "subject": "Proposta de Emprego - Marcelo Mourao",
       "body": "Olá Marcelo,\n\nTemos uma proposta de emprego que pode ser do seu interesse.\n\nAtenciosamente"
     }
+  },
+  "buttons": {
+    "share": "Compartilhar",
+    "download": "Baixar PDF",
+    "print": "Imprimir CV",
+    "shareOptions": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "linkedin": "LinkedIn"
+    }
   }
 }
 
