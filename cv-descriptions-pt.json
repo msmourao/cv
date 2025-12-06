@@ -151,6 +151,13 @@
     "projects": "Projetos",
     "hobbies": "Hobbies",
     "contact": "Contato"
+  },
+  "messages": {
+    "whatsapp": "Oi, Marcelo! Temos uma proposta de emprego para você. Está interessado?",
+    "email": {
+      "subject": "Proposta de Emprego - Marcelo Mourao",
+      "body": "Olá Marcelo,\n\nTemos uma proposta de emprego que pode ser do seu interesse.\n\nAtenciosamente"
+    }
   }
 }
 

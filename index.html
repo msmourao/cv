@@ -814,11 +814,32 @@
             document.getElementById('profile-image').src = cvData.personal.photo;
 
             // Contact list
+            // Format phone number for WhatsApp (remove spaces, dashes, and +)
+            const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
+            const whatsappMessage = encodeURIComponent(descriptions.messages.whatsapp);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            // Format email with subject and body
+            const emailSubject = encodeURIComponent(descriptions.messages.email.subject);
+            const emailBody = encodeURIComponent(descriptions.messages.email.body);
+            const emailUrl = `mailto:${cvData.personal.email}?subject=${emailSubject}&body=${emailBody}`;
+            
             const contactList = document.getElementById('contact-list');
             contactList.innerHTML = `
                 <li><i class="bi bi-geo-alt"></i>${cvData.personal.location[currentLang]}</li>
-                <li><i class="bi bi-telephone"></i>${cvData.personal.phone}</li>
-                <li><i class="bi bi-envelope"></i><a href="mailto:${cvData.personal.email}">${cvData.personal.email}</a></li>
+                <li>
+                    <i class="bi bi-telephone"></i>
+                    <span>${cvData.personal.phone}</span>
+                    <span style="margin: 0 0.25rem;">/</span>
+                    <a href="${whatsappUrl}" target="_blank" style="display: inline-flex; align-items: center; gap: 0.25rem;">
+                        <i class="bi bi-whatsapp" style="color: #25D366;"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="bi bi-envelope"></i>
+                    <a href="${emailUrl}">${cvData.personal.email}</a>
+                </li>
                 <li><i class="bi bi-linkedin"></i><a href="${cvData.personal.linkedin}" target="_blank">linkedin.com/in/msmourao</a></li>
                 <li><i class="bi bi-github"></i><a href="${cvData.personal.github}" target="_blank">github.com/msmourao</a></li>
             `;
