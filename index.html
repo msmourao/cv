@@ -406,43 +406,104 @@
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
             }
             .resume-wrapper {
                 box-shadow: none;
                 max-width: 100%;
                 margin: 0;
+                page-break-inside: avoid;
             }
             .resume-header {
                 background: white !important;
-                padding: 2rem 2rem 1.5rem;
+                padding: 1.5rem 2rem 1rem !important;
+                border-bottom: 1px solid var(--border-color);
+                page-break-after: avoid;
+            }
+            .profile-image {
+                width: 80px !important;
+                height: 80px !important;
+                margin-bottom: 0.75rem !important;
+            }
+            .resume-header h1 {
+                font-size: 1.6rem !important;
+                margin-bottom: 0.25rem !important;
+            }
+            .resume-header .tagline {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            .contact-list {
+                gap: 1rem !important;
+                font-size: 0.85rem !important;
             }
             .resume-body {
                 display: grid !important;
                 grid-template-columns: 2fr 1fr !important;
-                gap: 2rem !important;
-                padding: 2rem !important;
+                gap: 1.5rem !important;
+                padding: 1.5rem 2rem !important;
                 page-break-inside: avoid;
             }
             .sidebar {
                 border-left: 1px solid var(--border-color) !important;
-                padding-left: 2rem !important;
+                padding-left: 1.5rem !important;
                 border-top: none !important;
                 padding-top: 0 !important;
             }
             .main-content {
-                padding-right: 2rem !important;
+                padding-right: 1.5rem !important;
             }
             .section-title {
+                font-size: 1.1rem !important;
+                margin-bottom: 1rem !important;
                 page-break-after: avoid;
             }
-            .timeline-item,
+            .about-section {
+                margin-bottom: 1.5rem !important;
+            }
+            .about-section p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            .timeline-item {
+                margin-bottom: 1.5rem !important;
+                page-break-inside: avoid;
+            }
+            .timeline-item::before {
+                width: 10px !important;
+                height: 10px !important;
+            }
+            .timeline-header {
+                margin-bottom: 0.75rem !important;
+            }
+            .timeline-title {
+                font-size: 1rem !important;
+            }
+            .timeline-company {
+                font-size: 0.85rem !important;
+            }
+            .timeline-content {
+                font-size: 0.85rem !important;
+                line-height: 1.6 !important;
+            }
             .education-item,
             .project-item {
+                margin-bottom: 1rem !important;
                 page-break-inside: avoid;
+            }
+            .soft-skills-list li {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            hr {
+                margin: 1rem 0 !important;
             }
             a {
                 color: var(--text-color) !important;
                 text-decoration: none;
+            }
+            @page {
+                margin: 0.5cm;
             }
         }
         
