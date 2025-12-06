@@ -70,8 +70,8 @@
         .resume-header {
             text-align: center;
             padding: 1.5rem 2rem 1rem;
-            border-bottom: none;
-            margin-bottom: 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
         }
         
         .profile-image {
@@ -96,19 +96,22 @@
             font-size: 1.1rem;
             color: var(--secondary-color);
             margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .contact-list {
             list-style: none;
-            padding: 0;
+            padding: 0 0 0.75rem 0;
             margin: 0 0 0.5rem 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
             font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .contact-list li {
@@ -155,6 +158,8 @@
             color: var(--text-color);
             margin-bottom: 1.5rem;
             margin-top: 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -421,10 +426,10 @@
             .resume-header {
                 background: white !important;
                 padding: 1rem 2rem 0.75rem !important;
-                border-bottom: none !important;
+                border-bottom: 1px solid var(--border-color) !important;
                 page-break-after: avoid !important;
                 page-break-inside: avoid !important;
-                margin-bottom: 0 !important;
+                margin-bottom: 1rem !important;
                 padding-bottom: 0.75rem !important;
             }
             .profile-image {
@@ -444,9 +449,10 @@
                 gap: 0.75rem !important;
                 font-size: 0.8rem !important;
                 margin-bottom: 0 !important;
-                padding-bottom: 0 !important;
+                padding-bottom: 0.5rem !important;
                 margin-top: 0 !important;
                 padding-top: 0 !important;
+                border-bottom: 1px solid var(--border-color) !important;
                 page-break-inside: avoid;
             }
             .resume-body {
@@ -475,6 +481,8 @@
                 margin-bottom: 0.4rem !important;
                 margin-top: 0 !important;
                 padding-top: 0 !important;
+                padding-bottom: 0.5rem !important;
+                border-bottom: 1px solid var(--border-color) !important;
                 page-break-after: avoid !important;
                 page-break-before: auto !important;
             }
