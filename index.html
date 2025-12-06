@@ -33,39 +33,61 @@
             position: relative;
         }
         
-        .language-switch {
+        .action-buttons {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        
+        .language-switch {
             background: white;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             border-radius: 25px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             display: flex;
-            gap: 0.75rem;
+            gap: 0.25rem;
             align-items: center;
+            border: 2px solid var(--primary-color);
         }
         
         .language-switch button {
-            border: 1px solid var(--primary-color);
+            border: none;
             background: transparent;
-            color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
+            color: var(--secondary-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s;
+            min-width: 45px;
         }
         
         .language-switch button.active {
             background: var(--primary-color);
             color: white;
+            box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3);
         }
         
-        .language-switch button:hover {
-            background: var(--primary-color);
-            color: white;
+        .language-switch button:not(.active):hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+        
+        .action-buttons-group {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid var(--border-color);
         }
         
         .resume-header {
@@ -408,29 +430,101 @@
             border-top: 1px solid var(--border-color);
         }
         
-        .print-button {
-            background: transparent;
+        .print-button, .share-button {
+            background: white;
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 0.25rem 0.5rem;
-            border-radius: 15px;
+            padding: 0.5rem;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
         }
         
-        .print-button:hover {
+        .print-button:hover, .share-button:hover {
             background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .print-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .share-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            min-width: 180px;
+            display: none;
+            flex-direction: column;
+            gap: 0.25rem;
+            z-index: 1001;
+        }
+        
+        .share-menu.show {
+            display: flex;
+        }
+        
+        .share-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .share-menu-item:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+        
+        .share-menu-item i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .share-menu-item.whatsapp:hover {
+            background: #25D366;
             color: white;
         }
         
+        .share-menu-item.email:hover {
+            background: #EA4335;
+            color: white;
+        }
+        
+        .share-menu-item.linkedin:hover {
+            background: #0077B5;
+            color: white;
+        }
+        
+        .share-button-wrapper {
+            position: relative;
+        }
+        
             @media print {
+                .action-buttons,
                 .language-switch,
-                .print-button,
-                .print-button + .print-button {
+                .action-buttons-group,
+                .share-menu {
                     display: none !important;
                 }
             body {
@@ -646,10 +740,22 @@
         }
         
         @media (max-width: 768px) {
-            .language-switch {
+            .action-buttons {
                 top: 10px;
                 right: 10px;
-                padding: 0.4rem 0.8rem;
+            }
+            
+            .language-switch {
+                padding: 0.4rem;
+            }
+            
+            .action-buttons-group {
+                padding: 0.4rem;
+            }
+            
+            .share-menu {
+                min-width: 150px;
+                font-size: 0.85rem;
             }
             .resume-body {
                 grid-template-columns: 1fr;
@@ -667,8 +773,32 @@
     </style>
 </head>
 <body>
-    <div class="language-switch">
-        <div style="position: fixed; top: 20px; right: 130px; z-index: 1000; display: flex; gap: 0.5rem;">
+    <div class="action-buttons">
+        <div class="language-switch">
+            <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
+            <button id="lang-en" onclick="switchLanguage('en')">EN</button>
+        </div>
+        
+        <div class="action-buttons-group">
+            <div class="share-button-wrapper">
+                <button class="share-button" onclick="toggleShareMenu()" title="Compartilhar">
+                    <i class="bi bi-share"></i>
+                </button>
+                <div class="share-menu" id="share-menu">
+                    <a href="#" class="share-menu-item whatsapp" onclick="shareViaWhatsApp(event)">
+                        <i class="bi bi-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="#" class="share-menu-item email" onclick="shareViaEmail(event)">
+                        <i class="bi bi-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="share-menu-item linkedin" onclick="shareViaLinkedIn(event)">
+                        <i class="bi bi-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
             <button class="print-button" onclick="downloadPDF()" title="Baixar PDF">
                 <i class="bi bi-file-earmark-pdf"></i>
             </button>
@@ -676,8 +806,6 @@
                 <i class="bi bi-printer"></i>
             </button>
         </div>
-        <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
-        <button id="lang-en" onclick="switchLanguage('en')">EN</button>
     </div>
     
     <div class="resume-wrapper">
