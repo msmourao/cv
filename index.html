@@ -999,7 +999,7 @@
 
             try {
                 // Show loading indicator
-                const button = event.target.closest('.print-button');
+                const button = event.target.closest('.download-button');
                 const originalIcon = button.innerHTML;
                 button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
                 button.disabled = true;
@@ -1012,8 +1012,8 @@
             } catch (error) {
                 console.error('Error generating PDF:', error);
                 alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
-                const button = event.target.closest('.print-button');
-                button.innerHTML = '<i class="bi bi-file-earmark-pdf"></i>';
+                const button = event.target.closest('.download-button');
+                button.innerHTML = '<i class="bi bi-download"></i>';
                 button.disabled = false;
             }
         }
