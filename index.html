@@ -512,7 +512,20 @@
                 text-decoration: none;
             }
             @page {
-                margin: 0.3cm;
+                margin: 0.2cm;
+            }
+            .main-content > section {
+                page-break-inside: auto !important;
+            }
+            .main-content > section:first-of-type {
+                page-break-before: auto !important;
+            }
+            .work-experience-section {
+                margin-top: 0 !important;
+                page-break-inside: auto !important;
+            }
+            .work-experience-section .section-title {
+                page-break-after: avoid !important;
             }
         }
         
