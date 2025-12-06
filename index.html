@@ -1005,6 +1005,9 @@
         async function downloadPDF(event) {
             const element = document.querySelector('.resume-wrapper');
             
+            // Scroll to top to ensure we capture from the beginning
+            window.scrollTo(0, 0);
+            
             // Temporarily hide action buttons for PDF generation
             const actionButtons = document.querySelector('.action-buttons');
             const originalDisplay = actionButtons ? actionButtons.style.display : '';
@@ -1012,8 +1015,11 @@
                 actionButtons.style.display = 'none';
             }
             
-            // Wait a bit for the DOM to update
-            await new Promise(resolve => setTimeout(resolve, 100));
+            // Wait a bit for the DOM to update and scroll to complete
+            await new Promise(resolve => setTimeout(resolve, 200));
+            
+            // Get element position relative to viewport
+            const rect = element.getBoundingClientRect();
             
             const opt = {
                 margin: [0.5, 0.2, 0.5, 0.2], // Reduced top/bottom margins to avoid blank pages
@@ -1028,8 +1034,9 @@
                     windowHeight: element.scrollHeight,
                     x: 0,
                     y: 0,
-                    scrollX: 0,
-                    scrollY: 0
+                    scrollX: -window.scrollX,
+                    scrollY: -window.scrollY,
+                    backgroundColor: '#ffffff'
                 },
                 jsPDF: { 
                     unit: 'cm', 
