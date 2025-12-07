@@ -870,7 +870,7 @@
                         </a>
                     </div>
                 </div>
-                <button class="download-button" onclick="downloadPDF()" id="download-button-title">
+                <button class="download-button" onclick="downloadPDF(event)" id="download-button-title">
                     <i class="bi bi-download"></i>
                 </button>
                 <button class="print-button" onclick="window.print()" id="print-button-title">
@@ -1004,23 +1004,24 @@
 
         // Download PDF function using html2canvas + jsPDF directly
         async function downloadPDF(event) {
+            event.preventDefault();
             const { jsPDF } = window.jspdf;
             const element = document.querySelector('.resume-wrapper');
             
-            // Show loading indicator IMMEDIATELY before any async operations
-            const button = event ? event.target.closest('.download-button') : null;
-            const originalIcon = button ? button.innerHTML : '';
-            if (button) {
-                button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
-                button.disabled = true;
-                // Force immediate UI update
-                button.offsetHeight;
-            }
+            // Show loading indicator IMMEDIATELY - synchronous operation
+            const button = event.target.closest('.download-button');
+            const originalIcon = button.innerHTML;
+            button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
+            button.disabled = true;
+            
+            // Force synchronous UI update using requestAnimationFrame
+            await new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(resolve);
+                });
+            });
 
             try {
-                // Wait a bit for DOM to update
-                await new Promise(resolve => setTimeout(resolve, 100));
-                
                 // Convert HTML to canvas
                 const canvas = await html2canvas(element, {
                     scale: 2,
@@ -1050,37 +1051,36 @@
                 
                 // Add image to PDF with page breaks and margins
                 const imgData = canvas.toDataURL('image/png', 1.0);
-                let heightLeft = imgHeight;
-                let yPosition = 0;
+                const totalPages = Math.ceil(imgHeight / contentHeight);
                 
-                // Add first page with margins
-                pdf.addImage(imgData, 'PNG', marginLeft, marginTop + yPosition, imgWidth, imgHeight);
-                heightLeft -= contentHeight;
+                // Add first page
+                let sourceY = 0;
+                let sourceHeight = Math.min(contentHeight, imgHeight);
+                pdf.addImage(imgData, 'PNG', marginLeft, marginTop, imgWidth, imgHeight, undefined, 'FAST');
                 
                 // Add additional pages if needed, all with margins
-                while (heightLeft > 0) {
-                    yPosition = heightLeft - imgHeight;
+                for (let page = 1; page < totalPages; page++) {
+                    sourceY = page * contentHeight;
+                    sourceHeight = Math.min(contentHeight, imgHeight - sourceY);
+                    
                     pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', marginLeft, marginTop + yPosition, imgWidth, imgHeight);
-                    heightLeft -= contentHeight;
+                    // Calculate the Y position for this page slice
+                    const pageY = marginTop - (sourceY * (contentHeight / imgHeight));
+                    pdf.addImage(imgData, 'PNG', marginLeft, pageY, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 
                 // Save PDF
                 pdf.save(`CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`);
                 
                 // Restore button
-                if (button) {
-                    button.innerHTML = originalIcon;
-                    button.disabled = false;
-                }
+                button.innerHTML = originalIcon;
+                button.disabled = false;
             } catch (error) {
                 console.error('Error generating PDF:', error);
                 alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
                 
-                if (button) {
-                    button.innerHTML = '<i class="bi bi-download"></i>';
-                    button.disabled = false;
-                }
+                button.innerHTML = '<i class="bi bi-download"></i>';
+                button.disabled = false;
             }
         }
 
