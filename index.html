@@ -1053,20 +1053,17 @@
                 const imgData = canvas.toDataURL('image/png', 1.0);
                 const totalPages = Math.ceil(imgHeight / contentHeight);
                 
-                // Add first page
-                let sourceY = 0;
-                let sourceHeight = Math.min(contentHeight, imgHeight);
-                pdf.addImage(imgData, 'PNG', marginLeft, marginTop, imgWidth, imgHeight, undefined, 'FAST');
+                // Add first page with margins
+                pdf.addImage(imgData, 'PNG', marginLeft, marginTop, imgWidth, imgHeight);
                 
                 // Add additional pages if needed, all with margins
+                // For each additional page, shift the image up by contentHeight
                 for (let page = 1; page < totalPages; page++) {
-                    sourceY = page * contentHeight;
-                    sourceHeight = Math.min(contentHeight, imgHeight - sourceY);
-                    
                     pdf.addPage();
-                    // Calculate the Y position for this page slice
-                    const pageY = marginTop - (sourceY * (contentHeight / imgHeight));
-                    pdf.addImage(imgData, 'PNG', marginLeft, pageY, imgWidth, imgHeight, undefined, 'FAST');
+                    // Calculate Y offset: negative value to show the next portion of the image
+                    // Each page shows contentHeight pixels, so we shift by page * contentHeight
+                    const yOffset = marginTop - (page * contentHeight);
+                    pdf.addImage(imgData, 'PNG', marginLeft, yOffset, imgWidth, imgHeight);
                 }
                 
                 // Save PDF
