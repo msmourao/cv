@@ -1011,7 +1011,7 @@
             // Show loading indicator IMMEDIATELY - synchronous operation
             const button = event.target.closest('.download-button');
             const originalIcon = button.innerHTML;
-            button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
+            button.innerHTML = '<i class="bi bi-arrow-repeat spinner"></i>';
             button.disabled = true;
             
             // Force synchronous UI update using requestAnimationFrame
@@ -1049,21 +1049,42 @@
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 
+                // Convert canvas pixels to mm for calculations
+                const pixelsPerMm = canvas.width / imgWidth;
+                const contentHeightPx = contentHeight * pixelsPerMm;
+                
                 // Add image to PDF with page breaks and margins
-                const imgData = canvas.toDataURL('image/png', 1.0);
                 const totalPages = Math.ceil(imgHeight / contentHeight);
                 
-                // Add first page with margins
-                pdf.addImage(imgData, 'PNG', marginLeft, marginTop, imgWidth, imgHeight);
-                
-                // Add additional pages if needed, all with margins
-                // For each additional page, shift the image up by contentHeight
-                for (let page = 1; page < totalPages; page++) {
-                    pdf.addPage();
-                    // Calculate Y offset: negative value to show the next portion of the image
-                    // Each page shows contentHeight pixels, so we shift by page * contentHeight
-                    const yOffset = marginTop - (page * contentHeight);
-                    pdf.addImage(imgData, 'PNG', marginLeft, yOffset, imgWidth, imgHeight);
+                // Process each page
+                for (let page = 0; page < totalPages; page++) {
+                    if (page > 0) {
+                        pdf.addPage();
+                    }
+                    
+                    // Calculate which portion of the image to show
+                    const sourceY = page * contentHeightPx;
+                    const sourceHeight = Math.min(contentHeightPx, canvas.height - sourceY);
+                    
+                    // Create a temporary canvas for this page slice
+                    const pageCanvas = document.createElement('canvas');
+                    pageCanvas.width = canvas.width;
+                    pageCanvas.height = sourceHeight;
+                    const pageCtx = pageCanvas.getContext('2d');
+                    
+                    // Draw the slice of the original canvas
+                    pageCtx.drawImage(
+                        canvas,
+                        0, sourceY, canvas.width, sourceHeight,  // source rectangle
+                        0, 0, canvas.width, sourceHeight         // destination rectangle
+                    );
+                    
+                    // Convert page canvas to image
+                    const pageImgData = pageCanvas.toDataURL('image/png', 1.0);
+                    const pageImgHeight = (sourceHeight * imgWidth) / canvas.width;
+                    
+                    // Add to PDF with margins
+                    pdf.addImage(pageImgData, 'PNG', marginLeft, marginTop, imgWidth, pageImgHeight);
                 }
                 
                 // Save PDF
