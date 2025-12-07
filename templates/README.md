@@ -5,7 +5,7 @@ This directory contains template components that can be customized or replaced t
 ## Current Template: Default
 
 The default template includes:
-- Action buttons (language switcher, share, download, print)
+- Action buttons (language switcher, share, print)
 - Layout structure
 - Styling
 

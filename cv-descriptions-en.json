@@ -166,7 +166,6 @@
   },
   "buttons": {
     "share": "Share",
-    "download": "Download PDF",
     "print": "Print CV",
     "shareOptions": {
       "whatsapp": "WhatsApp",
