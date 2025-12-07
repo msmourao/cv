@@ -1039,12 +1039,26 @@
                 
                 // Calculate dimensions for A4 (210mm x 297mm)
                 const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 
-                // Add image to PDF
+                // Add image to PDF with page breaks
                 const imgData = canvas.toDataURL('image/png', 1.0);
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                // Add first page
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                // Add additional pages if needed
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
                 
                 // Save PDF
                 pdf.save(`CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`);
@@ -1184,9 +1198,8 @@
                 <li>
                     <a href="${whatsappUrl}" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-color); text-decoration: none;">
                         <i class="bi bi-telephone"></i>
-                        <span>${cvData.personal.phone}</span>
-                        <span>/</span>
                         <i class="bi bi-whatsapp" style="color: #25D366;"></i>
+                        <span>${cvData.personal.phone}</span>
                     </a>
                 </li>
                 <li>
