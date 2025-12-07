@@ -1007,12 +1007,14 @@
             const { jsPDF } = window.jspdf;
             const element = document.querySelector('.resume-wrapper');
             
-            // Show loading indicator
+            // Show loading indicator IMMEDIATELY before any async operations
             const button = event ? event.target.closest('.download-button') : null;
             const originalIcon = button ? button.innerHTML : '';
             if (button) {
                 button.innerHTML = '<i class="bi bi-hourglass-split"></i>';
                 button.disabled = true;
+                // Force immediate UI update
+                button.offsetHeight;
             }
 
             try {
@@ -1049,17 +1051,17 @@
                 // Add image to PDF with page breaks and margins
                 const imgData = canvas.toDataURL('image/png', 1.0);
                 let heightLeft = imgHeight;
-                let position = 0;
+                let yPosition = 0;
                 
                 // Add first page with margins
-                pdf.addImage(imgData, 'PNG', marginLeft, marginTop + position, imgWidth, imgHeight);
+                pdf.addImage(imgData, 'PNG', marginLeft, marginTop + yPosition, imgWidth, imgHeight);
                 heightLeft -= contentHeight;
                 
-                // Add additional pages if needed
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
+                // Add additional pages if needed, all with margins
+                while (heightLeft > 0) {
+                    yPosition = heightLeft - imgHeight;
                     pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', marginLeft, marginTop + position, imgWidth, imgHeight);
+                    pdf.addImage(imgData, 'PNG', marginLeft, marginTop + yPosition, imgWidth, imgHeight);
                     heightLeft -= contentHeight;
                 }
                 
