@@ -1016,13 +1016,6 @@
             }
 
             try {
-                // Temporarily hide action buttons
-                const actionButtons = document.querySelector('.action-buttons');
-                const originalDisplay = actionButtons ? actionButtons.style.display : '';
-                if (actionButtons) {
-                    actionButtons.style.display = 'none';
-                }
-                
                 // Wait a bit for DOM to update
                 await new Promise(resolve => setTimeout(resolve, 100));
                 
@@ -1037,36 +1030,41 @@
                     windowHeight: element.scrollHeight
                 });
                 
-                // Calculate dimensions for A4 (210mm x 297mm)
-                const imgWidth = 210; // A4 width in mm
+                // Calculate dimensions for A4 with margins (210mm x 297mm)
+                // Margins: top/bottom 1.5cm, left/right 0.2cm (as per @page print styles)
+                const marginTop = 15; // 1.5cm in mm
+                const marginBottom = 15; // 1.5cm in mm
+                const marginLeft = 2; // 0.2cm in mm
+                const marginRight = 2; // 0.2cm in mm
+                const pageWidth = 210; // A4 width in mm
                 const pageHeight = 297; // A4 height in mm
+                const contentWidth = pageWidth - marginLeft - marginRight;
+                const contentHeight = pageHeight - marginTop - marginBottom;
+                
+                // Calculate image dimensions to fit content area
+                const imgWidth = contentWidth;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 
-                // Add image to PDF with page breaks
+                // Add image to PDF with page breaks and margins
                 const imgData = canvas.toDataURL('image/png', 1.0);
                 let heightLeft = imgHeight;
                 let position = 0;
                 
-                // Add first page
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                // Add first page with margins
+                pdf.addImage(imgData, 'PNG', marginLeft, marginTop + position, imgWidth, imgHeight);
+                heightLeft -= contentHeight;
                 
                 // Add additional pages if needed
                 while (heightLeft >= 0) {
                     position = heightLeft - imgHeight;
                     pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
+                    pdf.addImage(imgData, 'PNG', marginLeft, marginTop + position, imgWidth, imgHeight);
+                    heightLeft -= contentHeight;
                 }
                 
                 // Save PDF
                 pdf.save(`CV_Marcelo_Mourao_${currentLang.toUpperCase()}.pdf`);
-                
-                // Restore action buttons
-                if (actionButtons) {
-                    actionButtons.style.display = originalDisplay;
-                }
                 
                 // Restore button
                 if (button) {
@@ -1076,12 +1074,6 @@
             } catch (error) {
                 console.error('Error generating PDF:', error);
                 alert(currentLang === 'pt' ? 'Erro ao gerar PDF. Por favor, use a opção de impressão do navegador.' : 'Error generating PDF. Please use the browser print option.');
-                
-                // Restore action buttons
-                const actionButtons = document.querySelector('.action-buttons');
-                if (actionButtons) {
-                    actionButtons.style.display = '';
-                }
                 
                 if (button) {
                     button.innerHTML = '<i class="bi bi-download"></i>';
