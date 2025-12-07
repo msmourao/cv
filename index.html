@@ -1124,14 +1124,12 @@
             // Update button titles and labels
             if (descriptions.buttons) {
                 const shareButton = document.getElementById('share-button-title');
-                const downloadButton = document.getElementById('download-button-title');
                 const printButton = document.getElementById('print-button-title');
                 const whatsappLabel = document.getElementById('share-whatsapp-label');
                 const emailLabel = document.getElementById('share-email-label');
                 const linkedinLabel = document.getElementById('share-linkedin-label');
                 
                 if (shareButton) shareButton.title = descriptions.buttons.share;
-                if (downloadButton) downloadButton.title = descriptions.buttons.download;
                 if (printButton) printButton.title = descriptions.buttons.print;
                 if (whatsappLabel && descriptions.buttons.shareOptions) whatsappLabel.textContent = descriptions.buttons.shareOptions.whatsapp;
                 if (emailLabel && descriptions.buttons.shareOptions) emailLabel.textContent = descriptions.buttons.shareOptions.email;
