@@ -556,19 +556,32 @@
         }
         
             @media print {
-                /* Desabilitar Bootstrap Icons e fontes externas para reduzir tamanho do PDF */
-                @import url('') print;
+                /* Desabilitar COMPLETAMENTE Bootstrap Icons - são fontes que aumentam muito o PDF */
                 .bi,
+                i.bi,
                 [class^="bi-"],
-                [class*=" bi-"] {
+                [class*=" bi-"],
+                .bi::before,
+                [class^="bi-"]::before,
+                [class*=" bi-"]::before {
                     display: none !important;
-                    font-family: Arial, sans-serif !important;
+                    visibility: hidden !important;
+                    content: "" !important;
+                    font-size: 0 !important;
+                    width: 0 !important;
+                    height: 0 !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
                 }
                 /* Remover Bootstrap CSS desnecessário na impressão */
                 .btn,
                 .badge,
                 .alert {
                     all: unset !important;
+                }
+                /* Forçar uso apenas de fontes do sistema - sem fontes externas */
+                * {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
                 }
                 .action-buttons,
                 .action-buttons-container,
