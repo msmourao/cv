@@ -590,6 +590,36 @@
                 width: 80px !important;
                 height: 80px !important;
                 margin-bottom: 0.5rem !important;
+                image-rendering: -webkit-optimize-contrast !important;
+                image-rendering: crisp-edges !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* Otimizar todas as imagens para reduzir tamanho do PDF */
+            img {
+                image-rendering: -webkit-optimize-contrast !important;
+                image-rendering: crisp-edges !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            /* Reduzir qualidade de elementos visuais desnecessários */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* Remover sombras e efeitos que aumentam tamanho do PDF */
+            .resume-wrapper,
+            .resume-header,
+            .resume-body,
+            .sidebar,
+            .main-content,
+            .section-title,
+            .timeline-item,
+            .project-item,
+            .education-item {
+                box-shadow: none !important;
+                text-shadow: none !important;
+                filter: none !important;
             }
             .resume-header h1 {
                 font-size: 1.6rem !important;
