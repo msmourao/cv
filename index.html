@@ -822,6 +822,20 @@
                     margin-bottom: 1.5cm;
                     margin-left: 0.2cm;
                     margin-right: 0.2cm;
+                    /* Otimizar para reduzir tamanho do PDF */
+                    size: A4;
+                }
+                /* Desabilitar COMPLETAMENTE Bootstrap Icons na impressão - são fontes que aumentam muito o PDF */
+                @font-face {
+                    font-family: 'bootstrap-icons' !important;
+                    src: none !important;
+                }
+                /* Forçar compressão máxima de imagens */
+                img {
+                    image-rendering: -webkit-optimize-contrast !important;
+                    image-rendering: crisp-edges !important;
+                    image-resolution: 72dpi !important;
+                    -webkit-image-resolution: 72dpi !important;
                 }
             .main-content > section {
                 page-break-inside: auto !important;
