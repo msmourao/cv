@@ -594,6 +594,9 @@
                 image-rendering: crisp-edges !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
+                /* Reduzir qualidade da imagem para diminuir tamanho do PDF */
+                image-resolution: 150dpi !important;
+                -webkit-image-resolution: 150dpi !important;
             }
             /* Otimizar todas as imagens para reduzir tamanho do PDF */
             img {
@@ -601,6 +604,8 @@
                 image-rendering: crisp-edges !important;
                 max-width: 100% !important;
                 height: auto !important;
+                image-resolution: 150dpi !important;
+                -webkit-image-resolution: 150dpi !important;
             }
             /* Reduzir qualidade de elementos visuais desnecessários */
             * {
@@ -620,6 +625,13 @@
                 box-shadow: none !important;
                 text-shadow: none !important;
                 filter: none !important;
+            }
+            /* Otimizar gradientes e backgrounds para reduzir tamanho */
+            .resume-header,
+            .section-title,
+            .tagline,
+            .contact-list a {
+                background-image: none !important;
             }
             .resume-header h1 {
                 font-size: 1.6rem !important;
