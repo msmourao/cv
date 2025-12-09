@@ -233,7 +233,7 @@
         
         .resume-body {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: calc(2fr - 15px) calc(1fr + 15px);
             gap: 2rem;
             padding: 0 2rem;
             margin-top: 0;
@@ -297,10 +297,11 @@
         }
         
         .about-section p {
-            text-align: justify;
+            text-align: left;
             color: var(--secondary-color);
             line-height: 1.8;
-            padding-left: 2rem;
+            padding-left: 0;
+            margin-left: 0;
         }
         
         .timeline-item {
@@ -683,7 +684,7 @@
             
             .resume-body {
                 display: grid !important;
-                grid-template-columns: 2fr 1fr !important;
+                grid-template-columns: calc(2fr - 15px) calc(1fr + 15px) !important;
                 gap: 1.5rem !important;
                 padding: 0 2rem !important;
                 margin-top: 0 !important;
@@ -717,6 +718,7 @@
                 font-size: 0.85rem !important;
                 line-height: 1.4 !important;
                 padding-left: 0 !important;
+                margin-left: 0 !important;
             }
             
             .timeline-item {
@@ -1193,7 +1195,7 @@
                             <div class="language-name">${lang.name[currentLang]}</div>
                             <div class="language-level-text">${lang.level[currentLang]}</div>
                         </div>
-                        ${lang.dots < 5 ? `<div class="language-dots">${dots}</div>` : ''}
+                        <div class="language-dots">${dots}</div>
                     </div>
                 `;
             }).join('');
