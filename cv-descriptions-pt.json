@@ -1,10 +1,10 @@
 {
-  "about": "Arquiteto e desenvolvedor de software com 15+ anos construindo sistemas críticos para e-commerce, telecomunicações e setor financeiro. Migrei monólitos .NET Framework para arquitetura de microsserviços em .NET 8, melhorando significativamente tempo de deploy e disponibilidade. Otimizei queries SQL reduzindo execução de relatórios de minutos para segundos em sistemas com milhares de registros. Implementei observabilidade end-to-end com OpenTelemetry, melhorando tempo de resolução de incidentes. Desenvolvi plataforma multi-cloud (AWS/Azure) com deploy unificado, otimizando custos de infraestrutura. Apliquei IA para automação de correção de bugs, melhorando qualidade do código. Domínio técnico: .NET 10, Frontend moderno, PostgreSQL, Oracle Database, AWS Lambda, Azure Functions, Kubernetes, Terraform, Generative AI.",
+  "about": "Arquiteto e desenvolvedor de software com 15+ anos construindo sistemas críticos para e-commerce, telecomunicações e setor financeiro. Migrei monólitos .NET Framework para arquitetura de microsserviços em .NET 8, melhorando significativamente tempo de deploy e disponibilidade. Otimizei queries SQL reduzindo execução de relatórios de minutos para segundos em sistemas com milhares de registros. Implementei observabilidade end-to-end com OpenTelemetry, melhorando tempo de resolução de incidentes. Desenvolvi plataforma multi-cloud (AWS/Azure) com deploy unificado, otimizando custos de infraestrutura. Apliquei IA para automação de correção de bugs, melhorando qualidade do código. Domínio técnico: .NET 10, Frontend, PostgreSQL, SQL Server, Oracle Database, AWS Lambda, Azure Functions, Kubernetes, Terraform, Generative AI.",
   "workExperience": {
     "eventsfinder": {
-      "description": "Concebi e desenvolvi o EventsFinder, plataforma completa de busca e gerenciamento de eventos com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD, resultando em sistema robusto com alta disponibilidade e deploy automatizado que reduz significativamente o tempo de release.",
+      "description": "Projeto pessoal ainda em construção. Concebi e desenvolvo o EventsFinder, plataforma de busca de eventos automatizada em redes sociais por localização com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD. Projeto do qual me afastarei quando tiver um novo emprego.",
       "bullets": [
-        "<strong>Backend:</strong> .NET 10 com ASP.NET Core, Entity Framework Core e PostgreSQL (incluindo PostGIS para geolocalização).",
+        "<strong>Backend:</strong> .NET 10 com ASP.NET Core, Entity Framework Core e múltiplos bancos de dados (PostgreSQL com PostGIS para geolocalização, SQL Server e Oracle).",
         "<strong>Frontend:</strong> React com TypeScript, Vite e Tailwind CSS, garantindo experiência moderna e responsiva.",
         "<strong>Deploy e infraestrutura:</strong> Deploy unificado em AWS e Azure, uso de Lambda Functions / Azure Functions, API Gateway, SQS/Service Bus e aplicações serverless.",
         "<strong>Integrações externas:</strong> Conectores para redes sociais (Instagram, Facebook, Twitter/X), Google Maps API para geolocalização e integração com OpenAI para enriquecimento inteligente de dados.",
@@ -160,7 +160,7 @@
     }
   },
   "seo": {
-    "description": "Arquiteto e Desenvolvedor de Software com 15+ anos construindo sistemas críticos. Migrei monólitos para microsserviços, otimizei performance, implementei soluções multi-cloud. Especialista em .NET 10, Frontend moderno, PostgreSQL, Oracle Database, AWS, Azure, Kubernetes, Generative AI.",
+    "description": "Arquiteto e Desenvolvedor de Software com 15+ anos construindo sistemas críticos. Migrei monólitos para microsserviços, otimizei performance, implementei soluções multi-cloud. Especialista em .NET 10, Frontend, PostgreSQL, SQL Server, Oracle Database, AWS, Azure, Kubernetes, Generative AI.",
     "title": "Currículo - Marcelo Mourao | Arquiteto e Desenvolvedor de Software"
   },
   "buttons": {
