@@ -248,11 +248,13 @@
   ],
   "techStack": [
     "C# / .NET",
-    "React / TypeScript",
+    "Frontend Moderno",
     "AWS / Azure",
-    "PostgreSQL / SQL Server",
+    "PostgreSQL / Oracle Database",
     "Docker / Kubernetes",
     "Terraform / IaC",
+    "Generative AI",
+    "Cursor",
     "DevOps",
     "CI/CD"
   ],
