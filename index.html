@@ -137,50 +137,67 @@
         }
         
         .resume-header {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             padding: 1.5rem 2rem 1rem;
-            border-bottom: none;
+            border-bottom: 2px solid var(--primary-color);
             margin-bottom: 1.5rem;
         }
         
-        .profile-image {
-            width: 100px;
-            height: 100px;
+        .header-left {
+            flex: 1;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .initials-icon {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            object-fit: cover;
-            margin-bottom: 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .profile-image {
+            display: none;
         }
         
         .resume-header h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .resume-header .tagline {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--secondary-color);
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .contact-list {
             list-style: none;
-            padding: 0 0 0.75rem 0;
-            margin: 0 0 0.5rem 0;
+            padding: 0;
+            margin: 0;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
         }
         
         .contact-list li {
@@ -620,26 +637,28 @@
             .resume-header {
                 background: white !important;
                 padding: 1rem 2rem 0.75rem !important;
-                border-bottom: none !important;
+                border-bottom: 2px solid var(--primary-color) !important;
                 page-break-after: avoid !important;
                 page-break-inside: avoid !important;
                 margin-bottom: 1rem !important;
+                display: flex !important;
+                justify-content: space-between !important;
             }
             
-            .profile-image {
-                width: 60px !important;
-                height: 60px !important;
-                margin-bottom: 0.5rem !important;
+            .initials-icon {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 1.2rem !important;
             }
             
             .resume-header h1 {
-                font-size: 1.6rem !important;
-                margin-bottom: 0.3rem !important;
+                font-size: 1.4rem !important;
+                margin-bottom: 0.2rem !important;
             }
             
             .resume-header .tagline {
-                font-size: 0.9rem !important;
-                margin-bottom: 0.5rem !important;
+                font-size: 0.85rem !important;
+                margin-bottom: 0.4rem !important;
             }
             
             .contact-list {
@@ -685,7 +704,7 @@
             .about-section p {
                 font-size: 0.85rem !important;
                 line-height: 1.4 !important;
-                padding-left: 2rem !important;
+                padding-left: 0 !important;
             }
             
             .timeline-item {
@@ -828,30 +847,34 @@
         </div>
     </div>
     
-    <div class="resume-wrapper">
+        <div class="resume-wrapper">
         <div class="resume-header">
-            <img id="profile-image" src="marcelo.png" alt="Marcelo Mourao" class="profile-image">
-            <h1 id="name">Marcelo Mourao</h1>
-            <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
-            <ul class="contact-list" id="contact-list">
-                <!-- Populated by JavaScript -->
-            </ul>
+            <div class="header-left">
+                <h1 id="name">Marcelo Mourao</h1>
+                <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
+                <ul class="contact-list" id="contact-list">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </div>
+            <div class="header-right">
+                <div class="initials-icon">MM</div>
+            </div>
         </div>
         
         <div class="resume-body">
             <div class="main-content">
-                <section class="about-section">
-                    <h3 class="section-title"><i class="bi bi-person"></i><span id="section-about">Sobre Mim</span></h3>
-                    <p id="about-text">Loading...</p>
-                </section>
-                
-                <hr>
-                
                 <section class="work-experience-section">
                     <h3 class="section-title"><i class="bi bi-briefcase"></i><span id="section-work">Experiência Profissional</span></h3>
                     <div id="work-experience">
                         <!-- Populated by JavaScript -->
                     </div>
+                </section>
+                
+                <hr>
+                
+                <section class="about-section">
+                    <h3 class="section-title"><i class="bi bi-person"></i><span id="section-about">Sobre Mim</span></h3>
+                    <p id="about-text">Loading...</p>
                 </section>
             </div>
             
