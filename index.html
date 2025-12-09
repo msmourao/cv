@@ -170,7 +170,12 @@
         }
         
         .profile-image {
-            display: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            object-fit: cover;
+            flex-shrink: 0;
         }
         
         .resume-header h1 {
@@ -461,24 +466,32 @@
         
         .language-item {
             margin-bottom: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .language-info {
+            flex: 1;
         }
         
         .language-item .language-name {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
             color: var(--text-color);
             font-size: 0.95rem;
+            margin-bottom: 0.25rem;
         }
         
-        .language-level {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+        .language-item .language-level-text {
+            font-weight: 400;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
         }
         
         .language-dots {
             display: flex;
             gap: 0.35rem;
+            margin-left: 1rem;
         }
         
         .language-dot {
@@ -645,10 +658,9 @@
                 justify-content: space-between !important;
             }
             
-            .initials-icon {
+            .profile-image {
                 width: 50px !important;
                 height: 50px !important;
-                font-size: 1.2rem !important;
             }
             
             .resume-header h1 {
@@ -857,7 +869,7 @@
                 </ul>
             </div>
             <div class="header-right">
-                <div class="initials-icon">MM</div>
+                <img id="profile-image" src="marcelo.png" alt="Marcelo Mourao" class="profile-image">
             </div>
         </div>
         
@@ -869,16 +881,14 @@
                         <!-- Populated by JavaScript -->
                     </div>
                 </section>
-                
-                <hr>
-                
+            </div>
+            
+            <div class="sidebar">
                 <section class="about-section">
                     <h3 class="section-title"><i class="bi bi-person"></i><span id="section-about">Sobre Mim</span></h3>
                     <p id="about-text">Loading...</p>
                 </section>
-            </div>
-            
-            <div class="sidebar">
+                
                 <section class="tech-stack-section">
                     <h3 class="section-title"><i class="bi bi-stack"></i><span id="section-tech">Tech Stack</span></h3>
                     <ul class="soft-skills-list" id="tech-stack">
@@ -1062,7 +1072,7 @@
             // Header
             document.getElementById('name').textContent = cvData.personal.name;
             document.getElementById('tagline').textContent = cvData.personal.tagline[currentLang];
-            // Profile image removed - using initials icon instead
+            document.getElementById('profile-image').src = cvData.personal.photo;
 
             // Contact list
             // Format phone number for WhatsApp (remove spaces, dashes, and +)
