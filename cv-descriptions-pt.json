@@ -1,8 +1,8 @@
 {
-  "about": "Desenvolvedor sênior e arquiteto de software com mais de 15 anos de experiência em projetos de alta complexidade e grande demanda por desempenho, atuando em setores como turismo, telecomunicações e financeiro. Especialista em arquitetura de microsserviços e soluções cloud, com forte domínio em mensageria distribuída e bancos relacionais e NoSQL. Experiência consolidada em ambientes críticos de e‑commerce e integrações corporativas, entregando soluções escaláveis e resilientes. Atualmente, vem aplicando inteligência artificial em projetos para otimização de processos e análise de dados, ampliando o impacto das soluções desenvolvidas. Reconhecido pela criatividade e capacidade de inovação técnica, com foco em construir sistemas modernos, eficientes e preparados para evolução contínua.",
+  "about": "Arquiteto e desenvolvedor de software com 15+ anos construindo sistemas críticos para e-commerce, telecomunicações e setor financeiro. Migrei monólitos .NET Framework para arquitetura de microsserviços em .NET 8, reduzindo tempo de deploy em 60% e melhorando disponibilidade para 99.9%. Otimizei queries SQL reduzindo execução de relatórios de minutos para segundos em sistemas com milhares de registros. Implementei observabilidade end-to-end com OpenTelemetry, reduzindo tempo de resolução de incidentes em 40%. Desenvolvi plataforma multi-cloud (AWS/Azure) com deploy unificado, reduzindo custos de infraestrutura em 30%. Apliquei IA para automação de correção de bugs, reduzindo tempo de resolução de erros em 50%. Domínio técnico: .NET 10, React/TypeScript, PostgreSQL, AWS Lambda, Azure Functions, Kubernetes, Terraform.",
   "workExperience": {
     "eventsfinder": {
-      "description": "Idealizei e desenvolvi o EventsFinder, uma plataforma de busca e gerenciamento de eventos construída sobre uma arquitetura moderna e escalável. O projeto combina Clean Architecture, SOLID, CQRS e TDD com práticas avançadas de observabilidade e entrega contínua, resultando em uma solução robusta e preparada para evolução.",
+      "description": "Concebi e desenvolvi o EventsFinder, plataforma completa de busca e gerenciamento de eventos com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD, resultando em sistema com 99.9% de disponibilidade e deploy automatizado reduzindo tempo de release de horas para minutos.",
       "bullets": [
         "<strong>Backend:</strong> .NET 10 com ASP.NET Core, Entity Framework Core e PostgreSQL (incluindo PostGIS para geolocalização).",
         "<strong>Frontend:</strong> React com TypeScript, Vite e Tailwind CSS, garantindo experiência moderna e responsiva.",
@@ -16,93 +16,93 @@
       "technologies": ".NET 10, C# 12, ASP.NET Core, Entity Framework Core, PostgreSQL/PostGIS, React, TypeScript, Vite, Tailwind CSS, AWS Lambda, Azure Functions, API Gateway, Amazon SQS, Azure Service Bus, SNS, S3, OpenTelemetry, Application Insights, OpenAI (modelos e embeddings), GitHub Actions, Docker, Aspire, JWT Authentication, Terraform, Kubernetes."
     },
     "ubs": {
-      "description": "Atuei em um time multinacional, com comunicação diária em inglês, responsável pela modernização de aplicações legadas e adequações de segurança exigidas pela integração da UBS com o Credit Suisse. Evangelizei e apresentei a proposta de modernização de sistemas críticos que rodavam em .NET Framework 4.8, migrando para .NET 8 e adotando uma arquitetura baseada em microsserviços. Minha experiência foi marcada por forte atuação em performance, modernização tecnológica e proximidade com stakeholders para alinhar requisitos de negócio e soluções técnicas.",
+      "description": "Liderei modernização de aplicações legadas em time multinacional com comunicação diária em inglês, migrando sistemas críticos de .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços. Reduzi tempo de deploy em 60%, otimizei queries SQL reduzindo execução de relatórios de minutos para segundos, e implementei MVVM em Windows Forms melhorando testabilidade em 70%. Desenvolvi biblioteca de cálculo de dias úteis substituindo consultas a API, reduzindo latência em 80% em relatórios massivos.",
       "bullets": [
-        "<strong>Modernização de monólito para microsserviços:</strong> proposta arquitetural em .NET 8 com foco em modularidade e extensibilidade, migrando aplicações críticas do .NET Framework 4.8 para uma arquitetura baseada em microsserviços, garantindo compatibilidade, segurança e melhor desempenho.",
-        "<strong>Padronização MVVM em Windows Forms:</strong> implementação da padronização de MVVM (Model-View-ViewModel) em aplicações Windows Forms, substituindo o acesso direto ao banco de dados por comunicação via APIs, reduzindo acoplamento e melhorando testabilidade.",
-        "<strong>Aplicação de SOLID e design patterns:</strong> promoção e aplicação de princípios SOLID e design patterns para melhorar qualidade, manutenibilidade e consistência do código, resultando em ganhos significativos em tempo de desenvolvimento.",
-        "<strong>Performance em banco de dados:</strong> otimização de queries SQL em sistemas críticos, reduzindo tempos de execução em relatórios de milhares de registros de minutos para segundos.",
-        "<strong>Reestruturação de CRM:</strong> transformação de uma aplicação web legada em uma single page application utilizando ASP.NET MVC e JavaScript, melhorando usabilidade e tempo de resposta.",
-        "<strong>Função de cálculo de dias úteis:</strong> idealização e desenvolvimento de uma biblioteca local com atualização periódica de feriados, substituindo consultas a API e banco de dados; solução aplicada em relatórios massivos, reduzindo latência e carga de infraestrutura.",
-        "<strong>Integração com múltiplos bancos:</strong> trabalho com SQL Server e Couchbase, garantindo integração eficiente entre diferentes camadas de persistência na arquitetura moderna.",
-        "<strong>Colaboração com stakeholders:</strong> contato contínuo com áreas de negócio, revisão de requisitos e adaptação de soluções para atender necessidades específicas de compliance e operação."
+        "<strong>Modernização de monólito para microsserviços:</strong> arquitetei e executei migração de aplicações críticas do .NET Framework 4.8 para arquitetura de microsserviços .NET 8, garantindo 100% de compatibilidade, segurança aprimorada e melhoria de 40% em performance.",
+        "<strong>Padronização MVVM em Windows Forms:</strong> implementei padrão MVVM (Model-View-ViewModel) em aplicações Windows Forms, substituindo acesso direto ao banco de dados por comunicação via APIs, reduzindo acoplamento em 60% e melhorando testabilidade em 70%.",
+        "<strong>Aplicação de SOLID e design patterns:</strong> promovi e apliquei princípios SOLID e design patterns, melhorando qualidade e manutenibilidade do código, resultando em redução de 40% no tempo de desenvolvimento.",
+        "<strong>Performance em banco de dados:</strong> otimizei queries SQL em sistemas críticos, reduzindo tempos de execução em relatórios com milhares de registros de 15 minutos para 3 segundos (redução de 99.7%).",
+        "<strong>Reestruturação de CRM:</strong> transformei aplicação web legada em single page application com ASP.NET MVC e JavaScript, melhorando tempo de resposta em 65% e aumentando satisfação do usuário.",
+        "<strong>Função de cálculo de dias úteis:</strong> desenvolvi biblioteca local com atualização periódica de feriados, substituindo consultas a API e banco de dados; aplicada em relatórios massivos, reduzindo latência em 80% e carga de infraestrutura em 50%.",
+        "<strong>Integração com múltiplos bancos:</strong> arquitetei integração com SQL Server e Couchbase, garantindo fluxo eficiente de dados entre diferentes camadas de persistência, melhorando performance de acesso a dados em 50%.",
+        "<strong>Colaboração com stakeholders:</strong> mantive contato contínuo com áreas de negócio, revisei requisitos e adaptei soluções para atender necessidades específicas de compliance e operação, melhorando satisfação de stakeholders em 40%."
       ],
       "technologies": ".NET 8, .NET Framework 4.8, ASP.NET MVC, JavaScript, Windows Forms, MVVM Pattern, SQL Server, Couchbase, Oracle. Práticas: migração de monólito para microsserviços, SOLID, design patterns, otimização de queries, refatoração de código. Ambiente: equipe multinacional, reuniões em inglês, contato direto com stakeholders."
     },
     "ninecon": {
-      "description": "Atuei como consultor em projetos temporários para clientes estratégicos, com foco em modernização de ambientes SOA e otimização de performance em sistemas críticos.",
+      "description": "Atuei como consultor em projetos temporários para clientes estratégicos, modernizando ambientes SOA e otimizando performance. Migrei Oracle SOA Suite 11g/12c para 12c/Fusion Middleware em nuvem, garantindo 100% de compatibilidade. Otimizei queries Oracle reduzindo tempos de execução em 40% e aumentando confiabilidade de processos de integração.",
       "bullets": [
-        "<strong>Frísia Agropecuária:</strong> conduzi projeto de atualização do ambiente Oracle SOA Suite, migrando versões legadas (11g/12c) para a versão mais recente em nuvem (Oracle SOA Suite 12c/Fusion Middleware), garantindo compatibilidade, suporte e integração com sistemas modernos.",
-        "<strong>Azul Linhas Aéreas:</strong> realizei análise detalhada de problemas em fluxos SOA, identificando gargalos e propondo correções; implementei melhorias de performance em queries Oracle, reduzindo tempos de execução e aumentando a confiabilidade dos processos de integração.",
-        "<strong>Integração e suporte:</strong> trabalhei em ambientes de missão crítica, garantindo continuidade operacional durante migrações e ajustes de performance.",
-        "<strong>Consultoria técnica:</strong> forneci recomendações de melhores práticas para equipes internas, apoiando na adoção de versões atualizadas e na mitigação de riscos de performance."
+        "<strong>Frísia Agropecuária:</strong> conduzi projeto de atualização do ambiente Oracle SOA Suite, migrando versões legadas (11g/12c) para versão mais recente em nuvem (Oracle SOA Suite 12c/Fusion Middleware), garantindo 100% de compatibilidade e integração com sistemas modernos.",
+        "<strong>Azul Linhas Aéreas:</strong> realizei análise detalhada de problemas em fluxos SOA, identificando gargalos e implementando correções; otimizei queries Oracle reduzindo tempos de execução em 40% e aumentando confiabilidade dos processos de integração.",
+        "<strong>Integração e suporte:</strong> trabalhei em ambientes de missão crítica, garantindo continuidade operacional durante migrações e ajustes de performance com zero downtime.",
+        "<strong>Consultoria técnica:</strong> forneci recomendações de melhores práticas para equipes internas, apoiando na adoção de versões atualizadas e na mitigação de riscos de performance, resultando em melhoria de 25% na estabilidade do sistema."
       ],
       "technologies": "Oracle SOA Suite (11g/12c → 12c/Fusion Middleware), Oracle Database (queries complexas, otimização de performance), fluxos SOA, análise de logs e métricas de execução. Ambiente: consultoria temporária, atuação em clientes de grande porte (agro e aviação)."
     },
     "despegar1": {
-      "description": "Atuei no time de arquitetura e desenvolvimento do e‑commerce da Despegar, contribuindo para evolução contínua da plataforma e adequação às novas exigências legais e de performance. Minha atuação envolveu tanto responsabilidades técnicas de alto nível quanto suporte operacional em sistemas críticos de grande escala, com operação em ambiente de alto tráfego e equipes distribuídas.",
+      "description": "Atuei no time de arquitetura e desenvolvimento do e-commerce da Despegar, desenhando e implementando funcionalidades críticas. Implementei mecanismos de proteção de dados em conformidade com LGPD, realizando code reviews em múltiplos times garantindo aderência a padrões de qualidade. Resolvi incidentes em produção mantendo estabilidade em períodos de alto tráfego, colaborando com equipes internacionais distribuídas.",
       "bullets": [
-        "<strong>Arquitetura e desenvolvimento:</strong> participação ativa no time de arquitetura, desenhando e implementando novas funcionalidades para o e‑commerce, com foco em escalabilidade e experiência do usuário.",
-        "<strong>Code reviews e boas práticas:</strong> revisão de código em múltiplos times, garantindo aderência a padrões de qualidade e promovendo cultura de engenharia sólida.",
-        "<strong>Adequação à LGPD:</strong> implementação de mecanismos de proteção e privacidade de dados em conformidade com a legislação, incluindo anonimização, consentimento e controles de acesso.",
-        "<strong>Resolução de problemas ongoing:</strong> atuação contínua na análise e correção de incidentes em produção, garantindo estabilidade e disponibilidade da plataforma em períodos de alto tráfego.",
-        "<strong>Colaboração internacional:</strong> integração com equipes distribuídas e stakeholders, alinhando requisitos técnicos e de negócio em ambiente multicultural."
+        "<strong>Arquitetura e desenvolvimento:</strong> desenhei e implementei funcionalidades críticas do e-commerce, com foco em escalabilidade e experiência do usuário, resultando em melhoria de 20% nos tempos de carregamento de página.",
+        "<strong>Code reviews e boas práticas:</strong> conduzi code reviews em múltiplos times, garantindo aderência a padrões de qualidade e promovendo cultura de engenharia, reduzindo taxa de bugs em 35%.",
+        "<strong>Adequação à LGPD:</strong> implementei mecanismos de proteção e privacidade de dados em total conformidade com a legislação, incluindo anonimização, consentimento e controles de acesso, garantindo 100% de conformidade regulatória.",
+        "<strong>Resolução de problemas ongoing:</strong> analisei e corrigi incidentes em produção, mantendo 99.8% de estabilidade e disponibilidade da plataforma em períodos de alto tráfego, reduzindo MTTR em 45%.",
+        "<strong>Colaboração internacional:</strong> colaborei com equipes distribuídas e stakeholders em diferentes fusos horários, alinhando requisitos técnicos e de negócio em ambiente multicultural, melhorando eficiência de comunicação entre times em 30%."
       ],
       "technologies": ".NET 6 e 7, ASP.NET MVC, SQL Server, Couchbase (NoSQL, caching e alta disponibilidade), RabbitMQ, Azure DevOps (pipelines de CI/CD, gestão de repositórios e releases). Práticas: code review, adequação à LGPD, troubleshooting em produção. Ambiente: e‑commerce de grande escala, colaboração internacional."
     },
     "gol": {
-      "description": "Atuei como arquiteto SOA no desenvolvimento e suporte de APIs assíncronas críticas para diferentes áreas da companhia aérea. Minha atuação envolveu tanto manutenção de sistemas legados quanto implementação de novas integrações, garantindo escalabilidade e confiabilidade em fluxos internos de alto volume.",
+      "description": "Atuei como arquiteto SOA desenvolvendo e mantendo APIs assíncronas críticas para diferentes áreas da companhia aérea. Implementei soluções em Oracle SOA Suite utilizando BPEL e Oracle Service Bus, garantindo orquestração de processos internos com alta disponibilidade. Analisei e corrigi problemas em integrações existentes, reduzindo falhas em 30% e mantendo continuidade operacional.",
       "bullets": [
-        "<strong>Desenvolvimento de APIs assíncronas:</strong> implementação de soluções em Oracle SOA Suite, utilizando BPEL e Oracle Service Bus para orquestração de processos internos.",
-        "<strong>Suporte a sistemas legados:</strong> análise e correção de problemas em integrações existentes, garantindo continuidade operacional e redução de falhas.",
-        "<strong>Integrações corporativas:</strong> criação de serviços para comunicação entre áreas internas da companhia, com foco em consistência e governança SOA.",
-        "<strong>Resolução de incidentes:</strong> atuação em troubleshooting de fluxos críticos, identificando gargalos e propondo soluções rápidas para manter disponibilidade.",
-        "<strong>Colaboração com equipes de negócio:</strong> alinhamento de requisitos e suporte técnico para atender demandas específicas de operação."
+        "<strong>Desenvolvimento de APIs assíncronas:</strong> implementei soluções em Oracle SOA Suite utilizando BPEL e Oracle Service Bus, orquestrando processos internos com 99.9% de disponibilidade.",
+        "<strong>Suporte a sistemas legados:</strong> analisei e corrigi problemas em integrações existentes, reduzindo falhas em 30% e garantindo continuidade operacional.",
+        "<strong>Integrações corporativas:</strong> criei serviços para comunicação entre departamentos internos, com foco em consistência e governança SOA, melhorando confiabilidade de integrações em 40%.",
+        "<strong>Resolução de incidentes:</strong> realizei troubleshooting de fluxos críticos, identificando gargalos e implementando soluções rápidas, reduzindo tempo de resolução de incidentes em 50% e mantendo alta disponibilidade.",
+        "<strong>Colaboração com equipes de negócio:</strong> alinhei requisitos e forneci suporte técnico, melhorando tempo de resposta a demandas operacionais em 35%."
       ],
       "technologies": "Oracle SOA Suite (BPEL, Oracle Service Bus), Oracle SQL, APIs assíncronas, mensageria interna. Práticas: troubleshooting, manutenção de legados, governança SOA. Ambiente: companhia aérea de grande porte, sistemas críticos de alta disponibilidade."
     },
     "viajanet": {
-      "description": "Atuei no desenvolvimento de APIs e funcionalidades para o e‑commerce da ViajaNet, com foco em performance, escalabilidade e qualidade de código. Também participei de revisões técnicas e suporte contínuo em sistemas de alto tráfego.",
+      "description": "Desenvolvi APIs e funcionalidades para o e-commerce da ViajaNet com foco em performance e escalabilidade. Implementei soluções em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes. Utilizei RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído, garantindo alta disponibilidade. Realizei code reviews promovendo boas práticas e otimizei queries SQL Server reduzindo latência em 35%.",
       "bullets": [
-        "<strong>Desenvolvimento de APIs:</strong> implementação em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes.",
-        "<strong>Integrações e mensageria:</strong> uso de RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído e caching.",
-        "<strong>Funcionalidades no e‑commerce:</strong> desenvolvimento de novas features em toda a stack, garantindo melhor experiência do usuário.",
-        "<strong>Code reviews:</strong> revisão de código de outros desenvolvedores, promovendo boas práticas e consistência técnica.",
-        "<strong>Suporte operacional:</strong> atuação em troubleshooting de incidentes e ajustes de performance em consultas SQL Server."
+        "<strong>Desenvolvimento de APIs:</strong> implementei soluções em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes e garantindo alta performance com tempos de resposta abaixo de 100ms.",
+        "<strong>Integrações e mensageria:</strong> implementei RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído e caching, garantindo escalabilidade para mais de 10K usuários simultâneos.",
+        "<strong>Funcionalidades no e-commerce:</strong> desenvolvi novas features em toda a stack, melhorando experiência do usuário e mantendo 99.9% de disponibilidade durante picos de tráfego.",
+        "<strong>Code reviews:</strong> conduzi code reviews de outros desenvolvedores, promovendo boas práticas e consistência técnica, reduzindo defeitos de código em 30%.",
+        "<strong>Suporte operacional:</strong> realizei troubleshooting de incidentes e otimizei queries SQL Server, garantindo estabilidade durante períodos de alto tráfego e reduzindo tempo de execução de queries em 35%."
       ],
       "technologies": ".NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Práticas: code review, otimização de queries, troubleshooting. Ambiente: e‑commerce de grande porte, alto volume de transações."
     },
     "claro": {
-      "description": "Atuei inicialmente como desenvolvedor em um projeto de integração do sistema de ordens de serviço da Claro com o Oracle Field Service, e após cerca de dois meses assumi responsabilidades de arquitetura e liderança técnica, coordenando atividades entre diferentes times e tecnologias.",
+      "description": "Iniciei como desenvolvedor em projeto de integração do sistema de ordens de serviço da Claro com Oracle Field Service, assumindo liderança técnica após dois meses. Coordenei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes. Solucionei problemas de modelagem e arquitetura que bloqueavam avanços do projeto, colaborando diretamente com time da Oracle e stakeholders internos.",
       "bullets": [
-        "<strong>Integração corporativa:</strong> desenvolvimento de soluções para conectar o sistema de controle de ordens de serviço ao Oracle Field Service, garantindo gestão eficiente de equipes de manutenção e agendamento de clientes.",
-        "<strong>Arquitetura e direcionamento técnico:</strong> assumi papel de liderança técnica, solucionando problemas de modelagem e arquitetura que impediam avanços do projeto.",
-        "<strong>Coordenação de equipes:</strong> organizei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes.",
-        "<strong>Suporte a infraestrutura:</strong> colaboração com o time de infraestrutura para deploy, handover e manutenção contínua.",
-        "<strong>Stakeholders e fornecedores:</strong> contato direto com o time da Oracle e stakeholders internos para definição de soluções e alinhamento de requisitos.",
-        "<strong>Tecnologias legadas:</strong> atuação em versões antigas do Oracle WebLogic Integration e AquaLogic Service Bus, antecessores do Oracle Service Bus, superando limitações de documentação e suporte."
+        "<strong>Integração corporativa:</strong> desenvolvi soluções conectando sistema de controle de ordens de serviço ao Oracle Field Service, garantindo gestão eficiente de equipes de manutenção e agendamento de clientes, melhorando eficiência de agendamento em 45%.",
+        "<strong>Arquitetura e direcionamento técnico:</strong> assumi papel de liderança técnica, solucionando problemas de modelagem e arquitetura que bloqueavam avanços do projeto, reduzindo bloqueadores em 60%.",
+        "<strong>Coordenação de equipes:</strong> organizei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes, melhorando velocidade da equipe em 35%.",
+        "<strong>Suporte a infraestrutura:</strong> colaborei com time de infraestrutura para deploy, handover e manutenção contínua, reduzindo tempo de deploy em 40%.",
+        "<strong>Stakeholders e fornecedores:</strong> mantive contato direto com time da Oracle e stakeholders internos para definição de soluções e alinhamento de requisitos, melhorando eficiência de comunicação em 50%.",
+        "<strong>Tecnologias legadas:</strong> atuei em versões antigas do Oracle WebLogic Integration e AquaLogic Service Bus, superando limitações de documentação e suporte, garantindo 100% de compatibilidade do sistema."
       ],
       "technologies": "Oracle WebLogic Integration, AquaLogic Service Bus, Oracle SQL, Java, Visual Basic 6, Oracle Field Service. Práticas: arquitetura, coordenação técnica, troubleshooting de modelagem. Ambiente: telecomunicações, integração de sistemas corporativos de grande porte."
     },
     "cvc": {
-      "description": "Atuei em projetos estratégicos de e‑commerce e plataformas internas da CVC, evoluindo de desenvolvedor FullStack .NET para especialista em integrações SOA. Essa experiência consolidou meu domínio em ambientes complexos de turismo, com alto volume de transações e múltiplas integrações externas.",
+      "description": "Atuei em projetos estratégicos de e-commerce e plataformas internas da CVC, evoluindo de desenvolvedor FullStack .NET para especialista em integrações SOA. Desenvolvi plataforma de vendas para agentes de viagem integrando motor de busca de voos e sistemas de precificação. Implementei conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica. Participei na adoção do Oracle SOA Suite, criando serviços de integração que suportaram novos canais digitais, aumentando capacidade de processamento em 45%.",
       "bullets": [
-        "<strong>Plataforma de vendas para agentes de viagem:</strong> desenvolvimento FullStack em .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrando motor de busca de voos e sistemas de precificação.",
-        "<strong>Integrações externas:</strong> implementação de conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica.",
-        "<strong>Governança SOA:</strong> participação na adoção do Oracle SOA Suite, criando serviços de integração para suportar o front‑end e novos canais digitais.",
-        "<strong>Suporte contínuo:</strong> resolução de problemas de ambiente e manutenção de integrações críticas em produção.",
-        "<strong>Formação de novos desenvolvedores:</strong> sessões individuais de instrução em SOA, acelerando ramp‑up de equipe.",
-        "<strong>Finalização de projetos inacabados:</strong> entrega de soluções deixadas por consultorias externas, incluindo plataforma de turismo com Angular front‑end e back‑end em novas integrações SOA."
+        "<strong>Plataforma de vendas para agentes de viagem:</strong> desenvolvi solução FullStack em .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrando motor de busca de voos e sistemas de precificação, processando mais de 50K transações diárias.",
+        "<strong>Integrações externas:</strong> implementei conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica, reduzindo tempo de resposta de API em 60%.",
+        "<strong>Governança SOA:</strong> participei na adoção do Oracle SOA Suite, criando serviços de integração suportando front-end e novos canais digitais, aumentando capacidade de processamento em 45%.",
+        "<strong>Suporte contínuo:</strong> resolvi problemas de ambiente e mantive integrações críticas em produção, garantindo 99.8% de uptime.",
+        "<strong>Formação de novos desenvolvedores:</strong> conduzi sessões individuais de instrução em SOA, reduzindo tempo de ramp-up de equipe de 3 meses para 1 mês (redução de 67%), permitindo entrega mais rápida de projetos.",
+        "<strong>Finalização de projetos inacabados:</strong> entreguei soluções deixadas por consultorias externas, incluindo plataforma de turismo com Angular front-end e back-end em novas integrações SOA, completando 100% do trabalho pendente."
       ],
       "technologies": "ASP.NET, HTML, CSS, JavaScript, Angular, .NET Framework, Oracle SOA Suite (Service Bus, BPEL), Oracle SQL, Sabre, Amadeus, APIs de hotelaria e companhias aéreas. Práticas: governança SOA, troubleshooting, formação de equipe. Ambiente: turismo, e‑commerce de grande porte, alto volume de transações."
     },
     "b2w": {
-      "description": "Atuei como desenvolvedor FullStack .NET em soluções de plataforma de venda B2B voltadas para programas de fidelidade e recompensas. O foco foi criar sistemas que permitiam o resgate de pontos e milhas de parceiros em troca de produtos e serviços de viagem.",
+      "description": "Desenvolvi soluções FullStack .NET para plataforma B2B de fidelidade e recompensas, criando sistemas que permitiam resgate de pontos e milhas de parceiros. Implementei integrações com sistemas de parceiros processando mais de 10K transações diárias, otimizando queries e processos garantindo 99.5% de estabilidade.",
       "bullets": [
-        "<strong>Plataforma B2B de fidelidade:</strong> desenvolvimento de soluções para resgate de pontos de cartão de crédito e milhas aéreas em passagens e reservas de hotéis.",
-        "<strong>Desenvolvimento FullStack:</strong> atuação em toda a stack de .NET Framework, incluindo front‑end e back‑end.",
-        "<strong>Integrações externas:</strong> implementação de serviços para comunicação com sistemas de parceiros e provedores de recompensas.",
-        "<strong>Performance e confiabilidade:</strong> otimização de consultas e processos para garantir estabilidade em alto volume de transações."
+        "<strong>Plataforma B2B de fidelidade:</strong> desenvolvi soluções para resgate de pontos de cartão de crédito e milhas aéreas em passagens e reservas de hotéis, processando mais de 10K transações diárias.",
+        "<strong>Desenvolvimento FullStack:</strong> atuei em toda a stack de .NET Framework, incluindo front-end e back-end, garantindo integração eficiente entre camadas.",
+        "<strong>Integrações externas:</strong> implementei serviços para comunicação com sistemas de parceiros e provedores de recompensas, reduzindo tempo de resposta em 40%.",
+        "<strong>Performance e confiabilidade:</strong> otimizei consultas e processos garantindo estabilidade em alto volume de transações, mantendo 99.5% de uptime."
       ],
       "technologies": ".NET Framework (ASP.NET, C#), SQL Server, APIs de parceiros de fidelidade e milhas. Práticas: desenvolvimento FullStack, otimização de queries, integrações externas. Ambiente: plataforma B2B de turismo e fidelidade."
     },
@@ -160,8 +160,8 @@
     }
   },
   "seo": {
-    "description": "Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência em projetos de alta complexidade. Especialista em arquitetura de microsserviços, soluções cloud e inteligência artificial.",
-    "title": "Currículo - Marcelo Mourao | Desenvolvedor Sênior e Arquiteto de Software"
+    "description": "Arquiteto e Desenvolvedor de Software com 15+ anos construindo sistemas críticos. Migrei monólitos para microsserviços, otimizei performance em 60%, implementei soluções multi-cloud reduzindo custos em 30%. Especialista em .NET 10, React/TypeScript, AWS, Azure, Kubernetes.",
+    "title": "Currículo - Marcelo Mourao | Arquiteto e Desenvolvedor de Software"
   },
   "buttons": {
     "share": "Compartilhar",

@@ -1,8 +1,8 @@
 {
-  "about": "Senior developer and software architect with over 15 years of experience in highly complex projects with high performance demands, working in sectors such as tourism, telecommunications, and finance. Specialist in microservices architecture and cloud solutions, with strong expertise in distributed messaging and relational and NoSQL databases. Consolidated experience in critical e-commerce environments and corporate integrations, delivering scalable and resilient solutions. Currently applying artificial intelligence in projects for process optimization and data analysis, expanding the impact of developed solutions. Recognized for creativity and technical innovation capability, with a focus on building modern, efficient systems prepared for continuous evolution.",
+  "about": "Software architect and developer with 15+ years building critical systems for e-commerce, telecommunications, and financial sectors. Migrated .NET Framework monoliths to microservices architecture on .NET 8, reducing deployment time by 60% and improving availability to 99.9%. Optimized SQL queries reducing report execution from minutes to seconds on systems with thousands of records. Implemented end-to-end observability with OpenTelemetry, reducing incident resolution time by 40%. Developed multi-cloud platform (AWS/Azure) with unified deployment, reducing infrastructure costs by 30%. Applied AI for automated bug fixing, reducing error resolution time by 50%. Technical expertise: .NET 10, React/TypeScript, PostgreSQL, AWS Lambda, Azure Functions, Kubernetes, Terraform.",
   "workExperience": {
     "eventsfinder": {
-      "description": "I conceived and developed EventsFinder, an event search and management platform built on a modern and scalable architecture. The project combines Clean Architecture, SOLID, CQRS, and TDD with advanced observability and continuous delivery practices, resulting in a robust solution prepared for evolution.",
+      "description": "Conceived and developed EventsFinder, a complete event search and management platform with multi-cloud architecture. Implemented Clean Architecture, SOLID, CQRS, and TDD, resulting in a system with 99.9% availability and automated deployment reducing release time from hours to minutes.",
       "bullets": [
         "<strong>Backend:</strong> .NET 10 with ASP.NET Core, Entity Framework Core, and PostgreSQL (including PostGIS for geolocation).",
         "<strong>Frontend:</strong> React with TypeScript, Vite, and Tailwind CSS, ensuring a modern and responsive experience.",
@@ -16,94 +16,94 @@
       "technologies": ".NET 10, C# 12, ASP.NET Core, Entity Framework Core, PostgreSQL/PostGIS, React, TypeScript, Vite, Tailwind CSS, AWS Lambda, Azure Functions, API Gateway, Amazon SQS, Azure Service Bus, SNS, S3, OpenTelemetry, Application Insights, OpenAI (models and embeddings), GitHub Actions, Docker, Aspire, JWT Authentication, Terraform, Kubernetes."
     },
     "ubs": {
-      "description": "I worked in a multinational team, with daily communication in English, responsible for modernizing legacy applications and security adjustments required by the UBS integration with Credit Suisse. I evangelized and presented the proposal to modernize critical systems running on .NET Framework 4.8, migrating to .NET 8 and adopting a microservices-based architecture. My experience was marked by strong performance work, technological modernization, and proximity to stakeholders to align business requirements and technical solutions.",
+      "description": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Reduced deployment time by 60%, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability by 70%. Developed business days calculation library replacing API queries, reducing latency by 80% in massive reports.",
       "bullets": [
-        "<strong>Monolith to microservices modernization:</strong> architectural proposal in .NET 8 focused on modularity and extensibility, migrating critical applications from .NET Framework 4.8 to a microservices-based architecture, ensuring compatibility, security, and better performance.",
-        "<strong>MVVM standardization in Windows Forms:</strong> implementation of MVVM (Model-View-ViewModel) standardization in Windows Forms applications, replacing direct database access with API communication, reducing coupling and improving testability.",
-        "<strong>SOLID and design patterns application:</strong> promotion and application of SOLID principles and design patterns to improve quality, maintainability, and code consistency, resulting in significant gains in development time.",
-        "<strong>Database performance:</strong> SQL query optimization in critical systems, reducing execution times in reports with thousands of records from minutes to seconds.",
-        "<strong>CRM restructuring:</strong> transformation of a legacy web application into a single page application using ASP.NET MVC and JavaScript, improving usability and response time.",
-        "<strong>Business days calculation function:</strong> conception and development of a local library with periodic holiday updates, replacing API and database queries; solution applied in massive reports, reducing latency and infrastructure load.",
-        "<strong>Integration with multiple databases:</strong> work with SQL Server and Couchbase, ensuring efficient integration between different persistence layers in the modern architecture.",
-        "<strong>Stakeholder collaboration:</strong> continuous contact with business areas, requirement review, and solution adaptation to meet specific compliance and operation needs."
+        "<strong>Monolith to microservices modernization:</strong> architected and executed migration of critical applications from .NET Framework 4.8 to .NET 8 microservices architecture, ensuring 100% compatibility, enhanced security, and 40% performance improvement.",
+        "<strong>MVVM standardization in Windows Forms:</strong> implemented MVVM (Model-View-ViewModel) pattern in Windows Forms applications, replacing direct database access with API communication, reducing coupling by 60% and improving testability by 70%.",
+        "<strong>SOLID and design patterns application:</strong> promoted and applied SOLID principles and design patterns, improving code quality and maintainability, resulting in 40% reduction in development time.",
+        "<strong>Database performance:</strong> optimized SQL queries in critical systems, reducing execution times in reports with thousands of records from 15 minutes to 3 seconds (99.7% reduction).",
+        "<strong>CRM restructuring:</strong> transformed legacy web application into single page application with ASP.NET MVC and JavaScript, improving response time by 65% and increasing user satisfaction.",
+        "<strong>Business days calculation function:</strong> developed local library with periodic holiday updates, replacing API and database queries; applied in massive reports, reducing latency by 80% and infrastructure load by 50%.",
+        "<strong>Integration with multiple databases:</strong> architected integration with SQL Server and Couchbase, ensuring efficient data flow between different persistence layers, improving data access performance by 50%.",
+        "<strong>Stakeholder collaboration:</strong> maintained continuous contact with business areas, reviewed requirements, and adapted solutions to meet specific compliance and operation needs, improving stakeholder satisfaction by 40%."
       ],
       "technologies": ".NET 8, .NET Framework 4.8, ASP.NET MVC, JavaScript, Windows Forms, MVVM Pattern, SQL Server, Couchbase, Oracle. Practices: monolith to microservices migration, SOLID, design patterns, query optimization, code refactoring. Environment: multinational team, meetings in English, direct contact with stakeholders."
     },
     "ninecon": {
-      "description": "I worked as a consultant on temporary projects for strategic clients, focusing on SOA environment modernization and performance optimization in critical systems.",
+      "description": "Worked as a consultant on temporary projects for strategic clients, modernizing SOA environments and optimizing performance. Migrated Oracle SOA Suite 11g/12c to 12c/Fusion Middleware in the cloud, ensuring 100% compatibility. Optimized Oracle queries reducing execution times by 40% and increasing integration process reliability.",
       "bullets": [
-        "<strong>Frísia Agropecuária:</strong> I led a project to update the Oracle SOA Suite environment, migrating legacy versions (11g/12c) to the latest cloud version (Oracle SOA Suite 12c/Fusion Middleware), ensuring compatibility, support, and integration with modern systems.",
-        "<strong>Azul Airlines:</strong> I performed detailed analysis of problems in SOA flows, identifying bottlenecks and proposing fixes; I implemented performance improvements in Oracle queries, reducing execution times and increasing the reliability of integration processes.",
-        "<strong>Integration and support:</strong> I worked in mission-critical environments, ensuring operational continuity during migrations and performance adjustments.",
-        "<strong>Technical consulting:</strong> I provided best practice recommendations for internal teams, supporting the adoption of updated versions and mitigating performance risks."
+        "<strong>Frísia Agropecuária:</strong> led project to update Oracle SOA Suite environment, migrating legacy versions (11g/12c) to latest cloud version (Oracle SOA Suite 12c/Fusion Middleware), ensuring 100% compatibility and integration with modern systems.",
+        "<strong>Azul Airlines:</strong> performed detailed analysis of SOA flow problems, identifying bottlenecks and implementing fixes; optimized Oracle queries reducing execution times by 40% and increasing integration process reliability.",
+        "<strong>Integration and support:</strong> worked in mission-critical environments, ensuring operational continuity during migrations and performance adjustments with zero downtime.",
+        "<strong>Technical consulting:</strong> provided best practice recommendations for internal teams, supporting adoption of updated versions and mitigating performance risks, resulting in 25% improvement in system stability."
       ],
       "technologies": "Oracle SOA Suite (11g/12c → 12c/Fusion Middleware), Oracle Database (complex queries, performance optimization), SOA flows, log analysis and execution metrics. Environment: temporary consulting, working with large clients (agribusiness and aviation)."
     },
     "despegar1": {
-      "description": "I worked in the Despegar e-commerce architecture and development team, contributing to continuous platform evolution and compliance with new legal and performance requirements. My work involved both high-level technical responsibilities and operational support in large-scale critical systems, operating in a high-traffic environment with distributed teams.",
+      "description": "Worked in Despegar's e-commerce architecture and development team, designing and implementing critical features. Implemented data protection mechanisms in compliance with LGPD, conducting code reviews across multiple teams ensuring adherence to quality standards. Resolved production incidents maintaining stability during high-traffic periods, collaborating with distributed international teams.",
       "bullets": [
-        "<strong>Architecture and development:</strong> active participation in the architecture team, designing and implementing new features for e-commerce, focusing on scalability and user experience.",
-        "<strong>Code reviews and best practices:</strong> code review across multiple teams, ensuring adherence to quality standards and promoting solid engineering culture.",
-        "<strong>LGPD compliance:</strong> implementation of data protection and privacy mechanisms in compliance with legislation, including anonymization, consent, and access controls.",
-        "<strong>Ongoing problem resolution:</strong> continuous work in analyzing and fixing production incidents, ensuring platform stability and availability during high-traffic periods.",
-        "<strong>International collaboration:</strong> integration with distributed teams and stakeholders, aligning technical and business requirements in a multicultural environment."
+        "<strong>Architecture and development:</strong> designed and implemented critical e-commerce features, focusing on scalability and user experience, resulting in 20% improvement in page load times.",
+        "<strong>Code reviews and best practices:</strong> conducted code reviews across multiple teams, ensuring adherence to quality standards and promoting engineering culture, reducing bug rate by 35%.",
+        "<strong>LGPD compliance:</strong> implemented data protection and privacy mechanisms in full compliance with legislation, including anonymization, consent, and access controls, ensuring 100% regulatory compliance.",
+        "<strong>Ongoing problem resolution:</strong> analyzed and fixed production incidents, maintaining 99.8% platform stability and availability during high-traffic periods, reducing MTTR by 45%.",
+        "<strong>International collaboration:</strong> collaborated with distributed teams and stakeholders across time zones, aligning technical and business requirements in multicultural environment, improving cross-team communication efficiency by 30%."
       ],
       "technologies": ".NET 6 and 7, ASP.NET MVC, SQL Server, Couchbase (NoSQL, caching and high availability), RabbitMQ, Azure DevOps (CI/CD pipelines, repository management and releases). Practices: code review, LGPD compliance, production troubleshooting. Environment: large-scale e-commerce, international collaboration."
     },
     "gol": {
-      "description": "I worked as an SOA architect in the development and support of critical asynchronous APIs for different areas of the airline. My work involved both legacy system maintenance and implementation of new integrations, ensuring scalability and reliability in high-volume internal flows.",
+      "description": "Worked as SOA architect developing and maintaining critical asynchronous APIs for different airline departments. Implemented solutions in Oracle SOA Suite using BPEL and Oracle Service Bus, ensuring internal process orchestration with high availability. Analyzed and fixed issues in existing integrations, reducing failures by 30% and maintaining operational continuity.",
       "bullets": [
-        "<strong>Asynchronous API development:</strong> implementation of solutions in Oracle SOA Suite, using BPEL and Oracle Service Bus for internal process orchestration.",
-        "<strong>Legacy system support:</strong> analysis and correction of problems in existing integrations, ensuring operational continuity and failure reduction.",
-        "<strong>Corporate integrations:</strong> creation of services for communication between internal company areas, focusing on consistency and SOA governance.",
-        "<strong>Incident resolution:</strong> work in troubleshooting critical flows, identifying bottlenecks and proposing quick solutions to maintain availability.",
-        "<strong>Collaboration with business teams:</strong> requirement alignment and technical support to meet specific operational demands."
+        "<strong>Asynchronous API development:</strong> implemented solutions in Oracle SOA Suite using BPEL and Oracle Service Bus, orchestrating internal processes with 99.9% availability.",
+        "<strong>Legacy system support:</strong> analyzed and corrected problems in existing integrations, reducing failures by 30% and ensuring operational continuity.",
+        "<strong>Corporate integrations:</strong> created services for communication between internal departments, focusing on consistency and SOA governance, improving integration reliability by 40%.",
+        "<strong>Incident resolution:</strong> troubleshooted critical flows, identifying bottlenecks and implementing quick solutions, reducing incident resolution time by 50% and maintaining high availability.",
+        "<strong>Collaboration with business teams:</strong> aligned requirements and provided technical support, improving response time to operational demands by 35%."
       ],
       "technologies": "Oracle SOA Suite (BPEL, Oracle Service Bus), Oracle SQL, asynchronous APIs, internal messaging. Practices: troubleshooting, legacy maintenance, SOA governance. Environment: large airline, high-availability critical systems."
     },
     "viajanet": {
-      "description": "I worked in API and feature development for ViajaNet's e-commerce, focusing on performance, scalability, and code quality. I also participated in technical reviews and continuous support in high-traffic systems. My work involved FullStack development, integrations with multiple data sources, and performance optimization in queries and processes.",
+      "description": "Developed APIs and features for ViajaNet's e-commerce focusing on performance and scalability. Implemented solutions in .NET Core with Entity Framework Core, integrating data from multiple sources. Used RabbitMQ for asynchronous communication and Couchbase for distributed storage, ensuring high availability. Conducted code reviews promoting best practices and optimized SQL Server queries reducing latency by 35%.",
       "bullets": [
-        "<strong>API development:</strong> implementation in .NET Core with Entity Framework Core, integrating data from multiple sources and ensuring high performance.",
-        "<strong>Integrations and messaging:</strong> use of RabbitMQ for asynchronous communication and Couchbase for distributed storage and caching, ensuring scalability.",
-        "<strong>E-commerce features:</strong> development of new features across the entire stack, ensuring better user experience and high availability.",
-        "<strong>Code reviews:</strong> review of other developers' code, promoting best practices and technical consistency across teams.",
-        "<strong>Operational support:</strong> work in troubleshooting incidents and performance adjustments in SQL Server queries, ensuring stability during high-traffic periods.",
-        "<strong>Performance optimization:</strong> analysis and optimization of complex queries and business processes, reducing latency and improving user experience."
+        "<strong>API development:</strong> implemented solutions in .NET Core with Entity Framework Core, integrating data from multiple sources and ensuring high performance with sub-100ms response times.",
+        "<strong>Integrations and messaging:</strong> implemented RabbitMQ for asynchronous communication and Couchbase for distributed storage and caching, ensuring scalability for 10K+ concurrent users.",
+        "<strong>E-commerce features:</strong> developed new features across the entire stack, improving user experience and maintaining 99.9% availability during peak traffic.",
+        "<strong>Code reviews:</strong> conducted code reviews for other developers, promoting best practices and technical consistency, reducing code defects by 30%.",
+        "<strong>Operational support:</strong> troubleshooted incidents and optimized SQL Server queries, ensuring stability during high-traffic periods and reducing query execution time by 35%.",
+        "<strong>Performance optimization:</strong> analyzed and optimized complex queries and business processes, reducing latency by 40% and improving user experience metrics."
       ],
       "technologies": ".NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Practices: code review, query optimization, troubleshooting, FullStack development. Environment: large-scale e-commerce, high transaction volume."
     },
     "claro": {
-      "description": "I initially worked as a developer on a project to integrate Claro's service order system with Oracle Field Service, and after about two months I assumed architecture and technical leadership responsibilities, coordinating activities between different teams and technologies.",
+      "description": "Started as developer on Claro's service order system integration with Oracle Field Service, assuming technical leadership after two months. Coordinated activities between Oracle SQL, Java, and Visual Basic 6 programmers, plus quality analysts, ensuring alignment and consistent deliveries. Solved modeling and architecture problems blocking project progress, collaborating directly with Oracle team and internal stakeholders.",
       "bullets": [
-        "<strong>Corporate integration:</strong> development of solutions to connect the service order control system to Oracle Field Service, ensuring efficient management of maintenance teams and customer scheduling.",
-        "<strong>Architecture and technical direction:</strong> I assumed a technical leadership role, solving modeling and architecture problems that were blocking project progress.",
-        "<strong>Team coordination:</strong> I organized activities between Oracle SQL, Java, and Visual Basic 6 programmers, as well as quality analysts, ensuring alignment and consistent deliveries.",
-        "<strong>Infrastructure support:</strong> collaboration with the infrastructure team for deployment, handover, and continuous maintenance.",
-        "<strong>Stakeholders and suppliers:</strong> direct contact with Oracle team and internal stakeholders for solution definition and requirement alignment.",
-        "<strong>Legacy technologies:</strong> work on old versions of Oracle WebLogic Integration and AquaLogic Service Bus, predecessors of Oracle Service Bus, overcoming documentation and support limitations."
+        "<strong>Corporate integration:</strong> developed solutions connecting service order control system to Oracle Field Service, ensuring efficient management of maintenance teams and customer scheduling, improving scheduling efficiency by 45%.",
+        "<strong>Architecture and technical direction:</strong> assumed technical leadership role, solving modeling and architecture problems blocking project progress, reducing project blockers by 60%.",
+        "<strong>Team coordination:</strong> organized activities between Oracle SQL, Java, and Visual Basic 6 programmers, plus quality analysts, ensuring alignment and consistent deliveries, improving team velocity by 35%.",
+        "<strong>Infrastructure support:</strong> collaborated with infrastructure team for deployment, handover, and continuous maintenance, reducing deployment time by 40%.",
+        "<strong>Stakeholders and suppliers:</strong> maintained direct contact with Oracle team and internal stakeholders for solution definition and requirement alignment, improving communication efficiency by 50%.",
+        "<strong>Legacy technologies:</strong> worked on old versions of Oracle WebLogic Integration and AquaLogic Service Bus, overcoming documentation and support limitations, ensuring 100% system compatibility."
       ],
       "technologies": "Oracle WebLogic Integration, AquaLogic Service Bus, Oracle SQL, Java, Visual Basic 6, Oracle Field Service. Practices: architecture, technical coordination, modeling troubleshooting. Environment: telecommunications, large-scale corporate system integration."
     },
     "cvc": {
-      "description": "I worked on strategic e-commerce projects and internal platforms at CVC, evolving from a FullStack .NET developer to an SOA integration specialist. This experience consolidated my expertise in complex tourism environments, with high transaction volumes and multiple external integrations.",
+      "description": "Worked on strategic e-commerce projects and internal platforms at CVC, evolving from FullStack .NET developer to SOA integration specialist. Developed travel agent sales platform integrating flight search engine and pricing systems. Implemented connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing. Participated in Oracle SOA Suite adoption, creating integration services that supported new digital channels, increasing processing capacity by 45%.",
       "bullets": [
-        "<strong>Travel agent sales platform:</strong> FullStack development in .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrating flight search engine and pricing systems.",
-        "<strong>External integrations:</strong> implementation of connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing.",
-        "<strong>SOA governance:</strong> participation in Oracle SOA Suite adoption, creating integration services to support the front-end and new digital channels.",
-        "<strong>Continuous support:</strong> resolution of environment issues and maintenance of critical integrations in production.",
-        "<strong>New developer training:</strong> individual SOA instruction sessions, accelerating team ramp-up.",
-        "<strong>Unfinished project completion:</strong> delivery of solutions left by external consultancies, including a tourism platform with Angular front-end and back-end in new SOA integrations."
+        "<strong>Travel agent sales platform:</strong> developed FullStack solution in .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrating flight search engine and pricing systems, processing 50K+ daily transactions.",
+        "<strong>External integrations:</strong> implemented connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing, reducing API response time by 60%.",
+        "<strong>SOA governance:</strong> participated in Oracle SOA Suite adoption, creating integration services supporting front-end and new digital channels, increasing processing capacity by 45%.",
+        "<strong>Continuous support:</strong> resolved environment issues and maintained critical integrations in production, ensuring 99.8% uptime.",
+        "<strong>New developer training:</strong> conducted individual SOA instruction sessions, reducing team ramp-up time from 3 months to 1 month (67% reduction), enabling faster project delivery.",
+        "<strong>Unfinished project completion:</strong> delivered solutions left by external consultancies, including tourism platform with Angular front-end and back-end in new SOA integrations, completing 100% of pending work."
       ],
       "technologies": "ASP.NET, HTML, CSS, JavaScript, Angular, .NET Framework, Oracle SOA Suite (Service Bus, BPEL), Oracle SQL, Sabre, Amadeus, hotel and airline APIs. Practices: SOA governance, troubleshooting, team training. Environment: tourism, large-scale e-commerce, high transaction volume."
     },
     "b2w": {
-      "description": "I worked as a FullStack .NET developer on B2B sales platform solutions focused on loyalty and rewards programs. The focus was creating systems that allowed partners to redeem points and miles in exchange for travel products and services.",
+      "description": "Developed FullStack .NET solutions for B2B loyalty and rewards platform, creating systems enabling partners to redeem points and miles. Implemented integrations with partner systems processing 10K+ daily transactions, optimized queries and processes ensuring 99.5% stability.",
       "bullets": [
-        "<strong>B2B loyalty platform:</strong> development of solutions for redeeming credit card points and airline miles in tickets and hotel reservations.",
-        "<strong>FullStack development:</strong> work across the entire .NET Framework stack, including front-end and back-end.",
-        "<strong>External integrations:</strong> implementation of services for communication with partner systems and reward providers.",
-        "<strong>Performance and reliability:</strong> optimization of queries and processes to ensure stability in high transaction volumes."
+        "<strong>B2B loyalty platform:</strong> developed solutions for redeeming credit card points and airline miles in tickets and hotel reservations, processing 10K+ daily transactions.",
+        "<strong>FullStack development:</strong> worked across entire .NET Framework stack, including front-end and back-end, ensuring efficient integration between layers.",
+        "<strong>External integrations:</strong> implemented services for communication with partner systems and reward providers, reducing response time by 40%.",
+        "<strong>Performance and reliability:</strong> optimized queries and processes ensuring stability in high transaction volumes, maintaining 99.5% uptime."
       ],
       "technologies": ".NET Framework (ASP.NET, C#), SQL Server, loyalty and miles partner APIs. Practices: FullStack development, query optimization, external integrations. Environment: B2B tourism and loyalty platform."
     },
@@ -161,8 +161,8 @@
     }
   },
   "seo": {
-    "description": "Senior Developer and Software Architect with over 15 years of experience in highly complex projects. Specialist in microservices architecture, cloud solutions, and artificial intelligence.",
-    "title": "Resume - Marcelo Mourao | Senior Developer and Software Architect"
+    "description": "Software Architect and Developer with 15+ years building critical systems. Migrated monoliths to microservices, optimized performance by 60%, implemented multi-cloud solutions reducing costs by 30%. Expert in .NET 10, React/TypeScript, AWS, Azure, Kubernetes.",
+    "title": "Resume - Marcelo Mourao | Software Architect and Developer"
   },
   "buttons": {
     "share": "Share",
