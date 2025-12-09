@@ -1189,8 +1189,11 @@
                 
                 return `
                     <div class="language-item">
-                        <div class="language-name">${lang.name[currentLang]}: ${lang.level[currentLang]}</div>
-                        ${lang.dots < 5 ? `<div class="language-level"><div class="language-dots">${dots}</div></div>` : ''}
+                        <div class="language-info">
+                            <div class="language-name">${lang.name[currentLang]}</div>
+                            <div class="language-level-text">${lang.level[currentLang]}</div>
+                        </div>
+                        ${lang.dots < 5 ? `<div class="language-dots">${dots}</div>` : ''}
                     </div>
                 `;
             }).join('');
