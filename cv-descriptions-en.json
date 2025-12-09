@@ -48,7 +48,7 @@
         "<strong>Ongoing problem resolution:</strong> analyzed and fixed production incidents, maintaining high platform stability and availability during high-traffic periods.",
         "<strong>International collaboration:</strong> collaborated with distributed teams and stakeholders across time zones, aligning technical and business requirements in multicultural environment."
       ],
-      "technologies": ".NET 6 and 7, ASP.NET MVC, SQL Server, Couchbase (NoSQL, caching and high availability), RabbitMQ, Azure DevOps (CI/CD pipelines, repository management and releases). Practices: code review, LGPD compliance, production troubleshooting. Environment: large-scale e-commerce, international collaboration."
+      "technologies": ".NET 6 and 7, ASP.NET MVC, Windows Forms, SQL Server, Couchbase (NoSQL, caching and high availability), RabbitMQ, Azure DevOps (CI/CD pipelines, repository management and releases). Practices: code review, LGPD compliance, production troubleshooting. Environment: large-scale e-commerce, international collaboration."
     },
     "gol": {
       "description": "Worked as SOA architect developing and maintaining critical asynchronous APIs for different airline departments. Implemented solutions in Oracle SOA Suite using BPEL and Oracle Service Bus, ensuring internal process orchestration with high availability. Analyzed and fixed issues in existing integrations, reducing failures and maintaining operational continuity.",
@@ -71,7 +71,7 @@
         "<strong>Operational support:</strong> troubleshooted incidents and optimized SQL Server queries, ensuring stability during high-traffic periods.",
         "<strong>Performance optimization:</strong> analyzed and optimized complex queries and business processes, reducing latency and improving user experience."
       ],
-      "technologies": ".NET Core, Entity Framework Core, SQL Server, Couchbase, RabbitMQ. Practices: code review, query optimization, troubleshooting, FullStack development. Environment: large-scale e-commerce, high transaction volume."
+      "technologies": ".NET Core, Entity Framework Core, Windows Forms, SQL Server, Couchbase, RabbitMQ. Practices: code review, query optimization, troubleshooting, FullStack development. Environment: large-scale e-commerce, high transaction volume."
     },
     "claro": {
       "description": "Started as developer on Claro's service order system integration with Oracle Field Service, assuming technical leadership after two months. Coordinated activities between Oracle SQL, Java, and Visual Basic 6 programmers, plus quality analysts, ensuring alignment and consistent deliveries. Solved modeling and architecture problems blocking project progress, collaborating directly with Oracle team and internal stakeholders.",
@@ -83,7 +83,7 @@
         "<strong>Stakeholders and suppliers:</strong> maintained direct contact with Oracle team and internal stakeholders for solution definition and requirement alignment.",
         "<strong>Legacy technologies:</strong> worked on old versions of Oracle WebLogic Integration and AquaLogic Service Bus, overcoming documentation and support limitations."
       ],
-      "technologies": "Oracle WebLogic Integration, AquaLogic Service Bus, Oracle SQL, Java, Visual Basic 6, Oracle Field Service. Practices: architecture, technical coordination, modeling troubleshooting. Environment: telecommunications, large-scale corporate system integration."
+      "technologies": "Oracle WebLogic Integration, AquaLogic Service Bus, Oracle SQL, Java, Visual Basic 6, Windows Forms, Oracle Field Service. Practices: architecture, technical coordination, modeling troubleshooting. Environment: telecommunications, large-scale corporate system integration."
     },
     "cvc": {
       "description": "Worked on strategic e-commerce projects and internal platforms at CVC, evolving from FullStack .NET developer to SOA integration specialist. Developed travel agent sales platform integrating flight search engine and pricing systems. Implemented connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing. Participated in Oracle SOA Suite adoption, creating integration services that supported new digital channels.",
@@ -95,7 +95,7 @@
         "<strong>New developer training:</strong> conducted individual SOA instruction sessions, accelerating team ramp-up and enabling faster project delivery.",
         "<strong>Unfinished project completion:</strong> delivered solutions left by external consultancies, including tourism platform with Angular front-end and back-end in new SOA integrations."
       ],
-      "technologies": "ASP.NET, HTML, CSS, JavaScript, Angular, .NET Framework, Oracle SOA Suite (Service Bus, BPEL), Oracle SQL, Sabre, Amadeus, hotel and airline APIs. Practices: SOA governance, troubleshooting, team training. Environment: tourism, large-scale e-commerce, high transaction volume."
+      "technologies": "ASP.NET, HTML, CSS, JavaScript, Angular, .NET Framework, Windows Forms, Oracle SOA Suite (Service Bus, BPEL), Oracle SQL, Sabre, Amadeus, hotel and airline APIs. Practices: SOA governance, troubleshooting, team training. Environment: tourism, large-scale e-commerce, high transaction volume."
     },
     "b2w": {
       "description": "Developed FullStack .NET solutions for B2B loyalty and rewards platform, creating systems enabling partners to redeem points and miles. Implemented integrations with partner systems, optimized queries and processes ensuring high stability.",
@@ -125,7 +125,7 @@
         "<strong>Internal tools:</strong> creation of solutions for performance monitoring, report generation, and timesheet recording.",
         "<strong>Accelerated growth:</strong> promotion from intern to programmer in just three months, due to delivery quality and rapid learning."
       ],
-      "technologies": "VB6, ASP, ASP.NET 2.0, C#, Java (in analyses), SQL Server. Practices: web development, performance analysis, code security, report automation. Environment: corporate IT office, focus on research, technical support, and internal system development."
+      "technologies": "VB6, ASP, ASP.NET 2.0, C#, Java (in analyses), Windows Forms, SQL Server. Practices: web development, performance analysis, code security, report automation. Environment: corporate IT office, focus on research, technical support, and internal system development."
     }
   },
   "projects": {
