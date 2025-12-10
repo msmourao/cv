@@ -141,8 +141,31 @@
       "description": "Framework reutilizável para orquestração de fluxos complexos de mensagens assíncronas, com sistema de tracking e controle de mensagens pendentes. Implementa controle de estado de execução de pipelines, rastreamento de progresso, gerenciamento de dependências entre etapas e recuperação de falhas. Suporta handlers distribuídos, processamento paralelo e integração com múltiplos sistemas de mensageria (SQS, Service Bus), garantindo confiabilidade e escalabilidade em fluxos de trabalho complexos."
     }
   },
+  "keyAchievements": [
+    {
+      "icon": "bi-lightning-charge",
+      "title": "Melhorias de Performance",
+      "description": "Otimizei fluxos e queries resultando em melhorias de performance superiores a 90%, transformando processos que levavam minutos em operações que executam em segundos."
+    },
+    {
+      "icon": "bi-lightbulb",
+      "title": "Refinamento de Ideias",
+      "description": "Refinei ideias do usuário final resultando em aplicações com maior valor de negócio, traduzindo requisitos em soluções técnicas eficazes e alinhadas aos objetivos estratégicos."
+    },
+    {
+      "icon": "bi-cloud",
+      "title": "Plataforma Multi-cloud",
+      "description": "Desenvolvi plataforma Multi-cloud Ready com framework próprio e abstrações que permitem o consumo dos melhores recursos de cada provedor, garantindo portabilidade e otimização de custos."
+    },
+    {
+      "icon": "bi-people",
+      "title": "Formação de Desenvolvedores",
+      "description": "Formei novos desenvolvedores através de mentorias e acompanhamento técnico, acelerando o crescimento da equipe e promovendo cultura de excelência e boas práticas."
+    }
+  ],
   "sections": {
-    "about": "Sobre Mim",
+    "summary": "Resumo",
+    "keyAchievements": "Principais Conquistas",
     "workExperience": "Experiência Profissional",
     "techStack": "Tech Stack",
     "softSkills": "Soft Skills",

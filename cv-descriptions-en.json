@@ -142,8 +142,31 @@
       "description": "Reusable framework for orchestrating complex asynchronous message flows, with tracking and pending message control system. Implements pipeline execution state control, progress tracking, dependency management between steps, and failure recovery. Supports distributed handlers, parallel processing, and integration with multiple messaging systems (SQS, Service Bus), ensuring reliability and scalability in complex workflows."
     }
   },
+  "keyAchievements": [
+    {
+      "icon": "bi-lightning-charge",
+      "title": "Performance Improvements",
+      "description": "Optimized flows and queries resulting in performance improvements exceeding 90%, transforming processes that took minutes into operations that execute in seconds."
+    },
+    {
+      "icon": "bi-lightbulb",
+      "title": "Idea Refinement",
+      "description": "Refined end-user ideas resulting in applications with greater business value, translating requirements into effective technical solutions aligned with strategic objectives."
+    },
+    {
+      "icon": "bi-cloud",
+      "title": "Multi-cloud Platform",
+      "description": "Developed Multi-cloud Ready platform with proprietary framework and abstractions enabling consumption of the best resources from each provider, ensuring portability and cost optimization."
+    },
+    {
+      "icon": "bi-people",
+      "title": "Developer Training",
+      "description": "Trained new developers through mentoring and technical guidance, accelerating team growth and promoting a culture of excellence and best practices."
+    }
+  ],
   "sections": {
-    "about": "About Me",
+    "summary": "Summary",
+    "keyAchievements": "Key Achievements",
     "workExperience": "Work Experience",
     "techStack": "Tech Stack",
     "softSkills": "Soft Skills",
