@@ -332,34 +332,7 @@
         .timeline-item {
             margin-bottom: 2.5rem;
             position: relative;
-            padding-left: 2rem;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg-sidebar);
-            border: 3px solid var(--white);
-            box-shadow: 0 0 0 2px var(--bg-sidebar);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 1.5rem;
-            width: 2px;
-            height: calc(100% + 0.5rem);
-            background: var(--border-color);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
+            padding-left: 0;
         }
         
         .timeline-header {
@@ -738,6 +711,12 @@
             .timeline-item {
                 margin-bottom: 1.25rem !important;
                 page-break-inside: avoid !important;
+                padding-left: 0 !important;
+            }
+            
+            .timeline-item::before,
+            .timeline-item::after {
+                display: none !important;
             }
             
             .timeline-title {
@@ -918,17 +897,17 @@
             </div>
             
             <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-key-achievements">Principais Conquistas</h3>
-                <div id="key-achievements">
-                    <!-- Populated by JavaScript -->
-                </div>
-            </div>
-            
-            <div class="sidebar-section">
                 <h3 class="sidebar-section-title" id="section-tech">Tech Stack</h3>
                 <ul class="tech-stack-list" id="tech-stack">
                     <!-- Populated by JavaScript -->
                 </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-section-title" id="section-key-achievements">Principais Conquistas</h3>
+                <div id="key-achievements">
+                    <!-- Populated by JavaScript -->
+                </div>
             </div>
             
             <div class="sidebar-section">
@@ -1019,14 +998,14 @@
     </div>
     
     <div id="mobile-tech" class="mobile-section">
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Principais Conquistas</h2>
-        <div id="mobile-key-achievements">
-            <!-- Populated by JavaScript -->
-        </div>
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Tech Stack</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Tech Stack</h2>
         <ul id="mobile-tech-stack" style="list-style: none; padding: 0;">
             <!-- Populated by JavaScript -->
         </ul>
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Principais Conquistas</h2>
+        <div id="mobile-key-achievements">
+            <!-- Populated by JavaScript -->
+        </div>
     </div>
     
     <div id="mobile-education" class="mobile-section">
@@ -1294,6 +1273,17 @@
             document.getElementById('summary-text').textContent = descriptions.about;
             document.getElementById('mobile-summary').textContent = descriptions.about;
 
+            // Tech stack
+            const techStack = document.getElementById('tech-stack');
+            techStack.innerHTML = cvData.techStack.map(tech => 
+                `<li>${tech}</li>`
+            ).join('');
+            
+            // Mobile tech stack
+            document.getElementById('mobile-tech-stack').innerHTML = cvData.techStack.map(tech => 
+                `<li style="padding: 0.5rem 0; color: var(--text-light);">${tech}</li>`
+            ).join('');
+
             // Key Achievements
             if (descriptions.keyAchievements) {
                 const keyAchievementsHTML = descriptions.keyAchievements.map(achievement => `
@@ -1361,7 +1351,7 @@
                 const location = job.location ? job.location[currentLang] : '';
                 
                 return `
-                    <div style="margin-bottom: 2rem; padding-left: 1.5rem; position: relative; border-left: 2px solid var(--bg-sidebar);">
+                    <div style="margin-bottom: 2rem;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                             <div style="flex: 1;">
                                 <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.25rem;">${job.title[currentLang]}</div>
@@ -1384,17 +1374,6 @@
                     </div>
                 `;
             }).join('');
-
-            // Tech stack
-            const techStack = document.getElementById('tech-stack');
-            techStack.innerHTML = cvData.techStack.map(tech => 
-                `<li>${tech}</li>`
-            ).join('');
-            
-            // Mobile tech stack
-            document.getElementById('mobile-tech-stack').innerHTML = cvData.techStack.map(tech => 
-                `<li style="padding: 0.5rem 0; color: var(--text-light);">${tech}</li>`
-            ).join('');
 
             // Education
             const education = document.getElementById('education');
