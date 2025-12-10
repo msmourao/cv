@@ -671,6 +671,7 @@
             .sidebar {
                 background: #2d8659 !important;
                 padding: 1.5rem !important;
+                padding-top: 1.5rem !important;
                 page-break-inside: avoid !important;
                 display: block !important;
                 visibility: visible !important;
@@ -679,6 +680,14 @@
                 width: 280px !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
+            }
+            
+            .sidebar > .profile-section:first-child {
+                margin-top: 0 !important;
+            }
+            
+            .sidebar > .sidebar-section:first-of-type {
+                margin-top: 0.5rem !important;
             }
             
             .main-content {
@@ -737,10 +746,16 @@
                 display: inline-block !important;
             }
             
+            .profile-section {
+                text-align: center !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
             .profile-image {
                 width: 100px !important;
                 height: 100px !important;
-                margin-bottom: 1rem !important;
+                margin: 0 auto 1rem auto !important;
+                display: block !important;
             }
             
             .name {
@@ -768,16 +783,25 @@
             }
             
             .summary-text,
-            .key-achievement-content p,
+            .key-achievement-content p {
+                display: block !important;
+            }
+            
             .tech-stack-list {
                 display: flex !important;
                 flex-wrap: wrap !important;
-                gap: 0.75rem !important;
+                gap: 0.5rem 1rem !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             
             .tech-stack-list li {
                 font-size: 0.75rem !important;
                 text-decoration: underline !important;
+                display: inline-block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                white-space: nowrap !important;
             }
             
             .hobbies-list li,
@@ -894,7 +918,7 @@
         @media (max-width: 768px) and not print {
             .resume-wrapper {
                 grid-template-columns: 1fr;
-                display: none;
+                display: none !important;
             }
             
             .sidebar,
@@ -903,15 +927,15 @@
             }
             
             .mobile-nav {
-                display: block;
+                display: block !important;
             }
             
             .mobile-section {
-                display: none;
+                display: none !important;
             }
             
             .mobile-section.active {
-                display: block;
+                display: block !important;
             }
             
             .action-buttons {
@@ -925,7 +949,7 @@
             }
             
             body {
-                padding-bottom: 0;
+                padding-bottom: 80px;
             }
         }
     </style>
