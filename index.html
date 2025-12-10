@@ -1581,6 +1581,15 @@
             ).join('');
         }
 
+        // Ensure content is rendered before print
+        window.addEventListener('beforeprint', function() {
+            if (!cvData || !descriptions) {
+                loadData();
+            } else {
+                renderCV();
+            }
+        });
+
         // Initialize
         currentLang = detectLanguage();
         document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
