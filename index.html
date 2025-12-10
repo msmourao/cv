@@ -618,7 +618,7 @@
         }
         
         /* Hide mobile sections on desktop */
-        @media (min-width: 769px) {
+        @media (min-width: 769px) and not print {
             .mobile-nav,
             .mobile-section {
                 display: none !important;
@@ -665,6 +665,7 @@
                 page-break-inside: avoid !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+                position: relative !important;
             }
             
             .sidebar {
@@ -676,6 +677,8 @@
                 opacity: 1 !important;
                 position: relative !important;
                 width: 280px !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             
             .main-content {
@@ -695,16 +698,43 @@
             .work-experience-section,
             .timeline-item,
             .timeline-header,
-            .timeline-content {
+            .timeline-content,
+            .contact-list,
+            .tech-stack-list,
+            .hobbies-list,
+            #contact-list,
+            #tech-stack,
+            #key-achievements,
+            #education,
+            #languages,
+            #projects,
+            #hobbies,
+            #work-experience,
+            #name,
+            #tagline,
+            #summary-text {
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+            }
+            
+            .tech-stack-list {
+                display: flex !important;
             }
             
             img {
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+            }
+            
+            ul, li {
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .tech-stack-list li {
+                display: inline-block !important;
             }
             
             .profile-image {
@@ -861,7 +891,7 @@
         }
         
         /* Mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 768px) and not print {
             .resume-wrapper {
                 grid-template-columns: 1fr;
                 display: none;
