@@ -638,16 +638,19 @@
                 color-adjust: exact !important;
             }
             
+            html, body {
+                width: 100% !important;
+                height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                overflow: visible !important;
+            }
+            
             .action-buttons,
             .mobile-nav,
             .mobile-section {
                 display: none !important;
-            }
-            
-            body {
-                background: white !important;
-                padding: 0 !important;
-                margin: 0 !important;
             }
             
             .resume-wrapper {
@@ -657,8 +660,11 @@
                 grid-template-columns: 280px 1fr !important;
                 box-shadow: none !important;
                 margin: 0 !important;
+                padding: 0 !important;
                 min-height: auto !important;
                 page-break-inside: avoid !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             .sidebar {
@@ -669,6 +675,7 @@
                 visibility: visible !important;
                 opacity: 1 !important;
                 position: relative !important;
+                width: 280px !important;
             }
             
             .main-content {
@@ -678,13 +685,23 @@
                 visibility: visible !important;
                 opacity: 1 !important;
                 position: relative !important;
+                width: auto !important;
             }
             
             .profile-section,
             .contact-section,
             .sidebar-section,
             .header-section,
-            .work-experience-section {
+            .work-experience-section,
+            .timeline-item,
+            .timeline-header,
+            .timeline-content {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            img {
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
@@ -1004,23 +1021,23 @@
             <div class="mobile-nav-items">
             <div class="mobile-nav-item active" data-section="about" onclick="showMobileSection('about', event)">
                 <i class="bi bi-person"></i>
-                <span>Sobre</span>
+                <span id="mobile-nav-about">About</span>
             </div>
             <div class="mobile-nav-item" data-section="tech" onclick="showMobileSection('tech', event)">
                 <i class="bi bi-code-slash"></i>
-                <span>Tech</span>
+                <span id="mobile-nav-tech">Tech</span>
             </div>
             <div class="mobile-nav-item" data-section="education" onclick="showMobileSection('education', event)">
                 <i class="bi bi-mortarboard"></i>
-                <span>Formação</span>
+                <span id="mobile-nav-education">Education</span>
             </div>
             <div class="mobile-nav-item" data-section="projects" onclick="showMobileSection('projects', event)">
                 <i class="bi bi-folder"></i>
-                <span>Projetos</span>
+                <span id="mobile-nav-projects">Projects</span>
             </div>
             <div class="mobile-nav-item" data-section="experience" onclick="showMobileSection('experience', event)">
                 <i class="bi bi-briefcase"></i>
-                <span>Experiência</span>
+                <span id="mobile-nav-experience">Experience</span>
             </div>
         </div>
     </div>
@@ -1036,7 +1053,7 @@
             <!-- Populated by JavaScript -->
         </div>
         <div style="margin-top: 2rem;">
-            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-color);">Resumo</h3>
+            <h3 id="mobile-about-summary-title" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-color);">Summary</h3>
             <p id="mobile-summary" style="color: var(--text-light); line-height: 1.7;">Loading...</p>
         </div>
     </div>
@@ -1336,6 +1353,17 @@
             document.getElementById('mobile-projects-title').textContent = descriptions.sections.projects;
             document.getElementById('mobile-hobbies-title').textContent = descriptions.sections.hobbies;
             document.getElementById('mobile-experience-title').textContent = descriptions.sections.workExperience;
+            document.getElementById('mobile-about-summary-title').textContent = descriptions.sections.summary;
+            
+            // Mobile navigation labels
+            const navLabels = currentLang === 'pt' 
+                ? { about: 'Sobre', tech: 'Tech', education: 'Formação', projects: 'Projetos', experience: 'Experiência' }
+                : { about: 'About', tech: 'Tech', education: 'Education', projects: 'Projects', experience: 'Experience' };
+            document.getElementById('mobile-nav-about').textContent = navLabels.about;
+            document.getElementById('mobile-nav-tech').textContent = navLabels.tech;
+            document.getElementById('mobile-nav-education').textContent = navLabels.education;
+            document.getElementById('mobile-nav-projects').textContent = navLabels.projects;
+            document.getElementById('mobile-nav-experience').textContent = navLabels.experience;
 
             // Key Achievements
             if (descriptions.keyAchievements) {
