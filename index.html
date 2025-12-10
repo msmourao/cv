@@ -204,7 +204,21 @@
             list-style: none;
         }
         
-        .tech-stack-list li,
+        .tech-stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tech-stack-list li {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        
         .hobbies-list li {
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
@@ -638,24 +652,42 @@
             
             .resume-wrapper {
                 max-width: 100% !important;
+                width: 100% !important;
                 display: grid !important;
                 grid-template-columns: 280px 1fr !important;
                 box-shadow: none !important;
                 margin: 0 !important;
                 min-height: auto !important;
+                page-break-inside: avoid !important;
             }
             
             .sidebar {
-                background: var(--bg-sidebar) !important;
+                background: #2d8659 !important;
                 padding: 1.5rem !important;
                 page-break-inside: avoid !important;
                 display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
             }
             
             .main-content {
                 padding: 1.5rem !important;
                 page-break-inside: avoid !important;
                 display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+            }
+            
+            .profile-section,
+            .contact-section,
+            .sidebar-section,
+            .header-section,
+            .work-experience-section {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             .profile-image {
@@ -690,7 +722,17 @@
             
             .summary-text,
             .key-achievement-content p,
-            .tech-stack-list li,
+            .tech-stack-list {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 0.75rem !important;
+            }
+            
+            .tech-stack-list li {
+                font-size: 0.75rem !important;
+                text-decoration: underline !important;
+            }
+            
             .hobbies-list li,
             .contact-item {
                 font-size: 0.75rem !important;
@@ -1000,40 +1042,40 @@
     </div>
     
     <div id="mobile-tech" class="mobile-section">
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Tech Stack</h2>
-        <ul id="mobile-tech-stack" style="list-style: none; padding: 0;">
+        <h2 id="mobile-tech-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Skills</h2>
+        <ul id="mobile-tech-stack" style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem;">
             <!-- Populated by JavaScript -->
         </ul>
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Principais Conquistas</h2>
+        <h2 id="mobile-key-achievements-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Key Achievements</h2>
         <div id="mobile-key-achievements">
             <!-- Populated by JavaScript -->
         </div>
     </div>
     
     <div id="mobile-education" class="mobile-section">
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Formação</h2>
+        <h2 id="mobile-education-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Education</h2>
         <div id="mobile-education-content">
             <!-- Populated by JavaScript -->
         </div>
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Idiomas</h2>
+        <h2 id="mobile-languages-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Languages</h2>
         <div id="mobile-languages">
             <!-- Populated by JavaScript -->
         </div>
     </div>
     
     <div id="mobile-projects" class="mobile-section">
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Projetos</h2>
+        <h2 id="mobile-projects-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Projects</h2>
         <div id="mobile-projects-content">
             <!-- Populated by JavaScript -->
         </div>
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Hobbies</h2>
+        <h2 id="mobile-hobbies-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Hobbies</h2>
         <ul id="mobile-hobbies" style="list-style: none; padding: 0;">
             <!-- Populated by JavaScript -->
         </ul>
     </div>
     
     <div id="mobile-experience" class="mobile-section">
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Experiência Profissional</h2>
+        <h2 id="mobile-experience-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Work Experience</h2>
         <div id="mobile-work-experience">
             <!-- Populated by JavaScript -->
         </div>
@@ -1283,8 +1325,17 @@
             
             // Mobile tech stack
             document.getElementById('mobile-tech-stack').innerHTML = cvData.techStack.map(tech => 
-                `<li style="padding: 0.5rem 0; color: var(--text-light);">${tech}</li>`
+                `<li style="color: var(--text-color); text-decoration: underline; text-underline-offset: 3px;">${tech}</li>`
             ).join('');
+            
+            // Mobile section titles
+            document.getElementById('mobile-tech-title').textContent = descriptions.sections.techStack;
+            document.getElementById('mobile-key-achievements-title').textContent = descriptions.sections.keyAchievements;
+            document.getElementById('mobile-education-title').textContent = descriptions.sections.education;
+            document.getElementById('mobile-languages-title').textContent = descriptions.sections.languages;
+            document.getElementById('mobile-projects-title').textContent = descriptions.sections.projects;
+            document.getElementById('mobile-hobbies-title').textContent = descriptions.sections.hobbies;
+            document.getElementById('mobile-experience-title').textContent = descriptions.sections.workExperience;
 
             // Key Achievements
             if (descriptions.keyAchievements) {
