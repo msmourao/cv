@@ -364,12 +364,17 @@
         
         .timeline-header {
             margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
         
-        .timeline-period {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
+        .timeline-header-left {
+            flex: 1;
+        }
+        
+        .timeline-header-right {
+            text-align: right;
         }
         
         .timeline-title {
@@ -383,6 +388,17 @@
             color: var(--bg-sidebar);
             font-weight: 500;
             font-size: 0.95rem;
+        }
+        
+        .timeline-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
         }
         
         .timeline-content {
@@ -613,6 +629,14 @@
             display: block;
         }
         
+        /* Hide mobile sections on desktop */
+        @media (min-width: 769px) {
+            .mobile-nav,
+            .mobile-section {
+                display: none !important;
+            }
+        }
+        
         /* Print Styles */
         @media print {
             @page {
@@ -651,11 +675,13 @@
                 background: var(--bg-sidebar) !important;
                 padding: 1.5rem !important;
                 page-break-inside: avoid !important;
+                display: block !important;
             }
             
             .main-content {
                 padding: 1.5rem !important;
                 page-break-inside: avoid !important;
+                display: block !important;
             }
             
             .profile-image {
@@ -799,12 +825,12 @@
         @media (max-width: 768px) {
             .resume-wrapper {
                 grid-template-columns: 1fr;
-                display: block;
+                display: none;
             }
             
             .sidebar,
             .main-content {
-                display: none;
+                display: none !important;
             }
             
             .mobile-nav {
@@ -826,6 +852,10 @@
             
             .action-buttons-container {
                 padding: 0.4rem;
+            }
+            
+            body {
+                padding-bottom: 0;
             }
         }
     </style>
@@ -1296,12 +1326,19 @@
                 const jobDesc = descriptions.workExperience[job.key];
                 if (!jobDesc) return '';
                 
+                const location = job.location ? job.location[currentLang] : '';
+                
                 return `
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <div class="timeline-period">${job.period[currentLang]}</div>
-                            <div class="timeline-title">${job.title[currentLang]}</div>
-                            <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">${job.title[currentLang]}</div>
+                                <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
+                            </div>
+                            <div class="timeline-header-right">
+                                <div class="timeline-period">${job.period[currentLang]}</div>
+                                ${location ? `<div class="timeline-location">${location}</div>` : ''}
+                            </div>
                         </div>
                         <div class="timeline-content">
                             <p>${jobDesc.description}</p>
@@ -1317,7 +1354,36 @@
             }).join('');
             
             // Mobile work experience
-            document.getElementById('mobile-work-experience').innerHTML = workExp.innerHTML;
+            document.getElementById('mobile-work-experience').innerHTML = cvData.workExperience.map(job => {
+                const jobDesc = descriptions.workExperience[job.key];
+                if (!jobDesc) return '';
+                
+                const location = job.location ? job.location[currentLang] : '';
+                
+                return `
+                    <div style="margin-bottom: 2rem; padding-left: 1.5rem; position: relative; border-left: 2px solid var(--bg-sidebar);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.25rem;">${job.title[currentLang]}</div>
+                                <div style="color: var(--bg-sidebar); font-weight: 500; font-size: 0.95rem;">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">${job.period[currentLang]}</div>
+                                ${location ? `<div style="color: var(--text-light); font-size: 0.9rem;">${location}</div>` : ''}
+                            </div>
+                        </div>
+                        <div style="color: var(--text-light); line-height: 1.7;">
+                            <p style="margin-bottom: 0.75rem;">${jobDesc.description}</p>
+                            <ul style="list-style: none; padding-left: 0; margin-top: 0.75rem;">
+                                ${jobDesc.bullets.map(bullet => `<li style="padding: 0.35rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><span style="position: absolute; left: 0; color: var(--bg-sidebar); font-weight: bold;">▸</span>${bullet}</li>`).join('')}
+                            </ul>
+                            <div style="background: var(--bg-light); padding: 1rem; border-radius: 6px; margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                                <strong style="color: var(--bg-sidebar);">${currentLang === 'pt' ? 'Tecnologias e ferramentas:' : 'Technologies and tools:'}</strong> ${jobDesc.technologies}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
             // Tech stack
             const techStack = document.getElementById('tech-stack');

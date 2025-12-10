@@ -29,6 +29,10 @@
         "pt": "EventsFinder (projeto pessoal)",
         "en": "EventsFinder (personal project)"
       },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
       "key": "eventsfinder"
     },
     {
@@ -43,6 +47,10 @@
       "company": {
         "pt": "UBS",
         "en": "UBS"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
       },
       "key": "ubs"
     },
@@ -59,6 +67,10 @@
         "pt": "Ninecon",
         "en": "Ninecon"
       },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
+      },
       "key": "ninecon"
     },
     {
@@ -73,6 +85,10 @@
       "company": {
         "pt": "Despegar",
         "en": "Despegar"
+      },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
       },
       "key": "despegar1"
     },
@@ -89,6 +105,10 @@
         "pt": "Gol Airlines",
         "en": "Gol Airlines"
       },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
+      },
       "key": "gol"
     },
     {
@@ -103,6 +123,10 @@
       "company": {
         "pt": "ViajaNet",
         "en": "ViajaNet"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
       },
       "key": "viajanet"
     },
@@ -119,6 +143,10 @@
         "pt": "Claro Brasil",
         "en": "Claro Brazil"
       },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
       "key": "claro"
     },
     {
@@ -133,6 +161,10 @@
       "company": {
         "pt": "CVC Viagens",
         "en": "CVC Travel"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
       },
       "key": "cvc"
     },
@@ -149,6 +181,10 @@
         "pt": "B2W Viagens",
         "en": "B2W Travel"
       },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
       "key": "b2w"
     },
     {
@@ -164,6 +200,10 @@
         "pt": "Alafia Consultoria",
         "en": "Alafia Consulting"
       },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
       "key": "alafia"
     },
     {
@@ -178,6 +218,10 @@
       "company": {
         "pt": "UOL Diveo",
         "en": "UOL Diveo"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
       },
       "key": "uol"
     }
