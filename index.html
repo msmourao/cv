@@ -359,9 +359,13 @@
         
         .timeline-header {
             margin-bottom: 1rem;
+        }
+        
+        .timeline-header-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 0.25rem;
         }
         
         .timeline-header-left {
@@ -376,24 +380,26 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0;
         }
         
         .timeline-company {
             color: var(--bg-sidebar);
             font-weight: 500;
             font-size: 0.95rem;
+            margin-top: 0.25rem;
         }
         
         .timeline-period {
             color: var(--text-light);
             font-size: 0.9rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0;
         }
         
         .timeline-location {
             color: var(--text-light);
             font-size: 0.9rem;
+            margin-top: 0.25rem;
         }
         
         .timeline-content {
@@ -619,10 +625,14 @@
             background: var(--white);
             min-height: calc(100vh - 60px);
             padding-bottom: 80px;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .mobile-section.active {
             display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         /* Hide mobile sections on desktop */
@@ -931,24 +941,28 @@
             .resume-wrapper {
                 grid-template-columns: 1fr;
                 display: none !important;
+                visibility: hidden !important;
             }
             
             .sidebar,
             .main-content {
                 display: none !important;
+                visibility: hidden !important;
             }
             
             .mobile-nav {
-                display: block !important;
+                display: flex !important;
                 position: fixed !important;
                 bottom: 0 !important;
                 left: 0 !important;
                 right: 0 !important;
                 z-index: 999 !important;
+                visibility: visible !important;
             }
             
             .mobile-section {
                 display: none !important;
+                visibility: hidden !important;
             }
             
             .mobile-section.active {
@@ -1468,6 +1482,46 @@
                 document.getElementById('mobile-key-achievements').innerHTML = mobileKeyAchievementsHTML;
             }
 
+            // Function to convert date to MM/yyyy format
+            function formatDateToMMYYYY(dateStr, lang) {
+                const monthMapPt = {
+                    'janeiro': '01', 'fevereiro': '02', 'março': '03', 'abril': '04',
+                    'maio': '05', 'junho': '06', 'julho': '07', 'agosto': '08',
+                    'setembro': '09', 'outubro': '10', 'novembro': '11', 'dezembro': '12'
+                };
+                const monthMapEn = {
+                    'january': '01', 'february': '02', 'march': '03', 'april': '04',
+                    'may': '05', 'june': '06', 'july': '07', 'august': '08',
+                    'september': '09', 'october': '10', 'november': '11', 'december': '12'
+                };
+                
+                const monthMap = lang === 'pt' ? monthMapPt : monthMapEn;
+                const present = lang === 'pt' ? 'Presente' : 'Present';
+                
+                if (dateStr.includes('–') || dateStr.includes('—') || dateStr.includes('-')) {
+                    const separator = dateStr.includes('–') ? '–' : (dateStr.includes('—') ? '—' : '-');
+                    const parts = dateStr.split(separator).map(s => s.trim());
+                    
+                    const formatPart = (part) => {
+                        if (part.toLowerCase() === present.toLowerCase()) {
+                            return lang === 'pt' ? 'Presente' : 'Present';
+                        }
+                        const words = part.toLowerCase().split(' ');
+                        if (words.length >= 2) {
+                            const month = words[0];
+                            const year = words[1];
+                            const monthNum = monthMap[month] || month;
+                            return `${monthNum}/${year}`;
+                        }
+                        return part;
+                    };
+                    
+                    return `${formatPart(parts[0])} - ${formatPart(parts[1])}`;
+                }
+                
+                return dateStr;
+            }
+
             // Work experience
             const workExp = document.getElementById('work-experience');
             workExp.innerHTML = cvData.workExperience.map(job => {
@@ -1475,17 +1529,26 @@
                 if (!jobDesc) return '';
                 
                 const location = job.location ? job.location[currentLang] : '';
+                const formattedPeriod = formatDateToMMYYYY(job.period[currentLang], currentLang);
                 
                 return `
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <div class="timeline-header-left">
-                                <div class="timeline-title">${job.title[currentLang]}</div>
-                                <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
+                            <div class="timeline-header-row">
+                                <div class="timeline-header-left">
+                                    <div class="timeline-title">${job.title[currentLang]}</div>
+                                </div>
+                                <div class="timeline-header-right">
+                                    <div class="timeline-period">${formattedPeriod}</div>
+                                </div>
                             </div>
-                            <div class="timeline-header-right">
-                                <div class="timeline-period">${job.period[currentLang]}</div>
-                                ${location ? `<div class="timeline-location">${location}</div>` : ''}
+                            <div class="timeline-header-row">
+                                <div class="timeline-header-left">
+                                    <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
+                                </div>
+                                <div class="timeline-header-right">
+                                    ${location ? `<div class="timeline-location">${location}</div>` : ''}
+                                </div>
                             </div>
                         </div>
                         <div class="timeline-content">
@@ -1507,16 +1570,23 @@
                 if (!jobDesc) return '';
                 
                 const location = job.location ? job.location[currentLang] : '';
+                const formattedPeriod = formatDateToMMYYYY(job.period[currentLang], currentLang);
                 
                 return `
                     <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-color);">${job.title[currentLang]}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: var(--text-light); font-size: 0.9rem;">${formattedPeriod}</div>
+                            </div>
+                        </div>
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                             <div style="flex: 1;">
-                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.25rem;">${job.title[currentLang]}</div>
                                 <div style="color: var(--bg-sidebar); font-weight: 500; font-size: 0.95rem;">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">${job.period[currentLang]}</div>
                                 ${location ? `<div style="color: var(--text-light); font-size: 0.9rem;">${location}</div>` : ''}
                             </div>
                         </div>
