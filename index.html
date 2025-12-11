@@ -78,10 +78,6 @@
                 background: var(--bg-light);
                 border-color: var(--border-color);
             }
-            
-            .mobile-section {
-                background: var(--bg-light);
-            }
         }
         
         * {
@@ -99,6 +95,9 @@
             margin: 0;
         }
         
+        /* ============================================
+           DESKTOP LAYOUT (Default)
+           ============================================ */
         .resume-wrapper {
             background: var(--white);
             max-width: 1200px;
@@ -210,14 +209,13 @@
         .tech-stack-list,
         .hobbies-list {
             list-style: none;
+            padding: 0;
         }
         
         .tech-stack-list {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            list-style: none;
-            padding: 0;
         }
         
         .tech-stack-list li {
@@ -619,31 +617,209 @@
             font-size: 1.5rem;
         }
         
-        .mobile-section {
-            display: none;
-            padding: 2rem 1rem;
-            background: var(--white);
-            min-height: calc(100vh - 60px);
-            padding-bottom: 80px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .mobile-section.active {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Hide mobile sections on desktop */
-        @media (min-width: 769px) and not print {
-            .mobile-nav,
-            .mobile-section {
-                display: none !important;
+        /* ============================================
+           MOBILE LAYOUT
+           ============================================ */
+        @media (max-width: 768px) and not print {
+            body {
+                padding-bottom: 80px;
+            }
+            
+            .resume-wrapper {
+                display: block;
+                max-width: 100%;
+            }
+            
+            /* Header sempre fixo no topo */
+            .header-section {
+                position: sticky;
+                top: 0;
+                background: var(--white);
+                z-index: 10;
+                padding: 1.5rem 1rem;
+                margin-bottom: 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            /* Sidebar perde efeito de sidebar */
+            .sidebar {
+                background: var(--white);
+                color: var(--text-color);
+                padding: 2rem 1rem;
+            }
+            
+            /* Profile section no mobile */
+            .profile-section {
+                text-align: center;
+                margin-bottom: 2rem;
+                display: none;
+            }
+            
+            .profile-section.active {
+                display: block;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                border: 3px solid var(--bg-sidebar);
+            }
+            
+            /* Contact section no mobile */
+            .contact-section {
+                margin-bottom: 2rem;
+                display: none;
+            }
+            
+            .contact-section.active {
+                display: block;
+            }
+            
+            .contact-item {
+                color: var(--text-color);
+            }
+            
+            .contact-item a {
+                color: var(--text-color);
+            }
+            
+            .contact-item i {
+                color: var(--bg-sidebar);
+            }
+            
+            /* Sidebar sections ocultas por padrão no mobile */
+            .sidebar-section {
+                display: none;
+                margin-bottom: 2rem;
+            }
+            
+            /* Seções ativas visíveis */
+            .sidebar-section.active {
+                display: block;
+            }
+            
+            /* Títulos das seções no mobile */
+            .sidebar-section-title {
+                color: var(--text-color);
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Summary text no mobile */
+            .summary-text {
+                color: var(--text-light);
+                line-height: 1.7;
+            }
+            
+            /* Key achievements no mobile */
+            .key-achievement-item {
+                margin-bottom: 1.5rem;
+            }
+            
+            .key-achievement-icon {
+                color: var(--bg-sidebar);
+                font-size: 1.5rem;
+            }
+            
+            .key-achievement-content h4 {
+                color: var(--text-color);
+                font-size: 0.95rem;
+            }
+            
+            .key-achievement-content p {
+                color: var(--text-light);
+                font-size: 0.85rem;
+            }
+            
+            /* Tech stack no mobile */
+            .tech-stack-list {
+                gap: 1rem;
+            }
+            
+            .tech-stack-list li {
+                color: var(--text-color);
+            }
+            
+            /* Education no mobile */
+            .education-title {
+                color: var(--text-color);
+            }
+            
+            .education-institution,
+            .education-period {
+                color: var(--text-light);
+            }
+            
+            /* Languages no mobile */
+            .language-name {
+                color: var(--text-color);
+            }
+            
+            .language-level {
+                color: var(--text-light);
+            }
+            
+            .language-dot.filled {
+                background: var(--bg-sidebar);
+            }
+            
+            /* Projects no mobile */
+            .project-title {
+                color: var(--text-color);
+            }
+            
+            .project-description {
+                color: var(--text-light);
+            }
+            
+            /* Hobbies no mobile */
+            .hobbies-list li {
+                color: var(--text-light);
+                padding: 0.5rem 0;
+            }
+            
+            /* Main content no mobile */
+            .main-content {
+                padding: 2rem 1rem;
+            }
+            
+            /* Work experience section também oculta por padrão */
+            .work-experience-section {
+                display: none;
+            }
+            
+            .work-experience-section.active {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            /* Mobile nav visível */
+            .mobile-nav {
+                display: flex;
+            }
+            
+            /* Action buttons ajustados */
+            .action-buttons {
+                top: 50%;
+                right: 10px;
             }
         }
         
-        /* Print Styles */
+        /* ============================================
+           PRINT LAYOUT
+           ============================================ */
         @media print {
             @page {
                 margin: 0.5cm;
@@ -666,8 +842,7 @@
             }
             
             .action-buttons,
-            .mobile-nav,
-            .mobile-section {
+            .mobile-nav {
                 display: none !important;
             }
             
@@ -683,7 +858,6 @@
                 page-break-inside: avoid !important;
                 visibility: visible !important;
                 opacity: 1 !important;
-                position: relative !important;
             }
             
             .sidebar {
@@ -700,68 +874,15 @@
                 print-color-adjust: exact !important;
             }
             
-            .sidebar > .profile-section:first-child {
-                margin-top: 0 !important;
+            .sidebar-section {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                margin-bottom: 1.25rem !important;
             }
             
-            .sidebar > .sidebar-section:first-of-type {
+            .sidebar-section:first-of-type {
                 margin-top: 0.5rem !important;
-            }
-            
-            .main-content {
-                padding: 1.5rem !important;
-                page-break-inside: avoid !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                width: auto !important;
-            }
-            
-            .profile-section,
-            .contact-section,
-            .sidebar-section,
-            .header-section,
-            .work-experience-section,
-            .timeline-item,
-            .timeline-header,
-            .timeline-content,
-            .contact-list,
-            .tech-stack-list,
-            .hobbies-list,
-            #contact-list,
-            #tech-stack,
-            #key-achievements,
-            #education,
-            #languages,
-            #projects,
-            #hobbies,
-            #work-experience,
-            #name,
-            #tagline,
-            #summary-text {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            .tech-stack-list {
-                display: flex !important;
-            }
-            
-            img {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            ul, li {
-                display: block !important;
-                visibility: visible !important;
-            }
-            
-            .tech-stack-list li {
-                display: inline-block !important;
             }
             
             .profile-section {
@@ -776,6 +897,26 @@
                 display: block !important;
             }
             
+            .main-content {
+                padding: 1.5rem !important;
+                page-break-inside: avoid !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                width: auto !important;
+            }
+            
+            .header-section {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .work-experience-section {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
             .name {
                 font-size: 1.8rem !important;
                 margin-bottom: 0.4rem !important;
@@ -788,15 +929,6 @@
             .section-title {
                 font-size: 1.1rem !important;
                 margin-bottom: 1rem !important;
-            }
-            
-            .sidebar-section {
-                margin-bottom: 1.25rem !important;
-                page-break-inside: avoid !important;
-            }
-            
-            .sidebar-section:first-of-type {
-                margin-top: 0.5rem !important;
             }
             
             .sidebar-section-title {
@@ -824,24 +956,6 @@
                 margin: 0 !important;
                 padding: 0 !important;
                 white-space: nowrap !important;
-            }
-            
-            .hobbies-list li,
-            .contact-item {
-                font-size: 0.75rem !important;
-            }
-            
-            .key-achievement-item {
-                margin-bottom: 1rem !important;
-            }
-            
-            .key-achievement-icon {
-                font-size: 1.2rem !important;
-            }
-            
-            .key-achievement-content h4 {
-                font-size: 0.85rem !important;
-                margin-bottom: 0.4rem !important;
             }
             
             .timeline-item {
@@ -920,75 +1034,6 @@
                 margin-bottom: 0.5rem !important;
             }
         }
-        
-        /* Desktop/Tablet */
-        @media (max-width: 1024px) {
-            .resume-wrapper {
-                grid-template-columns: 300px 1fr;
-            }
-            
-            .sidebar {
-                padding: 1.5rem;
-            }
-            
-            .main-content {
-                padding: 2rem;
-            }
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) and not print {
-            .resume-wrapper {
-                grid-template-columns: 1fr;
-                display: none !important;
-                visibility: hidden !important;
-            }
-            
-            .sidebar,
-            .main-content {
-                display: none !important;
-                visibility: hidden !important;
-            }
-            
-            .mobile-nav {
-                display: flex !important;
-                position: fixed !important;
-                bottom: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-                z-index: 999 !important;
-                visibility: visible !important;
-            }
-            
-            .mobile-section {
-                display: none !important;
-                visibility: hidden !important;
-            }
-            
-            .mobile-section.active {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            .action-buttons {
-                top: 50%;
-                right: 10px;
-                transform: translateY(-50%);
-            }
-            
-            .action-buttons-container {
-                padding: 0.4rem;
-            }
-            
-            body {
-                padding-bottom: 80px !important;
-            }
-            
-            html, body {
-                overflow-x: hidden;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1029,165 +1074,110 @@
         </div>
     </div>
     
-    <!-- Desktop/Tablet Layout -->
+    <!-- Unified Layout - CSS reorganizes for desktop/mobile/print -->
     <div class="resume-wrapper">
-        <!-- Left Sidebar -->
-        <div class="sidebar">
-            <div class="profile-section">
+        <!-- Header (fixed on top in mobile) -->
+        <header class="header-section">
+            <h1 class="name" id="name">Marcelo Mourao</h1>
+            <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
+        </header>
+        
+        <!-- Left Sidebar (becomes regular sections in mobile) -->
+        <aside class="sidebar">
+            <section class="profile-section">
                 <img id="profile-image" src="marcelo.png" alt="Marcelo Mourao" class="profile-image">
-            </div>
+            </section>
             
-            <div class="contact-section">
+            <section class="contact-section">
                 <ul class="contact-list" id="contact-list">
                     <!-- Populated by JavaScript -->
                 </ul>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-summary">Resumo</h3>
+            <section class="sidebar-section" data-section="summary">
+                <h2 class="sidebar-section-title" id="section-summary">Resumo</h2>
                 <p class="summary-text" id="summary-text">Loading...</p>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-tech">Tech Stack</h3>
+            <section class="sidebar-section" data-section="skills">
+                <h2 class="sidebar-section-title" id="section-tech">Skills</h2>
                 <ul class="tech-stack-list" id="tech-stack">
                     <!-- Populated by JavaScript -->
                 </ul>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-key-achievements">Principais Conquistas</h3>
+            <section class="sidebar-section" data-section="achievements">
+                <h2 class="sidebar-section-title" id="section-key-achievements">Principais Conquistas</h2>
                 <div id="key-achievements">
                     <!-- Populated by JavaScript -->
                 </div>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-education">Formação</h3>
+            <section class="sidebar-section" data-section="education">
+                <h2 class="sidebar-section-title" id="section-education">Formação</h2>
                 <div id="education">
                     <!-- Populated by JavaScript -->
                 </div>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-languages">Idiomas</h3>
+            <section class="sidebar-section" data-section="languages">
+                <h2 class="sidebar-section-title" id="section-languages">Idiomas</h2>
                 <div id="languages">
                     <!-- Populated by JavaScript -->
                 </div>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-projects">Projetos</h3>
+            <section class="sidebar-section" data-section="projects">
+                <h2 class="sidebar-section-title" id="section-projects">Projetos</h2>
                 <div id="projects">
                     <!-- Populated by JavaScript -->
                 </div>
-            </div>
+            </section>
             
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title" id="section-hobbies">Hobbies</h3>
+            <section class="sidebar-section" data-section="hobbies">
+                <h2 class="sidebar-section-title" id="section-hobbies">Hobbies</h2>
                 <ul class="hobbies-list" id="hobbies">
                     <!-- Populated by JavaScript -->
                 </ul>
-            </div>
-        </div>
+            </section>
+        </aside>
         
         <!-- Right Main Content -->
-        <div class="main-content">
-            <div class="header-section">
-                <h1 class="name" id="name">Marcelo Mourao</h1>
-                <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
-            </div>
-            
-            <div class="work-experience-section">
+        <main class="main-content">
+            <section class="work-experience-section" data-section="experience">
                 <h2 class="section-title" id="section-work">Experiência Profissional</h2>
                 <div id="work-experience">
                     <!-- Populated by JavaScript -->
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
     
     <!-- Mobile Navigation -->
-    <div class="mobile-nav">
-            <div class="mobile-nav-items">
-            <div class="mobile-nav-item active" data-section="about" onclick="showMobileSection('about', event)">
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item active" data-section="about" onclick="showSection('about')">
                 <i class="bi bi-person"></i>
-                <span id="mobile-nav-about">About</span>
+                <span id="mobile-nav-about">Sobre</span>
             </div>
-            <div class="mobile-nav-item" data-section="tech" onclick="showMobileSection('tech', event)">
+            <div class="mobile-nav-item" data-section="tech" onclick="showSection('tech')">
                 <i class="bi bi-code-slash"></i>
                 <span id="mobile-nav-tech">Tech</span>
             </div>
-            <div class="mobile-nav-item" data-section="education" onclick="showMobileSection('education', event)">
+            <div class="mobile-nav-item" data-section="education" onclick="showSection('education')">
                 <i class="bi bi-mortarboard"></i>
-                <span id="mobile-nav-education">Education</span>
+                <span id="mobile-nav-education">Formação</span>
             </div>
-            <div class="mobile-nav-item" data-section="projects" onclick="showMobileSection('projects', event)">
+            <div class="mobile-nav-item" data-section="projects" onclick="showSection('projects')">
                 <i class="bi bi-folder"></i>
-                <span id="mobile-nav-projects">Projects</span>
+                <span id="mobile-nav-projects">Projetos</span>
             </div>
-            <div class="mobile-nav-item" data-section="experience" onclick="showMobileSection('experience', event)">
+            <div class="mobile-nav-item" data-section="experience" onclick="showSection('experience')">
                 <i class="bi bi-briefcase"></i>
-                <span id="mobile-nav-experience">Experience</span>
+                <span id="mobile-nav-experience">Experiência</span>
             </div>
         </div>
-    </div>
-    
-    <!-- Mobile Sections -->
-    <div id="mobile-about" class="mobile-section active">
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <img id="mobile-profile-image" src="marcelo.png" alt="Marcelo Mourao" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--bg-sidebar); object-fit: cover; margin-bottom: 1rem;">
-            <h1 id="mobile-name" style="font-size: 1.8rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem;">Marcelo Mourao</h1>
-            <div id="mobile-tagline" style="font-size: 1rem; color: var(--bg-sidebar); font-weight: 500; margin-bottom: 2rem;">Desenvolvedor Sênior e Arquiteto de Software</div>
-        </div>
-        <div id="mobile-contact">
-            <!-- Populated by JavaScript -->
-        </div>
-        <div style="margin-top: 2rem;">
-            <h3 id="mobile-about-summary-title" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-color);">Summary</h3>
-            <p id="mobile-summary" style="color: var(--text-light); line-height: 1.7;">Loading...</p>
-        </div>
-    </div>
-    
-    <div id="mobile-tech" class="mobile-section">
-        <h2 id="mobile-tech-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Skills</h2>
-        <ul id="mobile-tech-stack" style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem;">
-            <!-- Populated by JavaScript -->
-        </ul>
-        <h2 id="mobile-key-achievements-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Key Achievements</h2>
-        <div id="mobile-key-achievements">
-            <!-- Populated by JavaScript -->
-        </div>
-    </div>
-    
-    <div id="mobile-education" class="mobile-section">
-        <h2 id="mobile-education-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Education</h2>
-        <div id="mobile-education-content">
-            <!-- Populated by JavaScript -->
-        </div>
-        <h2 id="mobile-languages-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Languages</h2>
-        <div id="mobile-languages">
-            <!-- Populated by JavaScript -->
-        </div>
-    </div>
-    
-    <div id="mobile-projects" class="mobile-section">
-        <h2 id="mobile-projects-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Projects</h2>
-        <div id="mobile-projects-content">
-            <!-- Populated by JavaScript -->
-        </div>
-        <h2 id="mobile-hobbies-title" style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text-color);">Hobbies</h2>
-        <ul id="mobile-hobbies" style="list-style: none; padding: 0;">
-            <!-- Populated by JavaScript -->
-        </ul>
-    </div>
-    
-    <div id="mobile-experience" class="mobile-section">
-        <h2 id="mobile-experience-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-color);">Work Experience</h2>
-        <div id="mobile-work-experience">
-            <!-- Populated by JavaScript -->
-        </div>
-    </div>
+    </nav>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -1237,21 +1227,13 @@
             document.getElementById('lang-pt').classList.toggle('active', currentLang === 'pt');
             document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
         }
-        
+
         function toggleShareMenu() {
             const menu = document.getElementById('share-menu');
             menu.classList.toggle('show');
         }
-        
-        document.addEventListener('click', function(event) {
-            const shareWrapper = document.querySelector('.share-button-wrapper');
-            const shareMenu = document.getElementById('share-menu');
-            if (shareWrapper && shareMenu && !shareWrapper.contains(event.target)) {
-                shareMenu.classList.remove('show');
-            }
-        });
-        
-        async function shareViaWhatsApp(event) {
+
+        function shareViaWhatsApp(event) {
             event.preventDefault();
             const menu = document.getElementById('share-menu');
             menu.classList.remove('show');
@@ -1289,17 +1271,55 @@
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
         }
         
-        function showMobileSection(section, event) {
-            document.querySelectorAll('.mobile-nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.mobile-section').forEach(sec => sec.classList.remove('active'));
+        // Simplified section toggle - apenas adiciona/remove classe active
+        function showSection(sectionName) {
+            // Remove active de todos os nav items
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
             
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                const navItem = document.querySelector(`[data-section="${section}"]`);
-                if (navItem) navItem.classList.add('active');
+            // Remove active de todas as seções
+            document.querySelectorAll('.sidebar-section, .work-experience-section, .profile-section, .contact-section').forEach(sec => {
+                sec.classList.remove('active');
+                if (sec.style) sec.style.display = '';
+            });
+            
+            // Adiciona active no nav item correspondente
+            const navItem = document.querySelector(`.mobile-nav-item[data-section="${sectionName}"]`);
+            if (navItem) {
+                navItem.classList.add('active');
             }
-            document.getElementById(`mobile-${section}`).classList.add('active');
+            
+            // Mapeamento de seções mobile
+            if (sectionName === 'about') {
+                // About: profile + contact + summary
+                document.querySelector('.profile-section').classList.add('active');
+                document.querySelector('.contact-section').classList.add('active');
+                const summarySection = document.querySelector('[data-section="summary"]');
+                if (summarySection) summarySection.classList.add('active');
+            } else if (sectionName === 'tech') {
+                // Tech: skills + achievements
+                const skillsSection = document.querySelector('[data-section="skills"]');
+                const achievementsSection = document.querySelector('[data-section="achievements"]');
+                if (skillsSection) skillsSection.classList.add('active');
+                if (achievementsSection) achievementsSection.classList.add('active');
+            } else if (sectionName === 'education') {
+                // Education: education + languages
+                const educationSection = document.querySelector('[data-section="education"]');
+                const languagesSection = document.querySelector('[data-section="languages"]');
+                if (educationSection) educationSection.classList.add('active');
+                if (languagesSection) languagesSection.classList.add('active');
+            } else if (sectionName === 'projects') {
+                // Projects: projects + hobbies
+                const projectsSection = document.querySelector('[data-section="projects"]');
+                const hobbiesSection = document.querySelector('[data-section="hobbies"]');
+                if (projectsSection) projectsSection.classList.add('active');
+                if (hobbiesSection) hobbiesSection.classList.add('active');
+            } else if (sectionName === 'experience') {
+                // Experience: work experience
+                const experienceSection = document.querySelector('[data-section="experience"]');
+                if (experienceSection) experienceSection.classList.add('active');
+            }
         }
 
         function renderCV() {
@@ -1326,11 +1346,6 @@
             document.getElementById('name').textContent = cvData.personal.name;
             document.getElementById('tagline').textContent = cvData.personal.tagline[currentLang];
             document.getElementById('profile-image').src = cvData.personal.photo;
-            
-            // Mobile header
-            document.getElementById('mobile-name').textContent = cvData.personal.name;
-            document.getElementById('mobile-tagline').textContent = cvData.personal.tagline[currentLang];
-            document.getElementById('mobile-profile-image').src = cvData.personal.photo;
 
             // Contact list
             const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
@@ -1361,41 +1376,6 @@
             `;
             
             document.getElementById('contact-list').innerHTML = contactHTML;
-            
-            // Mobile contact
-            document.getElementById('mobile-contact').innerHTML = `
-                <div style="margin-bottom: 1rem;">
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                        <i class="bi bi-geo-alt" style="color: var(--bg-sidebar);"></i>
-                        <span>${cvData.personal.location[currentLang]}</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                        <a href="${whatsappUrl}" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-color); text-decoration: none;">
-                            <i class="bi bi-telephone" style="color: var(--bg-sidebar);"></i>
-                            <i class="bi bi-whatsapp" style="color: #25D366;"></i>
-                            <span>${cvData.personal.phone}</span>
-                        </a>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                        <a href="${emailUrl}" style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-color); text-decoration: none;">
-                            <i class="bi bi-envelope" style="color: var(--bg-sidebar);"></i>
-                            <span>${cvData.personal.email}</span>
-                        </a>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                        <a href="${cvData.personal.linkedin}" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-color); text-decoration: none;">
-                            <i class="bi bi-linkedin" style="color: var(--bg-sidebar);"></i>
-                            <span>linkedin.com/in/msmourao</span>
-                        </a>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        <a href="${cvData.personal.github}" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-color); text-decoration: none;">
-                            <i class="bi bi-github" style="color: var(--bg-sidebar);"></i>
-                            <span>github.com/msmourao</span>
-                        </a>
-                    </div>
-                </div>
-            `;
 
             // Sections titles
             document.getElementById('section-summary').textContent = descriptions.sections.summary;
@@ -1423,29 +1403,13 @@
 
             // Summary
             document.getElementById('summary-text').textContent = descriptions.about;
-            document.getElementById('mobile-summary').textContent = descriptions.about;
 
             // Tech stack
             const techStack = document.getElementById('tech-stack');
             techStack.innerHTML = cvData.techStack.map(tech => 
                 `<li>${tech}</li>`
             ).join('');
-            
-            // Mobile tech stack
-            document.getElementById('mobile-tech-stack').innerHTML = cvData.techStack.map(tech => 
-                `<li style="color: var(--text-color); text-decoration: underline; text-underline-offset: 3px;">${tech}</li>`
-            ).join('');
-            
-            // Mobile section titles
-            document.getElementById('mobile-tech-title').textContent = descriptions.sections.techStack;
-            document.getElementById('mobile-key-achievements-title').textContent = descriptions.sections.keyAchievements;
-            document.getElementById('mobile-education-title').textContent = descriptions.sections.education;
-            document.getElementById('mobile-languages-title').textContent = descriptions.sections.languages;
-            document.getElementById('mobile-projects-title').textContent = descriptions.sections.projects;
-            document.getElementById('mobile-hobbies-title').textContent = descriptions.sections.hobbies;
-            document.getElementById('mobile-experience-title').textContent = descriptions.sections.workExperience;
-            document.getElementById('mobile-about-summary-title').textContent = descriptions.sections.summary;
-            
+
             // Mobile navigation labels
             const navLabels = currentLang === 'pt' 
                 ? { about: 'Sobre', tech: 'Tech', education: 'Formação', projects: 'Projetos', experience: 'Experiência' }
@@ -1468,18 +1432,6 @@
                     </div>
                 `).join('');
                 document.getElementById('key-achievements').innerHTML = keyAchievementsHTML;
-                
-                // Mobile
-                const mobileKeyAchievementsHTML = descriptions.keyAchievements.map(achievement => `
-                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start;">
-                        <i class="bi ${achievement.icon}" style="font-size: 1.5rem; color: var(--bg-sidebar); flex-shrink: 0; margin-top: 0.2rem;"></i>
-                        <div>
-                            <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-color);">${achievement.title}</h4>
-                            <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-light);">${achievement.description}</p>
-                        </div>
-                    </div>
-                `).join('');
-                document.getElementById('mobile-key-achievements').innerHTML = mobileKeyAchievementsHTML;
             }
 
             // Function to convert date to MM/yyyy format
@@ -1532,11 +1484,11 @@
                 const formattedPeriod = formatDateToMMYYYY(job.period[currentLang], currentLang);
                 
                 return `
-                    <div class="timeline-item">
+                    <article class="timeline-item">
                         <div class="timeline-header">
                             <div class="timeline-header-row">
                                 <div class="timeline-header-left">
-                                    <div class="timeline-title">${job.title[currentLang]}</div>
+                                    <h3 class="timeline-title">${job.title[currentLang]}</h3>
                                 </div>
                                 <div class="timeline-header-right">
                                     <div class="timeline-period">${formattedPeriod}</div>
@@ -1560,46 +1512,7 @@
                                 <strong>${currentLang === 'pt' ? 'Tecnologias e ferramentas:' : 'Technologies and tools:'}</strong> ${jobDesc.technologies}
                             </div>
                         </div>
-                    </div>
-                `;
-            }).join('');
-            
-            // Mobile work experience
-            document.getElementById('mobile-work-experience').innerHTML = cvData.workExperience.map(job => {
-                const jobDesc = descriptions.workExperience[job.key];
-                if (!jobDesc) return '';
-                
-                const location = job.location ? job.location[currentLang] : '';
-                const formattedPeriod = formatDateToMMYYYY(job.period[currentLang], currentLang);
-                
-                return `
-                    <div style="margin-bottom: 2rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                            <div style="flex: 1;">
-                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-color);">${job.title[currentLang]}</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="color: var(--text-light); font-size: 0.9rem;">${formattedPeriod}</div>
-                            </div>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                            <div style="flex: 1;">
-                                <div style="color: var(--bg-sidebar); font-weight: 500; font-size: 0.95rem;">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
-                            </div>
-                            <div style="text-align: right;">
-                                ${location ? `<div style="color: var(--text-light); font-size: 0.9rem;">${location}</div>` : ''}
-                            </div>
-                        </div>
-                        <div style="color: var(--text-light); line-height: 1.7;">
-                            <p style="margin-bottom: 0.75rem;">${jobDesc.description}</p>
-                            <ul style="list-style: none; padding-left: 0; margin-top: 0.75rem;">
-                                ${jobDesc.bullets.map(bullet => `<li style="padding: 0.35rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><span style="position: absolute; left: 0; color: var(--bg-sidebar); font-weight: bold;">▸</span>${bullet}</li>`).join('')}
-                            </ul>
-                            <div style="background: var(--bg-light); padding: 1rem; border-radius: 6px; margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
-                                <strong style="color: var(--bg-sidebar);">${currentLang === 'pt' ? 'Tecnologias e ferramentas:' : 'Technologies and tools:'}</strong> ${jobDesc.technologies}
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 `;
             }).join('');
 
@@ -1611,16 +1524,6 @@
                     <div class="education-institution">${edu.institution}</div>
                     <div class="education-period">${edu.period[currentLang]}</div>
                     ${edu.note ? `<div class="education-period" style="font-style: italic; margin-top: 0.25rem;">${edu.note[currentLang]}</div>` : ''}
-                </div>
-            `).join('');
-            
-            // Mobile education
-            document.getElementById('mobile-education-content').innerHTML = cvData.education.map(edu => `
-                <div style="margin-bottom: 1.5rem;">
-                    <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; color: var(--text-color);">${edu.title[currentLang]}</div>
-                    <div style="font-size: 0.9rem; color: var(--bg-sidebar); margin-bottom: 0.25rem;">${edu.institution}</div>
-                    <div style="font-size: 0.85rem; color: var(--text-light);">${edu.period[currentLang]}</div>
-                    ${edu.note ? `<div style="font-size: 0.85rem; color: var(--text-light); font-style: italic; margin-top: 0.25rem;">${edu.note[currentLang]}</div>` : ''}
                 </div>
             `).join('');
 
@@ -1641,23 +1544,6 @@
                     </div>
                 `;
             }).join('');
-            
-            // Mobile languages
-            document.getElementById('mobile-languages').innerHTML = cvData.languages.map(lang => {
-                const dots = Array(5).fill(0).map((_, i) => 
-                    `<div style="width: 10px; height: 10px; border-radius: 50%; background: ${i < lang.dots ? 'var(--bg-sidebar)' : 'var(--border-color)'};"></div>`
-                ).join('');
-                
-                return `
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <div>
-                            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--text-color);">${lang.name[currentLang]}</div>
-                            <div style="font-size: 0.85rem; color: var(--text-light);">${lang.level[currentLang]}</div>
-                        </div>
-                        <div style="display: flex; gap: 0.35rem;">${dots}</div>
-                    </div>
-                `;
-            }).join('');
 
             // Projects
             const projects = document.getElementById('projects');
@@ -1672,29 +1558,11 @@
                     </div>
                 `;
             }).join('');
-            
-            // Mobile projects
-            document.getElementById('mobile-projects-content').innerHTML = cvData.projects.map(proj => {
-                const projDesc = descriptions.projects[proj.key];
-                if (!projDesc) return '';
-                
-                return `
-                    <div style="margin-bottom: 1.5rem;">
-                        <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-color);">${projDesc.name}</div>
-                        <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-light);">${projDesc.description}</div>
-                    </div>
-                `;
-            }).join('');
 
             // Hobbies
             const hobbies = document.getElementById('hobbies');
             hobbies.innerHTML = cvData.hobbies.map(hobby => 
                 `<li>${hobby[currentLang]}</li>`
-            ).join('');
-            
-            // Mobile hobbies
-            document.getElementById('mobile-hobbies').innerHTML = cvData.hobbies.map(hobby => 
-                `<li style="padding: 0.5rem 0; color: var(--text-light);">${hobby[currentLang]}</li>`
             ).join('');
         }
 
@@ -1712,6 +1580,11 @@
         document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
         updateLanguageButtons();
         loadData();
+        
+        // Initialize mobile: mostrar seção "about" por padrão
+        if (window.innerWidth <= 768) {
+            showSection('about');
+        }
     </script>
 </body>
 </html>
