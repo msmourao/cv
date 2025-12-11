@@ -630,7 +630,11 @@
                 max-width: 100%;
             }
             
-            /* Header sempre fixo no topo */
+            /* Header sempre fixo no topo - mover para fora do main-content no mobile */
+            .main-content {
+                padding: 0;
+            }
+            
             .header-section {
                 position: sticky;
                 top: 0;
@@ -1076,12 +1080,6 @@
     
     <!-- Unified Layout - CSS reorganizes for desktop/mobile/print -->
     <div class="resume-wrapper">
-        <!-- Header (fixed on top in mobile) -->
-        <header class="header-section">
-            <h1 class="name" id="name">Marcelo Mourao</h1>
-            <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
-        </header>
-        
         <!-- Left Sidebar (becomes regular sections in mobile) -->
         <aside class="sidebar">
             <section class="profile-section">
@@ -1144,6 +1142,12 @@
         
         <!-- Right Main Content -->
         <main class="main-content">
+            <!-- Header (fixed on top in mobile) -->
+            <header class="header-section">
+                <h1 class="name" id="name">Marcelo Mourao</h1>
+                <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
+            </header>
+            
             <section class="work-experience-section" data-section="experience">
                 <h2 class="section-title" id="section-work">Experiência Profissional</h2>
                 <div id="work-experience">
