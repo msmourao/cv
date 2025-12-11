@@ -630,7 +630,7 @@
                 max-width: 100%;
             }
             
-            /* Header sempre fixo no topo - mover para fora do main-content no mobile */
+            /* Header sempre fixo no topo */
             .main-content {
                 padding: 0;
             }
@@ -643,6 +643,10 @@
                 padding: 1.5rem 1rem;
                 margin-bottom: 0;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .work-experience-section {
+                padding: 0 1rem;
             }
             
             .name {
@@ -788,11 +792,6 @@
             .hobbies-list li {
                 color: var(--text-light);
                 padding: 0.5rem 0;
-            }
-            
-            /* Main content no mobile */
-            .main-content {
-                padding: 2rem 1rem;
             }
             
             /* Work experience section também oculta por padrão */
@@ -1568,6 +1567,11 @@
             hobbies.innerHTML = cvData.hobbies.map(hobby => 
                 `<li>${hobby[currentLang]}</li>`
             ).join('');
+            
+            // Inicializar mobile após renderizar
+            if (window.innerWidth <= 768) {
+                showSection('about');
+            }
         }
 
         // Ensure content is rendered before print
@@ -1586,9 +1590,19 @@
         loadData();
         
         // Initialize mobile: mostrar seção "about" por padrão
-        if (window.innerWidth <= 768) {
-            showSection('about');
+        function initializeMobile() {
+            if (window.innerWidth <= 768) {
+                showSection('about');
+            }
         }
+        
+        // Inicializar mobile após carregar dados
+        window.addEventListener('load', initializeMobile);
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768 && !document.querySelector('.sidebar-section.active')) {
+                showSection('about');
+            }
+        });
     </script>
 </body>
 </html>
