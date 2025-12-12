@@ -158,7 +158,6 @@
         
         .sidebar-section {
             margin-bottom: 2rem;
-            display: block; /* Desktop: sempre visível */
         }
         
         .sidebar-section:first-of-type {
@@ -675,19 +674,19 @@
                 padding: 2rem 1rem;
             }
             
-            /* MOBILE: Ocultar TODAS as seções por padrão */
-            .sidebar-section:not(.active),
-            .profile-section:not(.active),
-            .contact-section:not(.active),
-            .work-experience-section:not(.active) {
+            /* MOBILE: Ocultar TODAS as seções por padrão - especificidade alta */
+            .sidebar .sidebar-section:not(.active),
+            .sidebar .profile-section:not(.active),
+            .sidebar .contact-section:not(.active),
+            .main-content .work-experience-section:not(.active) {
                 display: none !important;
             }
             
             /* MOBILE: Mostrar apenas seções ativas */
-            .profile-section.active,
-            .contact-section.active,
-            .sidebar-section.active,
-            .work-experience-section.active {
+            .sidebar .profile-section.active,
+            .sidebar .contact-section.active,
+            .sidebar .sidebar-section.active,
+            .main-content .work-experience-section.active {
                 display: block !important;
             }
             
