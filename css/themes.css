@@ -1,0 +1,100 @@
+/* ============================================
+   THEME SYSTEM - Multiple Color Schemes
+   ============================================ */
+
+/* Default Theme: Teal (already defined in base.css) */
+[data-theme="teal"] {
+    --primary-color: #2d8659;
+    --primary-dark: #1f5d3f;
+    --bg-sidebar: #2d8659;
+}
+
+/* Blue Theme */
+[data-theme="blue"] {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --bg-sidebar: #2563eb;
+}
+
+/* Purple Theme */
+[data-theme="purple"] {
+    --primary-color: #7c3aed;
+    --primary-dark: #5b21b6;
+    --bg-sidebar: #7c3aed;
+}
+
+/* Green Theme */
+[data-theme="green"] {
+    --primary-color: #059669;
+    --primary-dark: #047857;
+    --bg-sidebar: #059669;
+}
+
+/* Orange Theme */
+[data-theme="orange"] {
+    --primary-color: #ea580c;
+    --primary-dark: #c2410c;
+    --bg-sidebar: #ea580c;
+}
+
+/* Red Theme */
+[data-theme="red"] {
+    --primary-color: #dc2626;
+    --primary-dark: #b91c1c;
+    --bg-sidebar: #dc2626;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --bg-sidebar: #1e293b;
+    --text-color: #e2e8f0;
+    --text-light: #94a3b8;
+    --bg-light: #1e293b;
+    --bg-dark: #0f172a;
+    --border-color: #334155;
+    --white: #ffffff;
+}
+
+/* Apply theme to body */
+body[data-theme] {
+    /* Theme colors are applied via CSS variables */
+}
+
+/* Theme preview colors for visual selection */
+.theme-preview[data-theme="teal"] .theme-preview-color:nth-child(1) { background: #2d8659; }
+.theme-preview[data-theme="teal"] .theme-preview-color:nth-child(2) { background: #1f5d3f; }
+.theme-preview[data-theme="teal"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="teal"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="blue"] .theme-preview-color:nth-child(1) { background: #2563eb; }
+.theme-preview[data-theme="blue"] .theme-preview-color:nth-child(2) { background: #1e40af; }
+.theme-preview[data-theme="blue"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="blue"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="purple"] .theme-preview-color:nth-child(1) { background: #7c3aed; }
+.theme-preview[data-theme="purple"] .theme-preview-color:nth-child(2) { background: #5b21b6; }
+.theme-preview[data-theme="purple"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="purple"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="green"] .theme-preview-color:nth-child(1) { background: #059669; }
+.theme-preview[data-theme="green"] .theme-preview-color:nth-child(2) { background: #047857; }
+.theme-preview[data-theme="green"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="green"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="orange"] .theme-preview-color:nth-child(1) { background: #ea580c; }
+.theme-preview[data-theme="orange"] .theme-preview-color:nth-child(2) { background: #c2410c; }
+.theme-preview[data-theme="orange"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="orange"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="red"] .theme-preview-color:nth-child(1) { background: #dc2626; }
+.theme-preview[data-theme="red"] .theme-preview-color:nth-child(2) { background: #b91c1c; }
+.theme-preview[data-theme="red"] .theme-preview-color:nth-child(3) { background: #f8fafc; }
+.theme-preview[data-theme="red"] .theme-preview-color:nth-child(4) { background: #1e293b; }
+
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(1) { background: #6366f1; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(2) { background: #1e293b; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(3) { background: #1e293b; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(4) { background: #0f172a; }
+

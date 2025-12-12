@@ -1,0 +1,245 @@
+/* ============================================
+   COMPONENT STYLES - Buttons, Navigation, Menus
+   ============================================ */
+
+/* Action Buttons */
+.action-buttons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.action-buttons-container {
+    background: var(--white);
+    padding: 0.5rem;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.language-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    align-items: center;
+}
+
+.language-switch button {
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 45px;
+    width: 100%;
+}
+
+.language-switch button.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(45, 134, 89, 0.3);
+    font-weight: 600;
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.25rem 0;
+}
+
+.action-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.print-button, 
+.share-button, 
+.theme-button {
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.print-button:hover, 
+.share-button:hover, 
+.theme-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.share-button-wrapper,
+.theme-button-wrapper {
+    position: relative;
+}
+
+.share-menu,
+.theme-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 0.75rem;
+    min-width: 200px;
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1001;
+}
+
+.share-menu.show,
+.theme-menu.show {
+    display: flex;
+}
+
+.share-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.share-menu-item:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+/* Theme Menu Items */
+.theme-menu-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.theme-option:hover {
+    background: var(--bg-light);
+}
+
+.theme-option.active {
+    border-color: var(--primary-color);
+    background: var(--bg-light);
+}
+
+.theme-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.theme-preview-color {
+    width: 50%;
+    height: 50%;
+}
+
+.theme-name {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.theme-check {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-light);
+    transition: color 0.3s;
+    font-size: 0.75rem;
+}
+
+.mobile-nav-item.active {
+    color: var(--bg-sidebar);
+}
+
+.mobile-nav-item i {
+    font-size: 1.5rem;
+}
+
