@@ -1531,11 +1531,13 @@
         // Initialize Theme Manager
         ThemeManager.init(currentLang);
         
-        // Initialize Template Manager and load template
-        TemplateManager.init().then(() => {
-            // Template loaded, now initialize mobile if needed
+        // Initialize Template Manager and load template FIRST
+        (async () => {
+            await TemplateManager.init();
+            // Template loaded, now load data and initialize
+            await loadData();
             initializeMobile();
-        });
+        })();
         
         // Função para inicializar mobile
         function initializeMobile() {
@@ -1558,28 +1560,6 @@
             // DOM já está pronto, mas aguardar template
         }
         
-        // Função wrapper para garantir inicialização mobile após loadData
-        const originalLoadData = loadData;
-        loadData = async function() {
-            try {
-                // Garantir que template está carregado antes de renderizar
-                if (!document.querySelector('.resume-wrapper').innerHTML.trim() || 
-                    document.querySelector('.resume-wrapper').innerHTML.includes('Loading')) {
-                    await TemplateManager.loadTemplate('default');
-                }
-                await originalLoadData();
-            } catch (error) {
-                console.error('Error in loadData:', error);
-            }
-            // Garantir que mobile está inicializado após renderizar
-            if (window.innerWidth <= 768) {
-                const hasActive = document.querySelector('.sidebar-section.active, .profile-section.active');
-                if (!hasActive) {
-                    showSection('about');
-                }
-            }
-        };
-        
         // Listener de resize para mobile
         window.addEventListener('resize', function() {
             if (window.innerWidth <= 768) {
@@ -1589,8 +1569,6 @@
                 }
             }
         });
-        
-        loadData();
     </script>
 </body>
 </html>
