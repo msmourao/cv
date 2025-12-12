@@ -1617,10 +1617,14 @@
             initializeMobile();
         }
         
-        // Inicializar mobile também após carregar dados
+        // Função wrapper para garantir inicialização mobile após loadData
         const originalLoadData = loadData;
         loadData = async function() {
-            await originalLoadData();
+            try {
+                await originalLoadData();
+            } catch (error) {
+                console.error('Error in loadData:', error);
+            }
             // Garantir que mobile está inicializado após renderizar
             if (window.innerWidth <= 768) {
                 const hasActive = document.querySelector('.sidebar-section.active, .profile-section.active');
