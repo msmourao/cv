@@ -727,6 +727,7 @@
             /* Sidebar sections no mobile */
             .sidebar-section {
                 margin-bottom: 2rem;
+                display: none; /* Oculto por padrão no mobile */
             }
             
             /* Títulos das seções no mobile */
@@ -1292,7 +1293,6 @@
             // Remove active de todas as seções
             document.querySelectorAll('.sidebar-section, .work-experience-section, .profile-section, .contact-section').forEach(sec => {
                 sec.classList.remove('active');
-                if (sec.style) sec.style.display = '';
             });
             
             // Adiciona active no nav item correspondente
