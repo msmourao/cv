@@ -14,19 +14,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Currículo - Marcelo Mourao</title>
+    <title id="page-title">Currículo - Marcelo Mourão</title>
+    <link rel="icon" href="data:,">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://msmourao.github.io/cv/">
-    <meta property="og:title" id="og-title" content="Currículo - Marcelo Mourao">
+    <meta property="og:title" id="og-title" content="Currículo - Marcelo Mourão">
     <meta property="og:description" id="og-description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
     <meta property="og:image" content="https://msmourao.github.io/cv/marcelo.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:url" content="https://msmourao.github.io/cv/">
-    <meta property="twitter:title" id="twitter-title" content="Currículo - Marcelo Mourao">
+    <meta property="twitter:title" id="twitter-title" content="Currículo - Marcelo Mourão">
     <meta property="twitter:description" id="twitter-description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
     <meta property="twitter:image" content="https://msmourao.github.io/cv/marcelo.png">
     
@@ -72,18 +73,19 @@
                     </div>
                 </div>
                 
-                <button class="print-button" onclick="window.print()" id="print-button-title" title="Imprimir">
+                <button class="print-button" onclick="handlePrint()" id="print-button-title" title="Imprimir">
                     <i class="bi bi-printer"></i>
                 </button>
                 
-                <button class="theme-button" onclick="ThemeManager.toggleThemeMenu()" id="theme-button-title" title="Temas">
-                    <i class="bi bi-palette-fill"></i>
-                </button>
+                <div class="theme-button-wrapper">
+                    <button class="theme-button" onclick="ThemeManager.toggleThemeMenu()" id="theme-button-title" title="Temas">
+                        <i class="bi bi-palette-fill"></i>
+                    </button>
+                    <div class="theme-menu" id="theme-menu">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="theme-menu" id="theme-menu">
-            <!-- Populated by JavaScript -->
         </div>
     </div>
 </head>
@@ -95,7 +97,7 @@
         <!-- Left Sidebar (becomes regular sections in mobile) -->
         <aside class="sidebar">
             <section class="profile-section">
-                <img id="profile-image" src="marcelo.png" alt="Marcelo Mourao" class="profile-image">
+                <img id="profile-image" src="marcelo.png" alt="Marcelo Mourão" class="profile-image">
             </section>
             
             <section class="contact-section">
@@ -154,9 +156,9 @@
         
         <!-- Right Main Content -->
         <main class="main-content">
-            <!-- Header (fixed on top in mobile) -->
+            <!-- Header (sticky on top in mobile, normal on desktop) -->
             <header class="header-section">
-                <h1 class="name" id="name">Marcelo Mourao</h1>
+                <h1 class="name" id="name">Marcelo Mourão</h1>
                 <div class="tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
             </header>
             
@@ -303,6 +305,11 @@
                 sec.classList.remove('active');
             });
             
+            // Remover headers mobile duplicados
+            document.querySelectorAll('.mobile-header-section').forEach(header => {
+                header.remove();
+            });
+            
             // Adiciona active no nav item correspondente
             const navItem = document.querySelector(`.mobile-nav-item[data-section="${sectionName}"]`);
             if (navItem) {
@@ -312,39 +319,70 @@
             // Mapeamento de seções mobile
             if (sectionName === 'about') {
                 // About: profile + contact + summary
-                document.querySelector('.profile-section').classList.add('active');
-                document.querySelector('.contact-section').classList.add('active');
+                const profileSection = document.querySelector('.profile-section');
+                const contactSection = document.querySelector('.contact-section');
+                if (profileSection) {
+                    profileSection.classList.add('active');
+                    // Adicionar header no topo
+                    addMobileHeader(profileSection);
+                }
+                if (contactSection) contactSection.classList.add('active');
                 const summarySection = document.querySelector('[data-section="summary"]');
                 if (summarySection) summarySection.classList.add('active');
             } else if (sectionName === 'tech') {
                 // Tech: skills + achievements
                 const skillsSection = document.querySelector('[data-section="skills"]');
                 const achievementsSection = document.querySelector('[data-section="achievements"]');
-                if (skillsSection) skillsSection.classList.add('active');
+                if (skillsSection) {
+                    skillsSection.classList.add('active');
+                    addMobileHeader(skillsSection);
+                }
                 if (achievementsSection) achievementsSection.classList.add('active');
             } else if (sectionName === 'education') {
                 // Education: education + languages
                 const educationSection = document.querySelector('[data-section="education"]');
                 const languagesSection = document.querySelector('[data-section="languages"]');
-                if (educationSection) educationSection.classList.add('active');
+                if (educationSection) {
+                    educationSection.classList.add('active');
+                    addMobileHeader(educationSection);
+                }
                 if (languagesSection) languagesSection.classList.add('active');
             } else if (sectionName === 'projects') {
                 // Projects: projects + hobbies
                 const projectsSection = document.querySelector('[data-section="projects"]');
                 const hobbiesSection = document.querySelector('[data-section="hobbies"]');
-                if (projectsSection) projectsSection.classList.add('active');
+                if (projectsSection) {
+                    projectsSection.classList.add('active');
+                    addMobileHeader(projectsSection);
+                }
                 if (hobbiesSection) hobbiesSection.classList.add('active');
             } else if (sectionName === 'experience') {
                 // Experience: work experience
                 const experienceSection = document.querySelector('[data-section="experience"]');
                 if (experienceSection) experienceSection.classList.add('active');
+                // Header já está no main-content para experiência
+            }
+        }
+        
+        function addMobileHeader(section) {
+            // Criar header duplicado
+            const header = document.createElement('header');
+            header.className = 'mobile-header-section';
+            const nameEl = document.getElementById('name');
+            const taglineEl = document.getElementById('tagline');
+            if (nameEl && taglineEl) {
+                header.innerHTML = `
+                    <h1 class="name">${nameEl.textContent}</h1>
+                    <div class="tagline">${taglineEl.textContent}</div>
+                `;
+                section.parentNode.insertBefore(header, section);
             }
         }
 
         function renderCV() {
             if (!cvData || !descriptions) return;
 
-            const pageTitle = descriptions.seo ? descriptions.seo.title : (currentLang === 'pt' ? 'Currículo - Marcelo Mourao' : 'Resume - Marcelo Mourao');
+            const pageTitle = descriptions.seo ? descriptions.seo.title : (currentLang === 'pt' ? 'Currículo - Marcelo Mourão' : 'Resume - Marcelo Mourão');
             const pageDescription = descriptions.seo ? descriptions.seo.description : (currentLang === 'pt' ? 'Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência' : 'Senior Developer and Software Architect with over 15 years of experience');
             
             document.getElementById('page-title').textContent = pageTitle;
@@ -518,7 +556,7 @@
                                     <div class="timeline-company">${typeof job.company === 'object' ? job.company[currentLang] : job.company}</div>
                                 </div>
                                 <div class="timeline-header-right">
-                                    ${location ? `<div class="timeline-location">${location}</div>` : ''}
+                                    ${location ? `<div class="timeline-location"><i class="bi bi-geo-alt-fill"></i> ${location}</div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -611,6 +649,46 @@
         })();
         
         // Função para inicializar mobile
+        // Handle print with image preloading
+        function handlePrint() {
+            const profileImage = document.getElementById('profile-image');
+            if (profileImage) {
+                // Garantir que o src está correto
+                const currentSrc = profileImage.src || profileImage.getAttribute('src') || 'marcelo.png';
+                profileImage.src = currentSrc;
+                profileImage.setAttribute('src', 'marcelo.png');
+                
+                // Forçar carregamento da imagem
+                const img = new Image();
+                img.onload = function() {
+                    // Garantir que a imagem está visível
+                    profileImage.style.display = 'block';
+                    profileImage.style.visibility = 'visible';
+                    profileImage.style.opacity = '1';
+                    profileImage.src = 'marcelo.png';
+                    
+                    // Aguardar renderização antes de imprimir
+                    setTimeout(() => {
+                        window.print();
+                    }, 200);
+                };
+                img.onerror = function() {
+                    // Mesmo se der erro, força o src e tenta imprimir
+                    profileImage.src = 'marcelo.png';
+                    profileImage.setAttribute('src', 'marcelo.png');
+                    profileImage.style.display = 'block';
+                    profileImage.style.visibility = 'visible';
+                    profileImage.style.opacity = '1';
+                    setTimeout(() => {
+                        window.print();
+                    }, 200);
+                };
+                img.src = 'marcelo.png';
+            } else {
+                window.print();
+            }
+        }
+
         function initializeMobile() {
             if (window.innerWidth <= 768) {
                 // Ocultar todas as seções primeiro

@@ -10,14 +10,19 @@
     display: grid;
     grid-template-columns: 350px 1fr;
     min-height: 100vh;
+    grid-template-areas: "sidebar main";
 }
 
-/* Left Sidebar */
 .sidebar {
+    grid-area: sidebar;
     background: var(--bg-sidebar);
     color: var(--white);
     padding: 2rem;
     position: relative;
+}
+
+.main-content {
+    grid-area: main;
 }
 
 .profile-section {
@@ -36,6 +41,17 @@
 
 .contact-section {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact-item {
@@ -45,6 +61,9 @@
     margin-bottom: 0.75rem;
     font-size: 0.9rem;
     color: var(--white);
+    justify-content: flex-start;
+    width: 100%;
+    max-width: fit-content;
 }
 
 .contact-item a {
@@ -53,6 +72,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    text-align: left;
 }
 
 .contact-item i {
@@ -78,9 +98,17 @@
         display: block !important;
     }
     
-    /* Desktop: ocultar mobile nav */
-    .mobile-nav {
+    /* Desktop: ocultar mobile nav e mobile header */
+    .mobile-nav,
+    .mobile-header-section {
         display: none !important;
+    }
+    
+    /* Desktop: mostrar header normal */
+    .main-content .header-section {
+        display: block !important;
+        position: relative;
+        top: auto;
     }
 }
 
@@ -248,6 +276,11 @@
     letter-spacing: 1px;
 }
 
+/* Garantir que nome não apareça na sidebar */
+.sidebar .name {
+    display: none;
+}
+
 .tagline {
     font-size: 1.1rem;
     color: var(--bg-sidebar);
@@ -318,6 +351,14 @@
     color: var(--text-light);
     font-size: 0.9rem;
     margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.timeline-location i {
+    font-size: 0.85rem;
+    color: var(--text-light);
 }
 
 .timeline-content {
@@ -376,12 +417,12 @@
         max-width: 100%;
     }
     
-    /* Header sempre fixo no topo */
     .main-content {
         padding: 0;
     }
     
-    .header-section {
+    /* No mobile, header sticky (não fixed) - rola junto com conteúdo */
+    .main-content .header-section {
         position: sticky;
         top: 0;
         background: var(--white);
@@ -389,6 +430,32 @@
         padding: 1.5rem 1rem;
         margin-bottom: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Ocultar header quando experiência não está ativa */
+    .main-content .header-section {
+        display: none;
+    }
+    
+    /* Mostrar header quando experiência está ativa */
+    .work-experience-section.active ~ .header-section,
+    .main-content:has(.work-experience-section.active) .header-section {
+        display: block;
+    }
+    
+    /* Header duplicado para outras seções - inserido via JS */
+    .mobile-header-section {
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 10;
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar {
+        padding-top: 0;
     }
     
     .work-experience-section {
@@ -412,10 +479,16 @@
     
     /* MOBILE: Ocultar TODAS as seções por padrão - especificidade máxima */
     .sidebar .sidebar-section,
-    .sidebar .profile-section,
     .sidebar .contact-section,
     .main-content .work-experience-section {
         display: none !important;
+    }
+    
+    /* MOBILE: Profile section pode estar visível, mas a imagem sempre visível na impressão */
+    @media print {
+        .sidebar .profile-section {
+            display: block !important;
+        }
     }
     
     /* MOBILE: Mostrar apenas seções ativas - especificidade máxima */
@@ -586,7 +659,9 @@
     }
     
     .action-buttons,
-    .mobile-nav {
+    .mobile-nav,
+    .theme-menu,
+    .share-menu {
         display: none !important;
     }
     
@@ -605,9 +680,10 @@
     }
     
     .sidebar {
-        background: #2d8659 !important;
+        background: var(--bg-sidebar) !important;
         padding: 1.5rem !important;
         padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
         page-break-inside: avoid !important;
         display: block !important;
         visibility: visible !important;
@@ -616,6 +692,7 @@
         width: 280px !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        box-sizing: border-box !important;
     }
     
     .sidebar-section {
@@ -632,13 +709,55 @@
     .profile-section {
         text-align: center !important;
         margin-bottom: 1.5rem !important;
+        display: block !important;
+        visibility: visible !important;
     }
     
-    .profile-image {
+    /* FORÇAR EXIBIÇÃO DA IMAGEM NA IMPRESSÃO - REMOVER TODAS AS REGRAS QUE PODEM OCULTAR */
+    .profile-section {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .profile-section img,
+    #profile-image,
+    .profile-image,
+    img[src*="marcelo"],
+    img[src="marcelo.png"],
+    img[alt*="Marcelo"],
+    .sidebar img,
+    .sidebar .profile-image,
+    .sidebar #profile-image {
         width: 100px !important;
         height: 100px !important;
         margin: 0 auto 1rem auto !important;
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        border-radius: 50% !important;
+        border: 3px solid var(--white) !important;
+        object-fit: cover !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        background: transparent !important;
+        content: none !important;
+    }
+    
+    
+    
+    /* Ocultar nome duplicado na sidebar e headers mobile na impressão */
+    .sidebar .name,
+    .sidebar h1.name,
+    .sidebar .header-section .name,
+    .sidebar h1,
+    .mobile-header-section,
+    .mobile-header-section .name {
+        display: none !important;
+        visibility: hidden !important;
     }
     
     .main-content {
@@ -704,8 +823,15 @@
     
     .timeline-item {
         margin-bottom: 1.25rem !important;
-        page-break-inside: avoid !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
         padding-left: 0 !important;
+    }
+    
+    /* Remover page-break entre experiências */
+    .timeline-item + .timeline-item {
+        page-break-before: auto !important;
+        break-before: auto !important;
     }
     
     .timeline-item::before,

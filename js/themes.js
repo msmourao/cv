@@ -24,13 +24,22 @@ const ThemeManager = {
             this.currentTheme = savedTheme;
         }
         this.applyTheme(this.currentTheme);
-        this.renderThemeMenu();
+        // Aguardar um pouco para garantir que o DOM está pronto
+        setTimeout(() => {
+            this.renderThemeMenu();
+        }, 100);
     },
     
     applyTheme(themeId) {
         this.currentTheme = themeId;
+        // Aplicar em :root, html e body para garantir que funcione
         document.documentElement.setAttribute('data-theme', themeId);
         document.body.setAttribute('data-theme', themeId);
+        // Forçar atualização das variáveis CSS
+        const root = document.documentElement;
+        root.style.setProperty('--primary-color', '');
+        root.style.setProperty('--primary-dark', '');
+        root.style.setProperty('--bg-sidebar', '');
         localStorage.setItem('cv-theme', themeId);
         this.updateActiveThemeOption();
     },
@@ -44,7 +53,7 @@ const ThemeManager = {
             return `
                 <div class="theme-option ${isActive ? 'active' : ''}" 
                      data-theme="${theme.id}" 
-                     onclick="ThemeManager.selectTheme('${theme.id}')">
+                     onclick="event.preventDefault(); event.stopPropagation(); ThemeManager.selectTheme('${theme.id}');">
                     <div class="theme-preview" data-theme="${theme.id}">
                         <div class="theme-preview-color"></div>
                         <div class="theme-preview-color"></div>
@@ -64,8 +73,13 @@ const ThemeManager = {
     },
     
     selectTheme(themeId) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
         this.applyTheme(themeId);
         this.renderThemeMenu();
+        this.toggleThemeMenu(); // Fechar menu após seleção
     },
     
     updateLanguage(lang) {
@@ -81,6 +95,30 @@ const ThemeManager = {
             const shareMenu = document.getElementById('share-menu');
             if (shareMenu) shareMenu.classList.remove('show');
         }
+    },
+    
+    updateActiveThemeOption() {
+        // Update active state in theme menu
+        const menu = document.getElementById('theme-menu');
+        if (!menu) return;
+        
+        const options = menu.querySelectorAll('.theme-option');
+        options.forEach(option => {
+            const themeId = option.getAttribute('data-theme');
+            if (themeId === this.currentTheme) {
+                option.classList.add('active');
+                // Add check icon if not present
+                if (!option.querySelector('.theme-check')) {
+                    const check = document.createElement('i');
+                    check.className = 'bi bi-check-circle theme-check';
+                    option.appendChild(check);
+                }
+            } else {
+                option.classList.remove('active');
+                const check = option.querySelector('.theme-check');
+                if (check) check.remove();
+            }
+        });
     }
 };
 

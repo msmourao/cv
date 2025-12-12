@@ -3,63 +3,168 @@
    ============================================ */
 
 /* Default Theme: Teal (already defined in base.css) */
-[data-theme="teal"] {
+:root[data-theme="teal"],
+html[data-theme="teal"],
+body[data-theme="teal"] {
     --primary-color: #2d8659;
     --primary-dark: #1f5d3f;
     --bg-sidebar: #2d8659;
 }
 
 /* Blue Theme */
-[data-theme="blue"] {
+:root[data-theme="blue"],
+html[data-theme="blue"],
+body[data-theme="blue"] {
     --primary-color: #2563eb;
     --primary-dark: #1e40af;
     --bg-sidebar: #2563eb;
 }
 
 /* Purple Theme */
-[data-theme="purple"] {
+:root[data-theme="purple"],
+html[data-theme="purple"],
+body[data-theme="purple"] {
     --primary-color: #7c3aed;
     --primary-dark: #5b21b6;
     --bg-sidebar: #7c3aed;
 }
 
 /* Green Theme */
-[data-theme="green"] {
+:root[data-theme="green"],
+html[data-theme="green"],
+body[data-theme="green"] {
     --primary-color: #059669;
     --primary-dark: #047857;
     --bg-sidebar: #059669;
 }
 
 /* Orange Theme */
-[data-theme="orange"] {
+:root[data-theme="orange"],
+html[data-theme="orange"],
+body[data-theme="orange"] {
     --primary-color: #ea580c;
     --primary-dark: #c2410c;
     --bg-sidebar: #ea580c;
 }
 
 /* Red Theme */
-[data-theme="red"] {
+:root[data-theme="red"],
+html[data-theme="red"],
+body[data-theme="red"] {
     --primary-color: #dc2626;
     --primary-dark: #b91c1c;
     --bg-sidebar: #dc2626;
 }
 
 /* Dark Theme */
-[data-theme="dark"] {
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"] {
     --primary-color: #6366f1;
     --primary-dark: #4f46e5;
-    --bg-sidebar: #1e293b;
+    --bg-sidebar: #2d2d2d;
     --text-color: #e2e8f0;
     --text-light: #94a3b8;
-    --bg-light: #1e293b;
-    --bg-dark: #0f172a;
-    --border-color: #334155;
+    --bg-light: #000000;
+    --bg-dark: #000000;
+    --border-color: #404040;
     --white: #ffffff;
 }
 
-/* Apply theme to body */
-body[data-theme] {
-    /* Theme colors are applied via CSS variables */
+/* Dark Theme - Aplicar cores específicas */
+body[data-theme="dark"],
+html[data-theme="dark"] {
+    background: #000000 !important;
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .resume-wrapper,
+html[data-theme="dark"] .resume-wrapper {
+    background: #000000 !important;
+}
+
+body[data-theme="dark"] .main-content,
+html[data-theme="dark"] .main-content {
+    background: #000000 !important;
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .sidebar {
+    background: #2d2d2d !important;
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .action-buttons-container,
+html[data-theme="dark"] .action-buttons-container {
+    background: #1a1a1a !important;
+    border-color: #404040 !important;
+}
+
+body[data-theme="dark"] .theme-menu,
+html[data-theme="dark"] .theme-menu,
+body[data-theme="dark"] .share-menu,
+html[data-theme="dark"] .share-menu {
+    background: #1a1a1a !important;
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .mobile-nav,
+html[data-theme="dark"] .mobile-nav {
+    background: #1a1a1a !important;
+    border-color: #404040 !important;
+}
+
+/* Dark Theme - Ajustar cores de texto específicas */
+body[data-theme="dark"] .tagline,
+html[data-theme="dark"] .tagline {
+    color: #6366f1 !important;
+}
+
+body[data-theme="dark"] .timeline-company,
+html[data-theme="dark"] .timeline-company {
+    color: #6366f1 !important;
+}
+
+body[data-theme="dark"] .section-title,
+html[data-theme="dark"] .section-title {
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .timeline-title,
+html[data-theme="dark"] .timeline-title {
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .name,
+html[data-theme="dark"] .name {
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .sidebar-section-title,
+html[data-theme="dark"] .sidebar-section-title {
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .timeline-location,
+html[data-theme="dark"] .timeline-location {
+    color: #94a3b8 !important;
+}
+
+body[data-theme="dark"] .timeline-period,
+html[data-theme="dark"] .timeline-period {
+    color: #94a3b8 !important;
+}
+
+body[data-theme="dark"] .technologies-box strong,
+html[data-theme="dark"] .technologies-box strong {
+    color: #e2e8f0 !important;
+}
+
+body[data-theme="dark"] .technologies-box,
+html[data-theme="dark"] .technologies-box {
+    background: #1a1a1a !important;
+    color: #e2e8f0 !important;
 }
 
 /* Theme preview colors for visual selection */
@@ -94,7 +199,21 @@ body[data-theme] {
 .theme-preview[data-theme="red"] .theme-preview-color:nth-child(4) { background: #1e293b; }
 
 .theme-preview[data-theme="dark"] .theme-preview-color:nth-child(1) { background: #6366f1; }
-.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(2) { background: #1e293b; }
-.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(3) { background: #1e293b; }
-.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(4) { background: #0f172a; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(2) { background: #2d2d2d; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(3) { background: #000000; }
+.theme-preview[data-theme="dark"] .theme-preview-color:nth-child(4) { background: #000000; }
+
+/* ============================================
+   PRINT - Ensure themes apply in print
+   ============================================ */
+@media print {
+    /* Garantir que temas funcionem na impressão */
+    :root[data-theme] *,
+    html[data-theme] *,
+    body[data-theme] * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
 

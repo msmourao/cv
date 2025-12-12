@@ -178,13 +178,13 @@
   "messages": {
     "whatsapp": "Oi, Marcelo! Temos uma proposta de emprego para você. Está interessado?",
     "email": {
-      "subject": "Proposta de Emprego - Marcelo Mourao",
+      "subject": "Proposta de Emprego - Marcelo Mourão",
       "body": "Olá Marcelo,\n\nTemos uma proposta de emprego que pode ser do seu interesse.\n\nAtenciosamente"
     }
   },
   "seo": {
     "description": "Arquiteto e Desenvolvedor de Software com 15+ anos construindo sistemas críticos. Migrei monólitos para microsserviços, otimizei performance, implementei soluções multi-cloud. Especialista em .NET 10, Frontend, PostgreSQL, SQL Server, Oracle Database, AWS, Azure, Kubernetes, Generative AI.",
-    "title": "Currículo - Marcelo Mourao | Arquiteto e Desenvolvedor de Software"
+    "title": "Currículo - Marcelo Mourão | Arquiteto e Desenvolvedor de Software"
   },
   "buttons": {
     "share": "Compartilhar",

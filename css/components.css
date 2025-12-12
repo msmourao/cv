@@ -102,8 +102,7 @@
     position: relative;
 }
 
-.share-menu,
-.theme-menu {
+.share-menu {
     position: absolute;
     top: 50px;
     right: 0;
@@ -116,6 +115,24 @@
     flex-direction: column;
     gap: 0.5rem;
     z-index: 1001;
+}
+
+.theme-menu {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    min-width: 150px;
+    max-width: 170px;
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 1001;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .share-menu.show,
@@ -143,24 +160,24 @@
 
 /* Theme Menu Items */
 .theme-menu-title {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.25rem;
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.15rem;
 }
 
 .theme-option {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
-    border: 2px solid transparent;
+    border: 1.5px solid transparent;
 }
 
 .theme-option:hover {
@@ -173,12 +190,12 @@
 }
 
 .theme-preview {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -190,14 +207,14 @@
 
 .theme-name {
     flex: 1;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--text-color);
     font-weight: 500;
 }
 
 .theme-check {
     color: var(--primary-color);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     flex-shrink: 0;
 }
 
