@@ -141,6 +141,43 @@ html[data-theme="dark"] .name {
     color: #e2e8f0 !important;
 }
 
+/* Dark theme mobile - nome e título */
+@media screen and (max-width: 768px) {
+    body[data-theme="dark"] .header-section,
+    html[data-theme="dark"] .header-section,
+    body[data-theme="dark"] .mobile-header-section,
+    html[data-theme="dark"] .mobile-header-section {
+        background: #000000 !important;
+    }
+    
+    body[data-theme="dark"] .header-section .name,
+    html[data-theme="dark"] .header-section .name,
+    body[data-theme="dark"] .mobile-header-section .name,
+    html[data-theme="dark"] .mobile-header-section .name {
+        color: #e2e8f0 !important;
+    }
+    
+    body[data-theme="dark"] .header-section .tagline,
+    html[data-theme="dark"] .header-section .tagline,
+    body[data-theme="dark"] .mobile-header-section .tagline,
+    html[data-theme="dark"] .mobile-header-section .tagline {
+        color: #6366f1 !important;
+    }
+    
+    /* Dark theme mobile - fundo preto para seções (exceto experiência) */
+    body[data-theme="dark"] .sidebar,
+    html[data-theme="dark"] .sidebar,
+    body[data-theme="dark"] .sidebar-section,
+    html[data-theme="dark"] .sidebar-section,
+    body[data-theme="dark"] .profile-section,
+    html[data-theme="dark"] .profile-section,
+    body[data-theme="dark"] .contact-section,
+    html[data-theme="dark"] .contact-section {
+        background: #000000 !important;
+        color: #e2e8f0 !important;
+    }
+}
+
 body[data-theme="dark"] .sidebar-section-title,
 html[data-theme="dark"] .sidebar-section-title {
     color: #e2e8f0 !important;

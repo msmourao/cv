@@ -28,6 +28,9 @@
 .profile-section {
     text-align: center;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-image {
@@ -36,7 +39,8 @@
     border-radius: 50%;
     border: 4px solid var(--white);
     object-fit: cover;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem auto;
+    display: block;
 }
 
 .contact-section {
@@ -440,7 +444,9 @@
     /* Mostrar header quando experiência está ativa */
     .work-experience-section.active ~ .header-section,
     .main-content:has(.work-experience-section.active) .header-section {
-        display: block;
+        display: block !important;
+        margin-top: 0 !important;
+        padding-top: 1.5rem;
     }
     
     /* Header duplicado para outras seções - inserido via JS */
@@ -451,7 +457,35 @@
         z-index: 10;
         padding: 1.5rem 1rem;
         margin-bottom: 1rem;
+        margin-top: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Dark theme mobile - ajustar fundo dos headers */
+    body[data-theme="dark"] .header-section,
+    html[data-theme="dark"] .header-section,
+    body[data-theme="dark"] .mobile-header-section,
+    html[data-theme="dark"] .mobile-header-section {
+        background: #000000 !important;
+    }
+    
+    .mobile-header-section .name {
+        display: block !important;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .mobile-header-section .tagline {
+        display: block !important;
+        font-size: 1rem;
+        color: var(--bg-sidebar);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .sidebar {
@@ -480,8 +514,20 @@
     /* MOBILE: Ocultar TODAS as seções por padrão - especificidade máxima */
     .sidebar .sidebar-section,
     .sidebar .contact-section,
+    .sidebar .profile-section,
     .main-content .work-experience-section {
         display: none !important;
+    }
+    
+    /* Quando experiência está ativa, garantir que sidebar não ocupe espaço */
+    .main-content:has(.work-experience-section.active) ~ .sidebar,
+    .resume-wrapper:has(.work-experience-section.active) .sidebar {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
     }
     
     /* MOBILE: Profile section pode estar visível, mas a imagem sempre visível na impressão */
@@ -501,7 +547,7 @@
     
     /* Profile section no mobile */
     .profile-section {
-        text-align: center;
+        text-align: center !important;
         margin-bottom: 2rem;
         display: none; /* Oculto por padrão no mobile */
     }
@@ -510,6 +556,16 @@
         width: 120px;
         height: 120px;
         border: 3px solid var(--bg-sidebar);
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+    
+    .profile-section.active .profile-image {
+        margin: 0 auto !important;
+        display: block !important;
     }
     
     /* Contact section no mobile */
@@ -725,12 +781,17 @@
     .profile-section img,
     #profile-image,
     .profile-image,
+    img[src*="avatar"],
+    img[src="avatar.png"],
     img[src*="marcelo"],
     img[src="marcelo.png"],
     img[alt*="Marcelo"],
     .sidebar img,
     .sidebar .profile-image,
-    .sidebar #profile-image {
+    .sidebar #profile-image,
+    img[src*="profile"],
+    .profile-section img[src],
+    .sidebar img[src] {
         width: 100px !important;
         height: 100px !important;
         margin: 0 auto 1rem auto !important;
@@ -745,6 +806,54 @@
         color-adjust: exact !important;
         background: transparent !important;
         content: none !important;
+        text-align: center !important;
+    }
+    
+    /* Garantir que a imagem seja carregada na impressão */
+    @media print {
+        .profile-section::before {
+            content: none !important;
+        }
+        
+        .profile-section,
+        .sidebar .profile-section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-align: center !important;
+        }
+        
+        .profile-section img,
+        .sidebar .profile-section img,
+        #profile-image,
+        .profile-image,
+        img[src="avatar.png"],
+        img[src*="avatar"],
+        img[src="./avatar.png"] {
+            content: none !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100px !important;
+            height: 100px !important;
+            margin: 0 auto !important;
+            border-radius: 50% !important;
+            border: 3px solid var(--white) !important;
+            object-fit: cover !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+        
+        /* Forçar caminho relativo na impressão */
+        #profile-image {
+            src: url('./avatar.png') !important;
+        }
+        
+        #profile-image[src],
+        .profile-image[src] {
+            src: url('./avatar.png') !important;
+        }
     }
     
     

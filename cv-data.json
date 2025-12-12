@@ -5,7 +5,7 @@
       "pt": "Desenvolvedor Sênior e Arquiteto de Software",
       "en": "Senior Developer and Software Architect"
     },
-    "photo": "marcelo.png",
+    "photo": "./avatar.png",
     "location": {
       "pt": "São Paulo, Brazil",
       "en": "São Paulo, Brazil"

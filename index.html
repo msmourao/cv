@@ -22,14 +22,14 @@
     <meta property="og:url" content="https://msmourao.github.io/cv/">
     <meta property="og:title" id="og-title" content="Currículo - Marcelo Mourão">
     <meta property="og:description" id="og-description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
-    <meta property="og:image" content="https://msmourao.github.io/cv/marcelo.png">
+    <meta property="og:image" content="https://msmourao.github.io/cv/avatar.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:url" content="https://msmourao.github.io/cv/">
     <meta property="twitter:title" id="twitter-title" content="Currículo - Marcelo Mourão">
     <meta property="twitter:description" id="twitter-description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
-    <meta property="twitter:image" content="https://msmourao.github.io/cv/marcelo.png">
+    <meta property="twitter:image" content="https://msmourao.github.io/cv/avatar.png">
     
     <!-- General Meta -->
     <meta name="description" id="meta-description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência em projetos de alta complexidade">
@@ -85,11 +85,95 @@
                         <!-- Populated by JavaScript -->
                     </div>
                 </div>
+                
+                <div class="tts-button-wrapper">
+                    <button class="tts-button" onclick="TTS.handlePlay()" id="tts-button-title" title="Text-to-Speech" aria-label="Iniciar leitura">
+                        <i class="bi bi-volume-up-fill"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </head>
 <body>
+    <!-- TTS Bar no topo (aparece quando começar a ler) -->
+    <div class="tts-top-bar" id="tts-top-bar">
+        <div class="tts-top-bar-content">
+            <div class="tts-top-main-controls">
+                <button id="tts-close" class="tts-close-btn" onclick="TTS.closeTopBar()" aria-label="Fechar e parar leitura" title="Fechar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                
+                <div class="tts-status-section">
+                    <span id="tts-status" aria-live="polite">Pronto</span>
+                    <div class="tts-progress-container">
+                        <div class="tts-progress-bar" id="tts-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da fala"></div>
+                    </div>
+                </div>
+                
+                <div class="tts-playback-controls">
+                    <button id="tts-prev-section" class="tts-nav-btn" onclick="TTS.previousSection()" aria-label="Seção anterior" title="Seção anterior" disabled>
+                        <i class="bi bi-skip-backward-fill"></i>
+                    </button>
+                    <button id="tts-play" class="tts-control-btn" onclick="TTS.handlePlay()" aria-label="Iniciar fala" title="Iniciar fala (Espaço)">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                    <button id="tts-pause" class="tts-control-btn" onclick="TTS.handlePause()" aria-label="Pausar fala" title="Pausar fala (Espaço)" disabled>
+                        <i class="bi bi-pause-fill"></i>
+                    </button>
+                    <button id="tts-stop" class="tts-control-btn" onclick="TTS.handleStop()" aria-label="Parar fala" title="Parar fala" disabled>
+                        <i class="bi bi-stop-fill"></i>
+                    </button>
+                    <button id="tts-next-section" class="tts-nav-btn" onclick="TTS.nextSection()" aria-label="Próxima seção" title="Próxima seção" disabled>
+                        <i class="bi bi-skip-forward-fill"></i>
+                    </button>
+                </div>
+                
+                <button id="tts-toggle-advanced" class="tts-toggle-btn" onclick="TTS.toggleAdvancedControls()" aria-label="Expandir controles avançados" title="Controles avançados">
+                    <i class="bi bi-chevron-down" id="tts-toggle-icon"></i>
+                </button>
+            </div>
+            
+            <div class="tts-advanced-controls" id="tts-advanced-controls">
+                <div class="tts-control-group">
+                    <label for="tts-rate">Velocidade:</label>
+                    <div class="tts-slider-container">
+                        <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1.0" 
+                               oninput="TTS.updateRate(this.value)" 
+                               aria-label="Velocidade da fala">
+                        <span class="tts-slider-value">1.0</span>
+                    </div>
+                </div>
+                
+                <div class="tts-control-group">
+                    <label for="tts-pitch">Tom:</label>
+                    <div class="tts-slider-container">
+                        <input type="range" id="tts-pitch" min="0" max="2" step="0.1" value="1.0" 
+                               oninput="TTS.updatePitch(this.value)" 
+                               aria-label="Tom da voz">
+                        <span class="tts-slider-value">1.0</span>
+                    </div>
+                </div>
+                
+                <div class="tts-control-group">
+                    <label for="tts-volume">Volume:</label>
+                    <div class="tts-slider-container">
+                        <input type="range" id="tts-volume" min="0" max="1" step="0.1" value="1.0" 
+                               oninput="TTS.updateVolume(this.value)" 
+                               aria-label="Volume da fala">
+                        <span class="tts-slider-value">100%</span>
+                    </div>
+                </div>
+                
+                <div class="tts-control-group">
+                    <label for="tts-voice-select">Voz:</label>
+                    <select id="tts-voice-select" onchange="TTS.updateVoice(this.value)" aria-label="Selecionar voz">
+                        <option>Carregando vozes...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Unified Layout - CSS reorganizes for desktop/mobile/print -->
     <!-- Template will be loaded here -->
@@ -97,7 +181,7 @@
         <!-- Left Sidebar (becomes regular sections in mobile) -->
         <aside class="sidebar">
             <section class="profile-section">
-                <img id="profile-image" src="marcelo.png" alt="Marcelo Mourão" class="profile-image">
+                <img id="profile-image" src="./avatar.png" alt="Marcelo Mourão" class="profile-image">
             </section>
             
             <section class="contact-section">
@@ -201,6 +285,7 @@
     <!-- Custom JavaScript Files -->
     <script src="js/themes.js"></script>
     <script src="js/templates.js"></script>
+    <script src="js/tts.js"></script>
     <script>
         let cvData = null;
         let descriptions = null;
@@ -242,6 +327,12 @@
             document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
             updateLanguageButtons();
             ThemeManager.updateLanguage(lang);
+            
+            // Notificar TTS sobre mudança de idioma
+            if (window.TTS) {
+                document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+            }
+            
             loadData();
         }
 
@@ -375,7 +466,10 @@
                     <h1 class="name">${nameEl.textContent}</h1>
                     <div class="tagline">${taglineEl.textContent}</div>
                 `;
-                section.parentNode.insertBefore(header, section);
+                // Inserir antes da seção, garantindo que seja o primeiro elemento
+                if (section.parentNode) {
+                    section.parentNode.insertBefore(header, section);
+                }
             }
         }
 
@@ -402,7 +496,16 @@
             // Header
             document.getElementById('name').textContent = cvData.personal.name;
             document.getElementById('tagline').textContent = cvData.personal.tagline[currentLang];
-            document.getElementById('profile-image').src = cvData.personal.photo;
+            // Garantir caminho relativo (sem GitHub)
+            let photoPath = cvData.personal.photo;
+            if (photoPath.startsWith('http://') || photoPath.startsWith('https://')) {
+                // Se for URL absoluta, usar apenas o nome do arquivo
+                photoPath = './' + photoPath.split('/').pop();
+            } else if (!photoPath.startsWith('./')) {
+                photoPath = './' + photoPath;
+            }
+            document.getElementById('profile-image').src = photoPath;
+            document.getElementById('profile-image').setAttribute('src', photoPath);
 
             // Contact list
             const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
@@ -654,9 +757,9 @@
             const profileImage = document.getElementById('profile-image');
             if (profileImage) {
                 // Garantir que o src está correto
-                const currentSrc = profileImage.src || profileImage.getAttribute('src') || 'marcelo.png';
+                const currentSrc = profileImage.src || profileImage.getAttribute('src') || './avatar.png';
                 profileImage.src = currentSrc;
-                profileImage.setAttribute('src', 'marcelo.png');
+                profileImage.setAttribute('src', './avatar.png');
                 
                 // Forçar carregamento da imagem
                 const img = new Image();
@@ -665,7 +768,7 @@
                     profileImage.style.display = 'block';
                     profileImage.style.visibility = 'visible';
                     profileImage.style.opacity = '1';
-                    profileImage.src = 'marcelo.png';
+                    profileImage.src = 'avatar.png';
                     
                     // Aguardar renderização antes de imprimir
                     setTimeout(() => {
@@ -674,8 +777,8 @@
                 };
                 img.onerror = function() {
                     // Mesmo se der erro, força o src e tenta imprimir
-                    profileImage.src = 'marcelo.png';
-                    profileImage.setAttribute('src', 'marcelo.png');
+                    profileImage.src = './avatar.png';
+                    profileImage.setAttribute('src', './avatar.png');
                     profileImage.style.display = 'block';
                     profileImage.style.visibility = 'visible';
                     profileImage.style.opacity = '1';
@@ -683,7 +786,7 @@
                         window.print();
                     }, 200);
                 };
-                img.src = 'marcelo.png';
+                img.src = './avatar.png';
             } else {
                 window.print();
             }
