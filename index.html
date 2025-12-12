@@ -158,10 +158,21 @@
         
         .sidebar-section {
             margin-bottom: 2rem;
+            display: block; /* Desktop: sempre visível */
         }
         
         .sidebar-section:first-of-type {
             margin-top: 1rem;
+        }
+        
+        /* Desktop: garantir que todas as seções sejam visíveis */
+        @media (min-width: 769px) {
+            .sidebar-section,
+            .profile-section,
+            .contact-section,
+            .work-experience-section {
+                display: block !important;
+            }
         }
         
         .sidebar-section-title {
@@ -664,15 +675,26 @@
                 padding: 2rem 1rem;
             }
             
+            /* MOBILE: Ocultar TODAS as seções por padrão */
+            .sidebar-section:not(.active),
+            .profile-section:not(.active),
+            .contact-section:not(.active),
+            .work-experience-section:not(.active) {
+                display: none !important;
+            }
+            
+            /* MOBILE: Mostrar apenas seções ativas */
+            .profile-section.active,
+            .contact-section.active,
+            .sidebar-section.active,
+            .work-experience-section.active {
+                display: block !important;
+            }
+            
             /* Profile section no mobile */
             .profile-section {
                 text-align: center;
                 margin-bottom: 2rem;
-                display: none;
-            }
-            
-            .profile-section.active {
-                display: block;
             }
             
             .profile-image {
@@ -684,11 +706,6 @@
             /* Contact section no mobile */
             .contact-section {
                 margin-bottom: 2rem;
-                display: none;
-            }
-            
-            .contact-section.active {
-                display: block;
             }
             
             .contact-item {
@@ -703,15 +720,9 @@
                 color: var(--bg-sidebar);
             }
             
-            /* Sidebar sections ocultas por padrão no mobile */
+            /* Sidebar sections no mobile */
             .sidebar-section {
-                display: none;
                 margin-bottom: 2rem;
-            }
-            
-            /* Seções ativas visíveis */
-            .sidebar-section.active {
-                display: block;
             }
             
             /* Títulos das seções no mobile */
@@ -794,14 +805,7 @@
                 padding: 0.5rem 0;
             }
             
-            /* Work experience section também oculta por padrão */
-            .work-experience-section {
-                display: none;
-            }
-            
-            .work-experience-section.active {
-                display: block;
-            }
+            /* Work experience section no mobile - já coberto pela regra geral acima */
             
             .section-title {
                 font-size: 1.5rem;
@@ -1568,9 +1572,12 @@
                 `<li>${hobby[currentLang]}</li>`
             ).join('');
             
-            // Inicializar mobile após renderizar
+            // Garantir que mobile esteja inicializado após renderizar
             if (window.innerWidth <= 768) {
-                showSection('about');
+                // Se não há seção ativa, mostrar about
+                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
+                    showSection('about');
+                }
             }
         }
 
@@ -1587,22 +1594,43 @@
         currentLang = detectLanguage();
         document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
         updateLanguageButtons();
-        loadData();
         
-        // Initialize mobile: mostrar seção "about" por padrão
+        // Inicializar mobile IMEDIATAMENTE se estiver em mobile
         function initializeMobile() {
             if (window.innerWidth <= 768) {
-                showSection('about');
+                // Ocultar todas as seções primeiro
+                document.querySelectorAll('.sidebar-section, .profile-section, .contact-section, .work-experience-section').forEach(sec => {
+                    sec.classList.remove('active');
+                });
+                // Mostrar seção about
+                setTimeout(() => {
+                    showSection('about');
+                }, 10);
             }
         }
         
-        // Inicializar mobile após carregar dados
-        window.addEventListener('load', initializeMobile);
-        window.addEventListener('resize', function() {
-            if (window.innerWidth <= 768 && !document.querySelector('.sidebar-section.active')) {
-                showSection('about');
+        // Inicializar mobile ANTES de carregar dados
+        initializeMobile();
+        
+        // Inicializar mobile também após carregar dados (caso não tenha funcionado antes)
+        window.addEventListener('load', function() {
+            if (window.innerWidth <= 768) {
+                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
+                    showSection('about');
+                }
             }
         });
+        
+        // Listener de resize para mobile
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
+                    showSection('about');
+                }
+            }
+        });
+        
+        loadData();
     </script>
 </body>
 </html>
