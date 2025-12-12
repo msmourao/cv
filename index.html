@@ -679,15 +679,15 @@
                 padding: 2rem 1rem;
             }
             
-            /* MOBILE: Ocultar TODAS as seções por padrão - especificidade alta */
-            .sidebar .sidebar-section:not(.active),
-            .sidebar .profile-section:not(.active),
-            .sidebar .contact-section:not(.active),
-            .main-content .work-experience-section:not(.active) {
+            /* MOBILE: Ocultar TODAS as seções por padrão - especificidade máxima */
+            .sidebar .sidebar-section,
+            .sidebar .profile-section,
+            .sidebar .contact-section,
+            .main-content .work-experience-section {
                 display: none !important;
             }
             
-            /* MOBILE: Mostrar apenas seções ativas */
+            /* MOBILE: Mostrar apenas seções ativas - especificidade máxima */
             .sidebar .profile-section.active,
             .sidebar .contact-section.active,
             .sidebar .sidebar-section.active,
@@ -1578,13 +1578,7 @@
                 `<li>${hobby[currentLang]}</li>`
             ).join('');
             
-            // Garantir que mobile esteja inicializado após renderizar
-            if (window.innerWidth <= 768) {
-                // Se não há seção ativa, mostrar about
-                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
-                    showSection('about');
-                }
-            }
+            // Mobile será inicializado pela função loadData wrapper
         }
 
         // Ensure content is rendered before print
@@ -1601,7 +1595,7 @@
         document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
         updateLanguageButtons();
         
-        // Inicializar mobile IMEDIATAMENTE se estiver em mobile
+        // Função para inicializar mobile
         function initializeMobile() {
             if (window.innerWidth <= 768) {
                 // Ocultar todas as seções primeiro
@@ -1609,28 +1603,38 @@
                     sec.classList.remove('active');
                 });
                 // Mostrar seção about
-                setTimeout(() => {
-                    showSection('about');
-                }, 10);
+                showSection('about');
             }
         }
         
-        // Inicializar mobile ANTES de carregar dados
-        initializeMobile();
+        // Inicializar quando DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                initializeMobile();
+            });
+        } else {
+            // DOM já está pronto
+            initializeMobile();
+        }
         
-        // Inicializar mobile também após carregar dados (caso não tenha funcionado antes)
-        window.addEventListener('load', function() {
+        // Inicializar mobile também após carregar dados
+        const originalLoadData = loadData;
+        loadData = async function() {
+            await originalLoadData();
+            // Garantir que mobile está inicializado após renderizar
             if (window.innerWidth <= 768) {
-                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
+                const hasActive = document.querySelector('.sidebar-section.active, .profile-section.active');
+                if (!hasActive) {
                     showSection('about');
                 }
             }
-        });
+        };
         
         // Listener de resize para mobile
         window.addEventListener('resize', function() {
             if (window.innerWidth <= 768) {
-                if (!document.querySelector('.sidebar-section.active') && !document.querySelector('.profile-section.active')) {
+                const hasActive = document.querySelector('.sidebar-section.active, .profile-section.active');
+                if (!hasActive) {
                     showSection('about');
                 }
             }
