@@ -1,0 +1,613 @@
+/* ============================================
+   STAR WARS THEME
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
+body.star-wars-template {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    color: #FFE81F;
+    font-family: 'Pathway Gothic One', sans-serif;
+    height: 100vh !important;
+    width: 100vw !important;
+    position: relative;
+    max-width: none !important;
+}
+
+body.star-wars-template html {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+body.star-wars-template .resume-wrapper {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+}
+
+/* Hide mobile nav and TTS bar for Star Wars theme, but keep action buttons */
+body.star-wars-template .mobile-nav,
+body.star-wars-template .tts-top-bar {
+    display: none !important;
+}
+
+/* Star Wars Theme - Action Buttons Colors */
+body.star-wars-template .action-buttons-container {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid #FFE81F !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .print-button,
+body.star-wars-template .share-button,
+body.star-wars-template .theme-button,
+body.star-wars-template .tts-button {
+    background: transparent !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .print-button:hover,
+body.star-wars-template .share-button:hover,
+body.star-wars-template .theme-button:hover,
+body.star-wars-template .tts-button:hover {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .language-switch button {
+    color: #FFE81F !important;
+    border: 1px solid #FFE81F !important;
+}
+
+body.star-wars-template .language-switch button.active {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.6) !important;
+}
+
+body.star-wars-template .theme-menu,
+body.star-wars-template .share-menu,
+body.star-wars-template .tts-menu {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .theme-menu-item,
+body.star-wars-template .share-menu-item,
+body.star-wars-template .tts-menu-item,
+body.star-wars-template .theme-menu label,
+body.star-wars-template .share-menu label,
+body.star-wars-template .tts-menu label,
+body.star-wars-template .theme-menu-section-title,
+body.star-wars-template .theme-menu-title,
+body.star-wars-template .template-name,
+body.star-wars-template .color-scheme-name {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .theme-menu-item:hover,
+body.star-wars-template .share-menu-item:hover,
+body.star-wars-template .tts-menu-item:hover,
+body.star-wars-template .template-option:hover,
+body.star-wars-template .color-scheme-option:hover:not(.disabled) {
+    background: rgba(255, 232, 31, 0.2) !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .template-option.active,
+body.star-wars-template .color-scheme-option.active:not(.disabled) {
+    border-color: #FFE81F !important;
+    background: rgba(255, 232, 31, 0.15) !important;
+}
+
+body.star-wars-template .theme-menu input[type="radio"],
+body.star-wars-template .theme-menu input[type="checkbox"],
+body.star-wars-template .share-menu input[type="radio"],
+body.star-wars-template .share-menu input[type="checkbox"],
+body.star-wars-template .tts-menu input[type="range"],
+body.star-wars-template .tts-menu select {
+    accent-color: #FFE81F !important;
+    border-color: #FFE81F !important;
+}
+
+body.star-wars-template .theme-menu input[type="radio"]:checked,
+body.star-wars-template .theme-menu input[type="checkbox"]:checked {
+    background: #FFE81F !important;
+    border-color: #FFE81F !important;
+}
+
+body.star-wars-template .separator,
+body.star-wars-template .theme-menu-divider {
+    background: rgba(255, 232, 31, 0.3) !important;
+}
+
+body.star-wars-template .color-scheme-preview {
+    border-color: #FFE81F !important;
+}
+
+/* Star Wars Container */
+.star-wars-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: visible !important;
+    background: #000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animated Stars Background */
+.stars, .stars2, .stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 60px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 50px 50px, #eee, transparent),
+        radial-gradient(1px 1px at 80px 10px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, #eee, transparent),
+        radial-gradient(1px 1px at 33px 60px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55px 80px, #eee, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 200s linear infinite;
+    opacity: 1;
+}
+
+.stars2 {
+    background-image: 
+        radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 45px 65px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 40px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 70px 5px, #eee, transparent),
+        radial-gradient(1px 1px at 85px 35px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 28px 55px, #eee, transparent),
+        radial-gradient(1px 1px at 50px 75px, rgba(255,255,255,0.8), transparent);
+    background-repeat: repeat;
+    background-size: 250px 120px;
+    animation: sparkle 150s linear infinite;
+    opacity: 0.8;
+}
+
+.stars3 {
+    background-image: 
+        radial-gradient(1px 1px at 10px 20px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 50px 60px, #eee, transparent),
+        radial-gradient(1px 1px at 35px 35px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 65px 8px, #eee, transparent),
+        radial-gradient(2px 2px at 80px 30px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 25px 50px, #eee, transparent),
+        radial-gradient(1px 1px at 45px 70px, rgba(255,255,255,0.8), transparent);
+    background-repeat: repeat;
+    background-size: 300px 140px;
+    animation: sparkle 100s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes sparkle {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* Header Section */
+.sw-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    pointer-events: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Photo Container */
+.sw-photo-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    z-index: 20;
+}
+
+.sw-profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #FFE81F;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Garantir que o avatar está sempre visível */
+body.star-wars-template .sw-profile-image,
+body.star-wars-template #profile-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+}
+
+.sw-lightsaber {
+    position: absolute;
+    bottom: 24px;
+    left: -5%;
+    width: 120px;
+    height: auto;
+    z-index: 3;
+    filter: drop-shadow(0 0 10px rgba(255, 232, 31, 0.8));
+    pointer-events: none;
+}
+
+/* Name Section */
+.sw-name-section {
+    text-align: right;
+    flex: 1;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    min-width: 0;
+    overflow: visible;
+}
+
+.sw-name {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: #FFE81F;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-shadow: 
+        0 0 10px rgba(255, 232, 31, 0.8),
+        0 0 20px rgba(255, 232, 31, 0.6),
+        0 0 30px rgba(255, 232, 31, 0.4);
+    line-height: 1.1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.sw-tagline {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 2.2rem;
+    color: #FFE81F;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    text-shadow: 
+        0 0 8px rgba(255, 232, 31, 0.6),
+        0 0 15px rgba(255, 232, 31, 0.4);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Crawl Container */
+.sw-crawl-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: visible !important;
+    perspective: 1000px;
+    perspective-origin: 50% 0%;
+    z-index: 1;
+    clip-path: none !important;
+    box-sizing: border-box;
+}
+
+.sw-crawl {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    width: 80% !important;
+    max-width: 1600px !important;
+    min-width: 600px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 5.5rem;
+    color: #FFE81F;
+    text-align: justify;
+    line-height: 2.8;
+    letter-spacing: 0.2em;
+    transform-origin: 50% 0%;
+    transform-style: preserve-3d;
+    padding: 0 5rem;
+    will-change: transform, bottom, width, font-size;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    z-index: 10;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+}
+
+@keyframes crawl {
+    0% {
+        bottom: -100px;
+        transform: translateX(-50%) rotateX(20deg) translateZ(0) scale(1);
+        width: 80%;
+        font-size: 5.5rem;
+    }
+    25% {
+        bottom: 25vh;
+        transform: translateX(-50%) rotateX(20deg) translateZ(-1500px) scale(0.75);
+        width: 60%;
+        font-size: 4.125rem;
+    }
+    50% {
+        bottom: 50vh;
+        transform: translateX(-50%) rotateX(20deg) translateZ(-3000px) scale(0.5);
+        width: 40%;
+        font-size: 2.75rem;
+    }
+    75% {
+        bottom: 75vh;
+        transform: translateX(-50%) rotateX(20deg) translateZ(-4500px) scale(0.25);
+        width: 20%;
+        font-size: 1.375rem;
+    }
+    100% {
+        bottom: 100vh;
+        transform: translateX(-50%) rotateX(20deg) translateZ(-6000px) scale(0);
+        width: 0%;
+        font-size: 0rem;
+    }
+}
+
+/* Crawl Content Styling */
+.sw-crawl h2 {
+    font-size: 7.5rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    color: #FFE81F;
+    text-shadow: 
+        0 0 10px rgba(255, 232, 31, 0.8),
+        0 0 20px rgba(255, 232, 31, 0.6);
+    line-height: 1.2;
+}
+
+.sw-crawl h3 {
+    font-size: 6.5rem;
+    text-align: center;
+    margin: 4.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    color: #FFE81F;
+    line-height: 1.3;
+}
+
+.sw-crawl p {
+    margin: 3rem 0;
+    text-indent: 5rem;
+    font-size: 5.5rem;
+    line-height: 2.8;
+}
+
+.sw-crawl ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 4rem 0;
+}
+
+.sw-crawl li {
+    margin: 2.5rem 0;
+    padding-left: 5rem;
+    position: relative;
+    font-size: 5.5rem;
+    line-height: 2.8;
+}
+
+.sw-crawl li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #FFE81F;
+    font-size: 5rem;
+}
+
+/* Music Player */
+.sw-music-player {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFE81F;
+    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.sw-player-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.sw-player-btn {
+    background: transparent;
+    border: 1px solid #FFE81F;
+    color: #FFE81F;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 5px rgba(255, 232, 31, 0.3);
+    padding: 0;
+    margin: 0;
+}
+
+.sw-player-btn:hover {
+    background: rgba(255, 232, 31, 0.15);
+    box-shadow: 0 0 12px rgba(255, 232, 31, 0.5);
+    transform: scale(1.05);
+}
+
+.sw-player-btn:active {
+    transform: scale(0.95);
+}
+
+.sw-volume-control {
+    display: flex;
+    align-items: center;
+    color: #FFE81F;
+}
+
+.sw-volume-control input[type="range"] {
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 232, 31, 0.3);
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.sw-volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    background: #FFE81F;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(255, 232, 31, 0.8);
+}
+
+.sw-volume-control input[type="range"]::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background: #FFE81F;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 3px rgba(255, 232, 31, 0.8);
+}
+
+.sw-track-info {
+    display: none;
+}
+
+/* Print Disabled Message */
+@media print {
+    body.star-wars-template * {
+        display: none !important;
+    }
+    
+    body.star-wars-template::before {
+        content: "The force is too strong to be printed";
+        display: block !important;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: #000;
+        text-align: center;
+        font-family: 'Pathway Gothic One', sans-serif;
+        z-index: 9999;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sw-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+    
+    .sw-name-section {
+        text-align: center;
+        padding-right: 0;
+        margin-top: 1rem;
+    }
+    
+    .sw-name {
+        font-size: 2.5rem;
+    }
+    
+    .sw-tagline {
+        font-size: 1.4rem;
+    }
+    
+    .sw-crawl {
+        font-size: 3rem;
+        width: 90% !important;
+        max-width: 90% !important;
+        min-width: 300px !important;
+        padding: 0 1.5rem;
+        left: 50% !important;
+        margin-left: 0 !important;
+    }
+    
+    .sw-crawl h2 {
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .sw-crawl h3 {
+        font-size: 3.5rem;
+        margin: 2.5rem 0;
+    }
+    
+    .sw-crawl p,
+    .sw-crawl li {
+        font-size: 3rem;
+        line-height: 2.4;
+    }
+    
+    .sw-music-player {
+        bottom: 10px;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .sw-player-controls {
+        gap: 1rem;
+    }
+    
+    .sw-volume-control input[type="range"] {
+        width: 100px;
+    }
+}
+

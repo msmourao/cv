@@ -13,8 +13,7 @@ const ThemeManager = {
     // Templates disponíveis
     templates: [
         { id: 'better-view', name: { pt: 'Better-view', en: 'Better-view' } },
-        { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } },
-        { id: 'placeholder', name: { pt: '???', en: '???' } }
+        { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } }
     ],
     
     currentColorScheme: 'blue',
@@ -37,14 +36,30 @@ const ThemeManager = {
         // Aplicar template salvo
         if (this.currentTemplate === 'ats-friendly') {
             document.body.classList.add('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
             const atsCss = document.getElementById('ats-friendly-css');
             if (atsCss) atsCss.disabled = false;
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = true;
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+        } else if (this.currentTemplate === 'star-wars') {
+            document.body.classList.add('star-wars-template');
+            document.body.classList.remove('ats-friendly-template');
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = false;
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = true;
             document.documentElement.removeAttribute('data-theme');
             document.body.removeAttribute('data-theme');
         } else {
+            document.body.classList.remove('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
             this.applyColorScheme(this.currentColorScheme);
             const atsCss = document.getElementById('ats-friendly-css');
             if (atsCss) atsCss.disabled = true;
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = true;
         }
         
         // Aguardar um pouco para garantir que o DOM está pronto
@@ -141,32 +156,36 @@ const ThemeManager = {
         
         const lang = this.currentLang;
         const isATS = this.currentTemplate === 'ats-friendly';
+        const isStarWars = this.currentTemplate === 'star-wars';
+        const disableColors = isATS || isStarWars;
         
-        // Template Options (Radio buttons)
-        const templateOptionsHTML = this.templates.map(template => {
-            const isActive = template.id === this.currentTemplate;
-            return `
-                <label class="template-option ${isActive ? 'active' : ''}" 
-                       data-template="${template.id}">
-                    <input type="radio" 
-                           name="template" 
-                           value="${template.id}" 
-                           ${isActive ? 'checked' : ''}
-                           onclick="ThemeManager.selectTemplate('${template.id}')">
-                    <span class="template-name">${template.name[lang]}</span>
-                </label>
-            `;
-        }).join('');
+        // Template Options (Radio buttons) - esconder Star Wars
+        const templateOptionsHTML = this.templates
+            .filter(template => !template.hidden)
+            .map(template => {
+                const isActive = template.id === this.currentTemplate;
+                return `
+                    <label class="template-option ${isActive ? 'active' : ''}" 
+                           data-template="${template.id}">
+                        <input type="radio"
+                               name="template"
+                               value="${template.id}"
+                               ${isActive ? 'checked' : ''}
+                               onclick="ThemeManager.selectTemplate('${template.id}')">
+                        <span class="template-name">${template.name[lang]}</span>
+                    </label>
+                `;
+            }).join('');
         
-        // Color Scheme Options (Checkboxes - desabilitados se ATS-friendly)
+        // Color Scheme Options (Checkboxes - desabilitados se ATS-friendly ou Star Wars)
         const colorSchemeOptionsHTML = this.colorSchemes.map(scheme => {
             const isActive = scheme.id === this.currentColorScheme;
             return `
-                <label class="color-scheme-option ${isActive ? 'active' : ''} ${isATS ? 'disabled' : ''}" 
+                <label class="color-scheme-option ${isActive ? 'active' : ''} ${disableColors ? 'disabled' : ''}" 
                        data-scheme="${scheme.id}">
                     <input type="checkbox" 
                            ${isActive ? 'checked' : ''}
-                           ${isATS ? 'disabled' : ''}
+                           ${disableColors ? 'disabled' : ''}
                            onchange="ThemeManager.selectColorScheme('${scheme.id}')">
                     <div class="color-scheme-preview" data-scheme="${scheme.id}">
                         <div class="color-preview-color"></div>

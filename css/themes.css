@@ -157,6 +157,27 @@ html[data-theme="dark"] .timeline-period {
     color: #94a3b8 !important;
 }
 
+/* Dark Theme - Ícones de redes sociais mais claros */
+body[data-theme="dark"] .contact-item a,
+html[data-theme="dark"] .contact-item a {
+    color: #cbd5e1 !important;
+}
+
+body[data-theme="dark"] .contact-item a:hover,
+html[data-theme="dark"] .contact-item a:hover {
+    color: #ffffff !important;
+}
+
+body[data-theme="dark"] .contact-item a i,
+html[data-theme="dark"] .contact-item a i {
+    color: #cbd5e1 !important;
+}
+
+body[data-theme="dark"] .contact-item a:hover i,
+html[data-theme="dark"] .contact-item a:hover i {
+    color: #ffffff !important;
+}
+
 body[data-theme="dark"] .technologies-box strong,
 html[data-theme="dark"] .technologies-box strong {
     color: #e2e8f0 !important;

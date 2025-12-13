@@ -1,0 +1,48 @@
+<!-- Star Wars Theme Template -->
+<div class="star-wars-container">
+    <!-- Background Stars -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <!-- Top Section: Name, Title, and Photo -->
+    <div class="sw-header">
+        <div class="sw-photo-container">
+            <img id="profile-image" src="./avatar.png" alt="Marcelo Mourão" class="sw-profile-image">
+            <img src="./lightsaber.png" alt="Lightsaber" class="sw-lightsaber">
+        </div>
+        <div class="sw-name-section">
+            <h1 class="sw-name" id="name">MARCELO MOURÃO</h1>
+            <div class="sw-tagline" id="tagline">Desenvolvedor Sênior e Arquiteto de Software</div>
+        </div>
+    </div>
+    
+    <!-- Crawl Container -->
+    <div class="sw-crawl-container">
+        <div class="sw-crawl" id="sw-crawl">
+            <!-- Content will be populated by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Music Player -->
+    <div class="sw-music-player" id="sw-music-player">
+        <audio id="sw-audio" preload="auto" loop>
+            <source src="./templates/star_wars_main_theme_song.mp3" type="audio/mpeg">
+        </audio>
+        <div class="sw-player-controls">
+            <button class="sw-player-btn" id="sw-play" onclick="swPlayMusic()" title="Play">
+                <i class="bi bi-play-fill"></i>
+            </button>
+            <button class="sw-player-btn" id="sw-pause" onclick="swPauseMusic()" title="Pause" style="display: none;">
+                <i class="bi bi-pause-fill"></i>
+            </button>
+            <button class="sw-player-btn" id="sw-stop" onclick="swStopMusic()" title="Stop">
+                <i class="bi bi-stop-fill"></i>
+            </button>
+            <div class="sw-volume-control">
+                <input type="range" id="sw-volume" min="0" max="100" value="50" oninput="swSetVolume(this.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
