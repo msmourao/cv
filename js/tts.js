@@ -75,6 +75,22 @@ const TTS = {
             this.populateVoices();
         });
         
+        // Verificar se Star Wars está ativo e aplicar preset Vader
+        if (document.body.classList.contains('star-wars-template')) {
+            // Aguardar um pouco para garantir que as vozes estão carregadas
+            setTimeout(() => {
+                if (this.voices.length === 0) {
+                    // Se ainda não houver vozes, tentar novamente
+                    this.populateVoices();
+                    setTimeout(() => {
+                        this.applyPreset('vader');
+                    }, 500);
+                } else {
+                    this.applyPreset('vader');
+                }
+            }, 500);
+        }
+        
         // Listener para mudanças de voz
         if (this.synth.onvoiceschanged !== undefined) {
             this.synth.onvoiceschanged = () => {
@@ -166,14 +182,39 @@ const TTS = {
             // Para preset Vader, escolher a voz mais grave disponível
             // Vozes masculinas geralmente têm nomes que contêm palavras como "male", "man", "masculine"
             // ou são do tipo "Google" que geralmente têm vozes mais graves
+            // Para português: procurar por "Google", "Microsoft", "Daniel", "João"
+            // Para inglês: procurar por "Google", "Microsoft David", "Daniel", "male"
+            const langPrefix = this.currentLang.split('-')[0];
             const maleVoices = voicesToChoose.filter(v => {
                 const name = v.name.toLowerCase();
+                const lang = v.lang.toLowerCase();
+                
+                // Filtros específicos por idioma
+                if (langPrefix === 'pt') {
+                    return name.includes('google') ||
+                           name.includes('microsoft') ||
+                           name.includes('daniel') ||
+                           name.includes('joão') ||
+                           name.includes('joao') ||
+                           name.includes('male') ||
+                           name.includes('masculine');
+                } else if (langPrefix === 'en') {
+                    return name.includes('google') ||
+                           name.includes('microsoft david') ||
+                           name.includes('david') ||
+                           name.includes('daniel') ||
+                           name.includes('male') ||
+                           name.includes('masculine') ||
+                           name.includes('zira');
+                }
+                
+                // Fallback genérico
                 return name.includes('male') || 
                        name.includes('man') || 
                        name.includes('masculine') ||
                        name.includes('google') ||
-                       name.includes('microsoft david') ||
-                       name.includes('zira') ||
+                       name.includes('microsoft') ||
+                       name.includes('david') ||
                        name.includes('daniel');
             });
             
@@ -182,10 +223,14 @@ const TTS = {
                 const nativeMaleVoices = maleVoices.filter(voice => 
                     voice.lang === this.currentLang
                 );
-                this.prefs.voiceURI = (nativeMaleVoices.length > 0 ? nativeMaleVoices : maleVoices)[0].voiceURI;
+                const selectedVoices = nativeMaleVoices.length > 0 ? nativeMaleVoices : maleVoices;
+                // Escolher a primeira voz disponível (já filtrada para ser masculina/grave)
+                this.prefs.voiceURI = selectedVoices[0].voiceURI;
+                console.log('Vader preset: Voz selecionada:', selectedVoices[0].name);
             } else {
                 // Fallback: usar primeira voz disponível
                 this.prefs.voiceURI = voicesToChoose[0].voiceURI;
+                console.warn('Vader preset: Nenhuma voz masculina encontrada, usando fallback:', voicesToChoose[0].name);
             }
         } else {
             // Seleção normal
@@ -294,6 +339,7 @@ const TTS = {
             const preset = this.presets[this.activePreset];
             this.currentUtterance.rate = preset.rate;
             this.currentUtterance.pitch = preset.pitch;
+            console.log(`TTS: Aplicando preset ${this.activePreset} - rate: ${preset.rate}, pitch: ${preset.pitch}`);
         } else {
             this.currentUtterance.rate = this.prefs.rate;
             this.currentUtterance.pitch = this.prefs.pitch;
@@ -305,6 +351,9 @@ const TTS = {
             const selectedVoice = this.voices.find(v => v.voiceURI === this.prefs.voiceURI);
             if (selectedVoice) {
                 this.currentUtterance.voice = selectedVoice;
+                console.log('TTS: Voz selecionada:', selectedVoice.name, `(preset: ${this.activePreset || 'nenhum'})`);
+            } else {
+                console.warn('TTS: Voz não encontrada:', this.prefs.voiceURI);
             }
         }
         
@@ -920,8 +969,21 @@ const TTS = {
         }
         
         // Selecionar voz apropriada para o preset
+        // Se não houver vozes ainda, aguardar e tentar novamente
         if (this.activePreset) {
-            this.selectBestVoice();
+            if (this.voices.length === 0) {
+                // Aguardar vozes carregarem
+                const checkVoices = () => {
+                    if (this.voices.length > 0) {
+                        this.selectBestVoice();
+                    } else {
+                        setTimeout(checkVoices, 100);
+                    }
+                };
+                checkVoices();
+            } else {
+                this.selectBestVoice();
+            }
         }
         
         // Se estiver falando, parar e recomeçar com novo preset

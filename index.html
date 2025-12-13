@@ -1436,8 +1436,26 @@
                 // Tentar carregar o source se necessário
                 if (!audio.src && source && source.src) {
                     audio.load();
+                    // Aguardar o carregamento antes de tentar tocar
+                    audio.addEventListener('canplaythrough', () => {
+                        const playPromise = audio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                if (playBtn) playBtn.style.display = 'none';
+                                if (pauseBtn) pauseBtn.style.display = 'flex';
+                            }).catch(error => {
+                                // Não mostrar alerta, apenas logar o erro
+                                console.warn('Error playing audio (may require user interaction):', error);
+                            });
+                        } else {
+                            if (playBtn) playBtn.style.display = 'none';
+                            if (pauseBtn) pauseBtn.style.display = 'flex';
+                        }
+                    }, { once: true });
+                    return; // Retornar aqui para não tentar tocar antes do carregamento
                 }
                 
+                // Se já tiver source, tentar tocar diretamente
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
