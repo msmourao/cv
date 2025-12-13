@@ -196,6 +196,37 @@ const ThemeManager = {
         this.toggleThemeMenu(); // Fechar menu após seleção
     },
     
+    /**
+     * Aplica estilos específicos do template
+     */
+    applyTemplateStyles(templateId) {
+        // Remover atributos de tema padrão
+        document.documentElement.removeAttribute('data-theme');
+        document.body.removeAttribute('data-theme');
+        
+        // Obter referências aos CSS
+        const atsCss = document.getElementById('ats-friendly-css');
+        const swCss = document.getElementById('star-wars-css');
+        
+        if (templateId === 'ats-friendly') {
+            document.body.classList.add('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
+            if (atsCss) atsCss.disabled = false;
+            if (swCss) swCss.disabled = true;
+        } else if (templateId === 'star-wars') {
+            document.body.classList.add('star-wars-template');
+            document.body.classList.remove('ats-friendly-template');
+            if (swCss) swCss.disabled = false;
+            if (atsCss) atsCss.disabled = true;
+        } else {
+            document.body.classList.remove('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
+            if (atsCss) atsCss.disabled = true;
+            if (swCss) swCss.disabled = true;
+            this.applyColorScheme(this.currentColorScheme);
+        }
+    },
+    
     renderThemeMenu() {
         const menu = document.getElementById('theme-menu');
         if (!menu) return;
