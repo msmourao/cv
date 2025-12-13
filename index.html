@@ -1456,6 +1456,12 @@
                                     
                                     // Remover overlay com atraso de 1 segundo e transição suave (em paralelo)
                                     if (overlay) {
+                                        // Garantir que está visível antes de iniciar fade-out (especialmente no mobile)
+                                        overlay.style.display = 'block';
+                                        overlay.style.opacity = '1';
+                                        overlay.classList.remove('hidden');
+                                        void overlay.offsetHeight; // Forçar reflow
+                                        
                                         // Aguardar 1 segundo antes de iniciar o fade-out
                                         setTimeout(() => {
                                             overlay.classList.add('hidden');
