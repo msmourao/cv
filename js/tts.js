@@ -12,11 +12,25 @@ const TTS = {
     currentLang: 'pt-BR',
     sectionQueue: null,
     currentSectionIndex: 0,
+    activePreset: null, // 'vader' ou null
     prefs: {
         rate: 1.0,
         pitch: 1.0,
         volume: 1.0,
         voiceURI: null
+    },
+    /**
+     * Presets de TTS disponíveis
+     * Valores ajustáveis:
+     * - rate: velocidade da fala (0.1 a 10, padrão 1.0)
+     * - pitch: tom da voz (0 a 2, padrão 1.0, valores menores = mais grave)
+     */
+    presets: {
+        vader: {
+            rate: 0.9,  // Ligeiramente mais lento para efeito mais dramático
+            pitch: 0.5, // Tom muito mais grave (Vader-like)
+            name: 'Vader-like'
+        }
     },
     
     /**
@@ -30,8 +44,15 @@ const TTS = {
             return;
         }
         
-        this.synth = window.speechSynthesis;
-        this.isSupported = true;
+        try {
+            this.synth = window.speechSynthesis;
+            this.isSupported = true;
+        } catch (e) {
+            this.isSupported = false;
+            console.warn('TTS: Erro ao inicializar speechSynthesis:', e);
+            this.showUnsupportedMessage();
+            return;
+        }
         
         // Carregar idioma atual
         this.loadCurrentLang();
@@ -129,6 +150,7 @@ const TTS = {
     
     /**
      * Seleciona automaticamente a melhor voz de acordo com o idioma
+     * Se o preset Vader estiver ativo, seleciona a voz mais grave
      */
     selectBestVoice() {
         if (this.voices.length === 0) return;
@@ -138,26 +160,56 @@ const TTS = {
             voice.lang.startsWith(this.currentLang.split('-')[0])
         );
         
-        if (langVoices.length === 0) {
-            // Se não encontrar, usar qualquer voz
-            this.prefs.voiceURI = this.voices[0].voiceURI;
-        } else {
-            // Priorizar vozes nativas do idioma
-            const nativeVoices = langVoices.filter(voice => 
-                voice.lang === this.currentLang
-            );
+        const voicesToChoose = langVoices.length > 0 ? langVoices : this.voices;
+        
+        if (this.activePreset === 'vader') {
+            // Para preset Vader, escolher a voz mais grave disponível
+            // Vozes masculinas geralmente têm nomes que contêm palavras como "male", "man", "masculine"
+            // ou são do tipo "Google" que geralmente têm vozes mais graves
+            const maleVoices = voicesToChoose.filter(v => {
+                const name = v.name.toLowerCase();
+                return name.includes('male') || 
+                       name.includes('man') || 
+                       name.includes('masculine') ||
+                       name.includes('google') ||
+                       name.includes('microsoft david') ||
+                       name.includes('zira') ||
+                       name.includes('daniel');
+            });
             
-            if (nativeVoices.length > 0) {
-                // Preferir vozes com nome que contenha o idioma ou sejam "premium"
-                const preferred = nativeVoices.find(v => 
-                    v.name.toLowerCase().includes(this.currentLang.split('-')[0]) ||
-                    v.name.toLowerCase().includes('premium') ||
-                    v.name.toLowerCase().includes('enhanced')
-                ) || nativeVoices[0];
-                
-                this.prefs.voiceURI = preferred.voiceURI;
+            if (maleVoices.length > 0) {
+                // Priorizar vozes nativas do idioma
+                const nativeMaleVoices = maleVoices.filter(voice => 
+                    voice.lang === this.currentLang
+                );
+                this.prefs.voiceURI = (nativeMaleVoices.length > 0 ? nativeMaleVoices : maleVoices)[0].voiceURI;
             } else {
-                this.prefs.voiceURI = langVoices[0].voiceURI;
+                // Fallback: usar primeira voz disponível
+                this.prefs.voiceURI = voicesToChoose[0].voiceURI;
+            }
+        } else {
+            // Seleção normal
+            if (langVoices.length === 0) {
+                // Se não encontrar, usar qualquer voz
+                this.prefs.voiceURI = this.voices[0].voiceURI;
+            } else {
+                // Priorizar vozes nativas do idioma
+                const nativeVoices = langVoices.filter(voice => 
+                    voice.lang === this.currentLang
+                );
+                
+                if (nativeVoices.length > 0) {
+                    // Preferir vozes com nome que contenha o idioma ou sejam "premium"
+                    const preferred = nativeVoices.find(v => 
+                        v.name.toLowerCase().includes(this.currentLang.split('-')[0]) ||
+                        v.name.toLowerCase().includes('premium') ||
+                        v.name.toLowerCase().includes('enhanced')
+                    ) || nativeVoices[0];
+                    
+                    this.prefs.voiceURI = preferred.voiceURI;
+                } else {
+                    this.prefs.voiceURI = langVoices[0].voiceURI;
+                }
             }
         }
         
@@ -236,8 +288,17 @@ const TTS = {
         // Criar utterance
         this.currentUtterance = new SpeechSynthesisUtterance(text);
         this.currentUtterance.lang = this.currentLang;
-        this.currentUtterance.rate = this.prefs.rate;
-        this.currentUtterance.pitch = this.prefs.pitch;
+        
+        // Aplicar preset se ativo
+        if (this.activePreset && this.presets[this.activePreset]) {
+            const preset = this.presets[this.activePreset];
+            this.currentUtterance.rate = preset.rate;
+            this.currentUtterance.pitch = preset.pitch;
+        } else {
+            this.currentUtterance.rate = this.prefs.rate;
+            this.currentUtterance.pitch = this.prefs.pitch;
+        }
+        
         this.currentUtterance.volume = this.prefs.volume;
         
         if (this.prefs.voiceURI) {
@@ -387,6 +448,15 @@ const TTS = {
             } catch (e) {
                 console.error('Erro ao carregar preferências TTS:', e);
             }
+        }
+        
+        // Carregar preset ativo para o idioma
+        const presetKey = `tts-preset-${lang}`;
+        const savedPreset = localStorage.getItem(presetKey);
+        if (savedPreset && this.presets[savedPreset]) {
+            this.activePreset = savedPreset;
+            // Aplicar preset (selecionar voz e ajustar prefs)
+            this.selectBestVoice();
         }
     },
     
@@ -553,7 +623,33 @@ const TTS = {
     collectTextInOrder() {
         const sections = [];
         const isATS = this.isATSFriendly();
+        const isStarWars = document.body.classList.contains('star-wars-template');
         const isMobile = this.isMobile();
+        
+        // Se for Star Wars, ler as seções do crawl
+        if (isStarWars) {
+            const crawlElement = document.getElementById('sw-crawl');
+            if (crawlElement) {
+                // Buscar todas as seções dentro do crawl
+                const crawlSections = crawlElement.querySelectorAll('[data-section]');
+                if (crawlSections.length > 0) {
+                    crawlSections.forEach(section => {
+                        const sectionId = section.getAttribute('data-section');
+                        const text = section.innerText || section.textContent || '';
+                        if (text.trim()) {
+                            sections.push({ id: sectionId, element: section, text: text.trim() });
+                        }
+                    });
+                } else {
+                    // Fallback: se não houver seções, ler todo o conteúdo
+                    const text = crawlElement.innerText || crawlElement.textContent || '';
+                    if (text.trim()) {
+                        sections.push({ id: 'sw-crawl', element: crawlElement, text: text.trim() });
+                    }
+                }
+            }
+            return sections;
+        }
         
         if (isATS) {
             // ATS-Friendly: ordem específica do template (todas as seções sempre visíveis)
@@ -801,6 +897,56 @@ const TTS = {
     updateVoice(voiceURI) {
         this.prefs.voiceURI = voiceURI;
         this.savePrefs();
+    },
+    
+    /**
+     * Aplica um preset de TTS (ex: 'vader')
+     * @param {string} presetName - Nome do preset ('vader' ou null para desativar)
+     */
+    applyPreset(presetName) {
+        if (presetName && !this.presets[presetName]) {
+            console.warn(`Preset "${presetName}" não encontrado. Presets disponíveis:`, Object.keys(this.presets));
+            return;
+        }
+        
+        this.activePreset = presetName || null;
+        
+        // Salvar preset por idioma
+        const presetKey = `tts-preset-${this.currentLang}`;
+        if (this.activePreset) {
+            localStorage.setItem(presetKey, this.activePreset);
+        } else {
+            localStorage.removeItem(presetKey);
+        }
+        
+        // Selecionar voz apropriada para o preset
+        if (this.activePreset) {
+            this.selectBestVoice();
+        }
+        
+        // Se estiver falando, parar e recomeçar com novo preset
+        if (this.isSpeaking) {
+            const wasPaused = this.isPaused;
+            this.stop();
+            if (!wasPaused && this.sectionQueue && this.currentSectionIndex < this.sectionQueue.length) {
+                // Recomeçar da seção atual
+                setTimeout(() => {
+                    this.speakNextSection();
+                }, 100);
+            }
+        }
+    },
+    
+    /**
+     * Verifica se um preset está ativo
+     * @param {string} presetName - Nome do preset a verificar (opcional, se não fornecido retorna o preset ativo)
+     * @returns {boolean|string} - true se o preset especificado estiver ativo, ou o nome do preset ativo, ou false/null
+     */
+    isPresetActive(presetName = null) {
+        if (presetName) {
+            return this.activePreset === presetName;
+        }
+        return this.activePreset;
     }
 };
 

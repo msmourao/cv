@@ -14,8 +14,16 @@ const ThemeManager = {
     templates: [
         { id: 'better-view', name: { pt: 'Better-view', en: 'Better-view' } },
         { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } },
-        { id: 'star-wars', name: { pt: 'Star Wars', en: 'Star Wars' }, hidden: true }
+        { id: 'star-wars', name: { pt: 'Star Wars', en: 'Star Wars' } }
     ],
+    
+    /**
+     * Verifica se Star Wars está habilitado via query string
+     */
+    isStarWarsEnabled() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('enableStarWars') === 'true';
+    },
     
     currentColorScheme: 'blue',
     currentTemplate: 'better-view',
@@ -30,8 +38,16 @@ const ThemeManager = {
         if (savedColorScheme && this.colorSchemes.find(c => c.id === savedColorScheme)) {
             this.currentColorScheme = savedColorScheme;
         }
+        
+        // Se o template salvo for Star Wars mas não estiver habilitado, usar better-view
         if (savedTemplate && this.templates.find(t => t.id === savedTemplate)) {
-            this.currentTemplate = savedTemplate;
+            if (savedTemplate === 'star-wars' && !this.isStarWarsEnabled()) {
+                // Se Star Wars não estiver habilitado, usar better-view
+                this.currentTemplate = 'better-view';
+                localStorage.setItem('cv-template', 'better-view');
+            } else {
+                this.currentTemplate = savedTemplate;
+            }
         }
         
         // Aplicar template salvo
@@ -44,7 +60,8 @@ const ThemeManager = {
             if (swCss) swCss.disabled = true;
             document.documentElement.removeAttribute('data-theme');
             document.body.removeAttribute('data-theme');
-        } else if (this.currentTemplate === 'star-wars') {
+        } else if (this.currentTemplate === 'star-wars' && this.isStarWarsEnabled()) {
+            // Só aplicar Star Wars se estiver habilitado via query string
             document.body.classList.add('star-wars-template');
             document.body.classList.remove('ats-friendly-template');
             const swCss = document.getElementById('star-wars-css');
@@ -54,6 +71,12 @@ const ThemeManager = {
             document.documentElement.removeAttribute('data-theme');
             document.body.removeAttribute('data-theme');
         } else {
+            // Se Star Wars estava salvo mas não está habilitado, usar better-view
+            if (this.currentTemplate === 'star-wars') {
+                this.currentTemplate = 'better-view';
+                localStorage.setItem('cv-template', 'better-view');
+                this.applyColorScheme(this.currentColorScheme);
+            }
             document.body.classList.remove('ats-friendly-template');
             document.body.classList.remove('star-wars-template');
             this.applyColorScheme(this.currentColorScheme);
@@ -70,8 +93,8 @@ const ThemeManager = {
     },
     
     applyColorScheme(schemeId) {
-        // Não aplicar cores se o template ATS-friendly estiver ativo
-        if (this.currentTemplate === 'ats-friendly') {
+        // Não aplicar cores se o template ATS-friendly ou Star Wars estiver ativo
+        if (this.currentTemplate === 'ats-friendly' || this.currentTemplate === 'star-wars') {
             return;
         }
         
@@ -88,6 +111,12 @@ const ThemeManager = {
             return;
         }
         
+        // Verificar se Star Wars está habilitado antes de permitir seleção
+        if (templateId === 'star-wars' && !this.isStarWarsEnabled()) {
+            console.warn('Star Wars template requer enableStarWars=true na URL');
+            return;
+        }
+        
         if (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -100,23 +129,40 @@ const ThemeManager = {
         if (window.TemplateManager) {
             const templateName = templateId === 'better-view' ? 'better-view' : 
                                 templateId === 'ats-friendly' ? 'ats-friendly' : 
+                                templateId === 'star-wars' ? 'star-wars' :
                                 'better-view';
             await window.TemplateManager.loadTemplate(templateName);
         }
         
-        // Se for ATS-friendly, remover tema de cores e aplicar estilos
+        // Aplicar estilos específicos do template
         if (templateId === 'ats-friendly') {
             document.documentElement.removeAttribute('data-theme');
             document.body.removeAttribute('data-theme');
             document.body.classList.add('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
             // Habilitar CSS do ATS-friendly
             const atsCss = document.getElementById('ats-friendly-css');
             if (atsCss) atsCss.disabled = false;
-        } else {
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = true;
+        } else if (templateId === 'star-wars') {
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+            document.body.classList.add('star-wars-template');
             document.body.classList.remove('ats-friendly-template');
-            // Desabilitar CSS do ATS-friendly
+            // Habilitar CSS do Star Wars
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = false;
             const atsCss = document.getElementById('ats-friendly-css');
             if (atsCss) atsCss.disabled = true;
+        } else {
+            document.body.classList.remove('ats-friendly-template');
+            document.body.classList.remove('star-wars-template');
+            // Desabilitar CSS dos templates especiais
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = true;
+            const swCss = document.getElementById('star-wars-css');
+            if (swCss) swCss.disabled = true;
             this.applyColorScheme(this.currentColorScheme);
         }
         
@@ -134,11 +180,19 @@ const ThemeManager = {
                 initializeMobile();
             }
         }
+        
+        // Aplicar preset Vader se for Star Wars
+        if (templateId === 'star-wars' && window.TTS && window.TTS.applyPreset) {
+            window.TTS.applyPreset('vader');
+        } else if (templateId !== 'star-wars' && window.TTS && window.TTS.isPresetActive('vader')) {
+            // Remover preset Vader se sair do tema Star Wars
+            window.TTS.applyPreset(null);
+        }
     },
     
     selectColorScheme(schemeId) {
-        // Não aplicar se ATS-friendly estiver ativo
-        if (this.currentTemplate === 'ats-friendly') {
+        // Não aplicar se ATS-friendly ou Star Wars estiver ativo
+        if (this.currentTemplate === 'ats-friendly' || this.currentTemplate === 'star-wars') {
             return;
         }
         
@@ -160,9 +214,16 @@ const ThemeManager = {
         const isStarWars = this.currentTemplate === 'star-wars';
         const disableColors = isATS || isStarWars;
         
-        // Template Options (Radio buttons) - esconder Star Wars
-        const templateOptionsHTML = this.templates
-            .filter(template => !template.hidden)
+        // Template Options (Radio buttons)
+        // Filtrar Star Wars se não estiver habilitado via query string
+        const availableTemplates = this.templates.filter(template => {
+            if (template.id === 'star-wars') {
+                return this.isStarWarsEnabled();
+            }
+            return true;
+        });
+        
+        const templateOptionsHTML = availableTemplates
             .map(template => {
                 const isActive = template.id === this.currentTemplate;
                 return `

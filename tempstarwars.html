@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Opening Crawl - Alinhamento Iterativo</title>
+<style>
+  :root{
+    --bg: #000;
+    --text: #f6e58d;
+
+    /* Ajuste apenas esta variável (pixels por segundo) */
+    --speed-px-per-s: 40;
+
+    --tilt-deg: 60deg;
+    --max-width: 1000px;
+  }
+
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;overflow:hidden;}
+  #scene{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;perspective:900px;background:linear-gradient(#000,#020202);}
+  #tilt{width:80%;max-width:var(--max-width);transform-origin:50% 100%;transform:rotateX(var(--tilt-deg));}
+  .scroll-viewport{position:relative;overflow:visible;}
+  #scroll{will-change:transform;transform-origin:50% 100%;display:block;transition:none;}
+  .block{ text-align:justify; letter-spacing:0.12em; line-height:1.6; color:var(--text); text-shadow:0 1px 0 rgba(0,0,0,0.6),0 2px 8px rgba(0,0,0,0.8); font-size:1.2rem; margin:0 auto 2rem auto; max-width:100%; width:70%; }
+  @media (max-width:600px){ .block{font-size:1.0rem; letter-spacing:0.08em; width:90%;} }
+
+  .fade-top,.fade-bottom{ position:absolute; left:0; right:0; height:25vh; pointer-events:none; z-index:30; }
+  .fade-top{ top:0; background:linear-gradient(to bottom, var(--bg) 0%, rgba(0,0,0,0) 100%); }
+  .fade-bottom{ bottom:0; background:linear-gradient(to top, var(--bg) 0%, rgba(0,0,0,0) 100%); }
+
+  /* overlay debug */
+  #dbg{ position:fixed; left:12px; top:12px; z-index:9999; background:rgba(0,0,0,0.6); color:var(--text); padding:8px 10px; border-radius:6px; font-family:monospace; font-size:13px; pointer-events:none; }
+  #dbg b{ color:#ffd54f; }
+</style>
+</head>
+<body>
+  <div id="scene" role="main" aria-label="Cena do letreiro">
+    <div id="tilt">
+      <div class="scroll-viewport" id="viewport">
+        <div id="scroll" aria-live="polite">
+          <!-- Conteúdo: duplique estes blocos livremente -->
+          <h2>EPISODE IV</h2><h2>UMA NOVA ESPERANÇA</h2><p>Arquiteto e desenvolvedor de software com 15+ anos construindo sistemas críticos para e-commerce, telecomunicações e setor financeiro. Migrei monólitos .NET Framework para arquitetura de microsserviços em .NET 8, melhorando significativamente tempo de deploy e disponibilidade. Otimizei queries SQL reduzindo execução de relatórios de minutos para segundos em sistemas com milhares de registros. Implementei observabilidade end-to-end com OpenTelemetry, melhorando tempo de resolução de incidentes. Desenvolvi plataforma multi-cloud (AWS/Azure) com deploy unificado, otimizando custos de infraestrutura. Apliquei IA para automação de correção de bugs, melhorando qualidade do código. Domínio técnico: .NET 10, Frontend, PostgreSQL, SQL Server, Oracle Database, AWS Lambda, Azure Functions, Kubernetes, Terraform, Generative AI.</p><h3>PRINCIPAIS CONQUISTAS</h3><ul></ul><h3>EXPERIÊNCIA PROFISSIONAL</h3><p><strong>Arquiteto e Desenvolvedor Principal</strong> - EventsFinder (projeto pessoal)</p><p>Março 2024 – Presente</p><p>Projeto pessoal ainda em construção. Concebi e desenvolvo o EventsFinder, plataforma de busca de eventos automatizada em redes sociais por localização com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD. Projeto do qual me afastarei quando tiver um novo emprego.</p><br><p><strong>Desenvolvedor de Software Especialista</strong> - UBS</p><p>Março 2024 – Julho 2025</p><p>Liderei modernização de aplicações legadas em time multinacional com comunicação diária em inglês, migrando sistemas críticos de .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços. Melhorei significativamente tempo de deploy, otimizei queries SQL reduzindo execução de relatórios de minutos para segundos, e implementei MVVM em Windows Forms melhorando testabilidade. Desenvolvi biblioteca de cálculo de dias úteis substituindo consultas a API, reduzindo latência em relatórios massivos.</p><br><p><strong>Desenvolvedor de Software Especialista</strong> - Ninecon</p><p>Julho 2023 — Dezembro 2023</p><p>Atuei como consultor em projetos temporários para clientes estratégicos, modernizando ambientes SOA e otimizando performance. Migrei Oracle SOA Suite 11g/12c para 12c/Fusion Middleware em nuvem, garantindo compatibilidade total. Otimizei queries Oracle reduzindo significativamente tempos de execução e aumentando confiabilidade de processos de integração.</p><br><p><strong>Software Engineer</strong> - Despegar</p><p>Março 2022 — Abril 2023</p><p>Atuei no time de arquitetura e desenvolvimento do e-commerce da Despegar, desenhando e implementando funcionalidades críticas. Implementei mecanismos de proteção de dados em conformidade com LGPD, realizando code reviews em múltiplos times garantindo aderência a padrões de qualidade. Resolvi incidentes em produção mantendo estabilidade em períodos de alto tráfego, colaborando com equipes internacionais distribuídas.</p><br><p><strong>Arquiteto SOA</strong> - Gol Airlines</p><p>Agosto 2020 – Março 2022</p><p>Atuei como arquiteto SOA desenvolvendo e mantendo APIs assíncronas críticas para diferentes áreas da companhia aérea. Implementei soluções em Oracle SOA Suite utilizando BPEL e Oracle Service Bus, garantindo orquestração de processos internos com alta disponibilidade. Analisei e corrigi problemas em integrações existentes, reduzindo falhas e mantendo continuidade operacional.</p><br><p><strong>Programador Sênior</strong> - ViajaNet</p><p>Agosto 2019 – Março 2020</p><p>Desenvolvi APIs e funcionalidades para o e-commerce da ViajaNet com foco em performance e escalabilidade. Implementei soluções em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes. Utilizei RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído, garantindo alta disponibilidade. Realizei code reviews promovendo boas práticas e otimizei queries SQL Server reduzindo latência.</p><br><p><strong>Líder Técnico</strong> - Claro Brasil</p><p>Maio 2018 – Junho 2019</p><p>Iniciei como desenvolvedor em projeto de integração do sistema de ordens de serviço da Claro com Oracle Field Service, assumindo liderança técnica após dois meses. Coordenei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes. Solucionei problemas de modelagem e arquitetura que bloqueavam avanços do projeto, colaborando diretamente com time da Oracle e stakeholders internos.</p><br><p><strong>Programador Sênior</strong> - CVC Viagens</p><p>Maio 2013 – Maio 2018</p><p>Atuei em projetos estratégicos de e-commerce e plataformas internas da CVC, evoluindo de desenvolvedor FullStack .NET para especialista em integrações SOA. Desenvolvi plataforma de vendas para agentes de viagem integrando motor de busca de voos e sistemas de precificação. Implementei conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica. Participei na adoção do Oracle SOA Suite, criando serviços de integração que suportaram novos canais digitais.</p><br><p><strong>Programador Sênior</strong> - B2W Viagens</p><p>Março 2011 – Fevereiro 2013</p><p>Desenvolvi soluções FullStack .NET para plataforma B2B de fidelidade e recompensas, criando sistemas que permitiam resgate de pontos e milhas de parceiros. Implementei integrações com sistemas de parceiros, otimizando queries e processos garantindo alta estabilidade.</p><br><p><strong>Programador Júnior</strong> - Alafia Consultoria</p><p>Março 2010 – Fevereiro 2011</p><p>Atuei como programador em uma pequena agência de marketing, desenvolvendo páginas web e soluções simples para apoiar negócios locais. Essa experiência foi importante para consolidar minha base em desenvolvimento web e práticas de entrega rápida.</p><br><p><strong>Programador Júnior</strong> - UOL Diveo</p><p>Novembro 2007 – Fevereiro 2010</p><p>Primeira experiência profissional em tecnologia, iniciada como estagiário e rapidamente evoluída para programador júnior. Atuei em uma equipe dedicada a pesquisa e desenvolvimento de software, com foco em desempenho e segurança, além de desenvolvimento direto em sistemas corporativos.</p><ul><li>C#</li><li>.NET</li><li>Frontend</li><li>AWS</li><li>Azure</li><li>PostgreSQL</li><li>Oracle Database</li><li>MS SQL Server</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>IaC</li><li>Generative AI</li><li>Cursor</li><li>DevOps</li><li>CI/CD</li></ul><h3>FORMAÇÃO</h3><ul><li>Bacharelado em Ciências da Computação - Universidade Paulista (UNIP) (Janeiro 2006 – Dezembro 2009)</li><li>MBA em Engenharia de Software SOA - FIAP (Setembro 2012 – Setembro 2013)</li></ul><h3>IDIOMAS</h3><ul><li>Português - Nativo</li><li>Inglês - Avançado</li><li>Espanhol - Básico</li></ul><h3>PROJETOS</h3><ul></ul><h3>HOBBIES</h3><ul><li>Músico</li><li>Artista Circense</li><li>Teatro</li><li>Games</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-top" aria-hidden="true"></div>
+    <div class="fade-bottom" aria-hidden="true"></div>
+  </div>
+
+  <div id="dbg" aria-hidden="false">
+    contentHeight: <b id="dbgH">—</b> px<br/>
+    firstTop: <b id="dbgTop">—</b> px<br/>
+    startTranslate: <b id="dbgStart">—</b> px<br/>
+    DURATION_MS: <b id="dbgDur">—</b> ms
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const scroll = document.getElementById('scroll');
+  if(!scroll) return;
+
+  const dbgH = document.getElementById('dbgH');
+  const dbgTop = document.getElementById('dbgTop');
+  const dbgStart = document.getElementById('dbgStart');
+  const dbgDur = document.getElementById('dbgDur');
+
+  const root = getComputedStyle(document.documentElement);
+  const SPEED_PX_PER_S = Math.max(1, parseFloat(root.getPropertyValue('--speed-px-per-s')) || 40);
+  const EXTRA = 160; // folga para quando o conteúdo sair do topo
+
+  let contentHeight = 0;
+  let startTranslate = 0;
+  let endTranslate = 0;
+  let DURATION_MS = 28000;
+
+  function setTranslate(y){
+    scroll.style.transform = `translateY(${Math.round(y)}px) translateZ(0px)`;
+  }
+
+  function getFirstTop(){
+    const first = scroll.firstElementChild;
+    if(!first) return null;
+    return first.getBoundingClientRect().top;
+  }
+
+  // Medição robusta: remove transform, espera dois frames, mede scrollHeight e rect.top
+  async function measureAndFindStart(){
+    // remove transform para medir posição natural
+    const prev = scroll.style.transform;
+    scroll.style.transform = 'none';
+
+    // espera dois frames para layout estabilizar
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+    // força reflow
+    void document.body.offsetHeight;
+
+    // altura total do conteúdo
+    contentHeight = scroll.scrollHeight;
+
+    // desiredTop: queremos que o topo do primeiro filho fique exatamente na borda inferior
+    const desiredTop = window.innerHeight;
+
+    // start from 0 (no translate) and iteratively adjust
+    let translate = 0;
+    setTranslate(translate);
+    // small wait for rect to reflect
+    void scroll.offsetHeight;
+
+    // iterative correction loop
+    const maxIter = 12;
+    const tol = 1; // px
+    for(let i=0;i<maxIter;i++){
+      const top = getFirstTop();
+      if(top === null) break;
+      const delta = desiredTop - top;
+      // if already within tolerance, break
+      if(Math.abs(delta) <= tol) {
+        translate = translate + delta; // final adjust (tiny)
+        setTranslate(translate);
+        break;
+      }
+      // apply correction
+      translate = translate + delta;
+      setTranslate(translate);
+      // force reflow so next measurement is accurate
+      void scroll.offsetHeight;
+    }
+
+    // after loop, set startTranslate and endTranslate
+    startTranslate = Math.round(translate);
+    endTranslate = startTranslate - (contentHeight + EXTRA);
+
+    // compute duration from distance and speed
+    const distancePx = Math.abs(startTranslate - endTranslate);
+    DURATION_MS = Math.max(1, Math.round((distancePx / SPEED_PX_PER_S) * 1000));
+
+    // update debug overlay
+    dbgH.textContent = contentHeight;
+    dbgTop.textContent = Math.round(getFirstTop() || 0);
+    dbgStart.textContent = startTranslate;
+    dbgDur.textContent = DURATION_MS;
+  }
+
+  function applyT(t){
+    const y = startTranslate + (endTranslate - startTranslate) * t;
+    setTranslate(y);
+  }
+
+  let rafId = null;
+  let startTime = null;
+  let offsetMs = 0;
+  let running = false;
+
+  function frame(now){
+    if(!startTime) startTime = now;
+    const elapsed = now - startTime;
+    const total = (offsetMs + elapsed);
+    const t = ((total % DURATION_MS) / DURATION_MS);
+    applyT(t);
+    if(running) rafId = requestAnimationFrame(frame);
+  }
+
+  async function startAuto(){
+    await measureAndFindStart();
+    applyT(0);
+    startTime = performance.now();
+    running = true;
+    frame(performance.now());
+  }
+
+  // resize: recalcula mantendo offset relativo
+  window.addEventListener('resize', async () => {
+    const wasRunning = running;
+    if(wasRunning){
+      const now = performance.now();
+      const elapsed = now - (startTime || now);
+      offsetMs = (offsetMs + elapsed) % DURATION_MS;
+      running = false;
+      if(rafId) cancelAnimationFrame(rafId);
+      startTime = null;
+    }
+    await measureAndFindStart();
+    applyT((offsetMs % DURATION_MS) / DURATION_MS);
+    if(wasRunning){
+      startTime = performance.now();
+      running = true;
+      frame(performance.now());
+    }
+  });
+
+  // MutationObserver: se conteúdo mudar, recalcula e reinicia do início
+  const mo = new MutationObserver(async (mutations) => {
+    let relevant = false;
+    for(const m of mutations){
+      if(m.type === 'childList' || m.type === 'subtree' || m.type === 'characterData'){ relevant = true; break; }
+    }
+    if(relevant){
+      // pausa e zera offset para garantir que comece do início
+      if(running){
+        running = false;
+        if(rafId) cancelAnimationFrame(rafId);
+        startTime = null;
+        offsetMs = 0;
+      }
+      await measureAndFindStart();
+      applyT(0);
+      // retoma autoplay do início
+      startTime = performance.now();
+      running = true;
+      frame(performance.now());
+    }
+  });
+  mo.observe(scroll, { childList: true, subtree: true, characterData: true });
+
+  // inicia após layout e fontes
+  function initWhenReady(){
+    const onReady = () => {
+      const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      fontsReady.then(() => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          startAuto();
+        }));
+      });
+    };
+    if(document.readyState === 'complete') onReady();
+    else window.addEventListener('load', onReady, { once: true });
+  }
+  initWhenReady();
+
+  // utilitários
+  window._crawl = {
+    recalc: async () => { await measureAndFindStart(); applyT(0); },
+    state: () => ({ contentHeight, startTranslate, endTranslate, DURATION_MS, SPEED_PX_PER_S })
+  };
+});
+</script>
+</body>
+</html>

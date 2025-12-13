@@ -33,10 +33,57 @@ body.star-wars-template .resume-wrapper {
     max-width: none !important;
 }
 
-/* Hide mobile nav and TTS bar for Star Wars theme, but keep action buttons */
-body.star-wars-template .mobile-nav,
-body.star-wars-template .tts-top-bar {
+/* Hide mobile nav for Star Wars theme, but keep action buttons and TTS bar */
+body.star-wars-template .mobile-nav {
     display: none !important;
+}
+
+/* Star Wars Theme - TTS Top Bar */
+body.star-wars-template .tts-top-bar {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-bottom: 2px solid #FFE81F !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+    color: #FFE81F !important;
+    z-index: 1000 !important;
+}
+
+body.star-wars-template .tts-top-bar-content {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-close-btn,
+body.star-wars-template .tts-control-btn,
+body.star-wars-template .tts-nav-btn {
+    background: transparent !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-close-btn:hover,
+body.star-wars-template .tts-control-btn:hover:not(:disabled),
+body.star-wars-template .tts-nav-btn:hover:not(:disabled) {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .tts-close-btn:disabled,
+body.star-wars-template .tts-control-btn:disabled,
+body.star-wars-template .tts-nav-btn:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+}
+
+body.star-wars-template #tts-status {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-progress-bar {
+    background: #FFE81F !important;
+}
+
+body.star-wars-template .tts-progress-container {
+    background: rgba(255, 232, 31, 0.2) !important;
 }
 
 /* Star Wars Theme - Action Buttons Colors */
@@ -146,16 +193,19 @@ body.star-wars-template .color-scheme-preview {
     background: #000;
     margin: 0;
     padding: 0;
+    z-index: 0;
 }
 
 /* Animated Stars Background */
 .stars, .stars2, .stars3 {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: transparent;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .stars {
@@ -214,14 +264,15 @@ body.star-wars-template .color-scheme-preview {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 20;
+    z-index: 24;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 1.5rem 2rem;
     pointer-events: none;
     width: 100%;
     box-sizing: border-box;
+    gap: 2rem;
 }
 
 /* Photo Container */
@@ -230,7 +281,7 @@ body.star-wars-template .color-scheme-preview {
     width: 200px;
     height: 200px;
     flex-shrink: 0;
-    z-index: 20;
+    z-index: 23;
 }
 
 .sw-profile-image {
@@ -240,7 +291,7 @@ body.star-wars-template .color-scheme-preview {
     border: 4px solid #FFE81F;
     object-fit: cover;
     position: relative;
-    z-index: 2;
+    z-index: 22;
     box-shadow: 0 0 20px rgba(255, 232, 31, 0.5);
     display: block !important;
     visibility: visible !important;
@@ -253,7 +304,7 @@ body.star-wars-template #profile-image {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 10 !important;
+    z-index: 22 !important;
 }
 
 .sw-lightsaber {
@@ -262,14 +313,14 @@ body.star-wars-template #profile-image {
     left: -5%;
     width: 120px;
     height: auto;
-    z-index: 3;
+    z-index: 25;
     filter: drop-shadow(0 0 10px rgba(255, 232, 31, 0.8));
     pointer-events: none;
 }
 
 /* Name Section */
 .sw-name-section {
-    text-align: right;
+    text-align: left;
     flex: 1;
     padding-right: 1rem;
     padding-left: 1rem;
@@ -293,6 +344,9 @@ body.star-wars-template #profile-image {
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+    position: relative;
+    z-index: 21;
+    background: transparent;
 }
 
 .sw-tagline {
@@ -309,6 +363,9 @@ body.star-wars-template #profile-image {
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+    position: relative;
+    z-index: 21;
+    background: transparent;
 }
 
 /* Crawl Container */
@@ -319,124 +376,140 @@ body.star-wars-template #profile-image {
     right: 0;
     width: 100vw;
     height: 100vh;
-    overflow: visible !important;
-    perspective: 1000px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    perspective: 900px;
     perspective-origin: 50% 0%;
     z-index: 1;
     clip-path: none !important;
     box-sizing: border-box;
+    background: transparent;
+}
+
+/* Fade out no topo para escurecer o texto próximo ao nome/título */
+.sw-crawl-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 100%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+.sw-tilt {
+    width: 80%;
+    max-width: 1000px;
+    transform-origin: 50% 100%;
+    transform: rotateX(60deg);
+}
+
+.sw-viewport {
+    position: relative;
+    overflow: visible;
 }
 
 .sw-crawl {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 80% !important;
-    max-width: 1600px !important;
-    min-width: 600px;
+    will-change: transform;
+    transform-origin: 50% 100%;
+    display: block;
+    transition: none;
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 5.5rem;
     color: #FFE81F;
     text-align: justify;
-    line-height: 2.8;
-    letter-spacing: 0.2em;
-    transform-origin: 50% 0%;
-    transform-style: preserve-3d;
-    padding: 0 5rem;
-    will-change: transform, bottom, width, font-size;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-    z-index: 10;
-    margin-left: 0 !important;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.8);
+    width: 100%;
     box-sizing: border-box;
 }
 
-@keyframes crawl {
-    0% {
-        bottom: 0;
-        transform: translateX(-50%) rotateX(-20deg) translateZ(0) scale(1);
-        width: 80%;
-        font-size: 5.5rem;
-    }
-    25% {
-        bottom: 25vh;
-        transform: translateX(-50%) rotateX(-20deg) translateZ(-1500px) scale(0.75);
-        width: 60%;
-        font-size: 4.125rem;
-    }
-    50% {
-        bottom: 50vh;
-        transform: translateX(-50%) rotateX(-20deg) translateZ(-3000px) scale(0.5);
-        width: 40%;
-        font-size: 2.75rem;
-    }
-    75% {
-        bottom: 75vh;
-        transform: translateX(-50%) rotateX(-20deg) translateZ(-4500px) scale(0.25);
-        width: 20%;
-        font-size: 1.375rem;
-    }
-    100% {
-        bottom: 100vh;
-        transform: translateX(-50%) rotateX(-20deg) translateZ(-6000px) scale(0);
-        width: 0%;
-        font-size: 0rem;
-    }
-}
-
-/* Crawl Content Styling */
-.sw-crawl h2 {
-    font-size: 7.5rem;
+.sw-crawl > h2,
+.sw-crawl > h3,
+.sw-crawl > h4 {
     text-align: center;
-    margin-bottom: 5rem;
-    margin-top: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.6em;
-    color: #FFE81F;
-    text-shadow: 
-        0 0 10px rgba(255, 232, 31, 0.8),
-        0 0 20px rgba(255, 232, 31, 0.6);
-    line-height: 1.2;
+    margin: 0 0 1rem 0;
 }
 
-.sw-crawl h3 {
-    font-size: 6.5rem;
-    text-align: center;
-    margin: 4.5rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    color: #FFE81F;
-    line-height: 1.3;
+.sw-crawl > p,
+.sw-crawl > ul {
+    margin: 0 auto 2rem auto;
+    max-width: 100%;
+    width: 70% !important;
+    box-sizing: border-box;
 }
 
-.sw-crawl p {
-    margin: 3rem 0;
-    text-indent: 5rem;
-    font-size: 5.5rem;
-    line-height: 2.8;
-}
-
-.sw-crawl ul {
+.sw-crawl > ul {
     list-style: none;
-    padding-left: 0;
-    margin: 4rem 0;
+    padding: 0;
 }
 
-.sw-crawl li {
-    margin: 2.5rem 0;
-    padding-left: 5rem;
-    position: relative;
-    font-size: 5.5rem;
-    line-height: 2.8;
+.sw-crawl > ul > li {
+    margin: 0.5rem 0;
 }
 
-.sw-crawl li::before {
-    content: "•";
+/* Seções do crawl para TTS */
+.sw-crawl-section {
+    margin-bottom: 2rem;
+}
+
+.sw-crawl-section > h3 {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.sw-crawl-section > p,
+.sw-crawl-section > ul {
+    margin: 0 auto 2rem auto;
+    max-width: 100%;
+    width: 70% !important;
+    box-sizing: border-box;
+}
+
+.sw-crawl-section > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sw-crawl-section > ul > li {
+    margin: 0.5rem 0;
+}
+
+.sw-fade-top,
+.sw-fade-bottom {
     position: absolute;
     left: 0;
-    color: #FFE81F;
-    font-size: 5rem;
+    right: 0;
+    height: 30vh;
+    pointer-events: none;
+    z-index: 30;
+}
+
+.sw-fade-top {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.sw-fade-bottom {
+    bottom: 0;
+    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+@media (max-width: 600px) {
+    .sw-crawl {
+        font-size: 1.0rem;
+        letter-spacing: 0.08em;
+    }
+    
+    .sw-crawl > p,
+    .sw-crawl > ul {
+        width: 90%;
+    }
 }
 
 /* Music Player */
@@ -572,29 +645,13 @@ body.star-wars-template #profile-image {
     }
     
     .sw-crawl {
-        font-size: 3rem;
-        width: 90% !important;
-        max-width: 90% !important;
-        min-width: 300px !important;
-        padding: 0 1.5rem;
-        left: 50% !important;
-        margin-left: 0 !important;
+        font-size: 1.0rem;
+        letter-spacing: 0.08em;
     }
     
-    .sw-crawl h2 {
-        font-size: 4rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .sw-crawl h3 {
-        font-size: 3.5rem;
-        margin: 2.5rem 0;
-    }
-    
-    .sw-crawl p,
-    .sw-crawl li {
-        font-size: 3rem;
-        line-height: 2.4;
+    .sw-crawl > p,
+    .sw-crawl > ul {
+        width: 90%;
     }
     
     .sw-music-player {

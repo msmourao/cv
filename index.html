@@ -526,9 +526,13 @@
                 }
             }
             
-            // Se for Star Wars, renderizar crawl
+            // Se for Star Wars, renderizar crawl e aplicar preset Vader
             if (isStarWars) {
                 renderStarWarsCrawl(cvData, descriptions, currentLang);
+                // Aplicar preset Vader para o tema Star Wars
+                if (window.TTS && window.TTS.applyPreset) {
+                    window.TTS.applyPreset('vader');
+                }
             }
 
             // Contact list
@@ -828,6 +832,15 @@
                 !document.body.classList.contains('star-wars-template')) {
                 initializeMobile();
             }
+            
+            // Se for Star Wars e a página já carregou, iniciar música após um delay
+            if (document.body.classList.contains('star-wars-template')) {
+                setTimeout(() => {
+                    if (window.swPlayMusic) {
+                        window.swPlayMusic();
+                    }
+                }, 2000);
+            }
         })();
         
         // Função para inicializar mobile
@@ -941,163 +954,462 @@
         // ============================================
         
         function renderStarWarsCrawl(cvData, descriptions, lang) {
-            const crawlEl = document.getElementById('sw-crawl');
-            if (!crawlEl) return;
+            const scroll = document.getElementById('sw-crawl');
+            if (!scroll) return;
             
-            let html = '';
+            // Limpar conteúdo anterior e garantir que está invisível
+            scroll.innerHTML = '';
+            scroll.style.transform = 'none';
+            scroll.style.visibility = 'hidden';
+            scroll.style.opacity = '0';
             
-            // Episode Title
-            html += `<h2>EPISODE ${lang === 'pt' ? 'IV' : 'IV'}</h2>`;
-            html += `<h2>${lang === 'pt' ? 'UMA NOVA ESPERANÇA' : 'A NEW HOPE'}</h2>`;
+            // Função helper para criar elementos
+            function createElement(tag, text, className) {
+                const el = document.createElement(tag);
+                if (text) el.textContent = text;
+                if (className) el.className = className;
+                return el;
+            }
             
-            // Summary
+            // Função helper para criar seção com data-section para TTS
+            function createSection(sectionId, sectionTitle, contentCallback) {
+                const sectionDiv = createElement('div', null, 'sw-crawl-section');
+                sectionDiv.setAttribute('data-section', sectionId);
+                
+                if (sectionTitle) {
+                    const h3 = createElement('h3', sectionTitle.toUpperCase());
+                    sectionDiv.appendChild(h3);
+                }
+                
+                if (contentCallback) {
+                    contentCallback(sectionDiv);
+                }
+                
+                return sectionDiv;
+            }
+            
+            // Summary (começa direto pelo resumo, sem títulos de episódio)
             if (descriptions.about) {
-                html += `<p>${descriptions.about}</p>`;
+                const summarySection = createSection('summary', null, (section) => {
+                    const p = createElement('p', descriptions.about);
+                    section.appendChild(p);
+                });
+                scroll.appendChild(summarySection);
             }
             
             // Key Achievements
             if (descriptions.sections && descriptions.sections.keyAchievements) {
-                html += `<h3>${descriptions.sections.keyAchievements.toUpperCase()}</h3>`;
-            }
-            if (descriptions.keyAchievements && Array.isArray(descriptions.keyAchievements) && descriptions.keyAchievements.length > 0) {
-                html += '<ul>';
-                descriptions.keyAchievements.forEach(achievement => {
-                    if (achievement && achievement[lang]) {
-                        html += `<li><strong>${achievement.title ? achievement.title[lang] : ''}</strong>: ${achievement.description ? achievement.description[lang] : achievement[lang]}</li>`;
+                const achievementsSection = createSection('achievements', descriptions.sections.keyAchievements, (section) => {
+                    if (descriptions.keyAchievements && Array.isArray(descriptions.keyAchievements) && descriptions.keyAchievements.length > 0) {
+                        const ul = createElement('ul');
+                        descriptions.keyAchievements.forEach(achievement => {
+                            if (achievement) {
+                                const li = createElement('li');
+                                const title = achievement.title ? (typeof achievement.title === 'object' ? achievement.title[lang] : achievement.title) : '';
+                                const desc = achievement.description ? (typeof achievement.description === 'object' ? achievement.description[lang] : achievement.description) : '';
+                                if (title || desc) {
+                                    li.innerHTML = title && desc ? `<strong>${title}</strong>: ${desc}` : (title || desc);
+                                    ul.appendChild(li);
+                                }
+                            }
+                        });
+                        if (ul.children.length > 0) section.appendChild(ul);
                     }
                 });
-                html += '</ul>';
+                scroll.appendChild(achievementsSection);
+            }
+            
+            // Skills (antes da experiência profissional)
+            if (descriptions.sections && descriptions.sections.techStack) {
+                const skillsSection = createSection('skills', descriptions.sections.techStack, (section) => {
+                    if (cvData.techStack && cvData.techStack.length > 0) {
+                        const ul = createElement('ul');
+                        cvData.techStack.forEach(skill => {
+                            const li = createElement('li', skill);
+                            ul.appendChild(li);
+                        });
+                        section.appendChild(ul);
+                    }
+                });
+                scroll.appendChild(skillsSection);
             }
             
             // Professional Experience
             if (descriptions.sections && descriptions.sections.workExperience) {
-                html += `<h3>${descriptions.sections.workExperience.toUpperCase()}</h3>`;
-            }
-            if (cvData.workExperience && Array.isArray(cvData.workExperience) && cvData.workExperience.length > 0) {
-                cvData.workExperience.forEach((job, index) => {
-                    if (!job) return;
-                    const jobTitle = job.title && typeof job.title === 'object' ? job.title[lang] : (job.title || '');
-                    const jobCompany = job.company && typeof job.company === 'object' ? job.company[lang] : (job.company || '');
-                    const jobPeriod = job.period && typeof job.period === 'object' ? job.period[lang] : (job.period || '');
-                    
-                    html += `<p><strong>${jobTitle}</strong> - ${jobCompany}</p>`;
-                    html += `<p>${jobPeriod}</p>`;
-                    
-                    if (job.key && descriptions.workExperience && descriptions.workExperience[job.key]) {
-                        const jobDesc = descriptions.workExperience[job.key];
-                        if (jobDesc && jobDesc.description) {
-                            html += `<p>${jobDesc.description}</p>`;
-                        }
-                    }
-                    if (index < cvData.workExperience.length - 1) {
-                        html += '<br>';
+                const experienceSection = createSection('experience', descriptions.sections.workExperience, (section) => {
+                    if (cvData.workExperience && Array.isArray(cvData.workExperience) && cvData.workExperience.length > 0) {
+                        cvData.workExperience.forEach((job, index) => {
+                            if (!job) return;
+                            const jobTitle = job.title && typeof job.title === 'object' ? job.title[lang] : (job.title || '');
+                            const jobCompany = job.company && typeof job.company === 'object' ? job.company[lang] : (job.company || '');
+                            const jobPeriod = job.period && typeof job.period === 'object' ? job.period[lang] : (job.period || '');
+                            
+                            const p1 = createElement('p');
+                            p1.innerHTML = `<strong>${jobTitle}</strong> - ${jobCompany}`;
+                            section.appendChild(p1);
+                            
+                            const p2 = createElement('p', jobPeriod);
+                            section.appendChild(p2);
+                            
+                            if (job.key && descriptions.workExperience && descriptions.workExperience[job.key]) {
+                                const jobDesc = descriptions.workExperience[job.key];
+                                if (jobDesc && jobDesc.description) {
+                                    const p3 = createElement('p', jobDesc.description);
+                                    section.appendChild(p3);
+                                }
+                            }
+                            
+                            if (index < cvData.workExperience.length - 1) {
+                                const br = createElement('br');
+                                section.appendChild(br);
+                            }
+                        });
                     }
                 });
-            }
-            
-            // Skills
-            if (descriptions.sections && descriptions.sections.skills) {
-                html += `<h3>${descriptions.sections.skills.toUpperCase()}</h3>`;
-            }
-            if (cvData.techStack && cvData.techStack.length > 0) {
-                html += '<ul>';
-                cvData.techStack.forEach(skill => {
-                    html += `<li>${skill}</li>`;
-                });
-                html += '</ul>';
+                scroll.appendChild(experienceSection);
             }
             
             // Education
             if (descriptions.sections && descriptions.sections.education) {
-                html += `<h3>${descriptions.sections.education.toUpperCase()}</h3>`;
-            }
-            if (cvData.education && cvData.education.length > 0) {
-                html += '<ul>';
-                cvData.education.forEach(edu => {
-                    const title = edu.title ? edu.title[lang] : '';
-                    const institution = edu.institution || '';
-                    const period = edu.period ? edu.period[lang] : '';
-                    html += `<li>${title} - ${institution} (${period})</li>`;
+                const educationSection = createSection('education', descriptions.sections.education, (section) => {
+                    if (cvData.education && cvData.education.length > 0) {
+                        const ul = createElement('ul');
+                        cvData.education.forEach(edu => {
+                            const title = edu.title ? edu.title[lang] : '';
+                            const institution = edu.institution || '';
+                            const period = edu.period ? edu.period[lang] : '';
+                            const li = createElement('li', `${title} - ${institution} (${period})`);
+                            ul.appendChild(li);
+                        });
+                        section.appendChild(ul);
+                    }
                 });
-                html += '</ul>';
+                scroll.appendChild(educationSection);
             }
             
             // Languages
             if (descriptions.sections && descriptions.sections.languages) {
-                html += `<h3>${descriptions.sections.languages.toUpperCase()}</h3>`;
-            }
-            if (cvData.languages && cvData.languages.length > 0) {
-                html += '<ul>';
-                cvData.languages.forEach(langItem => {
-                    const name = langItem.name ? langItem.name[lang] : '';
-                    const level = langItem.level ? langItem.level[lang] : '';
-                    html += `<li>${name} - ${level}</li>`;
+                const languagesSection = createSection('languages', descriptions.sections.languages, (section) => {
+                    if (cvData.languages && cvData.languages.length > 0) {
+                        const ul = createElement('ul');
+                        cvData.languages.forEach(langItem => {
+                            const name = langItem.name ? langItem.name[lang] : '';
+                            const level = langItem.level ? langItem.level[lang] : '';
+                            const li = createElement('li', `${name} - ${level}`);
+                            ul.appendChild(li);
+                        });
+                        section.appendChild(ul);
+                    }
                 });
-                html += '</ul>';
+                scroll.appendChild(languagesSection);
             }
             
             // Projects
             if (descriptions.sections && descriptions.sections.projects) {
-                html += `<h3>${descriptions.sections.projects.toUpperCase()}</h3>`;
-            }
-            if (cvData.projects && Array.isArray(cvData.projects) && cvData.projects.length > 0) {
-                html += '<ul>';
-                cvData.projects.forEach(project => {
-                    if (!project) return;
-                    if (project.key && descriptions.projects && descriptions.projects[project.key]) {
-                        const projDesc = descriptions.projects[project.key];
-                        if (projDesc && projDesc.description && typeof projDesc.description === 'object') {
-                            html += `<li>${projDesc.description[lang] || ''}</li>`;
-                        } else if (projDesc && typeof projDesc === 'object' && projDesc[lang]) {
-                            html += `<li>${projDesc[lang]}</li>`;
-                        }
+                const projectsSection = createSection('projects', descriptions.sections.projects, (section) => {
+                    if (cvData.projects && Array.isArray(cvData.projects) && cvData.projects.length > 0) {
+                        const ul = createElement('ul');
+                        cvData.projects.forEach(project => {
+                            if (!project) return;
+                            if (project.key && descriptions.projects && descriptions.projects[project.key]) {
+                                const projDesc = descriptions.projects[project.key];
+                                const li = createElement('li');
+                                let projText = '';
+                                
+                                // Tentar obter nome e descrição
+                                if (projDesc.name) {
+                                    const name = typeof projDesc.name === 'object' ? projDesc.name[lang] : projDesc.name;
+                                    projText = name || '';
+                                }
+                                
+                                if (projDesc.description) {
+                                    const desc = typeof projDesc.description === 'object' ? projDesc.description[lang] : projDesc.description;
+                                    if (desc) {
+                                        projText = projText ? `${projText}: ${desc}` : desc;
+                                    }
+                                }
+                                
+                                if (projText) {
+                                    li.textContent = projText;
+                                    ul.appendChild(li);
+                                }
+                            }
+                        });
+                        if (ul.children.length > 0) section.appendChild(ul);
                     }
                 });
-                html += '</ul>';
+                scroll.appendChild(projectsSection);
             }
             
             // Hobbies
             if (descriptions.sections && descriptions.sections.hobbies) {
-                html += `<h3>${descriptions.sections.hobbies.toUpperCase()}</h3>`;
-            }
-            if (cvData.hobbies && cvData.hobbies.length > 0) {
-                html += '<ul>';
-                cvData.hobbies.forEach(hobby => {
-                    html += `<li>${hobby[lang]}</li>`;
+                const hobbiesSection = createSection('hobbies', descriptions.sections.hobbies, (section) => {
+                    if (cvData.hobbies && cvData.hobbies.length > 0) {
+                        const ul = createElement('ul');
+                        cvData.hobbies.forEach(hobby => {
+                            const li = createElement('li', hobby[lang]);
+                            ul.appendChild(li);
+                        });
+                        section.appendChild(ul);
+                    }
                 });
-                html += '</ul>';
+                scroll.appendChild(hobbiesSection);
             }
             
-            // Garantir que o elemento está visível ANTES de adicionar conteúdo
-            crawlEl.style.visibility = 'visible';
-            crawlEl.style.opacity = '1';
-            crawlEl.style.display = 'block';
-            crawlEl.style.zIndex = '10';
+            // Iniciar animação após layout estabilizar - igual ao exemplo
+            function initWhenReady() {
+                const onReady = () => {
+                    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+                    fontsReady.then(() => {
+                        requestAnimationFrame(() => requestAnimationFrame(() => {
+                            startStarWarsCrawl();
+                            
+                            // Iniciar música automaticamente após a animação começar
+                            setTimeout(() => {
+                                if (window.swPlayMusic) {
+                                    window.swPlayMusic();
+                                }
+                            }, 500);
+                        }));
+                    });
+                };
+                if (document.readyState === 'complete') {
+                    onReady();
+                } else {
+                    window.addEventListener('load', onReady, { once: true });
+                }
+            }
+            initWhenReady();
+        }
+        
+        // Variáveis globais para o crawl
+        let starWarsCrawlState = {
+            rafId: null,
+            startTime: null,
+            offsetMs: 0,
+            running: false,
+            resizeHandler: null,
+            mutationObserver: null
+        };
+        
+        function startStarWarsCrawl() {
+            const scroll = document.getElementById('sw-crawl');
+            if (!scroll) return;
             
-            crawlEl.innerHTML = html;
+            // Parar animação anterior se existir
+            if (starWarsCrawlState.running) {
+                starWarsCrawlState.running = false;
+                if (starWarsCrawlState.rafId) {
+                    cancelAnimationFrame(starWarsCrawlState.rafId);
+                }
+            }
             
-            // Reset completo da animação
-            crawlEl.style.animation = 'none';
-            crawlEl.style.top = '';
-            crawlEl.style.bottom = '0';
-            crawlEl.style.transform = 'translateX(-50%) rotateX(-20deg) translateZ(0) scale(1)';
-            crawlEl.style.transformOrigin = '50% 0%';
-            crawlEl.style.left = '50%';
-            crawlEl.style.width = '80%';
-            crawlEl.style.maxWidth = '1600px';
-            crawlEl.style.minWidth = '600px';
-            crawlEl.style.marginLeft = '0';
-            crawlEl.style.fontSize = '5.5rem';
+            // Remover listener anterior se existir
+            if (starWarsCrawlState.resizeHandler) {
+                window.removeEventListener('resize', starWarsCrawlState.resizeHandler);
+            }
+            if (starWarsCrawlState.mutationObserver) {
+                starWarsCrawlState.mutationObserver.disconnect();
+            }
             
-            // Forçar reflow múltiplo para garantir que o navegador processa
-            void crawlEl.offsetHeight;
-            void crawlEl.offsetHeight;
+            // Resetar estado completamente para garantir início correto
+            starWarsCrawlState.startTime = null;
+            starWarsCrawlState.offsetMs = 0;
+            starWarsCrawlState.running = false;
             
-            // Aplicar animação após delay para garantir que o DOM está atualizado
-            setTimeout(() => {
-                crawlEl.style.animation = 'crawl 240s linear';
-                crawlEl.style.animationFillMode = 'forwards';
-            }, 100);
+            // Resetar transform para garantir medição correta
+            scroll.style.transform = 'none';
+            scroll.style.visibility = 'hidden';
+            scroll.style.opacity = '0';
+            
+            const SPEED_PX_PER_S = 20;  // px/s - maior = sobe mais rápido
+            const EXTRA = 160; // folga para quando o conteúdo sair do topo
+            
+            let contentHeight = 0;
+            let startTranslate = 0;
+            let endTranslate = 0;
+            let DURATION_MS = 28000;
+            
+            function setTranslate(y) {
+                scroll.style.transform = `translateY(${Math.round(y)}px) translateZ(0px)`;
+            }
+            
+            function getFirstTop() {
+                const first = scroll.firstElementChild;
+                if (!first) return null;
+                return first.getBoundingClientRect().top;
+            }
+            
+            // Medição robusta: remove transform, espera dois frames, mede scrollHeight e rect.top
+            async function measureAndFindStart() {
+                // remove transform para medir posição natural
+                const prev = scroll.style.transform;
+                scroll.style.transform = 'none';
+                
+                // espera dois frames para layout estabilizar
+                await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+                
+                // força reflow
+                void document.body.offsetHeight;
+                
+                // altura total do conteúdo
+                contentHeight = scroll.scrollHeight;
+                
+                // desiredTop: queremos que o topo do primeiro filho fique exatamente na borda inferior
+                const desiredTop = window.innerHeight;
+                
+                // start from 0 (no translate) and iteratively adjust
+                let translate = 0;
+                setTranslate(translate);
+                // small wait for rect to reflect
+                void scroll.offsetHeight;
+                
+                // iterative correction loop
+                const maxIter = 12;
+                const tol = 1; // px
+                for (let i = 0; i < maxIter; i++) {
+                    const top = getFirstTop();
+                    if (top === null) break;
+                    const delta = desiredTop - top;
+                    // if already within tolerance, break
+                    if (Math.abs(delta) <= tol) {
+                        translate = translate + delta; // final adjust (tiny)
+                        setTranslate(translate);
+                        break;
+                    }
+                    // apply correction
+                    translate = translate + delta;
+                    setTranslate(translate);
+                    // force reflow so next measurement is accurate
+                    void scroll.offsetHeight;
+                }
+                
+                // after loop, set startTranslate and endTranslate
+                startTranslate = Math.round(translate);
+                endTranslate = startTranslate - (contentHeight + EXTRA);
+                
+                // compute duration from distance and speed
+                const distancePx = Math.abs(startTranslate - endTranslate);
+                DURATION_MS = Math.max(1, Math.round((distancePx / SPEED_PX_PER_S) * 1000));
+            }
+            
+            function applyT(t) {
+                const y = startTranslate + (endTranslate - startTranslate) * t;
+                setTranslate(y);
+            }
+            
+            function frame(now) {
+                if (!starWarsCrawlState.startTime) starWarsCrawlState.startTime = now;
+                const elapsed = now - starWarsCrawlState.startTime;
+                const total = (starWarsCrawlState.offsetMs + elapsed);
+                const t = ((total % DURATION_MS) / DURATION_MS);
+                applyT(t);
+                if (starWarsCrawlState.running) {
+                    starWarsCrawlState.rafId = requestAnimationFrame(frame);
+                }
+            }
+            
+            async function startAuto() {
+                // Forçar reflow para garantir que o conteúdo está renderizado
+                void scroll.offsetHeight;
+                
+                // Aguardar dois frames para garantir layout estável
+                await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+                
+                // Garantir que está visível antes de medir
+                scroll.style.visibility = 'visible';
+                scroll.style.opacity = '1';
+                
+                // Forçar outro reflow após tornar visível
+                void scroll.offsetHeight;
+                
+                await measureAndFindStart();
+                applyT(0);
+                
+                // Forçar mais um reflow após aplicar transform inicial
+                void scroll.offsetHeight;
+                
+                starWarsCrawlState.startTime = performance.now();
+                starWarsCrawlState.running = true;
+                frame(performance.now());
+            }
+            
+            // resize: recalcula mantendo offset relativo
+            starWarsCrawlState.resizeHandler = async () => {
+                const wasRunning = starWarsCrawlState.running;
+                if (wasRunning) {
+                    const now = performance.now();
+                    const elapsed = now - (starWarsCrawlState.startTime || now);
+                    starWarsCrawlState.offsetMs = (starWarsCrawlState.offsetMs + elapsed) % DURATION_MS;
+                    starWarsCrawlState.running = false;
+                    if (starWarsCrawlState.rafId) cancelAnimationFrame(starWarsCrawlState.rafId);
+                    starWarsCrawlState.startTime = null;
+                }
+                await measureAndFindStart();
+                applyT((starWarsCrawlState.offsetMs % DURATION_MS) / DURATION_MS);
+                if (wasRunning) {
+                    starWarsCrawlState.startTime = performance.now();
+                    starWarsCrawlState.running = true;
+                    frame(performance.now());
+                }
+            };
+            
+            window.addEventListener('resize', starWarsCrawlState.resizeHandler);
+            
+            // MutationObserver: se conteúdo mudar, recalcula e reinicia do início
+            starWarsCrawlState.mutationObserver = new MutationObserver(async (mutations) => {
+                let relevant = false;
+                for (const m of mutations) {
+                    if (m.type === 'childList' || m.type === 'subtree' || m.type === 'characterData') {
+                        relevant = true;
+                        break;
+                    }
+                }
+                if (relevant) {
+                    // pausa e zera offset para garantir que comece do início
+                    if (starWarsCrawlState.running) {
+                        starWarsCrawlState.running = false;
+                        if (starWarsCrawlState.rafId) cancelAnimationFrame(starWarsCrawlState.rafId);
+                        starWarsCrawlState.startTime = null;
+                        starWarsCrawlState.offsetMs = 0;
+                    }
+                    await measureAndFindStart();
+                    applyT(0);
+                    // retoma autoplay do início
+                    starWarsCrawlState.startTime = performance.now();
+                    starWarsCrawlState.running = true;
+                    frame(performance.now());
+                }
+            });
+            starWarsCrawlState.mutationObserver.observe(scroll, { childList: true, subtree: true, characterData: true });
+            
+            // inicia após layout e fontes
+            function initWhenReady() {
+                const onReady = () => {
+                    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+                    fontsReady.then(() => {
+                        // Aguardar um pouco mais para garantir que o conteúdo está totalmente renderizado
+                        setTimeout(() => {
+                            requestAnimationFrame(() => requestAnimationFrame(() => {
+                                startAuto();
+                                
+                                // Iniciar música automaticamente após a animação começar
+                                setTimeout(() => {
+                                    if (window.swPlayMusic) {
+                                        window.swPlayMusic();
+                                    }
+                                }, 1000);
+                            }));
+                        }, 100);
+                    });
+                };
+                if (document.readyState === 'complete') {
+                    onReady();
+                } else {
+                    window.addEventListener('load', onReady, { once: true });
+                }
+            }
+            initWhenReady();
         }
         
         // Music Player Functions
@@ -1113,10 +1425,17 @@
                 }
                 
                 // Verificar se há source configurado
-                if (!audio.src && (!audio.querySelector('source') || !audio.querySelector('source').src)) {
-                    console.warn('No audio source found. Please add a music file to the audio element in star-wars.html');
-                    alert('Por favor, adicione um arquivo de música ao elemento <audio> no template star-wars.html');
-                    return;
+                const source = audio.querySelector('source');
+                const hasSource = audio.src || (source && source.src);
+                
+                if (!hasSource) {
+                    console.warn('No audio source found. Music will not play.');
+                    return; // Silenciosamente retorna se não houver arquivo
+                }
+                
+                // Tentar carregar o source se necessário
+                if (!audio.src && source && source.src) {
+                    audio.load();
                 }
                 
                 const playPromise = audio.play();
@@ -1125,8 +1444,9 @@
                         if (playBtn) playBtn.style.display = 'none';
                         if (pauseBtn) pauseBtn.style.display = 'flex';
                     }).catch(error => {
-                        console.error('Error playing audio:', error);
-                        alert('Erro ao reproduzir áudio. Verifique se há um arquivo de música configurado.');
+                        // Não mostrar alerta, apenas logar o erro
+                        console.warn('Error playing audio (may require user interaction):', error);
+                        // Não mostrar alerta para não interromper a experiência
                     });
                 } else {
                     if (playBtn) playBtn.style.display = 'none';
