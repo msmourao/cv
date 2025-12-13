@@ -329,7 +329,7 @@ body.star-wars-template #profile-image {
 
 .sw-crawl {
     position: absolute;
-    bottom: -100px;
+    bottom: 0;
     left: 50%;
     width: 80% !important;
     max-width: 1600px !important;
@@ -354,32 +354,32 @@ body.star-wars-template #profile-image {
 
 @keyframes crawl {
     0% {
-        bottom: -100px;
-        transform: translateX(-50%) rotateX(20deg) translateZ(0) scale(1);
+        bottom: 0;
+        transform: translateX(-50%) rotateX(-20deg) translateZ(0) scale(1);
         width: 80%;
         font-size: 5.5rem;
     }
     25% {
         bottom: 25vh;
-        transform: translateX(-50%) rotateX(20deg) translateZ(-1500px) scale(0.75);
+        transform: translateX(-50%) rotateX(-20deg) translateZ(-1500px) scale(0.75);
         width: 60%;
         font-size: 4.125rem;
     }
     50% {
         bottom: 50vh;
-        transform: translateX(-50%) rotateX(20deg) translateZ(-3000px) scale(0.5);
+        transform: translateX(-50%) rotateX(-20deg) translateZ(-3000px) scale(0.5);
         width: 40%;
         font-size: 2.75rem;
     }
     75% {
         bottom: 75vh;
-        transform: translateX(-50%) rotateX(20deg) translateZ(-4500px) scale(0.25);
+        transform: translateX(-50%) rotateX(-20deg) translateZ(-4500px) scale(0.25);
         width: 20%;
         font-size: 1.375rem;
     }
     100% {
         bottom: 100vh;
-        transform: translateX(-50%) rotateX(20deg) translateZ(-6000px) scale(0);
+        transform: translateX(-50%) rotateX(-20deg) translateZ(-6000px) scale(0);
         width: 0%;
         font-size: 0rem;
     }
