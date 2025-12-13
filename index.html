@@ -1388,25 +1388,43 @@
                 const onReady = () => {
                     const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
                     fontsReady.then(() => {
-                        // Aguardar um pouco mais para garantir que o conteúdo está totalmente renderizado
+                        // Aguardar mais tempo para garantir que o conteúdo está totalmente renderizado
+                        // Especialmente importante para primeira carga em dispositivos móveis e navegadores novos
                         setTimeout(() => {
-                            requestAnimationFrame(() => requestAnimationFrame(() => {
-                                startAuto();
-                                
-                                // Iniciar música automaticamente após a animação começar
-                                setTimeout(() => {
-                                    if (window.swPlayMusic) {
-                                        window.swPlayMusic();
-                                    }
-                                }, 1000);
-                            }));
-                        }, 100);
+                            // Forçar múltiplos reflows para garantir layout estável
+                            void scroll.offsetHeight;
+                            void document.body.offsetHeight;
+                            
+                            requestAnimationFrame(() => {
+                                void scroll.offsetHeight;
+                                requestAnimationFrame(() => {
+                                    void scroll.offsetHeight;
+                                    startAuto();
+                                    
+                                    // Iniciar música automaticamente após a animação começar
+                                    setTimeout(() => {
+                                        if (window.swPlayMusic) {
+                                            window.swPlayMusic();
+                                        }
+                                    }, 1500);
+                                });
+                            });
+                        }, 400); // Aumentado de 100ms para 400ms para dar mais tempo
                     });
                 };
-                if (document.readyState === 'complete') {
-                    onReady();
+                
+                // Verificar se já está completo ou aguardar
+                if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                    // Se já está pronto, aguardar um pouco mais para garantir renderização
+                    setTimeout(onReady, 300);
                 } else {
                     window.addEventListener('load', onReady, { once: true });
+                    // Fallback: também tentar quando DOM estiver pronto
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', () => {
+                            setTimeout(onReady, 400);
+                        }, { once: true });
+                    }
                 }
             }
             initWhenReady();

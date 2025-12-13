@@ -169,6 +169,91 @@ body.star-wars-template .tts-menu select {
     border-color: #FFE81F !important;
 }
 
+/* Star Wars Theme - TTS Expanded Controls (Submenu) */
+body.star-wars-template .tts-expanded-controls {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-top: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-control-group {
+    background: transparent !important;
+    border: none !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-control-group label {
+    color: #FFE81F !important;
+    font-weight: 500 !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"] {
+    accent-color: #FFE81F !important;
+    background: rgba(255, 232, 31, 0.2) !important;
+    border: 1px solid #FFE81F !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]::-webkit-slider-thumb {
+    background: #FFE81F !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]::-moz-range-thumb {
+    background: #FFE81F !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]:hover {
+    background: rgba(255, 232, 31, 0.3) !important;
+}
+
+body.star-wars-template .tts-control-group select {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    padding: 0.5rem !important;
+    border-radius: 6px !important;
+}
+
+body.star-wars-template .tts-control-group select:hover {
+    background: rgba(255, 232, 31, 0.1) !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .tts-control-group select:focus {
+    outline: 2px solid #FFE81F !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .tts-control-group select option {
+    background: #000000 !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-value-display {
+    color: #FFE81F !important;
+    font-weight: 500 !important;
+}
+
+body.star-wars-template .tts-expand-btn {
+    background: transparent !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-expand-btn:hover {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
 body.star-wars-template .theme-menu input[type="radio"]:checked,
 body.star-wars-template .theme-menu input[type="checkbox"]:checked {
     background: #FFE81F !important;
@@ -423,7 +508,7 @@ body.star-wars-template #profile-image {
     text-align: justify;
     letter-spacing: 0.12em;
     line-height: 1.6;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Aumentado de 1.2rem para melhor legibilidade */
     text-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.8);
     width: 100%;
     box-sizing: border-box;
@@ -440,7 +525,7 @@ body.star-wars-template #profile-image {
 .sw-crawl > ul {
     margin: 0 auto 2rem auto;
     max-width: 100%;
-    width: 70% !important;
+    width: 91% !important; /* Aumentado de 70% para 91% (aumento de 30%) */
     box-sizing: border-box;
 }
 
@@ -467,7 +552,7 @@ body.star-wars-template #profile-image {
 .sw-crawl-section > ul {
     margin: 0 auto 2rem auto;
     max-width: 100%;
-    width: 70% !important;
+    width: 98% !important; /* Aumentado de 70% para 98% (aumento de 40%) */
     box-sizing: border-box;
 }
 
@@ -508,7 +593,7 @@ body.star-wars-template #profile-image {
     
     .sw-crawl > p,
     .sw-crawl > ul {
-        width: 90%;
+        width: 95%; /* Aumentado proporcionalmente para mobile */
     }
 }
 
@@ -625,15 +710,31 @@ body.star-wars-template #profile-image {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .sw-header {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
         padding: 1rem;
+        gap: 1rem;
     }
     
     .sw-name-section {
-        text-align: center;
+        text-align: left;
         padding-right: 0;
-        margin-top: 1rem;
+        padding-left: 0;
+        margin-top: 0;
+        flex: 1;
+        order: 1;
+    }
+    
+    .sw-photo-container {
+        order: 2;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .sw-profile-image {
+        width: 120px;
+        height: 120px;
     }
     
     .sw-name {

@@ -27,8 +27,8 @@ const TTS = {
      */
     presets: {
         vader: {
-            rate: 0.9,  // Ligeiramente mais lento para efeito mais dramático
-            pitch: 0.5, // Tom muito mais grave (Vader-like)
+            rate: 0.75,  // Mais lento para efeito mais dramático e melhor compreensão (Vader fala devagar)
+            pitch: 0.4,  // Tom ainda mais grave para parecer mais com Vader (quanto menor, mais grave)
             name: 'Vader-like'
         }
     },
@@ -189,7 +189,7 @@ const TTS = {
                 const name = v.name.toLowerCase();
                 const lang = v.lang.toLowerCase();
                 
-                // Filtros específicos por idioma
+                // Filtros específicos por idioma - melhorados para mobile e desktop
                 if (langPrefix === 'pt') {
                     return name.includes('google') ||
                            name.includes('microsoft') ||
@@ -197,7 +197,10 @@ const TTS = {
                            name.includes('joão') ||
                            name.includes('joao') ||
                            name.includes('male') ||
-                           name.includes('masculine');
+                           name.includes('masculine') ||
+                           name.includes('pt-br') ||
+                           name.includes('pt_br') ||
+                           (name.includes('pt') && !name.includes('female') && !name.includes('feminine'));
                 } else if (langPrefix === 'en') {
                     return name.includes('google') ||
                            name.includes('microsoft david') ||
@@ -205,32 +208,56 @@ const TTS = {
                            name.includes('daniel') ||
                            name.includes('male') ||
                            name.includes('masculine') ||
-                           name.includes('zira');
+                           name.includes('zira') ||
+                           name.includes('en-us') ||
+                           name.includes('en_us') ||
+                           (name.includes('en') && !name.includes('female') && !name.includes('feminine') && !name.includes('zira'));
                 }
                 
-                // Fallback genérico
-                return name.includes('male') || 
+                // Fallback genérico - melhorado
+                return (name.includes('male') || 
                        name.includes('man') || 
-                       name.includes('masculine') ||
-                       name.includes('google') ||
-                       name.includes('microsoft') ||
-                       name.includes('david') ||
-                       name.includes('daniel');
+                       name.includes('masculine')) &&
+                       !name.includes('female') &&
+                       !name.includes('feminine') &&
+                       !name.includes('woman');
             });
             
             if (maleVoices.length > 0) {
                 // Priorizar vozes nativas do idioma
                 const nativeMaleVoices = maleVoices.filter(voice => 
-                    voice.lang === this.currentLang
+                    voice.lang === this.currentLang || voice.lang.startsWith(this.currentLang.split('-')[0])
                 );
                 const selectedVoices = nativeMaleVoices.length > 0 ? nativeMaleVoices : maleVoices;
+                
+                // Priorizar vozes do Google ou Microsoft (geralmente mais graves e consistentes)
+                const preferredVoices = selectedVoices.filter(v => {
+                    const name = v.name.toLowerCase();
+                    return name.includes('google') || name.includes('microsoft');
+                });
+                
+                const finalVoices = preferredVoices.length > 0 ? preferredVoices : selectedVoices;
+                
                 // Escolher a primeira voz disponível (já filtrada para ser masculina/grave)
-                this.prefs.voiceURI = selectedVoices[0].voiceURI;
-                console.log('Vader preset: Voz selecionada:', selectedVoices[0].name);
+                this.prefs.voiceURI = finalVoices[0].voiceURI;
+                console.log('Vader preset: Voz selecionada:', finalVoices[0].name, '| Lang:', finalVoices[0].lang);
             } else {
-                // Fallback: usar primeira voz disponível
-                this.prefs.voiceURI = voicesToChoose[0].voiceURI;
-                console.warn('Vader preset: Nenhuma voz masculina encontrada, usando fallback:', voicesToChoose[0].name);
+                // Fallback: tentar encontrar qualquer voz que não seja explicitamente feminina
+                const nonFemaleVoices = voicesToChoose.filter(v => {
+                    const name = v.name.toLowerCase();
+                    return !name.includes('female') && 
+                           !name.includes('feminine') && 
+                           !name.includes('woman') &&
+                           !name.includes('zira');
+                });
+                
+                if (nonFemaleVoices.length > 0) {
+                    this.prefs.voiceURI = nonFemaleVoices[0].voiceURI;
+                    console.warn('Vader preset: Nenhuma voz masculina encontrada, usando voz não-feminina:', nonFemaleVoices[0].name);
+                } else {
+                    this.prefs.voiceURI = voicesToChoose[0].voiceURI;
+                    console.warn('Vader preset: Usando fallback genérico:', voicesToChoose[0].name);
+                }
             }
         } else {
             // Seleção normal
