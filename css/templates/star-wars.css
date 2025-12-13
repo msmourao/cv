@@ -717,19 +717,19 @@ body.star-wars-template #profile-image {
         gap: 1rem;
     }
     
+    .sw-photo-container {
+        order: 1;
+        width: 120px;
+        height: 120px;
+    }
+    
     .sw-name-section {
         text-align: left;
         padding-right: 0;
         padding-left: 0;
         margin-top: 0;
         flex: 1;
-        order: 1;
-    }
-    
-    .sw-photo-container {
         order: 2;
-        width: 120px;
-        height: 120px;
     }
     
     .sw-profile-image {
