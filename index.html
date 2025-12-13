@@ -833,16 +833,7 @@
                 initializeMobile();
             }
             
-            // Se for Star Wars e a página já carregou, iniciar música após um delay
-            // Mas só se ainda não tentou autoplay (evita duplicação)
-            if (document.body.classList.contains('star-wars-template') && !swMusicAutoPlayAttempted) {
-                swMusicAutoPlayAttempted = true;
-                setTimeout(() => {
-                    if (window.swPlayMusic) {
-                        window.swPlayMusic();
-                    }
-                }, 2000);
-            }
+            // Autoplay será gerenciado por um listener único abaixo
         })();
         
         // Função para inicializar mobile
@@ -1166,16 +1157,7 @@
                         requestAnimationFrame(() => requestAnimationFrame(() => {
                             startStarWarsCrawl();
                             
-                            // Iniciar música automaticamente após a animação começar
-                            // Só se ainda não tentou autoplay (evita duplicação)
-                            if (!swMusicAutoPlayAttempted) {
-                                swMusicAutoPlayAttempted = true;
-                                setTimeout(() => {
-                                    if (window.swPlayMusic) {
-                                        window.swPlayMusic();
-                                    }
-                                }, 500);
-                            }
+                            // Autoplay será gerenciado por um listener único abaixo
                         }));
                     });
                 };
@@ -1407,16 +1389,7 @@
                                     void scroll.offsetHeight;
                                     startAuto();
                                     
-                                    // Iniciar música automaticamente após a animação começar
-                                    // Só se ainda não tentou autoplay (evita duplicação)
-                                    if (!swMusicAutoPlayAttempted) {
-                                        swMusicAutoPlayAttempted = true;
-                                        setTimeout(() => {
-                                            if (window.swPlayMusic) {
-                                                window.swPlayMusic();
-                                            }
-                                        }, 1500);
-                                    }
+                                    // Autoplay será gerenciado por um listener único abaixo
                                 });
                             });
                         }, 400); // Aumentado de 100ms para 400ms para dar mais tempo
@@ -1440,31 +1413,73 @@
             initWhenReady();
         }
         
-        // Flag global para evitar múltiplas execuções do autoplay
-        let swMusicAutoPlayAttempted = false;
+        // Flag global para controlar estado do áudio
         let swMusicIsPlaying = false;
+        let swMusicAutoPlayTimeout = null;
         
-        // Resetar flag quando sair do template Star Wars
-        document.addEventListener('DOMContentLoaded', () => {
-            // Observer para detectar mudanças no template
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                        const hasStarWars = document.body.classList.contains('star-wars-template');
-                        if (!hasStarWars && swMusicAutoPlayAttempted) {
-                            // Se saiu do Star Wars, resetar flag para permitir autoplay quando voltar
-                            swMusicAutoPlayAttempted = false;
-                            swMusicIsPlaying = false;
-                        }
-                    }
-                });
-            });
+        // Função única para iniciar autoplay do áudio Star Wars
+        function startStarWarsMusic() {
+            // Cancelar qualquer timeout anterior
+            if (swMusicAutoPlayTimeout) {
+                clearTimeout(swMusicAutoPlayTimeout);
+                swMusicAutoPlayTimeout = null;
+            }
             
-            observer.observe(document.body, {
-                attributes: true,
-                attributeFilter: ['class']
-            });
-        });
+            // Aguardar um pouco para garantir que tudo está carregado
+            swMusicAutoPlayTimeout = setTimeout(() => {
+                if (window.swPlayMusic && document.body.classList.contains('star-wars-template')) {
+                    window.swPlayMusic();
+                }
+                swMusicAutoPlayTimeout = null;
+            }, 1500);
+        }
+        
+        // Listener único para detectar quando o template Star Wars é carregado
+        (function() {
+            let lastTemplate = null;
+            
+            function checkTemplateChange() {
+                const isStarWars = document.body.classList.contains('star-wars-template');
+                
+                // Se acabou de entrar no template Star Wars
+                if (isStarWars && lastTemplate !== 'star-wars') {
+                    startStarWarsMusic();
+                }
+                
+                // Se saiu do template Star Wars, pausar música
+                if (!isStarWars && lastTemplate === 'star-wars') {
+                    if (window.swPauseMusic) {
+                        window.swPauseMusic();
+                    }
+                    if (swMusicAutoPlayTimeout) {
+                        clearTimeout(swMusicAutoPlayTimeout);
+                        swMusicAutoPlayTimeout = null;
+                    }
+                }
+                
+                lastTemplate = isStarWars ? 'star-wars' : null;
+            }
+            
+            // Verificar mudanças no template usando MutationObserver
+            const observer = new MutationObserver(checkTemplateChange);
+            
+            // Inicializar quando DOM estiver pronto
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    checkTemplateChange(); // Verificar estado inicial
+                    observer.observe(document.body, {
+                        attributes: true,
+                        attributeFilter: ['class']
+                    });
+                });
+            } else {
+                checkTemplateChange(); // Verificar estado inicial
+                observer.observe(document.body, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            }
+        })();
         
         // Music Player Functions
         function swPlayMusic(force = false) {
@@ -1479,6 +1494,11 @@
                 
                 // Se já está tocando e não for forçado, não fazer nada
                 if (swMusicIsPlaying && !force) {
+                    return;
+                }
+                
+                // Se não estiver no template Star Wars, não tocar
+                if (!document.body.classList.contains('star-wars-template')) {
                     return;
                 }
                 
