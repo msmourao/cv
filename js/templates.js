@@ -53,29 +53,54 @@ const TemplateManager = {
         }
     },
     
-    async init() {
-        // Esconder overlay se não for Star Wars
+    /**
+     * Gerencia o overlay de loading
+     */
+    manageOverlay(show = false) {
         const overlay = document.getElementById('template-loading-overlay');
-        const savedTemplate = localStorage.getItem('cv-template');
+        if (!overlay) return;
         
-        // Mostrar overlay apenas se for Star Wars - ANTES de qualquer renderização
-        if (overlay && savedTemplate === 'star-wars') {
+        if (show) {
             overlay.style.display = 'block';
             overlay.classList.remove('hidden');
             overlay.style.opacity = '1';
-            // Forçar reflow para garantir que aparece
-            void overlay.offsetHeight;
-        } else if (overlay) {
+            void overlay.offsetHeight; // Forçar reflow
+        } else {
             overlay.classList.add('hidden');
-            overlay.style.display = 'none';
+            setTimeout(() => {
+                if (overlay.classList.contains('hidden')) {
+                    overlay.style.display = 'none';
+                }
+            }, 300);
         }
-        
-        // Esconder wrapper completamente se for Star Wars
+    },
+    
+    /**
+     * Gerencia a visibilidade do wrapper
+     */
+    manageWrapper(show = true) {
         const wrapper = document.querySelector('.resume-wrapper');
-        if (wrapper && savedTemplate === 'star-wars') {
+        if (!wrapper) return;
+        
+        if (show) {
+            wrapper.style.display = '';
+            wrapper.style.opacity = '1';
+            wrapper.style.visibility = 'visible';
+        } else {
             wrapper.style.opacity = '0';
             wrapper.style.visibility = 'hidden';
             wrapper.style.display = 'none';
+        }
+    },
+    
+    async init() {
+        const savedTemplate = localStorage.getItem('cv-template');
+        const isStarWars = savedTemplate === 'star-wars';
+        
+        // Gerenciar overlay e wrapper baseado no template
+        this.manageOverlay(isStarWars);
+        if (isStarWars) {
+            this.manageWrapper(false);
         }
         
         // Load saved template or default to better-view
@@ -85,14 +110,9 @@ const TemplateManager = {
             await this.loadTemplate('better-view');
         }
         
-        // Esconder overlay após carregamento (se não for Star Wars)
-        if (overlay && savedTemplate !== 'star-wars') {
-            overlay.classList.add('hidden');
-            setTimeout(() => {
-                if (overlay.classList.contains('hidden')) {
-                    overlay.style.display = 'none';
-                }
-            }, 300);
+        // Esconder overlay se não for Star Wars
+        if (!isStarWars) {
+            this.manageOverlay(false);
         }
     }
 };

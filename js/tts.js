@@ -240,7 +240,6 @@ const TTS = {
                 
                 // Escolher a primeira voz disponível (já filtrada para ser masculina/grave)
                 this.prefs.voiceURI = finalVoices[0].voiceURI;
-                console.log('Vader preset: Voz selecionada:', finalVoices[0].name, '| Lang:', finalVoices[0].lang);
             } else {
                 // Fallback: tentar encontrar qualquer voz que não seja explicitamente feminina
                 const nonFemaleVoices = voicesToChoose.filter(v => {
@@ -253,10 +252,8 @@ const TTS = {
                 
                 if (nonFemaleVoices.length > 0) {
                     this.prefs.voiceURI = nonFemaleVoices[0].voiceURI;
-                    console.warn('Vader preset: Nenhuma voz masculina encontrada, usando voz não-feminina:', nonFemaleVoices[0].name);
                 } else {
                     this.prefs.voiceURI = voicesToChoose[0].voiceURI;
-                    console.warn('Vader preset: Usando fallback genérico:', voicesToChoose[0].name);
                 }
             }
         } else {
@@ -366,7 +363,6 @@ const TTS = {
             const preset = this.presets[this.activePreset];
             this.currentUtterance.rate = preset.rate;
             this.currentUtterance.pitch = preset.pitch;
-            console.log(`TTS: Aplicando preset ${this.activePreset} - rate: ${preset.rate}, pitch: ${preset.pitch}`);
         } else {
             this.currentUtterance.rate = this.prefs.rate;
             this.currentUtterance.pitch = this.prefs.pitch;
@@ -376,11 +372,10 @@ const TTS = {
         
         if (this.prefs.voiceURI) {
             const selectedVoice = this.voices.find(v => v.voiceURI === this.prefs.voiceURI);
-            if (selectedVoice) {
-                this.currentUtterance.voice = selectedVoice;
-                console.log('TTS: Voz selecionada:', selectedVoice.name, `(preset: ${this.activePreset || 'nenhum'})`);
-            } else {
+            if (!selectedVoice) {
                 console.warn('TTS: Voz não encontrada:', this.prefs.voiceURI);
+            } else {
+                this.currentUtterance.voice = selectedVoice;
             }
         }
         
