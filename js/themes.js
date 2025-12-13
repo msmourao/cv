@@ -12,7 +12,7 @@ const ThemeManager = {
     
     // Templates disponíveis
     templates: [
-        { id: 'better-view', name: { pt: 'Better-view', en: 'Better-view' } },
+        { id: 'better-view', name: { pt: 'Padrão', en: 'Default' } },
         { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } },
         { id: 'star-wars', name: { pt: 'Star Wars', en: 'Star Wars' } }
     ],
@@ -125,6 +125,15 @@ const ThemeManager = {
         this.currentTemplate = templateId;
         localStorage.setItem('cv-template', templateId);
         
+        // Mostrar overlay de loading apenas para Star Wars
+        const overlay = document.getElementById('template-loading-overlay');
+        if (overlay && templateId === 'star-wars') {
+            overlay.style.display = 'block';
+            overlay.classList.remove('hidden');
+            // Forçar reflow para garantir que o overlay apareça
+            void overlay.offsetHeight;
+        }
+        
         // Carregar template
         if (window.TemplateManager) {
             const templateName = templateId === 'better-view' ? 'better-view' : 
@@ -132,6 +141,17 @@ const ThemeManager = {
                                 templateId === 'star-wars' ? 'star-wars' :
                                 'better-view';
             await window.TemplateManager.loadTemplate(templateName);
+        }
+        
+        // Para Star Wars, o overlay será removido quando o crawl iniciar
+        // Para outros templates, esconder imediatamente
+        if (overlay && templateId !== 'star-wars') {
+            overlay.classList.add('hidden');
+            setTimeout(() => {
+                if (overlay.classList.contains('hidden')) {
+                    overlay.style.display = 'none';
+                }
+            }, 300);
         }
         
         // Aplicar estilos específicos do template
@@ -239,16 +259,13 @@ const ThemeManager = {
                 `;
             }).join('');
         
-        // Color Scheme Options (Checkboxes - desabilitados se ATS-friendly ou Star Wars)
+        // Color Scheme Options (Visual preview - desabilitados se ATS-friendly ou Star Wars)
         const colorSchemeOptionsHTML = this.colorSchemes.map(scheme => {
             const isActive = scheme.id === this.currentColorScheme;
             return `
-                <label class="color-scheme-option ${isActive ? 'active' : ''} ${disableColors ? 'disabled' : ''}" 
-                       data-scheme="${scheme.id}">
-                    <input type="checkbox" 
-                           ${isActive ? 'checked' : ''}
-                           ${disableColors ? 'disabled' : ''}
-                           onchange="ThemeManager.selectColorScheme('${scheme.id}')">
+                <div class="color-scheme-option ${isActive ? 'active' : ''} ${disableColors ? 'disabled' : ''}" 
+                     data-scheme="${scheme.id}"
+                     onclick="${disableColors ? '' : `ThemeManager.selectColorScheme('${scheme.id}')`}">
                     <div class="color-scheme-preview" data-scheme="${scheme.id}">
                         <div class="color-preview-color"></div>
                         <div class="color-preview-color"></div>
@@ -256,7 +273,8 @@ const ThemeManager = {
                         <div class="color-preview-color"></div>
                     </div>
                     <span class="color-scheme-name">${scheme.name[lang]}</span>
-                </label>
+                    ${isActive ? '<i class="bi bi-check-circle color-scheme-check"></i>' : ''}
+                </div>
             `;
         }).join('');
         
@@ -304,13 +322,19 @@ const ThemeManager = {
         const options = menu.querySelectorAll('.color-scheme-option');
         options.forEach(option => {
             const schemeId = option.getAttribute('data-scheme');
-            const checkbox = option.querySelector('input[type="checkbox"]');
+            const checkIcon = option.querySelector('.color-scheme-check');
             if (schemeId === this.currentColorScheme) {
                 option.classList.add('active');
-                if (checkbox) checkbox.checked = true;
+                if (!checkIcon) {
+                    const icon = document.createElement('i');
+                    icon.className = 'bi bi-check-circle color-scheme-check';
+                    option.appendChild(icon);
+                }
             } else {
                 option.classList.remove('active');
-                if (checkbox) checkbox.checked = false;
+                if (checkIcon) {
+                    checkIcon.remove();
+                }
             }
         });
     },

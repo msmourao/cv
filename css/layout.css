@@ -431,7 +431,7 @@
         top: 0;
         background: var(--white);
         z-index: 10;
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 1rem 1rem 1rem;
         margin-bottom: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
@@ -455,8 +455,8 @@
         top: 0;
         background: var(--white);
         z-index: 10;
-        padding: 1.5rem 1rem;
-        margin-bottom: 1rem;
+        padding: 1.5rem 1rem 1rem 1rem;
+        margin-bottom: 0;
         margin-top: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
@@ -488,10 +488,6 @@
         letter-spacing: 0.5px;
     }
     
-    .sidebar {
-        padding-top: 0;
-    }
-    
     .work-experience-section {
         padding: 0 1rem;
     }
@@ -508,7 +504,7 @@
     .sidebar {
         background: var(--white);
         color: var(--text-color);
-        padding: 2rem 1rem;
+        padding: 0;
     }
     
     /* MOBILE: Ocultar TODAS as seções por padrão - especificidade máxima */
@@ -535,6 +531,21 @@
         .sidebar .profile-section {
             display: block !important;
         }
+        
+        /* Forçar exibição da foto na impressão mesmo no mobile */
+        .profile-section,
+        .profile-section.active {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .profile-image,
+        .profile-section.active .profile-image {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
     }
     
     /* MOBILE: Mostrar apenas seções ativas - especificidade máxima */
@@ -545,27 +556,41 @@
         display: block !important;
     }
     
-    /* Profile section no mobile - NÃO ocultar, pois precisa aparecer na impressão */
+    /* MOBILE: Aplicar padding nas seções ativas da sidebar para alinhar com experiência profissional */
+    .sidebar .profile-section.active,
+    .sidebar .contact-section.active,
+    .sidebar .sidebar-section.active {
+        padding: 0 1rem;
+    }
+    
+    /* Profile section no mobile - ocultar por padrão, só mostrar na seção About */
     .profile-section {
         text-align: center !important;
         margin-bottom: 2rem;
-        /* REMOVIDO: display: none; - A foto deve aparecer sempre, inclusive na impressão */
+        display: none !important; /* Oculto por padrão no mobile */
+    }
+    
+    /* Mostrar foto apenas quando seção About estiver ativa */
+    .profile-section.active {
+        display: block !important;
     }
     
     .profile-image {
         width: 120px;
         height: 120px;
         border: 3px solid var(--bg-sidebar);
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        display: none !important; /* Oculto por padrão no mobile */
+        visibility: hidden !important;
+        opacity: 0 !important;
         margin: 0 auto !important;
         text-align: center !important;
     }
     
+    /* Mostrar imagem apenas quando seção About estiver ativa */
     .profile-section.active .profile-image {
-        margin: 0 auto !important;
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* Contact section no mobile */
@@ -816,6 +841,16 @@
         }
         
         /* Garantir que a imagem apareça - todas as variações possíveis */
+        /* Forçar exibição da foto na impressão - sobrescrever regras do mobile */
+        .profile-section,
+        .profile-section.active,
+        .sidebar .profile-section,
+        .sidebar .profile-section.active {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
         .profile-section img,
         .sidebar .profile-section img,
         .sidebar section.profile-section img,
@@ -829,7 +864,9 @@
         img[src*="avatar"],
         .sidebar img#profile-image,
         .sidebar img.profile-image,
-        aside.sidebar img#profile-image {
+        aside.sidebar img#profile-image,
+        .profile-section.active .profile-image,
+        .sidebar .profile-section.active .profile-image {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;

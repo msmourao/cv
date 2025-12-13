@@ -940,6 +940,26 @@ const TTS = {
         if (slider && slider.nextElementSibling) {
             slider.nextElementSibling.textContent = this.prefs.rate.toFixed(1);
         }
+        
+        // Aplicar imediatamente: se estiver falando, reiniciar com nova configuração
+        if (this.isSpeaking && this.currentUtterance && this.sectionQueue) {
+            const wasPaused = this.isPaused;
+            const currentText = this.currentUtterance.text;
+            const currentSection = this.currentSectionIndex;
+            
+            // Parar atual
+            this.synth.cancel();
+            
+            // Reiniciar do mesmo ponto com nova configuração
+            setTimeout(() => {
+                this.currentSectionIndex = currentSection;
+                this.speakNextSection();
+                if (wasPaused) {
+                    this.pause();
+                }
+            }, 100);
+        }
+        
         this.savePrefs();
     },
     
@@ -952,6 +972,26 @@ const TTS = {
         if (slider && slider.nextElementSibling) {
             slider.nextElementSibling.textContent = this.prefs.pitch.toFixed(1);
         }
+        
+        // Aplicar imediatamente: se estiver falando, reiniciar com nova configuração
+        if (this.isSpeaking && this.currentUtterance && this.sectionQueue) {
+            const wasPaused = this.isPaused;
+            const currentText = this.currentUtterance.text;
+            const currentSection = this.currentSectionIndex;
+            
+            // Parar atual
+            this.synth.cancel();
+            
+            // Reiniciar do mesmo ponto com nova configuração
+            setTimeout(() => {
+                this.currentSectionIndex = currentSection;
+                this.speakNextSection();
+                if (wasPaused) {
+                    this.pause();
+                }
+            }, 100);
+        }
+        
         this.savePrefs();
     },
     
@@ -964,6 +1004,25 @@ const TTS = {
         if (slider && slider.nextElementSibling) {
             slider.nextElementSibling.textContent = Math.round(this.prefs.volume * 100) + '%';
         }
+        
+        // Aplicar imediatamente: se estiver falando, reiniciar com nova configuração
+        if (this.isSpeaking && this.currentUtterance && this.sectionQueue) {
+            const wasPaused = this.isPaused;
+            const currentSection = this.currentSectionIndex;
+            
+            // Parar atual
+            this.synth.cancel();
+            
+            // Reiniciar do mesmo ponto com nova configuração
+            setTimeout(() => {
+                this.currentSectionIndex = currentSection;
+                this.speakNextSection();
+                if (wasPaused) {
+                    this.pause();
+                }
+            }, 100);
+        }
+        
         this.savePrefs();
     },
     
@@ -972,6 +1031,25 @@ const TTS = {
      */
     updateVoice(voiceURI) {
         this.prefs.voiceURI = voiceURI;
+        
+        // Aplicar imediatamente: se estiver falando, reiniciar com nova voz
+        if (this.isSpeaking && this.currentUtterance && this.sectionQueue) {
+            const wasPaused = this.isPaused;
+            const currentSection = this.currentSectionIndex;
+            
+            // Parar atual
+            this.synth.cancel();
+            
+            // Reiniciar do mesmo ponto com nova voz
+            setTimeout(() => {
+                this.currentSectionIndex = currentSection;
+                this.speakNextSection();
+                if (wasPaused) {
+                    this.pause();
+                }
+            }, 100);
+        }
+        
         this.savePrefs();
     },
     

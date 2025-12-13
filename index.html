@@ -42,8 +42,28 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/templates/ats-friendly.css" id="ats-friendly-css" disabled>
     <link rel="stylesheet" href="css/templates/star-wars.css" id="star-wars-css" disabled>
+    <style>
+        .template-loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1.2s ease-out;
+            pointer-events: none;
+        }
+        
+        .template-loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="template-loading-overlay" id="template-loading-overlay"></div>
     <!-- Action Buttons -->
     <div class="action-buttons" id="action-buttons-template">
         <div class="action-buttons-container">
@@ -820,6 +840,20 @@
         
         // Initialize Template Manager first
         (async () => {
+            // Esconder overlay de loading na inicialização (se não for Star Wars)
+            const overlay = document.getElementById('template-loading-overlay');
+            if (overlay) {
+                const savedTemplate = localStorage.getItem('cv-template');
+                if (savedTemplate !== 'star-wars') {
+                    overlay.classList.add('hidden');
+                    setTimeout(() => {
+                        if (overlay.classList.contains('hidden')) {
+                            overlay.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
+            
             await TemplateManager.init();
             
             // Initialize Theme Manager
@@ -1205,10 +1239,17 @@
             starWarsCrawlState.offsetMs = 0;
             starWarsCrawlState.running = false;
             
-            // Resetar transform para garantir medição correta
+            // Resetar transform para garantir medição correta e início do zero
             scroll.style.transform = 'none';
             scroll.style.visibility = 'hidden';
             scroll.style.opacity = '0';
+            
+            // Garantir que o wrapper está escondido até que tudo esteja pronto
+            const wrapper = document.querySelector('.resume-wrapper');
+            if (wrapper) {
+                wrapper.style.opacity = '0';
+                wrapper.style.visibility = 'hidden';
+            }
             
             const SPEED_PX_PER_S = 20;  // px/s - maior = sobe mais rápido
             const EXTRA = 160; // folga para quando o conteúdo sair do topo
@@ -1298,6 +1339,10 @@
             }
             
             async function startAuto() {
+                // Garantir que offsetMs está zerado para começar do início
+                starWarsCrawlState.offsetMs = 0;
+                starWarsCrawlState.startTime = null;
+                
                 // Forçar reflow para garantir que o conteúdo está renderizado
                 void scroll.offsetHeight;
                 
@@ -1312,11 +1357,14 @@
                 void scroll.offsetHeight;
                 
                 await measureAndFindStart();
+                
+                // Garantir que começa exatamente do início (t=0)
                 applyT(0);
                 
                 // Forçar mais um reflow após aplicar transform inicial
                 void scroll.offsetHeight;
                 
+                // Resetar tempo para garantir início limpo
                 starWarsCrawlState.startTime = performance.now();
                 starWarsCrawlState.running = true;
                 frame(performance.now());
@@ -1387,9 +1435,37 @@
                                 void scroll.offsetHeight;
                                 requestAnimationFrame(() => {
                                     void scroll.offsetHeight;
+                                    
+                                    // Garantir que começa do zero
+                                    starWarsCrawlState.offsetMs = 0;
+                                    starWarsCrawlState.startTime = null;
+                                    
+                                    // Mostrar wrapper imediatamente
+                                    const wrapper = document.querySelector('.resume-wrapper');
+                                    const overlay = document.getElementById('template-loading-overlay');
+                                    
+                                    if (wrapper) {
+                                        wrapper.style.display = '';
+                                        wrapper.style.opacity = '1';
+                                        wrapper.style.visibility = 'visible';
+                                    }
+                                    
+                                    // Iniciar crawl imediatamente (não bloqueia)
                                     startAuto();
                                     
-                                    // Autoplay será gerenciado por um listener único abaixo
+                                    // Remover overlay com atraso de 1 segundo e transição suave (em paralelo)
+                                    if (overlay) {
+                                        // Aguardar 1 segundo antes de iniciar o fade-out
+                                        setTimeout(() => {
+                                            overlay.classList.add('hidden');
+                                            // Remover completamente após a transição terminar
+                                            setTimeout(() => {
+                                                if (overlay.classList.contains('hidden')) {
+                                                    overlay.style.display = 'none';
+                                                }
+                                            }, 1200); // Duração da transição (1.2s)
+                                        }, 1000); // Atraso de 1 segundo
+                                    }
                                 });
                             });
                         }, 400); // Aumentado de 100ms para 400ms para dar mais tempo

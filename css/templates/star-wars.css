@@ -4,6 +4,33 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 
+/* SF Distant Galaxy Font */
+@font-face {
+    font-family: 'SF Distant Galaxy';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* SF Distant Galaxy AltOutline Font */
+@font-face {
+    font-family: 'SF Distant Galaxy AltOutline';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy%20AltOutline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* SF Distant Galaxy Alternate Font */
+@font-face {
+    font-family: 'SF Distant Galaxy Alternate';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy%20Alternate.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body.star-wars-template {
     margin: 0 !important;
     padding: 0 !important;
@@ -88,9 +115,18 @@ body.star-wars-template .tts-progress-container {
 
 /* Star Wars Theme - Action Buttons Colors */
 body.star-wars-template .action-buttons-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Star Wars Theme - Language Switch Container */
+body.star-wars-template .language-switch {
     background: rgba(0, 0, 0, 0.9) !important;
     border: 2px solid #FFE81F !important;
-    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.6) !important;
+    padding: 0.3rem !important;
+    border-radius: 18px !important;
 }
 
 body.star-wars-template .print-button,
@@ -100,6 +136,7 @@ body.star-wars-template .tts-button {
     background: transparent !important;
     border: 2px solid #FFE81F !important;
     color: #FFE81F !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.5) !important;
 }
 
 body.star-wars-template .print-button:hover,
@@ -108,18 +145,19 @@ body.star-wars-template .theme-button:hover,
 body.star-wars-template .tts-button:hover {
     background: #FFE81F !important;
     color: #000000 !important;
-    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.9) !important;
 }
 
 body.star-wars-template .language-switch button {
     color: #FFE81F !important;
     border: 1px solid #FFE81F !important;
+    background: transparent !important;
 }
 
 body.star-wars-template .language-switch button.active {
     background: #FFE81F !important;
     color: #000000 !important;
-    box-shadow: 0 0 10px rgba(255, 232, 31, 0.6) !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
 }
 
 body.star-wars-template .theme-menu,
@@ -414,7 +452,7 @@ body.star-wars-template #profile-image {
 }
 
 .sw-name {
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: 'SF Distant Galaxy Alternate', 'SF Distant Galaxy', 'Pathway Gothic One', sans-serif;
     font-size: 4.5rem;
     font-weight: 400;
     color: #FFE81F;
@@ -503,7 +541,7 @@ body.star-wars-template #profile-image {
     transform-origin: 50% 100%;
     display: block;
     transition: none;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: 'Pathway Gothic One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #FFE81F;
     text-align: justify;
     letter-spacing: 0.12em;
@@ -739,7 +777,7 @@ body.star-wars-template #profile-image {
     
     .sw-lightsaber {
         width: 72px; /* Proporcional: 120px * 0.6 (foto é 60% do tamanho original) */
-        bottom: 14px; /* Proporcional: 24px * 0.6 */
+        bottom: 17px;
         left: -5%; /* Mantém a mesma proporção relativa */
     }
     
