@@ -512,9 +512,9 @@
     }
     
     /* MOBILE: Ocultar TODAS as seções por padrão - especificidade máxima */
+    /* NÃO ocultar profile-section aqui - ele deve aparecer na impressão */
     .sidebar .sidebar-section,
     .sidebar .contact-section,
-    .sidebar .profile-section,
     .main-content .work-experience-section {
         display: none !important;
     }
@@ -545,11 +545,11 @@
         display: block !important;
     }
     
-    /* Profile section no mobile */
+    /* Profile section no mobile - NÃO ocultar, pois precisa aparecer na impressão */
     .profile-section {
         text-align: center !important;
         margin-bottom: 2rem;
-        display: none; /* Oculto por padrão no mobile */
+        /* REMOVIDO: display: none; - A foto deve aparecer sempre, inclusive na impressão */
     }
     
     .profile-image {
@@ -762,36 +762,23 @@
         margin-top: 0.5rem !important;
     }
     
-    .profile-section {
+    /* Profile section e imagem na impressão */
+    .profile-section,
+    .sidebar .profile-section {
         text-align: center !important;
         margin-bottom: 1.5rem !important;
         display: block !important;
         visibility: visible !important;
-    }
-    
-    /* FORÇAR EXIBIÇÃO DA IMAGEM NA IMPRESSÃO - REMOVER TODAS AS REGRAS QUE PODEM OCULTAR */
-    .profile-section {
-        display: block !important;
-        visibility: visible !important;
         opacity: 1 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
     
     .profile-section img,
+    .sidebar .profile-section img,
     #profile-image,
     .profile-image,
     img[src*="avatar"],
     img[src="avatar.png"],
-    img[src*="marcelo"],
-    img[src="marcelo.png"],
-    img[alt*="Marcelo"],
-    .sidebar img,
-    .sidebar .profile-image,
-    .sidebar #profile-image,
-    img[src*="profile"],
-    .profile-section img[src],
-    .sidebar img[src] {
+    img[src="./avatar.png"] {
         width: 100px !important;
         height: 100px !important;
         margin: 0 auto 1rem auto !important;
@@ -804,59 +791,60 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         color-adjust: exact !important;
-        background: transparent !important;
-        content: none !important;
-        text-align: center !important;
     }
     
-    /* Garantir que a imagem seja carregada na impressão */
+    /* Garantir que a imagem apareça na impressão - regra com máxima especificidade */
     @media print {
-        .profile-section::before {
+        /* Remover qualquer pseudo-elemento que possa interferir */
+        .profile-section::before,
+        .profile-section::after {
             content: none !important;
+            display: none !important;
         }
         
+        /* Garantir que profile-section apareça - máxima especificidade */
         .profile-section,
-        .sidebar .profile-section {
+        .sidebar .profile-section,
+        .sidebar section.profile-section,
+        aside.sidebar .profile-section,
+        aside.sidebar section.profile-section {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
             text-align: center !important;
+            margin-bottom: 1.5rem !important;
         }
         
+        /* Garantir que a imagem apareça - todas as variações possíveis */
         .profile-section img,
         .sidebar .profile-section img,
+        .sidebar section.profile-section img,
+        aside.sidebar .profile-section img,
         #profile-image,
         .profile-image,
+        img#profile-image,
+        img.profile-image,
         img[src="avatar.png"],
+        img[src="./avatar.png"],
         img[src*="avatar"],
-        img[src="./avatar.png"] {
-            content: none !important;
+        .sidebar img#profile-image,
+        .sidebar img.profile-image,
+        aside.sidebar img#profile-image {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
             width: 100px !important;
             height: 100px !important;
-            margin: 0 auto !important;
+            margin: 0 auto 1rem auto !important;
             border-radius: 50% !important;
             border: 3px solid var(--white) !important;
             object-fit: cover !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             color-adjust: exact !important;
-        }
-        
-        /* Forçar caminho relativo na impressão */
-        #profile-image {
-            src: url('./avatar.png') !important;
-        }
-        
-        #profile-image[src],
-        .profile-image[src] {
-            src: url('./avatar.png') !important;
+            background: transparent !important;
         }
     }
-    
-    
     
     /* Ocultar nome duplicado na sidebar e headers mobile na impressão */
     .sidebar .name,

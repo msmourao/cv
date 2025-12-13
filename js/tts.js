@@ -276,6 +276,20 @@ const TTS = {
         };
         
         this.currentUtterance.onerror = (event) => {
+            // Ignorar erros "interrupted" e "canceled" que são esperados quando:
+            // - Usuário clica em stop
+            // - Uma nova fala é iniciada antes da anterior terminar
+            // - Navegação entre seções
+            if (event.error === 'interrupted' || event.error === 'canceled') {
+                // Não logar como erro, apenas atualizar estado se necessário
+                if (event.error === 'interrupted') {
+                    // Interrupção pode ser esperada, apenas limpar highlights
+                    this.clearHighlights();
+                }
+                return;
+            }
+            
+            // Logar apenas erros reais (network, synthesis-failed, etc)
             console.error('TTS Error:', event);
             this.isSpeaking = false;
             this.isPaused = false;
@@ -525,38 +539,73 @@ const TTS = {
     },
     
     /**
+     * Verifica se o template atual é ATS-Friendly
+     * @returns {boolean}
+     */
+    isATSFriendly() {
+        return document.body.classList.contains('ats-friendly-template');
+    },
+    
+    /**
      * Coleta texto na ordem correta: sidebar sections primeiro, depois experiência
+     * No ATS-Friendly: todas as seções na ordem do template
      */
     collectTextInOrder() {
         const sections = [];
+        const isATS = this.isATSFriendly();
+        const isMobile = this.isMobile();
         
-        // Seções da sidebar na ordem
-        const sidebarSections = [
-            'summary',
-            'skills',
-            'achievements',
-            'education',
-            'languages',
-            'projects',
-            'hobbies'
-        ];
-        
-        sidebarSections.forEach(sectionId => {
-            const section = document.querySelector(`[data-section="${sectionId}"]`);
-            if (section && (this.isMobile() ? section.classList.contains('active') : true)) {
-                const text = section.innerText || section.textContent || '';
-                if (text.trim()) {
-                    sections.push({ id: sectionId, element: section, text: text.trim() });
+        if (isATS) {
+            // ATS-Friendly: ordem específica do template (todas as seções sempre visíveis)
+            const atsSections = [
+                'summary',
+                'achievements',
+                'experience',
+                'skills',
+                'education',
+                'languages',
+                'projects',
+                'hobbies'
+            ];
+            
+            atsSections.forEach(sectionId => {
+                const section = document.querySelector(`[data-section="${sectionId}"]`);
+                if (section) {
+                    const text = section.innerText || section.textContent || '';
+                    if (text.trim()) {
+                        sections.push({ id: sectionId, element: section, text: text.trim() });
+                    }
                 }
-            }
-        });
-        
-        // Experiência profissional
-        const experienceSection = document.querySelector('[data-section="experience"]');
-        if (experienceSection && (this.isMobile() ? experienceSection.classList.contains('active') : true)) {
-            const text = experienceSection.innerText || experienceSection.textContent || '';
-            if (text.trim()) {
-                sections.push({ id: 'experience', element: experienceSection, text: text.trim() });
+            });
+        } else {
+            // Better-view: seções da sidebar primeiro, depois experiência
+            const sidebarSections = [
+                'summary',
+                'skills',
+                'achievements',
+                'education',
+                'languages',
+                'projects',
+                'hobbies'
+            ];
+            
+            sidebarSections.forEach(sectionId => {
+                const section = document.querySelector(`[data-section="${sectionId}"]`);
+                if (section && (isMobile ? section.classList.contains('active') : true)) {
+                    const text = section.innerText || section.textContent || '';
+                    if (text.trim()) {
+                        sections.push({ id: sectionId, element: section, text: text.trim() });
+                    }
+                }
+            });
+            
+            // Experiência profissional
+            const experienceSection = document.querySelector('[data-section="experience"]');
+            if (experienceSection && (isMobile ? experienceSection.classList.contains('active') : true)) {
+                const text = experienceSection.innerText || experienceSection.textContent || '';
+                if (text.trim()) {
+                    sections.push({ id: 'experience', element: experienceSection, text: text.trim() });
+                }
             }
         }
         

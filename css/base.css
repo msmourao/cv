@@ -3,15 +3,15 @@
    ============================================ */
 
 :root {
-    /* Default Theme (Teal) */
-    --primary-color: #2d8659;
-    --primary-dark: #1f5d3f;
+    /* Default Theme (Blue) */
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
     --secondary-color: #64748b;
     --text-color: #1e293b;
     --text-light: #64748b;
     --bg-light: #f8fafc;
     --bg-dark: #1e293b;
-    --bg-sidebar: #2d8659;
+    --bg-sidebar: #2563eb;
     --border-color: #e2e8f0;
     --white: #ffffff;
 }

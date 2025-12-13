@@ -159,6 +159,131 @@
 }
 
 /* Theme Menu Items */
+/* Theme Menu Sections */
+.theme-menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.theme-menu-section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.15rem;
+}
+
+.theme-menu-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+/* Template Options (Radio buttons) */
+.template-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.template-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1.5px solid transparent;
+}
+
+.template-option:hover {
+    background: var(--bg-light);
+}
+
+.template-option.active {
+    border-color: var(--primary-color);
+    background: var(--bg-light);
+}
+
+.template-option input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.template-name {
+    flex: 1;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+/* Color Scheme Options (Checkboxes) */
+.color-scheme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.color-scheme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1.5px solid transparent;
+}
+
+.color-scheme-option:hover:not(.disabled) {
+    background: var(--bg-light);
+}
+
+.color-scheme-option.active:not(.disabled) {
+    border-color: var(--primary-color);
+    background: var(--bg-light);
+}
+
+.color-scheme-option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.color-scheme-option input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.color-scheme-option.disabled input[type="checkbox"] {
+    cursor: not-allowed;
+}
+
+.color-scheme-preview {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1.5px solid var(--border-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.color-preview-color {
+    width: 50%;
+    height: 50%;
+}
+
+.color-scheme-name {
+    flex: 1;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+/* Legacy support - manter para compatibilidade */
 .theme-menu-title {
     font-size: 0.7rem;
     font-weight: 600;

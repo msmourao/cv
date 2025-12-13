@@ -1,85 +1,199 @@
 /* ============================================
-   THEME MANAGEMENT SYSTEM
+   THEME & TEMPLATE MANAGEMENT SYSTEM
    ============================================ */
 
 const ThemeManager = {
-    themes: [
-        { id: 'teal', name: { pt: 'Verde-água', en: 'Teal' } },
+    // Reduzido para apenas 3 esquemas de cores
+    colorSchemes: [
         { id: 'blue', name: { pt: 'Azul', en: 'Blue' } },
-        { id: 'purple', name: { pt: 'Roxo', en: 'Purple' } },
-        { id: 'green', name: { pt: 'Verde', en: 'Green' } },
-        { id: 'orange', name: { pt: 'Laranja', en: 'Orange' } },
         { id: 'red', name: { pt: 'Vermelho', en: 'Red' } },
         { id: 'dark', name: { pt: 'Escuro', en: 'Dark' } }
     ],
     
-    currentTheme: 'teal',
+    // Templates disponíveis
+    templates: [
+        { id: 'better-view', name: { pt: 'Better-view', en: 'Better-view' } },
+        { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } },
+        { id: 'placeholder', name: { pt: '???', en: '???' } }
+    ],
+    
+    currentColorScheme: 'blue',
+    currentTemplate: 'better-view',
     currentLang: 'pt',
     
     init(lang = 'pt') {
         this.currentLang = lang;
-        // Load saved theme or use default
-        const savedTheme = localStorage.getItem('cv-theme');
-        if (savedTheme && this.themes.find(t => t.id === savedTheme)) {
-            this.currentTheme = savedTheme;
+        // Load saved preferences
+        const savedColorScheme = localStorage.getItem('cv-color-scheme');
+        const savedTemplate = localStorage.getItem('cv-template');
+        
+        if (savedColorScheme && this.colorSchemes.find(c => c.id === savedColorScheme)) {
+            this.currentColorScheme = savedColorScheme;
         }
-        this.applyTheme(this.currentTheme);
+        if (savedTemplate && this.templates.find(t => t.id === savedTemplate)) {
+            this.currentTemplate = savedTemplate;
+        }
+        
+        // Aplicar template salvo
+        if (this.currentTemplate === 'ats-friendly') {
+            document.body.classList.add('ats-friendly-template');
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = false;
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+        } else {
+            this.applyColorScheme(this.currentColorScheme);
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = true;
+        }
+        
         // Aguardar um pouco para garantir que o DOM está pronto
         setTimeout(() => {
             this.renderThemeMenu();
         }, 100);
     },
     
-    applyTheme(themeId) {
-        this.currentTheme = themeId;
-        // Aplicar em :root, html e body para garantir que funcione
-        document.documentElement.setAttribute('data-theme', themeId);
-        document.body.setAttribute('data-theme', themeId);
-        // Forçar atualização das variáveis CSS
-        const root = document.documentElement;
-        root.style.setProperty('--primary-color', '');
-        root.style.setProperty('--primary-dark', '');
-        root.style.setProperty('--bg-sidebar', '');
-        localStorage.setItem('cv-theme', themeId);
-        this.updateActiveThemeOption();
+    applyColorScheme(schemeId) {
+        // Não aplicar cores se o template ATS-friendly estiver ativo
+        if (this.currentTemplate === 'ats-friendly') {
+            return;
+        }
+        
+        this.currentColorScheme = schemeId;
+        document.documentElement.setAttribute('data-theme', schemeId);
+        document.body.setAttribute('data-theme', schemeId);
+        localStorage.setItem('cv-color-scheme', schemeId);
+        this.updateActiveColorSchemeOption();
+    },
+    
+    async selectTemplate(templateId) {
+        // Não fazer nada se for placeholder
+        if (templateId === 'placeholder') {
+            return;
+        }
+        
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        
+        this.currentTemplate = templateId;
+        localStorage.setItem('cv-template', templateId);
+        
+        // Carregar template
+        if (window.TemplateManager) {
+            const templateName = templateId === 'better-view' ? 'better-view' : 
+                                templateId === 'ats-friendly' ? 'ats-friendly' : 
+                                'better-view';
+            await window.TemplateManager.loadTemplate(templateName);
+        }
+        
+        // Se for ATS-friendly, remover tema de cores e aplicar estilos
+        if (templateId === 'ats-friendly') {
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+            document.body.classList.add('ats-friendly-template');
+            // Habilitar CSS do ATS-friendly
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = false;
+        } else {
+            document.body.classList.remove('ats-friendly-template');
+            // Desabilitar CSS do ATS-friendly
+            const atsCss = document.getElementById('ats-friendly-css');
+            if (atsCss) atsCss.disabled = true;
+            this.applyColorScheme(this.currentColorScheme);
+        }
+        
+        this.renderThemeMenu();
+        this.updateActiveTemplateOption();
+        this.toggleThemeMenu(); // Fechar menu após seleção
+        
+        // Recarregar dados após mudança de template
+        if (typeof loadData === 'function') {
+            await loadData();
+            if (typeof renderCV === 'function') {
+                renderCV();
+            }
+            if (typeof initializeMobile === 'function') {
+                initializeMobile();
+            }
+        }
+    },
+    
+    selectColorScheme(schemeId) {
+        // Não aplicar se ATS-friendly estiver ativo
+        if (this.currentTemplate === 'ats-friendly') {
+            return;
+        }
+        
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.applyColorScheme(schemeId);
+        this.renderThemeMenu();
+        this.toggleThemeMenu(); // Fechar menu após seleção
     },
     
     renderThemeMenu() {
         const menu = document.getElementById('theme-menu');
         if (!menu) return;
         
-        const themeOptionsHTML = this.themes.map(theme => {
-            const isActive = theme.id === this.currentTheme;
+        const lang = this.currentLang;
+        const isATS = this.currentTemplate === 'ats-friendly';
+        
+        // Template Options (Radio buttons)
+        const templateOptionsHTML = this.templates.map(template => {
+            const isActive = template.id === this.currentTemplate;
             return `
-                <div class="theme-option ${isActive ? 'active' : ''}" 
-                     data-theme="${theme.id}" 
-                     onclick="event.preventDefault(); event.stopPropagation(); ThemeManager.selectTheme('${theme.id}');">
-                    <div class="theme-preview" data-theme="${theme.id}">
-                        <div class="theme-preview-color"></div>
-                        <div class="theme-preview-color"></div>
-                        <div class="theme-preview-color"></div>
-                        <div class="theme-preview-color"></div>
+                <label class="template-option ${isActive ? 'active' : ''}" 
+                       data-template="${template.id}">
+                    <input type="radio" 
+                           name="template" 
+                           value="${template.id}" 
+                           ${isActive ? 'checked' : ''}
+                           onclick="ThemeManager.selectTemplate('${template.id}')">
+                    <span class="template-name">${template.name[lang]}</span>
+                </label>
+            `;
+        }).join('');
+        
+        // Color Scheme Options (Checkboxes - desabilitados se ATS-friendly)
+        const colorSchemeOptionsHTML = this.colorSchemes.map(scheme => {
+            const isActive = scheme.id === this.currentColorScheme;
+            return `
+                <label class="color-scheme-option ${isActive ? 'active' : ''} ${isATS ? 'disabled' : ''}" 
+                       data-scheme="${scheme.id}">
+                    <input type="checkbox" 
+                           ${isActive ? 'checked' : ''}
+                           ${isATS ? 'disabled' : ''}
+                           onchange="ThemeManager.selectColorScheme('${scheme.id}')">
+                    <div class="color-scheme-preview" data-scheme="${scheme.id}">
+                        <div class="color-preview-color"></div>
+                        <div class="color-preview-color"></div>
+                        <div class="color-preview-color"></div>
+                        <div class="color-preview-color"></div>
                     </div>
-                    <span class="theme-name">${theme.name[this.currentLang]}</span>
-                    ${isActive ? '<i class="bi bi-check-circle theme-check"></i>' : ''}
-                </div>
+                    <span class="color-scheme-name">${scheme.name[lang]}</span>
+                </label>
             `;
         }).join('');
         
         menu.innerHTML = `
-            <div class="theme-menu-title">${this.currentLang === 'pt' ? 'Temas' : 'Themes'}</div>
-            ${themeOptionsHTML}
+            <div class="theme-menu-section">
+                <div class="theme-menu-section-title">${lang === 'pt' ? 'Opções de Template' : 'Theme Options'}</div>
+                <div class="template-options">
+                    ${templateOptionsHTML}
+                </div>
+            </div>
+            <div class="theme-menu-divider"></div>
+            <div class="theme-menu-section">
+                <div class="theme-menu-section-title">${lang === 'pt' ? 'Esquema de Cores' : 'Color Scheme'}</div>
+                <div class="color-scheme-options">
+                    ${colorSchemeOptionsHTML}
+                </div>
+            </div>
         `;
-    },
-    
-    selectTheme(themeId) {
-        if (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        this.applyTheme(themeId);
-        this.renderThemeMenu();
-        this.toggleThemeMenu(); // Fechar menu após seleção
     },
     
     updateLanguage(lang) {
@@ -94,29 +208,46 @@ const ThemeManager = {
             // Close other menus
             const shareMenu = document.getElementById('share-menu');
             if (shareMenu) shareMenu.classList.remove('show');
+            
+            // Render menu if empty
+            if (menu.innerHTML.trim() === '') {
+                this.renderThemeMenu();
+            }
         }
     },
     
-    updateActiveThemeOption() {
-        // Update active state in theme menu
+    updateActiveColorSchemeOption() {
         const menu = document.getElementById('theme-menu');
         if (!menu) return;
         
-        const options = menu.querySelectorAll('.theme-option');
+        const options = menu.querySelectorAll('.color-scheme-option');
         options.forEach(option => {
-            const themeId = option.getAttribute('data-theme');
-            if (themeId === this.currentTheme) {
+            const schemeId = option.getAttribute('data-scheme');
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            if (schemeId === this.currentColorScheme) {
                 option.classList.add('active');
-                // Add check icon if not present
-                if (!option.querySelector('.theme-check')) {
-                    const check = document.createElement('i');
-                    check.className = 'bi bi-check-circle theme-check';
-                    option.appendChild(check);
-                }
+                if (checkbox) checkbox.checked = true;
             } else {
                 option.classList.remove('active');
-                const check = option.querySelector('.theme-check');
-                if (check) check.remove();
+                if (checkbox) checkbox.checked = false;
+            }
+        });
+    },
+    
+    updateActiveTemplateOption() {
+        const menu = document.getElementById('theme-menu');
+        if (!menu) return;
+        
+        const options = menu.querySelectorAll('.template-option');
+        options.forEach(option => {
+            const templateId = option.getAttribute('data-template');
+            const radio = option.querySelector('input[type="radio"]');
+            if (templateId === this.currentTemplate) {
+                option.classList.add('active');
+                if (radio) radio.checked = true;
+            } else {
+                option.classList.remove('active');
+                if (radio) radio.checked = false;
             }
         });
     }
@@ -133,4 +264,3 @@ document.addEventListener('click', (e) => {
         if (menu) menu.classList.remove('show');
     }
 });
-

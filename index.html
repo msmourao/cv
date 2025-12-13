@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/templates/ats-friendly.css" id="ats-friendly-css" disabled>
 </head>
 <body>
     <!-- Action Buttons -->
@@ -493,19 +494,29 @@
             if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
             if (metaDescription) metaDescription.setAttribute('content', pageDescription);
 
+            // Verificar se é template ATS-Friendly
+            const isATSFriendly = document.body.classList.contains('ats-friendly-template');
+            
             // Header
-            document.getElementById('name').textContent = cvData.personal.name;
-            document.getElementById('tagline').textContent = cvData.personal.tagline[currentLang];
-            // Garantir caminho relativo (sem GitHub)
-            let photoPath = cvData.personal.photo;
-            if (photoPath.startsWith('http://') || photoPath.startsWith('https://')) {
-                // Se for URL absoluta, usar apenas o nome do arquivo
-                photoPath = './' + photoPath.split('/').pop();
-            } else if (!photoPath.startsWith('./')) {
-                photoPath = './' + photoPath;
+            const nameEl = document.getElementById('name');
+            const taglineEl = document.getElementById('tagline');
+            if (nameEl) nameEl.textContent = cvData.personal.name;
+            if (taglineEl) taglineEl.textContent = cvData.personal.tagline[currentLang];
+            
+            // Foto apenas se não for ATS-Friendly
+            if (!isATSFriendly) {
+                const profileImage = document.getElementById('profile-image');
+                if (profileImage) {
+                    let photoPath = cvData.personal.photo;
+                    if (photoPath.startsWith('http://') || photoPath.startsWith('https://')) {
+                        photoPath = './' + photoPath.split('/').pop();
+                    } else if (!photoPath.startsWith('./')) {
+                        photoPath = './' + photoPath;
+                    }
+                    profileImage.src = photoPath;
+                    profileImage.setAttribute('src', photoPath);
+                }
             }
-            document.getElementById('profile-image').src = photoPath;
-            document.getElementById('profile-image').setAttribute('src', photoPath);
 
             // Contact list
             const phoneNumber = cvData.personal.phone.replace(/[\s\-+]/g, '');
@@ -516,36 +527,60 @@
             const emailBody = encodeURIComponent(descriptions.messages.email.body);
             const emailUrl = `mailto:${cvData.personal.email}?subject=${emailSubject}&body=${emailBody}`;
             
-            const contactHTML = `
-                <li class="contact-item"><i class="bi bi-geo-alt"></i><span>${cvData.personal.location[currentLang]}</span></li>
-                <li class="contact-item">
-                    <a href="${whatsappUrl}" target="_blank">
-                        <i class="bi bi-telephone"></i>
-                        <i class="bi bi-whatsapp"></i>
-                        <span>${cvData.personal.phone}</span>
-                    </a>
-                </li>
-                <li class="contact-item">
-                    <a href="${emailUrl}">
-                        <i class="bi bi-envelope"></i>
-                        <span>${cvData.personal.email}</span>
-                    </a>
-                </li>
-                <li class="contact-item"><a href="${cvData.personal.linkedin}" target="_blank"><i class="bi bi-linkedin"></i> <span>linkedin.com/in/msmourao</span></a></li>
-                <li class="contact-item"><a href="${cvData.personal.github}" target="_blank"><i class="bi bi-github"></i> <span>github.com/msmourao</span></a></li>
-            `;
-            
-            document.getElementById('contact-list').innerHTML = contactHTML;
+            const contactListEl = document.getElementById('contact-list');
+            if (contactListEl) {
+                if (isATSFriendly) {
+                    // ATS-Friendly: contato simples, sem ícones, no header
+                    contactListEl.innerHTML = `
+                        <ul>
+                            <li>${cvData.personal.location[currentLang]}</li>
+                            <li>${cvData.personal.phone}</li>
+                            <li><a href="${emailUrl}">${cvData.personal.email}</a></li>
+                            <li><a href="${cvData.personal.linkedin}" target="_blank">linkedin.com/in/msmourao</a></li>
+                            <li><a href="${cvData.personal.github}" target="_blank">github.com/msmourao</a></li>
+                        </ul>
+                    `;
+                } else {
+                    // Better-view: contato com ícones na sidebar
+                    contactListEl.innerHTML = `
+                        <li class="contact-item"><i class="bi bi-geo-alt"></i><span>${cvData.personal.location[currentLang]}</span></li>
+                        <li class="contact-item">
+                            <a href="${whatsappUrl}" target="_blank">
+                                <i class="bi bi-telephone"></i>
+                                <i class="bi bi-whatsapp"></i>
+                                <span>${cvData.personal.phone}</span>
+                            </a>
+                        </li>
+                        <li class="contact-item">
+                            <a href="${emailUrl}">
+                                <i class="bi bi-envelope"></i>
+                                <span>${cvData.personal.email}</span>
+                            </a>
+                        </li>
+                        <li class="contact-item"><a href="${cvData.personal.linkedin}" target="_blank"><i class="bi bi-linkedin"></i> <span>linkedin.com/in/msmourao</span></a></li>
+                        <li class="contact-item"><a href="${cvData.personal.github}" target="_blank"><i class="bi bi-github"></i> <span>github.com/msmourao</span></a></li>
+                    `;
+                }
+            }
 
-            // Sections titles
-            document.getElementById('section-summary').textContent = descriptions.sections.summary;
-            document.getElementById('section-key-achievements').textContent = descriptions.sections.keyAchievements;
-            document.getElementById('section-work').textContent = descriptions.sections.workExperience;
-            document.getElementById('section-tech').textContent = descriptions.sections.techStack;
-            document.getElementById('section-education').textContent = descriptions.sections.education;
-            document.getElementById('section-languages').textContent = descriptions.sections.languages;
-            document.getElementById('section-projects').textContent = descriptions.sections.projects;
-            document.getElementById('section-hobbies').textContent = descriptions.sections.hobbies;
+            // Sections titles - verificar se elementos existem (depende do template)
+            const sectionSummary = document.getElementById('section-summary');
+            const sectionAchievements = document.getElementById('section-key-achievements');
+            const sectionWork = document.getElementById('section-work');
+            const sectionTech = document.getElementById('section-tech');
+            const sectionEducation = document.getElementById('section-education');
+            const sectionLanguages = document.getElementById('section-languages');
+            const sectionProjects = document.getElementById('section-projects');
+            const sectionHobbies = document.getElementById('section-hobbies');
+            
+            if (sectionSummary) sectionSummary.textContent = descriptions.sections.summary;
+            if (sectionAchievements) sectionAchievements.textContent = descriptions.sections.keyAchievements;
+            if (sectionWork) sectionWork.textContent = descriptions.sections.workExperience;
+            if (sectionTech) sectionTech.textContent = descriptions.sections.techStack;
+            if (sectionEducation) sectionEducation.textContent = descriptions.sections.education;
+            if (sectionLanguages) sectionLanguages.textContent = descriptions.sections.languages;
+            if (sectionProjects) sectionProjects.textContent = descriptions.sections.projects;
+            if (sectionHobbies) sectionHobbies.textContent = descriptions.sections.hobbies;
             
             if (descriptions.buttons) {
                 const shareButton = document.getElementById('share-button-title');
@@ -562,23 +597,34 @@
             }
 
             // Summary
-            document.getElementById('summary-text').textContent = descriptions.about;
+            const summaryText = document.getElementById('summary-text');
+            if (summaryText) summaryText.textContent = descriptions.about;
 
             // Tech stack
             const techStack = document.getElementById('tech-stack');
-            techStack.innerHTML = cvData.techStack.map(tech => 
-                `<li>${tech}</li>`
-            ).join('');
+            if (techStack) {
+                techStack.innerHTML = cvData.techStack.map(tech => 
+                    `<li>${tech}</li>`
+                ).join('');
+            }
 
-            // Mobile navigation labels
-            const navLabels = currentLang === 'pt' 
-                ? { about: 'Sobre', tech: 'Tech', education: 'Formação', projects: 'Projetos', experience: 'Experiência' }
-                : { about: 'About', tech: 'Tech', education: 'Education', projects: 'Projects', experience: 'Experience' };
-            document.getElementById('mobile-nav-about').textContent = navLabels.about;
-            document.getElementById('mobile-nav-tech').textContent = navLabels.tech;
-            document.getElementById('mobile-nav-education').textContent = navLabels.education;
-            document.getElementById('mobile-nav-projects').textContent = navLabels.projects;
-            document.getElementById('mobile-nav-experience').textContent = navLabels.experience;
+            // Mobile navigation labels - apenas se não for ATS-Friendly
+            if (!isATSFriendly) {
+                const navLabels = currentLang === 'pt' 
+                    ? { about: 'Sobre', tech: 'Tech', education: 'Formação', projects: 'Projetos', experience: 'Experiência' }
+                    : { about: 'About', tech: 'Tech', education: 'Education', projects: 'Projects', experience: 'Experience' };
+                const navAbout = document.getElementById('mobile-nav-about');
+                const navTech = document.getElementById('mobile-nav-tech');
+                const navEducation = document.getElementById('mobile-nav-education');
+                const navProjects = document.getElementById('mobile-nav-projects');
+                const navExperience = document.getElementById('mobile-nav-experience');
+                
+                if (navAbout) navAbout.textContent = navLabels.about;
+                if (navTech) navTech.textContent = navLabels.tech;
+                if (navEducation) navEducation.textContent = navLabels.education;
+                if (navProjects) navProjects.textContent = navLabels.projects;
+                if (navExperience) navExperience.textContent = navLabels.experience;
+            }
 
             // Key Achievements
             if (descriptions.keyAchievements) {
@@ -742,13 +788,19 @@
         document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
         updateLanguageButtons();
         
-        // Initialize Theme Manager
-        ThemeManager.init(currentLang);
-        
-        // Load data and initialize
+        // Initialize Template Manager first
         (async () => {
+            await TemplateManager.init();
+            
+            // Initialize Theme Manager
+            ThemeManager.init(currentLang);
+            
+            // Load data and initialize
             await loadData();
-            initializeMobile();
+            // Não inicializar mobile se for ATS-Friendly
+            if (!document.body.classList.contains('ats-friendly-template')) {
+                initializeMobile();
+            }
         })();
         
         // Função para inicializar mobile
@@ -761,6 +813,19 @@
                 profileImage.src = currentSrc;
                 profileImage.setAttribute('src', './avatar.png');
                 
+                // Garantir que o container também está visível
+                const profileSection = profileImage.closest('.profile-section');
+                if (profileSection) {
+                    profileSection.style.display = 'block';
+                    profileSection.style.visibility = 'visible';
+                    profileSection.style.opacity = '1';
+                }
+                
+                // Forçar display e visibility na imagem
+                profileImage.style.display = 'block';
+                profileImage.style.visibility = 'visible';
+                profileImage.style.opacity = '1';
+                
                 // Forçar carregamento da imagem
                 const img = new Image();
                 img.onload = function() {
@@ -768,7 +833,7 @@
                     profileImage.style.display = 'block';
                     profileImage.style.visibility = 'visible';
                     profileImage.style.opacity = '1';
-                    profileImage.src = 'avatar.png';
+                    profileImage.src = './avatar.png';
                     
                     // Aguardar renderização antes de imprimir
                     setTimeout(() => {
@@ -782,6 +847,11 @@
                     profileImage.style.display = 'block';
                     profileImage.style.visibility = 'visible';
                     profileImage.style.opacity = '1';
+                    if (profileSection) {
+                        profileSection.style.display = 'block';
+                        profileSection.style.visibility = 'visible';
+                        profileSection.style.opacity = '1';
+                    }
                     setTimeout(() => {
                         window.print();
                     }, 200);
@@ -793,6 +863,11 @@
         }
 
         function initializeMobile() {
+            // Não inicializar se for ATS-Friendly
+            if (document.body.classList.contains('ats-friendly-template')) {
+                return;
+            }
+            
             if (window.innerWidth <= 768) {
                 // Ocultar todas as seções primeiro
                 document.querySelectorAll('.sidebar-section, .profile-section, .contact-section, .work-experience-section').forEach(sec => {
@@ -812,8 +887,12 @@
             // DOM já está pronto, mas aguardar template
         }
         
-        // Listener de resize para mobile
+        // Listener de resize para mobile - não fazer nada se for ATS-Friendly
         window.addEventListener('resize', function() {
+            if (document.body.classList.contains('ats-friendly-template')) {
+                return;
+            }
+            
             if (window.innerWidth <= 768) {
                 const hasActive = document.querySelector('.sidebar-section.active, .profile-section.active');
                 if (!hasActive) {

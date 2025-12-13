@@ -3,9 +3,9 @@
    ============================================ */
 
 const TemplateManager = {
-    currentTemplate: 'default',
+    currentTemplate: 'better-view',
     
-    async loadTemplate(templateName = 'default') {
+    async loadTemplate(templateName = 'better-view') {
         try {
             const response = await fetch(`templates/${templateName}.html`);
             if (!response.ok) {
@@ -23,21 +23,24 @@ const TemplateManager = {
             }
         } catch (error) {
             console.error('Error loading template:', error);
-            // Fallback to default if template fails
-            if (templateName !== 'default') {
-                await this.loadTemplate('default');
+            // Fallback to better-view if template fails
+            if (templateName !== 'better-view') {
+                await this.loadTemplate('better-view');
             }
         }
     },
     
     async init() {
-        // Load default template
+        // Load saved template or default to better-view
         const savedTemplate = localStorage.getItem('cv-template');
         if (savedTemplate) {
             await this.loadTemplate(savedTemplate);
         } else {
-            await this.loadTemplate('default');
+            await this.loadTemplate('better-view');
         }
     }
 };
+
+// Expor globalmente
+window.TemplateManager = TemplateManager;
 
