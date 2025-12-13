@@ -1437,13 +1437,20 @@
         // Listener único para detectar quando o template Star Wars é carregado
         (function() {
             let lastTemplate = null;
+            let initialized = false;
             
             function checkTemplateChange() {
                 const isStarWars = document.body.classList.contains('star-wars-template');
                 
-                // Se acabou de entrar no template Star Wars
+                // Se acabou de entrar no template Star Wars (mudança ou estado inicial)
                 if (isStarWars && lastTemplate !== 'star-wars') {
-                    startStarWarsMusic();
+                    // Aguardar um pouco mais se for estado inicial para garantir que tudo está carregado
+                    const delay = initialized ? 500 : 2000;
+                    setTimeout(() => {
+                        if (document.body.classList.contains('star-wars-template')) {
+                            startStarWarsMusic();
+                        }
+                    }, delay);
                 }
                 
                 // Se saiu do template Star Wars, pausar música
@@ -1458,27 +1465,34 @@
                 }
                 
                 lastTemplate = isStarWars ? 'star-wars' : null;
+                initialized = true;
             }
             
             // Verificar mudanças no template usando MutationObserver
             const observer = new MutationObserver(checkTemplateChange);
             
             // Inicializar quando DOM estiver pronto
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    checkTemplateChange(); // Verificar estado inicial
-                    observer.observe(document.body, {
-                        attributes: true,
-                        attributeFilter: ['class']
-                    });
-                });
-            } else {
+            function initObserver() {
                 checkTemplateChange(); // Verificar estado inicial
                 observer.observe(document.body, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
             }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initObserver);
+            } else {
+                // Se já está carregado, aguardar um pouco para garantir que o template foi aplicado
+                setTimeout(initObserver, 100);
+            }
+            
+            // Verificar também após um tempo para pegar mudanças tardias
+            setTimeout(() => {
+                if (!initialized) {
+                    initObserver();
+                }
+            }, 500);
         })();
         
         // Music Player Functions
