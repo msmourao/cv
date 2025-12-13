@@ -13,7 +13,8 @@ const ThemeManager = {
     // Templates disponíveis
     templates: [
         { id: 'better-view', name: { pt: 'Better-view', en: 'Better-view' } },
-        { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } }
+        { id: 'ats-friendly', name: { pt: 'ATS-friendly', en: 'ATS-friendly' } },
+        { id: 'star-wars', name: { pt: 'Star Wars', en: 'Star Wars' }, hidden: true }
     ],
     
     currentColorScheme: 'blue',
