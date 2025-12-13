@@ -737,6 +737,12 @@ body.star-wars-template #profile-image {
         height: 120px;
     }
     
+    .sw-lightsaber {
+        width: 72px; /* Proporcional: 120px * 0.6 (foto é 60% do tamanho original) */
+        bottom: 14px; /* Proporcional: 24px * 0.6 */
+        left: -5%; /* Mantém a mesma proporção relativa */
+    }
+    
     .sw-name {
         font-size: 2.5rem;
     }
