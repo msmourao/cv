@@ -834,7 +834,9 @@
             }
             
             // Se for Star Wars e a página já carregou, iniciar música após um delay
-            if (document.body.classList.contains('star-wars-template')) {
+            // Mas só se ainda não tentou autoplay (evita duplicação)
+            if (document.body.classList.contains('star-wars-template') && !swMusicAutoPlayAttempted) {
+                swMusicAutoPlayAttempted = true;
                 setTimeout(() => {
                     if (window.swPlayMusic) {
                         window.swPlayMusic();
@@ -1165,11 +1167,15 @@
                             startStarWarsCrawl();
                             
                             // Iniciar música automaticamente após a animação começar
-                            setTimeout(() => {
-                                if (window.swPlayMusic) {
-                                    window.swPlayMusic();
-                                }
-                            }, 500);
+                            // Só se ainda não tentou autoplay (evita duplicação)
+                            if (!swMusicAutoPlayAttempted) {
+                                swMusicAutoPlayAttempted = true;
+                                setTimeout(() => {
+                                    if (window.swPlayMusic) {
+                                        window.swPlayMusic();
+                                    }
+                                }, 500);
+                            }
                         }));
                     });
                 };
@@ -1402,11 +1408,15 @@
                                     startAuto();
                                     
                                     // Iniciar música automaticamente após a animação começar
-                                    setTimeout(() => {
-                                        if (window.swPlayMusic) {
-                                            window.swPlayMusic();
-                                        }
-                                    }, 1500);
+                                    // Só se ainda não tentou autoplay (evita duplicação)
+                                    if (!swMusicAutoPlayAttempted) {
+                                        swMusicAutoPlayAttempted = true;
+                                        setTimeout(() => {
+                                            if (window.swPlayMusic) {
+                                                window.swPlayMusic();
+                                            }
+                                        }, 1500);
+                                    }
                                 });
                             });
                         }, 400); // Aumentado de 100ms para 400ms para dar mais tempo
@@ -1430,15 +1440,45 @@
             initWhenReady();
         }
         
+        // Flag global para evitar múltiplas execuções do autoplay
+        let swMusicAutoPlayAttempted = false;
+        let swMusicIsPlaying = false;
+        
+        // Resetar flag quando sair do template Star Wars
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observer para detectar mudanças no template
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const hasStarWars = document.body.classList.contains('star-wars-template');
+                        if (!hasStarWars && swMusicAutoPlayAttempted) {
+                            // Se saiu do Star Wars, resetar flag para permitir autoplay quando voltar
+                            swMusicAutoPlayAttempted = false;
+                            swMusicIsPlaying = false;
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(document.body, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        });
+        
         // Music Player Functions
-        function swPlayMusic() {
+        function swPlayMusic(force = false) {
             try {
                 const audio = document.getElementById('sw-audio');
                 const playBtn = document.getElementById('sw-play');
                 const pauseBtn = document.getElementById('sw-pause');
                 
                 if (!audio) {
-                    console.error('Audio element not found');
+                    return; // Silenciosamente retorna se não encontrar
+                }
+                
+                // Se já está tocando e não for forçado, não fazer nada
+                if (swMusicIsPlaying && !force) {
                     return;
                 }
                 
@@ -1447,49 +1487,46 @@
                 const hasSource = audio.src || (source && source.src);
                 
                 if (!hasSource) {
-                    console.warn('No audio source found. Music will not play.');
                     return; // Silenciosamente retorna se não houver arquivo
                 }
+                
+                // Função auxiliar para tentar tocar
+                const attemptPlay = () => {
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            swMusicIsPlaying = true;
+                            if (playBtn) playBtn.style.display = 'none';
+                            if (pauseBtn) pauseBtn.style.display = 'flex';
+                        }).catch(error => {
+                            // Silenciosamente ignora erros de autoplay (NotAllowedError)
+                            // Só loga se não for erro de autoplay
+                            if (error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
+                                // Log discreto apenas para outros tipos de erro
+                            }
+                            // Não atualiza a flag se falhar por autoplay
+                        });
+                    } else {
+                        swMusicIsPlaying = true;
+                        if (playBtn) playBtn.style.display = 'none';
+                        if (pauseBtn) pauseBtn.style.display = 'flex';
+                    }
+                };
                 
                 // Tentar carregar o source se necessário
                 if (!audio.src && source && source.src) {
                     audio.load();
                     // Aguardar o carregamento antes de tentar tocar
                     audio.addEventListener('canplaythrough', () => {
-                        const playPromise = audio.play();
-                        if (playPromise !== undefined) {
-                            playPromise.then(() => {
-                                if (playBtn) playBtn.style.display = 'none';
-                                if (pauseBtn) pauseBtn.style.display = 'flex';
-                            }).catch(error => {
-                                // Não mostrar alerta, apenas logar o erro
-                                console.warn('Error playing audio (may require user interaction):', error);
-                            });
-                        } else {
-                            if (playBtn) playBtn.style.display = 'none';
-                            if (pauseBtn) pauseBtn.style.display = 'flex';
-                        }
+                        attemptPlay();
                     }, { once: true });
-                    return; // Retornar aqui para não tentar tocar antes do carregamento
+                    return;
                 }
                 
                 // Se já tiver source, tentar tocar diretamente
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        if (playBtn) playBtn.style.display = 'none';
-                        if (pauseBtn) pauseBtn.style.display = 'flex';
-                    }).catch(error => {
-                        // Não mostrar alerta, apenas logar o erro
-                        console.warn('Error playing audio (may require user interaction):', error);
-                        // Não mostrar alerta para não interromper a experiência
-                    });
-                } else {
-                    if (playBtn) playBtn.style.display = 'none';
-                    if (pauseBtn) pauseBtn.style.display = 'flex';
-                }
+                attemptPlay();
             } catch (error) {
-                console.error('Error in swPlayMusic:', error);
+                // Silenciosamente ignora erros
             }
         }
         
@@ -1501,11 +1538,12 @@
                 
                 if (audio) {
                     audio.pause();
+                    swMusicIsPlaying = false;
                     if (playBtn) playBtn.style.display = 'flex';
                     if (pauseBtn) pauseBtn.style.display = 'none';
                 }
             } catch (error) {
-                console.error('Error in swPauseMusic:', error);
+                // Silenciosamente ignora erros
             }
         }
         
@@ -1518,11 +1556,12 @@
                 if (audio) {
                     audio.pause();
                     audio.currentTime = 0;
+                    swMusicIsPlaying = false;
                     if (playBtn) playBtn.style.display = 'flex';
                     if (pauseBtn) pauseBtn.style.display = 'none';
                 }
             } catch (error) {
-                console.error('Error in swStopMusic:', error);
+                // Silenciosamente ignora erros
             }
         }
         
