@@ -53,6 +53,7 @@
             z-index: 9999;
             opacity: 1;
             transition: opacity 1.2s ease-out;
+            -webkit-transition: opacity 1.2s ease-out;
             pointer-events: none;
         }
         
@@ -1251,7 +1252,7 @@
                 wrapper.style.visibility = 'hidden';
             }
             
-            const SPEED_PX_PER_S = 20;  // px/s - maior = sobe mais rápido
+            const SPEED_PX_PER_S = 15;  // px/s - menor = mais lento (reduzido de 20 para 15)
             const EXTRA = 160; // folga para quando o conteúdo sair do topo
             
             let contentHeight = 0;

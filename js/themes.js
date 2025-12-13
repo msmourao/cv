@@ -129,9 +129,13 @@ const ThemeManager = {
         const overlay = document.getElementById('template-loading-overlay');
         if (overlay && templateId === 'star-wars') {
             overlay.style.display = 'block';
+            overlay.style.opacity = '1';
             overlay.classList.remove('hidden');
-            // Forçar reflow para garantir que o overlay apareça
+            // Forçar reflow para garantir que o overlay apareça (especialmente no mobile)
             void overlay.offsetHeight;
+            requestAnimationFrame(() => {
+                void overlay.offsetHeight;
+            });
         }
         
         // Carregar template

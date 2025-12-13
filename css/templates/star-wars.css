@@ -341,8 +341,9 @@ body.star-wars-template .color-scheme-preview {
         radial-gradient(1px 1px at 33px 60px, rgba(255,255,255,0.8), transparent),
         radial-gradient(1px 1px at 55px 80px, #eee, transparent);
     background-repeat: repeat;
-    background-size: 200px 100px;
+    background-size: 100% 100%;
     animation: sparkle 200s linear infinite;
+    -webkit-animation: sparkle 200s linear infinite;
     opacity: 1;
 }
 
@@ -356,8 +357,9 @@ body.star-wars-template .color-scheme-preview {
         radial-gradient(2px 2px at 28px 55px, #eee, transparent),
         radial-gradient(1px 1px at 50px 75px, rgba(255,255,255,0.8), transparent);
     background-repeat: repeat;
-    background-size: 250px 120px;
+    background-size: 100% 100%;
     animation: sparkle 150s linear infinite;
+    -webkit-animation: sparkle 150s linear infinite;
     opacity: 0.8;
 }
 
@@ -371,14 +373,20 @@ body.star-wars-template .color-scheme-preview {
         radial-gradient(1px 1px at 25px 50px, #eee, transparent),
         radial-gradient(1px 1px at 45px 70px, rgba(255,255,255,0.8), transparent);
     background-repeat: repeat;
-    background-size: 300px 140px;
+    background-size: 100% 100%;
     animation: sparkle 100s linear infinite;
+    -webkit-animation: sparkle 100s linear infinite;
     opacity: 0.6;
 }
 
 @keyframes sparkle {
     from { transform: translateY(0); }
     to { transform: translateY(-200px); }
+}
+
+@-webkit-keyframes sparkle {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-200px); }
 }
 
 /* Header Section */
@@ -590,7 +598,7 @@ body.star-wars-template #profile-image {
 .sw-crawl-section > ul {
     margin: 0 auto 2rem auto;
     max-width: 100%;
-    width: 98% !important; /* Aumentado de 70% para 98% (aumento de 40%) */
+    width: 100% !important; /* 100% para desktop */
     box-sizing: border-box;
 }
 
@@ -631,7 +639,12 @@ body.star-wars-template #profile-image {
     
     .sw-crawl > p,
     .sw-crawl > ul {
-        width: 95%; /* Aumentado proporcionalmente para mobile */
+        width: 120% !important; /* 120% para mobile */
+    }
+    
+    .sw-crawl-section > p,
+    .sw-crawl-section > ul {
+        width: 120% !important; /* 120% para mobile */
     }
 }
 
