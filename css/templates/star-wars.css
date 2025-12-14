@@ -833,7 +833,12 @@ body.star-wars-template #profile-image {
     
     .sw-crawl > p,
     .sw-crawl > ul {
-        width: 90%;
+        width: 120% !important; /* 120% para mobile */
+    }
+    
+    .sw-crawl-section > p,
+    .sw-crawl-section > ul {
+        width: 120% !important; /* 120% para mobile */
     }
     
     .sw-music-player {
