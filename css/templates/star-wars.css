@@ -197,12 +197,19 @@ body.star-wars-template .color-scheme-option.active:not(.disabled) {
     background: rgba(255, 232, 31, 0.15) !important;
 }
 
-/* Estilo para esquema de cores ativo mesmo quando desabilitado */
+/* Estilo para esquema de cores ativo mesmo quando desabilitado - sobrescrever qualquer background branco */
 body.star-wars-template .color-scheme-option.active.disabled {
     border-color: #FFE81F !important;
     background: rgba(0, 0, 0, 0.8) !important;
     background-color: rgba(0, 0, 0, 0.8) !important;
     opacity: 0.8 !important;
+}
+
+/* Garantir que não há background branco vindo do CSS base */
+body.star-wars-template .color-scheme-option.active.disabled,
+body.star-wars-template .color-scheme-option.active.disabled:hover {
+    background: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 body.star-wars-template .theme-menu input[type="radio"],
