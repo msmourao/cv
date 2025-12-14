@@ -307,6 +307,17 @@ body.star-wars-template .color-scheme-preview {
     border-color: #FFE81F !important;
 }
 
+/* Estilo do preview do esquema de cores ativo (mesmo quando desabilitado) */
+body.star-wars-template .color-scheme-option.active .color-scheme-preview {
+    border-color: #FFE81F !important;
+    border-width: 2px !important;
+    box-shadow: 0 0 8px rgba(255, 232, 31, 0.6) !important;
+}
+
+body.star-wars-template .color-scheme-option.active .color-scheme-check {
+    color: #FFE81F !important;
+}
+
 /* Star Wars Container */
 .star-wars-container {
     width: 100vw;
