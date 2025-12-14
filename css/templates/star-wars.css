@@ -201,13 +201,8 @@ body.star-wars-template .color-scheme-option.active:not(.disabled) {
 body.star-wars-template .color-scheme-option.active.disabled {
     border-color: #FFE81F !important;
     background: rgba(0, 0, 0, 0.8) !important;
-    opacity: 0.8 !important;
-}
-
-/* Sobrescrever background branco do componente base quando desabilitado */
-body.star-wars-template .color-scheme-option.active.disabled {
-    background: rgba(0, 0, 0, 0.8) !important;
     background-color: rgba(0, 0, 0, 0.8) !important;
+    opacity: 0.8 !important;
 }
 
 body.star-wars-template .theme-menu input[type="radio"],
