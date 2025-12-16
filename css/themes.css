@@ -134,7 +134,8 @@ body[data-theme="pastel-green"] {
 
 [data-theme="pastel-green"] .section-title,
 [data-theme="pastel-green"] .name,
-[data-theme="pastel-green"] .timeline-title {
+[data-theme="pastel-green"] .timeline-title,
+[data-theme="pastel-green"] .project-title {
     color: var(--primary-color);
 }
 

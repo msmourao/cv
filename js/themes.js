@@ -246,11 +246,9 @@ const ThemeManager = {
                 this.updateRepeatIntroButtonText();
                 
                 const hasSeenIntro = localStorage.getItem('sw-intro-seen');
-                // Verificar explicitamente se é null, undefined, ou string vazia
-                if (hasSeenIntro === null || hasSeenIntro === undefined || hasSeenIntro === '') {
+                if (!hasSeenIntro) {
                     // Primeira vez - mostrar animação de introdução
                     await this.showStarWarsIntro();
-                    // Setar flag APENAS após a intro completar completamente
                     localStorage.setItem('sw-intro-seen', 'true');
                 } else {
                     // Já viu - pular animação e iniciar normalmente
