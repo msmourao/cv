@@ -157,6 +157,14 @@ const ThemeManager = {
             event.stopPropagation();
         }
         
+        // Fechar TTS se estiver aberto antes de trocar o template
+        if (window.TTS) {
+            const topBar = document.getElementById('tts-top-bar');
+            if (topBar && topBar.classList.contains('show')) {
+                window.TTS.closeTopBar();
+            }
+        }
+        
         this.currentTemplate = templateId;
         localStorage.setItem('cv-template', templateId);
         
