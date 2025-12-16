@@ -1,0 +1,379 @@
+{
+  "personal": {
+    "name": "Marcelo Mourão",
+    "tagline": {
+      "pt": "Desenvolvedor Sênior e Arquiteto de Software",
+      "en": "Senior Developer and Software Architect"
+    },
+    "photo": "./avatar.png",
+    "location": {
+      "pt": "São Paulo, Brazil",
+      "en": "São Paulo, Brazil"
+    },
+    "phone": "+55 11 98020-9215",
+    "email": "msmourao@hotmail.com",
+    "linkedin": "https://www.linkedin.com/in/msmourao",
+    "github": "https://github.com/msmourao"
+  },
+  "workExperience": [
+    {
+      "period": {
+        "pt": "Março 2024 – Presente",
+        "en": "March 2024 – Present"
+      },
+      "title": {
+        "pt": "Arquiteto e Desenvolvedor Principal",
+        "en": "Principal Architect and Developer"
+      },
+      "company": {
+        "pt": "EventsFinder (projeto pessoal)",
+        "en": "EventsFinder (personal project)"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "eventsfinder"
+    },
+    {
+      "period": {
+        "pt": "Março 2024 – Julho 2025",
+        "en": "March 2024 – July 2025"
+      },
+      "title": {
+        "pt": "Desenvolvedor de Software Especialista",
+        "en": "Specialist Software Developer"
+      },
+      "company": {
+        "pt": "UBS",
+        "en": "UBS"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "ubs"
+    },
+    {
+      "period": {
+        "pt": "Julho 2023 — Dezembro 2023",
+        "en": "July 2023 — December 2023"
+      },
+      "title": {
+        "pt": "Desenvolvedor de Software Especialista",
+        "en": "Specialist Software Developer"
+      },
+      "company": {
+        "pt": "Ninecon",
+        "en": "Ninecon"
+      },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
+      },
+      "key": "ninecon"
+    },
+    {
+      "period": {
+        "pt": "Março 2022 — Abril 2023",
+        "en": "March 2022 — April 2023"
+      },
+      "title": {
+        "pt": "Software Engineer",
+        "en": "Software Engineer"
+      },
+      "company": {
+        "pt": "Despegar",
+        "en": "Despegar"
+      },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
+      },
+      "key": "despegar1"
+    },
+    {
+      "period": {
+        "pt": "Agosto 2020 – Março 2022",
+        "en": "August 2020 – March 2022"
+      },
+      "title": {
+        "pt": "Arquiteto SOA",
+        "en": "SOA Architect"
+      },
+      "company": {
+        "pt": "Gol Airlines",
+        "en": "Gol Airlines"
+      },
+      "location": {
+        "pt": "Remoto",
+        "en": "Remote"
+      },
+      "key": "gol"
+    },
+    {
+      "period": {
+        "pt": "Agosto 2019 – Março 2020",
+        "en": "August 2019 – March 2020"
+      },
+      "title": {
+        "pt": "Programador Sênior",
+        "en": "Senior Programmer"
+      },
+      "company": {
+        "pt": "ViajaNet",
+        "en": "ViajaNet"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "viajanet"
+    },
+    {
+      "period": {
+        "pt": "Maio 2018 – Junho 2019",
+        "en": "May 2018 – June 2019"
+      },
+      "title": {
+        "pt": "Líder Técnico",
+        "en": "Technical Leader"
+      },
+      "company": {
+        "pt": "Claro Brasil",
+        "en": "Claro Brazil"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "claro"
+    },
+    {
+      "period": {
+        "pt": "Maio 2013 – Maio 2018",
+        "en": "May 2013 – May 2018"
+      },
+      "title": {
+        "pt": "Programador Sênior",
+        "en": "Senior Programmer"
+      },
+      "company": {
+        "pt": "CVC Viagens",
+        "en": "CVC Travel"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "cvc"
+    },
+    {
+      "period": {
+        "pt": "Março 2011 – Fevereiro 2013",
+        "en": "March 2011 – February 2013"
+      },
+      "title": {
+        "pt": "Programador Sênior",
+        "en": "Senior Programmer"
+      },
+      "company": {
+        "pt": "B2W Viagens",
+        "en": "B2W Travel"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "b2w"
+    },
+    {
+      "period": {
+        "pt": "Março 2010 – Fevereiro 2011",
+        "en": "March 2010 – February 2011"
+      },
+      "title": {
+        "pt": "Programador Júnior",
+        "en": "Junior Programmer"
+      },
+      "company": {
+        "pt": "Alafia Consultoria",
+        "en": "Alafia Consulting"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "alafia"
+    },
+    {
+      "period": {
+        "pt": "Novembro 2007 – Fevereiro 2010",
+        "en": "November 2007 – February 2010"
+      },
+      "title": {
+        "pt": "Programador Júnior",
+        "en": "Junior Programmer"
+      },
+      "company": {
+        "pt": "UOL Diveo",
+        "en": "UOL Diveo"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "uol"
+    }
+  ],
+  "education": [
+    {
+      "title": {
+        "pt": "Bacharelado em Ciências da Computação",
+        "en": "Bachelor's Degree in Computer Science"
+      },
+      "institution": "Universidade Paulista (UNIP)",
+      "period": {
+        "pt": "Janeiro 2006 – Dezembro 2009",
+        "en": "January 2006 – December 2009"
+      },
+      "note": null
+    },
+    {
+      "title": {
+        "pt": "MBA em Engenharia de Software SOA",
+        "en": "MBA in SOA Software Engineering"
+      },
+      "institution": "FIAP",
+      "period": {
+        "pt": "Setembro 2012 – Setembro 2013",
+        "en": "September 2012 – September 2013"
+      },
+      "note": {
+        "pt": "(grade completa, não concluído formalmente)",
+        "en": "(complete curriculum, not formally completed)"
+      }
+    }
+  ],
+  "certifications": [
+    {
+      "name": {
+        "pt": "MCTS Web Applications Development with Microsoft .Net Framework 4.0",
+        "en": "MCTS Web Applications Development with Microsoft .Net Framework 4.0"
+      },
+      "issuer": {
+        "pt": "Microsoft",
+        "en": "Microsoft"
+      },
+      "year": 2012,
+      "description": {
+        "pt": "Certificação Microsoft em desenvolvimento de aplicações web com .NET Framework 4.0",
+        "en": "Microsoft certification in web applications development with .NET Framework 4.0"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "name": {
+        "pt": "Português",
+        "en": "Portuguese"
+      },
+      "level": {
+        "pt": "Nativo",
+        "en": "Native"
+      },
+      "dots": 5
+    },
+    {
+      "name": {
+        "pt": "Inglês",
+        "en": "English"
+      },
+      "level": {
+        "pt": "Avançado",
+        "en": "Advanced"
+      },
+      "dots": 4
+    },
+    {
+      "name": {
+        "pt": "Espanhol",
+        "en": "Spanish"
+      },
+      "level": {
+        "pt": "Básico",
+        "en": "Basic"
+      },
+      "dots": 1
+    }
+  ],
+  "techStack": [
+    "C#",
+    ".NET",
+    "Frontend",
+    "AWS",
+    "Azure",
+    "PostgreSQL",
+    "Oracle Database",
+    "MS SQL Server",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "IaC",
+    "Generative AI",
+    "Cursor",
+    "DevOps",
+    "CI/CD"
+  ],
+  "softSkills": [
+    {
+      "pt": "Solução Criativa de Problemas",
+      "en": "Creative Problem Solving"
+    },
+    {
+      "pt": "Otimização de Performance",
+      "en": "Performance Optimization"
+    },
+    {
+      "pt": "Autogerenciável",
+      "en": "Self-Manageable"
+    },
+    {
+      "pt": "Liderança Técnica",
+      "en": "Technical Leadership"
+    }
+  ],
+  "hobbies": [
+    {
+      "pt": "Músico",
+      "en": "Musician"
+    },
+    {
+      "pt": "Artista Circense",
+      "en": "Circus Artist"
+    },
+    {
+      "pt": "Teatro",
+      "en": "Theater"
+    },
+    {
+      "pt": "Games",
+      "en": "Games"
+    }
+  ],
+  "projects": [
+    {
+      "key": "eventsfinder",
+      "icon": "bi-circle-fill"
+    },
+    {
+      "key": "framework",
+      "icon": "bi-circle-fill"
+    },
+    {
+      "key": "asyncflow",
+      "icon": "bi-circle-fill"
+    }
+  ]
+}
+

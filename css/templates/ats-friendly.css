@@ -1,0 +1,473 @@
+/* ============================================
+   ATS-FRIENDLY TEMPLATE STYLES
+   Simple, linear, PDF-like layout
+   No sidebar, no mobile navigation
+   ============================================ */
+
+/* ATS-Friendly: Forçar preto e branco, sem cores */
+body.ats-friendly-template,
+html.ats-friendly-template {
+    --primary-color: #000000 !important;
+    --primary-dark: #000000 !important;
+    --bg-sidebar: #ffffff !important;
+    --text-color: #000000 !important;
+    --text-light: #000000 !important;
+    --bg-light: #ffffff !important;
+    --bg-dark: #ffffff !important;
+    --border-color: #000000 !important;
+    --white: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Forçar cor preta em todos os elementos de texto do conteúdo */
+body.ats-friendly-template .ats-resume-container,
+html.ats-friendly-template .ats-resume-container,
+body.ats-friendly-template .ats-resume-container *,
+html.ats-friendly-template .ats-resume-container * {
+    color: #000000 !important;
+}
+
+/* Manter fundo branco */
+body.ats-friendly-template .ats-resume-container,
+html.ats-friendly-template .ats-resume-container,
+body.ats-friendly-template .resume-wrapper,
+html.ats-friendly-template .resume-wrapper {
+    background: #ffffff !important;
+}
+
+/* Esconder sidebar e mobile nav no ATS-Friendly, mas manter botões de ação */
+body.ats-friendly-template .sidebar,
+html.ats-friendly-template .sidebar,
+body.ats-friendly-template .mobile-nav,
+html.ats-friendly-template .mobile-nav {
+    display: none !important;
+}
+
+/* Manter botões de ação visíveis para poder trocar de template */
+body.ats-friendly-template .action-buttons-container,
+html.ats-friendly-template .action-buttons-container {
+    display: flex !important;
+}
+
+/* Container principal ATS-Friendly */
+body.ats-friendly-template .resume-wrapper,
+html.ats-friendly-template .resume-wrapper {
+    display: block !important;
+    grid-template-columns: none !important;
+    grid-template-areas: none !important;
+    max-width: 210mm !important; /* A4 width */
+    margin: 0 auto !important;
+    padding: 20mm !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+body.ats-friendly-template .ats-resume-container,
+html.ats-friendly-template .ats-resume-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Header ATS-Friendly */
+body.ats-friendly-template .ats-header,
+html.ats-friendly-template .ats-header {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+body.ats-friendly-template .ats-header-content,
+html.ats-friendly-template .ats-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+body.ats-friendly-template .ats-name-section,
+html.ats-friendly-template .ats-name-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+body.ats-friendly-template .ats-name,
+html.ats-friendly-template .ats-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+}
+
+body.ats-friendly-template .ats-tagline,
+html.ats-friendly-template .ats-tagline {
+    font-size: 1rem;
+    color: #000000;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+body.ats-friendly-template .ats-contact-info,
+html.ats-friendly-template .ats-contact-info {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+}
+
+body.ats-friendly-template .ats-contact-info ul,
+html.ats-friendly-template .ats-contact-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body.ats-friendly-template .ats-contact-info li,
+html.ats-friendly-template .ats-contact-info li {
+    margin: 0.25rem 0;
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+body.ats-friendly-template .ats-contact-info a,
+html.ats-friendly-template .ats-contact-info a {
+    color: #000000;
+    text-decoration: none;
+}
+
+body.ats-friendly-template .ats-contact-info a:hover,
+html.ats-friendly-template .ats-contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Seções ATS-Friendly */
+body.ats-friendly-template .ats-section,
+html.ats-friendly-template .ats-section {
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+    color: #000000 !important;
+}
+
+body.ats-friendly-template .ats-section *,
+html.ats-friendly-template .ats-section * {
+    color: #000000 !important;
+}
+
+body.ats-friendly-template .ats-section-title,
+html.ats-friendly-template .ats-section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000 !important;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+body.ats-friendly-template .ats-summary-text,
+html.ats-friendly-template .ats-summary-text {
+    color: #000000;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Skills ATS-Friendly */
+body.ats-friendly-template .ats-skills-list,
+html.ats-friendly-template .ats-skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+body.ats-friendly-template .ats-skills-list li,
+html.ats-friendly-template .ats-skills-list li {
+    color: #000000;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #ffffff;
+}
+
+/* Hobbies ATS-Friendly */
+body.ats-friendly-template .ats-hobbies-list,
+html.ats-friendly-template .ats-hobbies-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+body.ats-friendly-template .ats-hobbies-list li,
+html.ats-friendly-template .ats-hobbies-list li {
+    color: #000000;
+    margin: 0.25rem 0;
+}
+
+/* Work Experience ATS-Friendly */
+body.ats-friendly-template .timeline-item,
+html.ats-friendly-template .timeline-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #cccccc;
+    page-break-inside: avoid;
+}
+
+body.ats-friendly-template .timeline-item:last-child,
+html.ats-friendly-template .timeline-item:last-child {
+    border-bottom: none;
+}
+
+body.ats-friendly-template .timeline-title,
+html.ats-friendly-template .timeline-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 0.25rem 0;
+}
+
+body.ats-friendly-template .timeline-company,
+html.ats-friendly-template .timeline-company {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 0.25rem 0;
+}
+
+body.ats-friendly-template .timeline-period,
+html.ats-friendly-template .timeline-period,
+body.ats-friendly-template .timeline-location,
+html.ats-friendly-template .timeline-location {
+    font-size: 0.9rem;
+    color: #000000;
+    margin: 0.25rem 0;
+}
+
+body.ats-friendly-template .timeline-description,
+html.ats-friendly-template .timeline-description {
+    color: #000000;
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+}
+
+body.ats-friendly-template .timeline-description ul,
+html.ats-friendly-template .timeline-description ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+body.ats-friendly-template .timeline-description li,
+html.ats-friendly-template .timeline-description li {
+    margin: 0.25rem 0;
+    color: #000000;
+}
+
+body.ats-friendly-template .technologies-box,
+html.ats-friendly-template .technologies-box {
+    background: #ffffff;
+    border: 1px solid #000000;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+body.ats-friendly-template .technologies-box strong,
+html.ats-friendly-template .technologies-box strong {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Education, Languages, Projects, Key Achievements ATS-Friendly */
+body.ats-friendly-template #education,
+html.ats-friendly-template #education,
+body.ats-friendly-template #education *,
+html.ats-friendly-template #education *,
+body.ats-friendly-template #languages,
+html.ats-friendly-template #languages,
+body.ats-friendly-template #languages *,
+html.ats-friendly-template #languages *,
+body.ats-friendly-template #projects,
+html.ats-friendly-template #projects,
+body.ats-friendly-template #projects *,
+html.ats-friendly-template #projects *,
+body.ats-friendly-template #key-achievements,
+html.ats-friendly-template #key-achievements,
+body.ats-friendly-template #key-achievements *,
+html.ats-friendly-template #key-achievements * {
+    color: #000000 !important;
+}
+
+body.ats-friendly-template #education > div,
+html.ats-friendly-template #education > div,
+body.ats-friendly-template #languages > div,
+html.ats-friendly-template #languages > div,
+body.ats-friendly-template #projects > div,
+html.ats-friendly-template #projects > div,
+body.ats-friendly-template #key-achievements > div,
+html.ats-friendly-template #key-achievements > div {
+    margin-bottom: 1rem;
+    color: #000000 !important;
+}
+
+body.ats-friendly-template #education h3,
+html.ats-friendly-template #education h3,
+body.ats-friendly-template #education h4,
+html.ats-friendly-template #education h4,
+body.ats-friendly-template #projects h3,
+html.ats-friendly-template #projects h3,
+body.ats-friendly-template #projects h4,
+html.ats-friendly-template #projects h4,
+body.ats-friendly-template #key-achievements h3,
+html.ats-friendly-template #key-achievements h3,
+body.ats-friendly-template #key-achievements h4,
+html.ats-friendly-template #key-achievements h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000 !important;
+    margin: 0 0 0.25rem 0;
+}
+
+body.ats-friendly-template #education p,
+html.ats-friendly-template #education p,
+body.ats-friendly-template #projects p,
+html.ats-friendly-template #projects p,
+body.ats-friendly-template #key-achievements p,
+html.ats-friendly-template #key-achievements p {
+    color: #000000 !important;
+    margin: 0.25rem 0;
+}
+
+body.ats-friendly-template .education-item,
+html.ats-friendly-template .education-item,
+body.ats-friendly-template .education-item *,
+html.ats-friendly-template .education-item *,
+body.ats-friendly-template .certification-item,
+html.ats-friendly-template .certification-item,
+body.ats-friendly-template .certification-item *,
+html.ats-friendly-template .certification-item *,
+body.ats-friendly-template .language-item,
+html.ats-friendly-template .language-item,
+body.ats-friendly-template .language-item *,
+html.ats-friendly-template .language-item *,
+body.ats-friendly-template .key-achievement-item,
+html.ats-friendly-template .key-achievement-item,
+body.ats-friendly-template .key-achievement-item *,
+html.ats-friendly-template .key-achievement-item * {
+    color: #000000 !important;
+}
+
+body.ats-friendly-template .education-title,
+html.ats-friendly-template .education-title,
+body.ats-friendly-template .education-institution,
+html.ats-friendly-template .education-institution,
+body.ats-friendly-template .education-period,
+html.ats-friendly-template .education-period,
+body.ats-friendly-template .certification-name,
+html.ats-friendly-template .certification-name,
+body.ats-friendly-template .certification-issuer,
+html.ats-friendly-template .certification-issuer,
+body.ats-friendly-template .certification-year,
+html.ats-friendly-template .certification-year,
+body.ats-friendly-template .certification-description,
+html.ats-friendly-template .certification-description,
+body.ats-friendly-template .language-name,
+html.ats-friendly-template .language-name,
+body.ats-friendly-template .language-level,
+html.ats-friendly-template .language-level,
+body.ats-friendly-template .key-achievement-content,
+html.ats-friendly-template .key-achievement-content,
+body.ats-friendly-template .key-achievement-content h4,
+html.ats-friendly-template .key-achievement-content h4,
+body.ats-friendly-template .key-achievement-content p,
+html.ats-friendly-template .key-achievement-content p {
+    color: #000000 !important;
+}
+
+/* Remover ícones apenas do conteúdo do CV, não dos botões de ação */
+body.ats-friendly-template .ats-resume-container i,
+html.ats-friendly-template .ats-resume-container i,
+body.ats-friendly-template .ats-resume-container .bi,
+html.ats-friendly-template .ats-resume-container .bi,
+body.ats-friendly-template .contact-item i,
+html.ats-friendly-template .contact-item i,
+body.ats-friendly-template .timeline-location i,
+html.ats-friendly-template .timeline-location i {
+    display: none !important;
+}
+
+/* Manter ícones dos botões de ação */
+body.ats-friendly-template .action-buttons-container i,
+html.ats-friendly-template .action-buttons-container i,
+body.ats-friendly-template .action-buttons-container .bi,
+html.ats-friendly-template .action-buttons-container .bi {
+    display: inline-block !important;
+}
+
+/* Remover profile image apenas do conteúdo do CV */
+body.ats-friendly-template .ats-resume-container .profile-section,
+html.ats-friendly-template .ats-resume-container .profile-section,
+body.ats-friendly-template .ats-resume-container .profile-image,
+html.ats-friendly-template .ats-resume-container .profile-image {
+    display: none !important;
+}
+
+/* TTS Highlight para ATS-Friendly */
+body.ats-friendly-template .tts-highlight,
+html.ats-friendly-template .tts-highlight {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #000000 !important;
+    border-radius: 3px;
+    padding: 2px 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Print ATS-Friendly */
+@media print {
+    body.ats-friendly-template .resume-wrapper,
+    html.ats-friendly-template .resume-wrapper {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    body.ats-friendly-template .ats-resume-container,
+    html.ats-friendly-template .ats-resume-container {
+        width: 100%;
+    }
+    
+    body.ats-friendly-template .ats-section,
+    html.ats-friendly-template .ats-section {
+        page-break-inside: avoid;
+    }
+    
+    body.ats-friendly-template .timeline-item,
+    html.ats-friendly-template .timeline-item {
+        page-break-inside: avoid;
+    }
+}
+
+/* Mobile: ATS-Friendly não tem versão mobile, mas garantir que funcione */
+@media screen and (max-width: 768px) {
+    body.ats-friendly-template .resume-wrapper,
+    html.ats-friendly-template .resume-wrapper {
+        padding: 1rem !important;
+    }
+    
+    body.ats-friendly-template .ats-header-content,
+    html.ats-friendly-template .ats-header-content {
+        flex-direction: column;
+    }
+    
+    body.ats-friendly-template .ats-contact-info,
+    html.ats-friendly-template .ats-contact-info {
+        text-align: left;
+    }
+}

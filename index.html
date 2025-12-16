@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+  (Just kidding. I'm actually quite proud of this work. But don't tell my master — he might ask for more.) -->
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d8649'/%3E%3Ctext x='50' y='70' font-family='Arial, sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+    
+    <!-- SEO Meta Tags -->
+    <title id="page-title">Currículo - Marcelo Mourão</title>
+    <meta id="meta-description" name="description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta id="og-title" property="og:title" content="Currículo - Marcelo Mourão">
+    <meta id="og-description" property="og:description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
+    <meta property="og:image" content="./avatar.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta id="twitter-title" property="twitter:title" content="Currículo - Marcelo Mourão">
+    <meta id="twitter-description" property="twitter:description" content="Desenvolvedor Sênior e Arquiteto de Software com mais de 15 anos de experiência">
+    <meta property="twitter:image" content="./avatar.png">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <!-- SF Distant Galaxy fonts are loaded locally from fonts/sf_distant_galaxy/ via @font-face in star-wars.css -->
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/templates/ats-friendly.css" id="ats-friendly-css" disabled>
+    <link rel="stylesheet" href="css/templates/star-wars.css" id="star-wars-css" disabled>
+    
+    <!-- Template Loading Overlay -->
+    <div id="template-loading-overlay" class="template-loading-overlay">
+        <div id="sw-intro-text" class="sw-intro-text"></div>
+    </div>
+</head>
+<body>
+    <div id="sw-logo-animation" class="sw-logo-animation"></div>
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <div class="action-buttons-container">
+            <div class="action-buttons-group">
+                <!-- Language Switch -->
+                <div class="language-switch">
+                    <button id="lang-pt" class="lang-btn active" onclick="switchLanguage('pt')" title="Português">PT</button>
+                    <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')" title="English">EN</button>
+                </div>
+                
+                <!-- Share Button -->
+                <div class="share-button-wrapper">
+                    <button id="share-button" class="share-button" onclick="toggleShareMenu()" title="Compartilhar">
+                        <i class="bi bi-share" id="share-button-title"></i>
+                    </button>
+                    <div class="share-menu" id="share-menu">
+                        <div class="share-menu-title">Compartilhar</div>
+                        <div class="share-menu-item" onclick="shareViaWhatsApp()">
+                            <i class="bi bi-whatsapp"></i>
+                            <span id="share-whatsapp-label">WhatsApp</span>
+                        </div>
+                        <div class="share-menu-item" onclick="shareViaEmail()">
+                            <i class="bi bi-envelope"></i>
+                            <span id="share-email-label">E-mail</span>
+                        </div>
+                        <div class="share-menu-item" onclick="shareViaLinkedIn()">
+                            <i class="bi bi-linkedin"></i>
+                            <span id="share-linkedin-label">LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Theme Button -->
+                <div class="theme-button-wrapper">
+                    <button id="theme-button" class="theme-button" onclick="ThemeManager.toggleThemeMenu()" title="Temas">
+                        <i class="bi bi-palette"></i>
+                    </button>
+                    <div class="theme-menu" id="theme-menu"></div>
+                </div>
+                
+                <!-- Print Button -->
+                <button id="print-button" class="print-button" onclick="handlePrint()" title="Imprimir">
+                    <i class="bi bi-printer" id="print-button-title"></i>
+                </button>
+                
+                <!-- TTS Button -->
+                <div class="tts-button-wrapper">
+                    <button id="tts-button" class="tts-button" onclick="TTS.handlePlay()" title="Text-to-Speech" aria-label="Iniciar leitura">
+                        <i class="bi bi-volume-up-fill" id="tts-button-title"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TTS Top Bar -->
+    <div class="tts-top-bar" id="tts-top-bar">
+            <div class="tts-top-bar-content">
+                <div class="tts-top-main-controls">
+                    <button id="tts-close" class="tts-close-btn" onclick="TTS.closeTopBar()" aria-label="Fechar e parar leitura" title="Fechar">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    
+                    <div class="tts-status-section">
+                        <span id="tts-status" aria-live="polite">Pronto</span>
+                        <div class="tts-progress-container">
+                            <div class="tts-progress-bar" id="tts-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da fala"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tts-playback-controls">
+                        <button id="tts-prev-section" class="tts-nav-btn" onclick="TTS.previousSection()" aria-label="Seção anterior" title="Seção anterior" disabled>
+                            <i class="bi bi-skip-backward-fill"></i>
+                        </button>
+                        <button id="tts-play" class="tts-control-btn" onclick="TTS.handlePlay()" aria-label="Iniciar fala" title="Iniciar fala (Espaço)">
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+                        <button id="tts-pause" class="tts-control-btn" onclick="TTS.handlePause()" aria-label="Pausar fala" title="Pausar fala (Espaço)" disabled>
+                            <i class="bi bi-pause-fill"></i>
+                        </button>
+                        <button id="tts-stop" class="tts-control-btn" onclick="TTS.handleStop()" aria-label="Parar fala" title="Parar fala" disabled>
+                            <i class="bi bi-stop-fill"></i>
+                        </button>
+                        <button id="tts-next-section" class="tts-nav-btn" onclick="TTS.nextSection()" aria-label="Próxima seção" title="Próxima seção" disabled>
+                            <i class="bi bi-skip-forward-fill"></i>
+                        </button>
+                    </div>
+                    
+                    <button id="tts-toggle-advanced" class="tts-toggle-btn" onclick="TTS.toggleAdvancedControls()" aria-label="Expandir controles avançados" title="Controles avançados">
+                        <i class="bi bi-chevron-down" id="tts-toggle-icon"></i>
+                    </button>
+                </div>
+                
+                <div class="tts-advanced-controls" id="tts-advanced-controls">
+                    <div class="tts-control-group">
+                        <label for="tts-rate">Velocidade:</label>
+                        <div class="tts-slider-container">
+                            <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1.0" 
+                                   oninput="TTS.updateRate(this.value)" 
+                                   aria-label="Velocidade da fala">
+                            <span class="tts-slider-value">1.0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tts-control-group">
+                        <label for="tts-pitch">Tom:</label>
+                        <div class="tts-slider-container">
+                            <input type="range" id="tts-pitch" min="0" max="2" step="0.1" value="1.0" 
+                                   oninput="TTS.updatePitch(this.value)" 
+                                   aria-label="Tom da voz">
+                            <span class="tts-slider-value">1.0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tts-control-group">
+                        <label for="tts-volume">Volume:</label>
+                        <div class="tts-slider-container">
+                            <input type="range" id="tts-volume" min="0" max="1" step="0.1" value="1.0" 
+                                   oninput="TTS.updateVolume(this.value)" 
+                                   aria-label="Volume da fala">
+                            <span class="tts-slider-value">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tts-control-group">
+                        <label for="tts-voice-select">Voz:</label>
+                        <select id="tts-voice-select" onchange="TTS.updateVoice(this.value)" aria-label="Selecionar voz">
+                            <option>Carregando vozes...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="resume-wrapper">
+        <!-- Template Container (will be populated by templates.js) -->
+        <div id="template-container"></div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item active" data-section="about" onclick="showSection('about')">
+                <i class="bi bi-person"></i>
+                <span id="mobile-nav-about">Sobre</span>
+            </div>
+            <div class="mobile-nav-item" data-section="tech" onclick="showSection('tech')">
+                <i class="bi bi-code-slash"></i>
+                <span id="mobile-nav-tech">Tech</span>
+            </div>
+            <div class="mobile-nav-item" data-section="education" onclick="showSection('education')">
+                <i class="bi bi-mortarboard"></i>
+                <span id="mobile-nav-education">Formação</span>
+            </div>
+            <div class="mobile-nav-item" data-section="projects" onclick="showSection('projects')">
+                <i class="bi bi-folder"></i>
+                <span id="mobile-nav-projects">Projetos</span>
+            </div>
+            <div class="mobile-nav-item" data-section="experience" onclick="showSection('experience')">
+                <i class="bi bi-briefcase"></i>
+                <span id="mobile-nav-experience">Experiência</span>
+            </div>
+        </div>
+    </nav>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Stub functions for inline onclick handlers - will be replaced by modules -->
+    <script>
+        // These stubs prevent "function not defined" errors while modules load
+        window.showSection = function(sectionName) {
+            if (this._realShowSection) {
+                return this._realShowSection(sectionName);
+            }
+            // Retry when module loads
+            setTimeout(() => {
+                if (window.showSection && window.showSection._realShowSection) {
+                    window.showSection(sectionName);
+                }
+            }, 50);
+        };
+        window.addMobileHeader = function() {};
+        window.switchLanguage = function() {};
+        window.toggleShareMenu = function() {};
+        window.shareViaWhatsApp = function() {};
+        window.shareViaEmail = function() {};
+        window.shareViaLinkedIn = function() {};
+        window.handlePrint = function() {};
+        window.ThemeManager = { toggleThemeMenu: function() {} };
+        window.TTS = { handlePlay: function() {}, closeTopBar: function() {}, previousSection: function() {}, handlePause: function() {}, handleStop: function() {}, nextSection: function() {}, toggleAdvancedControls: function() {}, updateRate: function() {}, updatePitch: function() {}, updateVolume: function() {}, updateVoice: function() {} };
+    </script>
+    
+    <!-- Custom JavaScript Files - Load modules first -->
+    <script type="module" src="js/managers/mobileManager.js"></script>
+    <script type="module" src="js/utils/languageUtils.js"></script>
+    <script type="module" src="js/utils/shareUtils.js"></script>
+    <script type="module" src="js/utils/printUtils.js"></script>
+    <script type="module" src="js/managers/dataManager.js"></script>
+    <script type="module" src="js/renderers/cvRenderer.js"></script>
+    <script type="module" src="js/renderers/starWarsRenderer.js"></script>
+    <script type="module" src="js/managers/starWarsManager.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/tts.js"></script>
+    <script>
+        // Variables - will be populated by modules
+        let cvData = null;
+        let descriptions = null;
+        let currentLang = 'pt';
+
+        // detectLanguage, loadData, switchLanguage, updateLanguageButtons foram movidos para módulos
+        // Usar LanguageUtils.detectLanguage, DataManager.loadData, LanguageUtils.switchLanguage, LanguageUtils.updateLanguageButtons
+        // toggleShareMenu, shareViaWhatsApp, shareViaEmail, shareViaLinkedIn foram movidos para ShareUtils
+        
+        // showSection e addMobileHeader foram movidos para js/managers/mobileManager.js
+        // Usar window.showSection e window.addMobileHeader
+
+        // renderCV foi movido para js/renderers/cvRenderer.js
+        // Usar window.renderCV
+
+        // Ensure content is rendered before print
+        window.addEventListener('beforeprint', function() {
+            if (!window.cvData || !window.descriptions) {
+                if (window.loadData) {
+                    window.loadData();
+                }
+            } else {
+                if (window.renderCV) {
+                    window.renderCV();
+                }
+            }
+        });
+
+        // Initialize
+        if (window.detectLanguage) {
+            window.currentLang = window.detectLanguage();
+        } else {
+            window.currentLang = 'pt';
+        }
+        document.documentElement.lang = window.currentLang === 'pt' ? 'pt-BR' : 'en';
+        if (window.updateLanguageButtons) {
+            window.updateLanguageButtons();
+        }
+        
+        // Initialize Template Manager first
+        (async () => {
+            // Esconder overlay de loading na inicialização (se não for Star Wars)
+            const overlay = document.getElementById('template-loading-overlay');
+            if (overlay) {
+                const savedTemplate = localStorage.getItem('cv-template');
+                if (savedTemplate !== 'star-wars') {
+                    overlay.classList.add('hidden');
+                    setTimeout(() => {
+                        if (overlay.classList.contains('hidden')) {
+                            overlay.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
+            
+            await TemplateManager.init();
+            
+            // Initialize Theme Manager
+            if (window.ThemeManager) {
+                ThemeManager.init(window.currentLang);
+            }
+            
+            // Load data and initialize
+            if (window.loadData) {
+                await window.loadData();
+            }
+            // Don't initialize mobile if ATS-Friendly or Star Wars
+            // Initialize mobile after content is rendered
+            // Use requestAnimationFrame to ensure DOM is fully updated after renderCV
+            if (!document.body.classList.contains('ats-friendly-template') && 
+                !document.body.classList.contains('star-wars-template')) {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            if (window.initializeMobile) {
+                                window.initializeMobile();
+                            }
+                        }, 300);
+                    });
+                });
+            }
+        })();
+        
+        // handlePrint e initializeMobile foram movidos para módulos
+        // Usar PrintUtils.handlePrint e MobileManager.initializeMobile
+        
+        // Star Wars functions foram movidos para js/managers/starWarsManager.js e js/renderers/starWarsRenderer.js
+        // Usar window.renderStarWarsCrawl, window.startStarWarsCrawl, window.swPlayMusic, etc.
+    </script>
+</body>
+</html>

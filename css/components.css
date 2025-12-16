@@ -1,0 +1,788 @@
+/**
+ * ============================================
+ * COMPONENT STYLES - Buttons, Navigation, Menus
+ * ============================================
+ * 
+ * This file contains styles for reusable UI components:
+ * - Action buttons (print, share, theme, TTS)
+ * - Navigation menus (mobile nav, theme menu, share menu)
+ * - Language switcher
+ * - TTS controls
+ * 
+ * Component Hierarchy:
+ * - Action buttons are positioned fixed on the right side
+ * - Menus appear as dropdowns from action buttons
+ * - Mobile navigation appears at the bottom on small screens
+ */
+
+/* Action Buttons */
+.action-buttons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    /* Ensure menus are not cut off */
+    overflow: visible;
+    /* Always visible - no JavaScript dependency */
+    visibility: visible;
+    opacity: 1;
+}
+
+.action-buttons-container {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    box-shadow: none;
+    /* Always visible - no JavaScript dependency */
+    visibility: visible;
+    opacity: 1;
+}
+
+.language-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+    background: var(--white);
+    padding: 0.3rem;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.language-switch button {
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    padding: 0.35rem 0.8rem;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 40px;
+    width: auto;
+}
+
+.language-switch button.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(45, 134, 89, 0.3);
+    font-weight: 600;
+}
+
+
+.action-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    /* Always visible - no JavaScript dependency */
+    visibility: visible;
+    opacity: 1;
+}
+
+.print-button, 
+.share-button, 
+.theme-button {
+    background: var(--white);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.print-button:hover, 
+.share-button:hover, 
+.theme-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.share-button-wrapper,
+.theme-button-wrapper {
+    position: relative;
+    /* Ensure menu positioning is relative to this wrapper */
+    display: flex;
+    align-items: flex-start;
+    /* Ensure menu border is not cut off */
+    overflow: visible;
+}
+
+.share-menu {
+    position: absolute;
+    /* Position relative to button wrapper */
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(100% + 8px);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    padding: 1rem;
+    min-width: 240px;
+    max-width: 280px;
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1001;
+    border: 1px solid var(--border-color);
+    color: #212121;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.theme-menu {
+    position: fixed;
+    /* Center vertically: same positioning as action-buttons (sibling) */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Position to the left of action buttons area */
+    /* action-buttons is at right: 20px, button width is ~36px, gap is 8px */
+    right: calc(20px + 36px + 8px);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    padding: 1rem;
+    min-width: 240px;
+    max-width: 280px;
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1001;
+    border: 1px solid var(--border-color);
+    /* Improve readability on default template */
+    color: #212121;
+    /* Ensure border is not cut off */
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.share-menu.show,
+.theme-menu.show {
+    display: flex;
+}
+
+.share-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.share-menu-item:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+
+/* Theme Menu Sections */
+.theme-menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.theme-menu-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #616161;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0;
+    margin-bottom: 0.15rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.theme-menu-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.2rem 0;
+}
+
+.template-options,
+.color-scheme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.template-option {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.template-option input[type="radio"] {
+    display: none;
+}
+
+.template-option:hover {
+    background: #f5f5f5;
+}
+
+.template-option:hover .template-name {
+    color: #000000;
+}
+
+.template-option.active {
+    border-color: var(--primary-color);
+    background: #f5f5f5;
+}
+
+.template-option.active .template-name {
+    color: #000000;
+    font-weight: 600;
+}
+
+/* Dark theme: active items need dark text on light background */
+[data-theme="dark"] .template-option.active {
+    background: #ffffff !important; /* White background for active items */
+}
+
+[data-theme="dark"] .color-scheme-option.active {
+    background: #ffffff !important; /* White background for active items */
+}
+
+
+/* Color Scheme Options */
+.color-scheme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.color-scheme-option:hover:not(.disabled) {
+    background: #f5f5f5;
+}
+
+.color-scheme-option:hover:not(.disabled) .color-scheme-name {
+    color: #000000;
+}
+
+.color-scheme-option.active {
+    border-color: var(--primary-color);
+    background: #f5f5f5;
+}
+
+.color-scheme-option.active .color-scheme-name {
+    color: #000000;
+    font-weight: 600;
+}
+
+.color-scheme-option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Dark theme: Make theme menu items visible */
+[data-theme="dark"] .template-name,
+[data-theme="dark"] .color-scheme-name {
+    color: #cbd5e1; /* Light gray for visibility on dark background */
+}
+
+[data-theme="dark"] .template-option.active .template-name,
+[data-theme="dark"] .color-scheme-option.active .color-scheme-name {
+    color: #212121 !important; /* Dark text for active items on white background */
+    font-weight: 600;
+}
+
+[data-theme="dark"] .template-option:hover .template-name,
+[data-theme="dark"] .color-scheme-option:hover:not(.disabled) .color-scheme-name {
+    color: #ffffff; /* White on hover */
+}
+
+.color-scheme-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.color-preview-color {
+    width: 50%;
+    height: 50%;
+}
+
+.template-name,
+.color-scheme-name {
+    flex: 1;
+    font-size: 0.8rem;
+    color: #616161; /* Default color for non-active items */
+    color: #212121;
+    font-weight: 500;
+}
+
+.color-scheme-check,
+.template-check {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #616161;
+    transition: all 0.3s;
+    font-size: 0.75rem;
+    border-radius: 12px;
+}
+
+.mobile-nav-item.active {
+    color: var(--bg-sidebar);
+    background: transparent;
+}
+
+.mobile-nav-item.active i {
+    padding: 0.5rem;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.mobile-nav-item i {
+    font-size: 1.5rem;
+    color: inherit;
+    transition: all 0.3s;
+}
+
+/* Graphite Redline (padrão) - borda com cor primária mais forte */
+:not([data-theme]) .mobile-nav-item.active i,
+[data-theme="graphite-redline"] .mobile-nav-item.active i {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Pastel Green - usar primary-dark (verde mais forte) */
+[data-theme="pastel-green"] .mobile-nav-item.active i {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+/* Dark Corporate Blue - usar primary-dark (azul mais forte) */
+[data-theme="dark-corporate-blue"] .mobile-nav-item.active i {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+/* Dark theme: manter cores originais com borda */
+[data-theme="dark"] .mobile-nav-item {
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .mobile-nav-item.active {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .mobile-nav-item.active i {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* ============================================
+   TTS (Text-to-Speech) COMPONENTS
+   ============================================ */
+
+.tts-button-wrapper {
+    position: relative;
+}
+
+.tts-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    background: var(--white);
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tts-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.tts-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* TTS Top Bar (Barra superior durante leitura) */
+.tts-top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 2000;
+    display: none;
+    padding: 0.75rem 1rem;
+}
+
+.tts-top-bar.show {
+    display: block;
+}
+
+.tts-top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tts-top-main-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tts-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.tts-close-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tts-close-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.tts-status-section {
+    flex: 1;
+    min-width: 150px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#tts-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.tts-progress-container {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-light);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.tts-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.tts-playback-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Botões de controle TTS - Estilos base comuns */
+.tts-control-btn,
+.tts-nav-btn,
+.tts-toggle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.tts-control-btn:hover:not(:disabled),
+.tts-nav-btn:hover:not(:disabled),
+.tts-toggle-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tts-control-btn:focus,
+.tts-nav-btn:focus,
+.tts-toggle-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.tts-control-btn:disabled,
+.tts-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Ícone do botão toggle - rotação quando expandido */
+.tts-toggle-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+/* Controles avançados - inicia retraído */
+.tts-advanced-controls {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tts-advanced-controls.show {
+    display: flex;
+}
+
+.tts-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.tts-control-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.tts-control-group input[type="range"] {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--bg-light);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.tts-control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.tts-control-group input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: none;
+}
+
+.tts-value-display {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    min-width: 45px;
+    text-align: right;
+}
+
+.tts-control-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.tts-control-group select:focus {
+    border-color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Ajustar controles principais quando controles avançados estão abertos */
+.tts-top-bar-content:has(.tts-advanced-controls.show) .tts-top-main-controls {
+    margin-bottom: 0.5rem;
+}
+
+/* Highlight para texto sendo lido pelo TTS */
+.tts-highlight {
+    background: rgba(99, 102, 241, 0.2) !important;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    transition: background 0.3s ease;
+    animation: tts-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tts-pulse {
+    0%, 100% {
+        background: rgba(99, 102, 241, 0.2);
+    }
+    50% {
+        background: rgba(99, 102, 241, 0.35);
+    }
+}
+
+body[data-theme="dark"] .tts-highlight,
+html[data-theme="dark"] .tts-highlight {
+    background: rgba(99, 102, 241, 0.3) !important;
+    animation: tts-pulse-dark 2s ease-in-out infinite;
+}
+
+@keyframes tts-pulse-dark {
+    0%, 100% {
+        background: rgba(99, 102, 241, 0.3);
+    }
+    50% {
+        background: rgba(99, 102, 241, 0.5);
+    }
+}
+
+/* Responsive TTS */
+@media (max-width: 768px) {
+    .share-menu {
+        min-width: 200px;
+        max-width: 240px;
+        padding: 0.65rem;
+        right: calc(100% + 6px);
+    }
+    
+    .theme-menu {
+        min-width: 200px;
+        max-width: 240px;
+        padding: 0.65rem;
+        /* On mobile, same positioning as desktop - fixed with top 50% */
+        right: calc(10px + 36px + 6px);
+    }
+    
+    .tts-top-main-controls {
+        gap: 0.5rem;
+    }
+    
+    .tts-status-section {
+        min-width: 100px;
+        max-width: 200px;
+    }
+    
+    .tts-playback-controls {
+        gap: 0.25rem;
+    }
+    
+    .tts-control-btn,
+    .tts-nav-btn,
+    .tts-close-btn,
+    .tts-toggle-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .tts-advanced-controls .tts-control-group {
+        min-width: 100%;
+    }
+}
+
+/* TTS controls are already hidden in layout.css print rules */
+/* This block is kept for backward compatibility but is redundant */
+

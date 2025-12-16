@@ -1,0 +1,38 @@
+<!-- Default Template: Action Buttons Component -->
+<!-- This file can be replaced to change the action buttons layout -->
+<div class="action-buttons" id="action-buttons-template">
+    <div class="action-buttons-container">
+        <div class="language-switch">
+            <button id="lang-pt" onclick="switchLanguage('pt')">PT</button>
+            <button id="lang-en" onclick="switchLanguage('en')">EN</button>
+        </div>
+        
+        <div class="separator"></div>
+        
+        <div class="action-buttons-group">
+            <div class="share-button-wrapper">
+                <button class="share-button" onclick="toggleShareMenu()" id="share-button-title">
+                    <i class="bi bi-share"></i>
+                </button>
+                <div class="share-menu" id="share-menu">
+                    <a href="#" class="share-menu-item whatsapp" onclick="shareViaWhatsApp(event)">
+                        <i class="bi bi-whatsapp"></i>
+                        <span id="share-whatsapp-label">WhatsApp</span>
+                    </a>
+                    <a href="#" class="share-menu-item email" onclick="shareViaEmail(event)">
+                        <i class="bi bi-envelope"></i>
+                        <span id="share-email-label">Email</span>
+                    </a>
+                    <a href="#" class="share-menu-item linkedin" onclick="shareViaLinkedIn(event)">
+                        <i class="bi bi-linkedin"></i>
+                        <span id="share-linkedin-label">LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+            <button class="print-button" onclick="window.print()" id="print-button-title">
+                <i class="bi bi-printer"></i>
+            </button>
+        </div>
+    </div>
+</div>
+

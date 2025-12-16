@@ -1,0 +1,148 @@
+/**
+ * ============================================
+ * ANIMATIONS
+ * ============================================
+ * 
+ * Contains all animation-related styles
+ * Moved from inline styles in index.html
+ */
+
+/* Template Loading Overlay */
+.template-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1.2s ease-out;
+    -webkit-transition: opacity 1.2s ease-out;
+    pointer-events: none;
+}
+
+.template-loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* Star Wars Intro Animation */
+.sw-intro-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    color: #4A9EFF;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    text-align: left;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    -webkit-transition: opacity 2s ease-in;
+    text-shadow: 
+        0 0 10px rgba(74, 158, 255, 0.8),
+        0 0 20px rgba(74, 158, 255, 0.6),
+        0 0 30px rgba(74, 158, 255, 0.4);
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    max-width: 80%;
+    width: auto;
+}
+
+.sw-intro-text.show {
+    opacity: 1;
+}
+
+.sw-intro-text.hide {
+    opacity: 0;
+}
+
+/* Star Wars Logo Animation */
+.sw-logo-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3);
+    -webkit-transform: translate(-50%, -50%) scale(3);
+    color: #FFE81F;
+    font-family: 'SF Distant Galaxy AltOutline', 'SF Distant Galaxy', 'Pathway Gothic One', sans-serif;
+    font-size: 5rem;
+    font-weight: normal;
+    text-align: center;
+    z-index: 10002;
+    white-space: normal;
+    line-height: 1;
+    text-shadow: 
+        0 0 20px rgba(255, 232, 31, 0.8),
+        0 0 40px rgba(255, 232, 31, 0.6),
+        0 0 60px rgba(255, 232, 31, 0.4);
+    animation: logoFadeOut 9s ease-out forwards;
+    -webkit-animation: logoFadeOut 9s ease-out forwards;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes logoFadeOut {
+    0% {
+        transform: translate(-50%, -50%) scale(3);
+        -webkit-transform: translate(-50%, -50%) scale(3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -45%) scale(0.15);
+        -webkit-transform: translate(-50%, -45%) scale(0.15);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes logoFadeOut {
+    0% {
+        transform: translate(-50%, -50%) scale(3);
+        -webkit-transform: translate(-50%, -50%) scale(3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -45%) scale(0.15);
+        -webkit-transform: translate(-50%, -45%) scale(0.15);
+        opacity: 0;
+    }
+}
+
+/* Fade In Elements */
+.sw-fade-in-elements {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    -webkit-transition: opacity 2s ease-in;
+}
+
+.sw-fade-in-elements.show {
+    opacity: 1;
+}
+
+/* Star Wars Container Background */
+.star-wars-container {
+    background: #000;
+    background-color: #000;
+}
+
+/* ============================================
+   PRINT STYLES - Hide all animation elements
+   ============================================ */
+@media print {
+    .template-loading-overlay,
+    .sw-intro-text,
+    .sw-logo-animation,
+    .sw-fade-in-elements {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+

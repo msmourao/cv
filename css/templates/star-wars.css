@@ -1,0 +1,1346 @@
+/* ============================================
+   STAR WARS THEME
+   ============================================ */
+
+/* SF Distant Galaxy Font */
+@font-face {
+    font-family: 'SF Distant Galaxy';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* SF Distant Galaxy AltOutline Font */
+@font-face {
+    font-family: 'SF Distant Galaxy AltOutline';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy%20AltOutline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block; /* Bloquear renderização até fonte carregar */
+}
+
+/* SF Distant Galaxy Alternate Font */
+@font-face {
+    font-family: 'SF Distant Galaxy Alternate';
+    src: url('../../fonts/sf_distant_galaxy/SF%20Distant%20Galaxy%20Alternate.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body.star-wars-template {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    color: #FFE81F;
+    font-family: 'Pathway Gothic One', sans-serif;
+    height: 100vh !important;
+    width: 100vw !important;
+    position: relative;
+    max-width: none !important;
+}
+
+body.star-wars-template html {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+body.star-wars-template .resume-wrapper {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+/* Hide mobile nav for Star Wars theme, but keep action buttons and TTS bar */
+body.star-wars-template .mobile-nav {
+    display: none !important;
+}
+
+/* Star Wars Theme - TTS Top Bar */
+body.star-wars-template .tts-top-bar {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-bottom: 2px solid #FFE81F !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+    color: #FFE81F !important;
+    z-index: 1000 !important;
+}
+
+body.star-wars-template .tts-top-bar-content {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-close-btn,
+body.star-wars-template .tts-control-btn,
+body.star-wars-template .tts-nav-btn {
+    background: transparent !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-close-btn:hover,
+body.star-wars-template .tts-control-btn:hover:not(:disabled),
+body.star-wars-template .tts-nav-btn:hover:not(:disabled) {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .tts-close-btn:disabled,
+body.star-wars-template .tts-control-btn:disabled,
+body.star-wars-template .tts-nav-btn:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+}
+
+body.star-wars-template #tts-status {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-progress-bar {
+    background: #FFE81F !important;
+}
+
+body.star-wars-template .tts-progress-container {
+    background: rgba(255, 232, 31, 0.2) !important;
+}
+
+/* Star Wars Theme - Action Buttons Colors */
+body.star-wars-template .action-buttons-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Star Wars Theme - Language Switch Container */
+body.star-wars-template .language-switch {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid #FFE81F !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.6) !important;
+    padding: 0.3rem !important;
+    border-radius: 18px !important;
+}
+
+body.star-wars-template .print-button,
+body.star-wars-template .share-button,
+body.star-wars-template .theme-button,
+body.star-wars-template .tts-button {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .print-button:hover,
+body.star-wars-template .share-button:hover,
+body.star-wars-template .theme-button:hover,
+body.star-wars-template .tts-button:hover {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.9) !important;
+}
+
+body.star-wars-template .language-switch button {
+    color: #FFE81F !important;
+    border: 1px solid #FFE81F !important;
+    background: transparent !important;
+}
+
+body.star-wars-template .language-switch button.active {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .theme-menu,
+body.star-wars-template .share-menu,
+body.star-wars-template .tts-menu {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .share-menu-item,
+body.star-wars-template .theme-menu-section-title,
+body.star-wars-template .theme-menu-title {
+    color: #FFE81F !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Fonte normal, não comprimida */
+    letter-spacing: normal !important;
+}
+
+/* Nome do template Star Wars usa fonte Star Wars */
+body.star-wars-template .template-name.sw-template-name {
+    font-family: 'SF Distant Galaxy AltOutline', 'SF Distant Galaxy', 'Pathway Gothic One', sans-serif !important;
+    color: #FFE81F !important;
+    letter-spacing: 0.1em !important;
+}
+
+/* Outros nomes de template e esquemas de cores - fonte normal */
+body.star-wars-template .template-name:not(.sw-template-name),
+body.star-wars-template .color-scheme-name {
+    color: #FFE81F !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Fonte normal, não comprimida */
+    letter-spacing: normal !important;
+}
+
+body.star-wars-template .template-check,
+body.star-wars-template .color-scheme-check {
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .share-menu-item:hover,
+body.star-wars-template .template-option:hover,
+body.star-wars-template .color-scheme-option:hover:not(.disabled) {
+    background: rgba(255, 232, 31, 0.2) !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .template-option.active,
+body.star-wars-template .color-scheme-option.active:not(.disabled) {
+    border-color: #FFE81F !important;
+    background: rgba(255, 232, 31, 0.15) !important;
+}
+
+/* Estilo para esquema de cores ativo mesmo quando desabilitado - sobrescrever qualquer background branco */
+body.star-wars-template .color-scheme-option.active.disabled {
+    border-color: #FFE81F !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    opacity: 0.8 !important;
+}
+
+/* Garantir que não há background branco vindo do CSS base */
+body.star-wars-template .color-scheme-option.active.disabled,
+body.star-wars-template .color-scheme-option.active.disabled:hover {
+    background: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+body.star-wars-template .share-menu input[type="radio"],
+body.star-wars-template .share-menu input[type="checkbox"] {
+    accent-color: #FFE81F !important;
+    border-color: #FFE81F !important;
+}
+
+/* Star Wars Theme - TTS Advanced Controls */
+/* Garantir que controles avançados comecem retraídos no Star Wars */
+body.star-wars-template .tts-advanced-controls {
+    display: none !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-top: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-advanced-controls.show {
+    display: flex !important;
+}
+
+/* Corrigir background branco de todos os elementos do TTS no Star Wars */
+body.star-wars-template .tts-top-bar-content,
+body.star-wars-template .tts-top-main-controls,
+body.star-wars-template .tts-status-section,
+body.star-wars-template .tts-progress-container {
+    background: transparent !important;
+}
+
+body.star-wars-template .tts-progress-bar {
+    background: #FFE81F !important;
+}
+
+/* Botão toggle - mesmo tamanho dos outros botões */
+body.star-wars-template .tts-toggle-btn {
+    background: transparent !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1rem !important;
+}
+
+body.star-wars-template .tts-toggle-btn:hover {
+    background: #FFE81F !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+/* Ícone do botão toggle - mesmo tamanho */
+body.star-wars-template .tts-toggle-btn i {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+}
+
+body.star-wars-template .tts-toggle-btn.expanded i {
+    transform: rotate(180deg) !important;
+}
+
+body.star-wars-template .tts-control-group {
+    background: transparent !important;
+    border: none !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-control-group label {
+    color: #FFE81F !important;
+    font-weight: 500 !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"] {
+    accent-color: #FFE81F !important;
+    background: rgba(255, 232, 31, 0.2) !important;
+    border: 1px solid #FFE81F !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]::-webkit-slider-thumb {
+    background: #FFE81F !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]::-moz-range-thumb {
+    background: #FFE81F !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.8) !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+body.star-wars-template .tts-control-group input[type="range"]:hover {
+    background: rgba(255, 232, 31, 0.3) !important;
+}
+
+body.star-wars-template .tts-control-group select {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid #FFE81F !important;
+    color: #FFE81F !important;
+    padding: 0.5rem !important;
+    border-radius: 6px !important;
+}
+
+body.star-wars-template .tts-control-group select:hover {
+    background: rgba(255, 232, 31, 0.1) !important;
+    box-shadow: 0 0 10px rgba(255, 232, 31, 0.5) !important;
+}
+
+body.star-wars-template .tts-control-group select:focus {
+    outline: 2px solid #FFE81F !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8) !important;
+}
+
+body.star-wars-template .tts-control-group select option {
+    background: #000000 !important;
+    color: #FFE81F !important;
+}
+
+body.star-wars-template .tts-value-display {
+    color: #FFE81F !important;
+    font-weight: 500 !important;
+}
+
+
+body.star-wars-template .theme-menu-divider {
+    background: rgba(255, 232, 31, 0.3) !important;
+}
+
+body.star-wars-template .color-scheme-preview {
+    border-color: #FFE81F !important;
+}
+
+/* Estilo do preview do esquema de cores ativo (mesmo quando desabilitado) */
+body.star-wars-template .color-scheme-option.active .color-scheme-preview {
+    border-color: #FFE81F !important;
+    border-width: 2px !important;
+    box-shadow: 0 0 8px rgba(255, 232, 31, 0.6) !important;
+}
+
+body.star-wars-template .color-scheme-option.active .color-scheme-check,
+body.star-wars-template .template-option.active .template-check {
+    color: #FFE81F !important;
+}
+
+/* Star Wars Container */
+.star-wars-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: visible !important;
+    background: #000 !important;
+    background-color: #000 !important;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Animated Stars Background */
+.stars, .stars2, .stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 60px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 50px 50px, #eee, transparent),
+        radial-gradient(1px 1px at 80px 10px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, #eee, transparent),
+        radial-gradient(1px 1px at 33px 60px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55px 80px, #eee, transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: sparkle 200s linear infinite;
+    -webkit-animation: sparkle 200s linear infinite;
+    opacity: 1;
+}
+
+.stars2 {
+    background-image: 
+        radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 45px 65px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 40px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 70px 5px, #eee, transparent),
+        radial-gradient(1px 1px at 85px 35px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 28px 55px, #eee, transparent),
+        radial-gradient(1px 1px at 50px 75px, rgba(255,255,255,0.8), transparent);
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    animation: sparkle 150s linear infinite;
+    -webkit-animation: sparkle 150s linear infinite;
+    opacity: 0.8;
+}
+
+.stars3 {
+    background-image: 
+        radial-gradient(1px 1px at 10px 20px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 50px 60px, #eee, transparent),
+        radial-gradient(1px 1px at 35px 35px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 65px 8px, #eee, transparent),
+        radial-gradient(2px 2px at 80px 30px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 25px 50px, #eee, transparent),
+        radial-gradient(1px 1px at 45px 70px, rgba(255,255,255,0.8), transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: sparkle 100s linear infinite;
+    -webkit-animation: sparkle 100s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes sparkle {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+@-webkit-keyframes sparkle {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-200px); }
+}
+
+/* Header Section */
+.sw-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 24;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.5rem 2rem;
+    pointer-events: none;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+
+/* Photo Container */
+.sw-photo-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    z-index: 23;
+}
+
+.sw-profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #FFE81F;
+    object-fit: cover;
+    position: relative;
+    z-index: 22;
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.5);
+    transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
+}
+
+body.star-wars-template .sw-profile-image.show,
+body.star-wars-template #profile-image.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.star-wars-template .sw-lightsaber {
+    transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
+}
+
+body.star-wars-template .sw-lightsaber.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.sw-lightsaber {
+    position: absolute;
+    bottom: 24px;
+    left: -5%;
+    width: 120px;
+    height: auto;
+    z-index: 25;
+    filter: drop-shadow(0 0 10px rgba(255, 232, 31, 0.8));
+    pointer-events: none;
+}
+
+/* Name Section */
+.sw-name-section {
+    text-align: left;
+    flex: 1;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    min-width: 0;
+    overflow: visible;
+    position: relative;
+}
+
+/* Background para melhorar visualização do nome e título */
+.sw-name-section::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    pointer-events: none;
+}
+
+/* Mostrar background quando header estiver visível */
+.sw-header.show .sw-name-section::before,
+.sw-header.sw-fade-in-elements .sw-name-section::before {
+    opacity: 1;
+}
+
+.sw-name {
+    font-family: 'SF Distant Galaxy Alternate', 'SF Distant Galaxy', 'Pathway Gothic One', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: #FFE81F;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-shadow: 
+        0 0 10px rgba(255, 232, 31, 0.8),
+        0 0 20px rgba(255, 232, 31, 0.6),
+        0 0 30px rgba(255, 232, 31, 0.4);
+    line-height: 1.1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    position: relative;
+    z-index: 21;
+    background: transparent;
+}
+
+.sw-tagline {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 2.2rem;
+    color: #FFE81F;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    text-shadow: 
+        0 0 8px rgba(255, 232, 31, 0.6),
+        0 0 15px rgba(255, 232, 31, 0.4);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    position: relative;
+    z-index: 21;
+    background: transparent;
+}
+
+/* Crawl Container */
+.sw-crawl-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    perspective: 900px;
+    perspective-origin: 50% 0%;
+    z-index: 1;
+    clip-path: none !important;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+/* Fade out no topo para escurecer o texto próximo ao nome/título */
+/* Div que aparece junto com o fade in do header para cobrir as estrelas */
+.sw-crawl-fade-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 100%);
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+}
+
+.sw-crawl-fade-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sw-tilt {
+    width: 80%;
+    max-width: 1000px;
+    transform-origin: 50% 100%;
+    transform: rotateX(60deg);
+}
+
+.sw-viewport {
+    position: relative;
+    overflow: visible;
+}
+
+.sw-crawl {
+    will-change: transform;
+    transform-origin: 50% 100%;
+    display: block;
+    transition: none;
+    font-family: 'Pathway Gothic One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #FFE81F;
+    text-align: justify; /* justify for normal view, center for print */
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    font-size: 2rem; /* Aumentado para melhor legibilidade */
+    text-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.8);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sw-crawl > h2,
+.sw-crawl > h3,
+.sw-crawl > h4 {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.sw-crawl > p,
+.sw-crawl > ul {
+    margin: 0 auto 2rem auto;
+    max-width: none;
+    width: 100% !important; /* 100% para desktop */
+    box-sizing: border-box;
+}
+
+.sw-crawl > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sw-crawl > ul > li {
+    margin: 0.5rem 0;
+}
+
+/* Seções do crawl para TTS */
+.sw-crawl-section {
+    margin-bottom: 2rem;
+}
+
+.sw-crawl-section > h3 {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.sw-crawl-section > p,
+.sw-crawl-section > ul {
+    margin: 0 auto 2rem auto;
+    max-width: 100%;
+    width: 100% !important; /* 100% para desktop */
+    box-sizing: border-box;
+}
+
+.sw-crawl-section > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sw-crawl-section > ul > li {
+    margin: 0.5rem 0;
+}
+
+/* Certifications no Star Wars */
+.sw-crawl-section .certification-item {
+    margin-bottom: 1.5rem;
+}
+
+.sw-crawl-section .certification-name {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 0.5rem;
+    color: #FFE81F;
+}
+
+.sw-crawl-section .certification-issuer {
+    font-size: 0.95em;
+    margin-bottom: 0.25rem;
+    color: rgba(255, 232, 31, 0.9);
+}
+
+.sw-crawl-section .certification-year {
+    font-size: 0.9em;
+    margin-bottom: 0.25rem;
+    color: rgba(255, 232, 31, 0.8);
+}
+
+.sw-crawl-section .certification-description {
+    font-size: 0.85em;
+    color: rgba(255, 232, 31, 0.7);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .sw-crawl-container {
+        overflow: visible !important;
+    }
+    
+    .sw-crawl {
+        font-size: 1.0rem;
+        letter-spacing: 0.08em;
+    }
+    
+    .sw-crawl > p,
+    .sw-crawl > ul {
+        width: 120% !important; /* 120% para mobile */
+        max-width: none !important;
+        margin-left: -10% !important; /* Compensar overflow */
+    }
+    
+    .sw-crawl-section > p,
+    .sw-crawl-section > ul {
+        width: 120% !important; /* 120% para mobile */
+        max-width: none !important;
+        margin-left: -10% !important; /* Compensar overflow */
+    }
+}
+
+/* Music Player */
+.sw-music-player {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Floating buttons: Play, Pause, Stop */
+.sw-player-btn-float {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFE81F;
+    color: #FFE81F;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+    padding: 0;
+    margin: 0;
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+}
+
+.sw-player-btn-float:hover {
+    background: rgba(255, 232, 31, 0.15);
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.6);
+    transform: scale(1.1);
+}
+
+.sw-player-btn-float:active {
+    transform: scale(0.95);
+}
+
+/* Position floating buttons */
+#sw-play,
+#sw-pause {
+    bottom: 12px;
+    left: calc(50% - 95px);
+    transform: translateX(-50%);
+}
+
+#sw-stop {
+    bottom: 12px;
+    left: calc(50% - 45px);
+    transform: translateX(-50%);
+}
+
+/* Volume container with rectangle */
+.sw-volume-container {
+    position: fixed;
+    bottom: 17px;
+    left: calc(50% + 24px);
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFE81F;
+    border-radius: 4px;
+	padding: 0.4rem 0.6rem;
+    z-index: 1001;
+    box-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    height: 23px;
+}
+
+.sw-volume-control {
+    display: flex;
+    align-items: center;
+    color: #FFE81F;
+}
+
+.sw-volume-control input[type="range"] {
+    width: 45px;
+    height: 3px;
+    background: rgba(255, 232, 31, 0.3);
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.sw-volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    background: #FFE81F;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(255, 232, 31, 0.8);
+}
+
+.sw-volume-control input[type="range"]::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background: #FFE81F;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 3px rgba(255, 232, 31, 0.8);
+}
+
+/* Repeat Intro button - icon only */
+.sw-repeat-intro-btn {
+    position: fixed;
+    bottom: 12px;
+    left: calc(50% + 92px);
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFE81F;
+    color: #FFE81F;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+}
+
+.sw-repeat-intro-btn:hover {
+    background: rgba(255, 232, 31, 0.15);
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.6);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.sw-repeat-intro-btn:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.sw-repeat-intro-btn i {
+    font-size: 1rem;
+}
+
+.sw-repeat-intro-text {
+    white-space: nowrap;
+}
+
+.sw-track-info {
+    display: none;
+}
+
+/* ============================================
+   STAR WARS PRINT STYLES
+   ============================================ */
+@media print {
+    /* Hide UI elements */
+    body.star-wars-template .action-buttons,
+    body.star-wars-template .action-buttons-container,
+    body.star-wars-template .sw-music-player,
+    body.star-wars-template .sw-player-btn-float,
+    body.star-wars-template .sw-volume-container,
+    body.star-wars-template .sw-repeat-intro-btn,
+    body.star-wars-template .template-loading-overlay,
+    body.star-wars-template .sw-intro-text,
+    body.star-wars-template .sw-logo-animation {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* Show Star Wars content - override any general print rules */
+    body.star-wars-template {
+        background: #000000 !important;
+        color: #FFE81F !important;
+        overflow: visible !important;
+        height: auto !important;
+        position: relative !important;
+    }
+    
+    /* Ensure star-wars-container is visible */
+    body.star-wars-template .star-wars-container {
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        background: #000000 !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+    
+    /* Stars background */
+    body.star-wars-template .stars,
+    body.star-wars-template .stars2,
+    body.star-wars-template .stars3 {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 1 !important;
+    }
+    
+    /* Header with photo, name, title, lightsaber */
+    body.star-wars-template .sw-header {
+        display: block !important;
+        position: relative !important;
+        z-index: 10 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 1rem 2rem !important; /* Reduzir padding superior */
+        text-align: center !important;
+        page-break-after: avoid !important;
+        margin-bottom: 0.5rem !important; /* Reduzir margem inferior */
+    }
+    
+    body.star-wars-template .sw-photo-container {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 auto 1rem !important;
+    }
+    
+    body.star-wars-template .sw-profile-image {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 150px !important;
+        height: 150px !important;
+        border-radius: 50% !important;
+        border: 3px solid #FFE81F !important;
+        margin: 0 auto !important;
+    }
+    
+    body.star-wars-template .sw-lightsaber {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 200px !important;
+        height: auto !important;
+        margin: 1rem auto !important;
+    }
+    
+    body.star-wars-template .sw-name-section {
+        display: block !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    body.star-wars-template .sw-name {
+        color: #FFE81F !important;
+        font-size: 2.5rem !important;
+        text-align: center !important;
+        margin: 0 !important;
+    }
+    
+    body.star-wars-template .sw-tagline {
+        color: #FFE81F !important;
+        font-size: 1.2rem !important;
+        text-align: center !important;
+        margin: 0.5rem 0 0 0 !important;
+    }
+    
+	
+    body.star-wars-template .sw-lightsaber {
+        display: none !important
+    }
+	
+	
+    /* Crawl container - remove 3D perspective for print */
+    body.star-wars-template .sw-crawl-container {
+        display: block !important;
+        position: relative !important;
+        perspective: none !important;
+        -webkit-perspective: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: transparent !important;
+        z-index: 5 !important;
+        margin-top: 0 !important; /* Remover margem superior */
+        padding-top: 0 !important; /* Remover padding superior */
+    }
+    
+    body.star-wars-template .sw-crawl-fade-top {
+        display: none !important;
+    }
+    
+    body.star-wars-template .sw-tilt {
+        transform: none !important;
+        -webkit-transform: none !important;
+        position: relative !important;
+		max-width: inherit;
+		width: 100%;
+    }
+    
+    body.star-wars-template .sw-viewport {
+        position: relative !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        height: auto !important;
+    }
+    
+    /* Crawl text - no 3D effect, just normal text */
+    body.star-wars-template .sw-crawl {
+        position: relative !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: 800px !important;
+        margin: 0.5rem auto !important; /* Começar mais próximo do topo */
+        padding: 1rem 2rem !important;
+        text-align: center !important; /* Centralizar texto */
+        text-align-last: center !important; /* Centralizar última linha */
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        color: #FFE81F !important;
+        background: transparent !important; /* Remover fundo */
+        border: none !important; /* Remover borda */
+        border-radius: 0 !important;
+        justify-content: center !important;
+    }
+    
+    /* Garantir que todos os elementos dentro do crawl estejam centralizados */
+    body.star-wars-template .sw-crawl * {
+        text-align: center !important;
+        text-align-last: center !important;
+    }
+    
+    body.star-wars-template .sw-crawl > h2,
+    body.star-wars-template .sw-crawl > h3,
+    body.star-wars-template .sw-crawl > h4 {
+        color: #FFE81F !important;
+        font-size: 1.5rem !important;
+        margin: 1.5rem 0 0.5rem 0 !important;
+        text-align: center !important; /* Centralizar títulos */
+        width: 100% !important;
+    }
+    
+    body.star-wars-template .sw-crawl > p,
+    body.star-wars-template .sw-crawl > ul,
+    body.star-wars-template .sw-crawl > div {
+        color: #FFE81F !important;
+        font-size: 1rem !important;
+        margin: 0.5rem auto !important;
+        text-align: center !important; /* Centralizar texto */
+        text-align-last: center !important; /* Centralizar última linha */
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+    
+    body.star-wars-template .sw-crawl > ul {
+        list-style: none !important;
+        padding: 0 !important;
+        text-align: center !important;
+    }
+    
+    body.star-wars-template .sw-crawl > ul > li {
+        text-align: center !important;
+        text-align-last: center !important;
+        margin: 0.5rem 0 !important;
+        display: block !important;
+    }
+    
+    /* FORÇAR que todos os elementos dentro do crawl estejam centralizados */
+    body.star-wars-template .sw-crawl,
+    body.star-wars-template .sw-crawl *,
+    body.star-wars-template .sw-crawl p,
+    body.star-wars-template .sw-crawl span,
+    body.star-wars-template .sw-crawl div,
+    body.star-wars-template .sw-crawl ul,
+    body.star-wars-template .sw-crawl li,
+    body.star-wars-template .sw-crawl h2,
+    body.star-wars-template .sw-crawl h3,
+    body.star-wars-template .sw-crawl h4 {
+        text-align: center !important;
+        text-align-last: center !important;
+    }
+    
+    /* Sobrescrever text-align: justify da regra base */
+    body.star-wars-template .sw-crawl {
+        text-align: center !important;
+        text-align-last: center !important;
+    }
+    
+    body.star-wars-template .sw-crawl-section {
+        margin: 1.5rem 0 !important;
+        page-break-inside: avoid !important;
+        text-align: center !important; /* Centralizar seções */
+        width: 100% !important;
+    }
+    
+    body.star-wars-template .sw-crawl-section > h3 {
+        color: #FFE81F !important;
+        font-size: 1.3rem !important;
+        margin: 1rem 0 0.5rem 0 !important;
+        text-align: center !important; /* Centralizar títulos de seção */
+        width: 100% !important;
+    }
+    
+    body.star-wars-template .sw-crawl-section > p,
+    body.star-wars-template .sw-crawl-section > ul,
+    body.star-wars-template .sw-crawl-section > div {
+        text-align: center !important;
+        text-align-last: center !important;
+        margin: 0.5rem auto !important;
+        width: 100% !important;
+        display: block !important;
+    }
+    
+    body.star-wars-template .sw-crawl-section > ul {
+        text-align: center !important;
+    }
+    
+    body.star-wars-template .sw-crawl-section > ul > li {
+        text-align: center !important;
+        text-align-last: center !important;
+        margin: 0.5rem 0 !important;
+        display: block !important;
+    }
+    
+    /* FORÇAR que todos os elementos dentro das seções estejam centralizados */
+    body.star-wars-template .sw-crawl-section,
+    body.star-wars-template .sw-crawl-section *,
+    body.star-wars-template .sw-crawl-section p,
+    body.star-wars-template .sw-crawl-section span,
+    body.star-wars-template .sw-crawl-section div,
+    body.star-wars-template .sw-crawl-section ul,
+    body.star-wars-template .sw-crawl-section li {
+        text-align: center !important;
+        text-align-last: center !important;
+    }
+    
+    /* Ensure all text is visible */
+    body.star-wars-template .sw-crawl *,
+    body.star-wars-template .sw-header *,
+    body.star-wars-template .sw-name,
+    body.star-wars-template .sw-tagline {
+        color: #FFE81F !important;
+    }
+    
+    /* Override any general print rules that might hide content */
+    body.star-wars-template .star-wars-container,
+    body.star-wars-template .sw-header,
+    body.star-wars-template .sw-crawl-container,
+    body.star-wars-template .sw-crawl {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Page breaks */
+    @page {
+        margin: 1cm;
+        size: A4;
+    }
+    
+    body.star-wars-template .sw-header {
+        page-break-after: avoid;
+    }
+    
+    body.star-wars-template .sw-crawl-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sw-header {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .sw-photo-container {
+        order: 1;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .sw-name-section {
+        text-align: left;
+        padding-right: 0;
+        padding-left: 0;
+        margin-top: 0;
+        flex: 1;
+        order: 2;
+    }
+    
+    .sw-profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .sw-lightsaber {
+        width: 72px; /* Proporcional: 120px * 0.6 (foto é 60% do tamanho original) */
+        bottom: 17px;
+        left: -5%; /* Mantém a mesma proporção relativa */
+    }
+    
+    .sw-name {
+        font-size: 2.5rem;
+    }
+    
+    .sw-tagline {
+        font-size: 1.4rem;
+    }
+    
+    .sw-crawl-container {
+        overflow: visible !important;
+    }
+    
+    .sw-crawl {
+        font-size: 1.0rem;
+        letter-spacing: 0.08em;
+    }
+    
+    .sw-crawl > p,
+    .sw-crawl > ul {
+        width: 120% !important; /* 120% para mobile */
+        max-width: none !important;
+        margin-left: -10% !important; /* Compensar overflow */
+    }
+    
+    .sw-crawl-section > p,
+    .sw-crawl-section > ul {
+        width: 120% !important; /* 120% para mobile */
+        max-width: none !important;
+        margin-left: -10% !important; /* Compensar overflow */
+    }
+    
+    .sw-music-player {
+        bottom: 10px;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    /* Adjust floating buttons position for mobile */
+    #sw-play,
+    #sw-pause {
+        left: calc(50% - 80px);
+    }
+    
+    #sw-stop {
+        left: calc(50% - 40px);
+    }
+	
+	.sw-volume-container {
+        left: calc(50% + 19px);
+    }
+    
+    .sw-repeat-intro-btn {
+        left: calc(50% + 75px);
+    }
+    
+    .sw-repeat-intro-btn i {
+        font-size: 0.85rem;
+    }
+}
+

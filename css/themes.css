@@ -1,0 +1,371 @@
+/**
+ * ============================================
+ * THEME SYSTEM - Multiple Color Schemes
+ * ============================================
+ * 
+ * This file defines all available color themes.
+ * Each theme overrides CSS variables defined in base.css.
+ * 
+ * Theme Application:
+ * - Themes are applied via data-theme attribute on <html> and <body>
+ * - CSS variables cascade from :root to theme-specific selectors
+ * - !important is used only when necessary to override template-specific styles
+ * 
+ * Available Themes:
+ * 1. Graphite Redline (default) - Corporate with red accents
+ * 2. Pastel Green - Soft green, sustainability-focused
+ * 3. Dark Corporate Blue - Professional blue theme
+ * 4. Dark - Modern dark theme with purple-blue accents
+ */
+
+/* ============================================
+   GRAPHITE REDLINE THEME (Default)
+   ============================================ */
+:root[data-theme="graphite-redline"],
+html[data-theme="graphite-redline"],
+body[data-theme="graphite-redline"],
+:root:not([data-theme]),
+html:not([data-theme]),
+body:not([data-theme]) {
+    --primary-color: #D32F2F;
+    --primary-dark: #B71C1C;
+    --bg-sidebar: #212121;
+    --text-color: #FAFAFA;
+    --text-light: #E0E0E0;
+    --white: #FAFAFA;
+}
+
+[data-theme="graphite-redline"] .sidebar,
+:not([data-theme]) .sidebar {
+    background: var(--bg-sidebar);
+    color: var(--text-color);
+}
+
+/* Mobile: remover background da sidebar quando seções estão ativas */
+@media screen and (max-width: 768px) {
+    [data-theme="graphite-redline"] .sidebar,
+    :not([data-theme]) .sidebar {
+        background: transparent;
+    }
+    
+    [data-theme="pastel-green"] .sidebar {
+        background: transparent;
+    }
+    
+    [data-theme="dark-corporate-blue"] .sidebar {
+        background: transparent;
+    }
+    
+    [data-theme="dark"] .sidebar {
+        background: transparent;
+    }
+}
+
+[data-theme="graphite-redline"] .sidebar-section-title,
+[data-theme="graphite-redline"] .section-title,
+[data-theme="graphite-redline"] .name,
+:not([data-theme]) .sidebar-section-title,
+:not([data-theme]) .section-title,
+:not([data-theme]) .name {
+    color: var(--primary-color);
+}
+
+[data-theme="graphite-redline"] .timeline-title,
+:not([data-theme]) .timeline-title {
+    color: #000000;
+}
+
+[data-theme="graphite-redline"] .timeline-content,
+:not([data-theme]) .timeline-content {
+    color: #424242;
+}
+
+[data-theme="graphite-redline"] .tagline,
+[data-theme="graphite-redline"] .timeline-company,
+:not([data-theme]) .tagline,
+:not([data-theme]) .timeline-company {
+    color: var(--primary-color);
+}
+
+[data-theme="graphite-redline"] .profile-image,
+:not([data-theme]) .profile-image {
+    border-color: var(--primary-color);
+}
+
+[data-theme="graphite-redline"] .key-achievement-icon,
+:not([data-theme]) .key-achievement-icon {
+    color: var(--primary-color);
+}
+
+[data-theme="graphite-redline"] .timeline-location,
+[data-theme="graphite-redline"] .timeline-period,
+:not([data-theme]) .timeline-location,
+:not([data-theme]) .timeline-period {
+    color: #616161;
+}
+
+[data-theme="graphite-redline"] .technologies-box,
+:not([data-theme]) .technologies-box {
+    color: #424242;
+}
+
+/* ============================================
+   PASTEL GREEN THEME
+   ============================================ */
+:root[data-theme="pastel-green"],
+html[data-theme="pastel-green"],
+body[data-theme="pastel-green"] {
+    --primary-color: #388E3C;
+    --primary-dark: #2E7D32;
+    --bg-sidebar: #C8E6C9;
+    --text-color: #FFFFFF;
+    --text-light: #F1F8E9;
+    --white: #FFFFFF;
+}
+
+[data-theme="pastel-green"] .sidebar {
+    background: var(--bg-sidebar);
+    color: #1B5E20;
+}
+
+[data-theme="pastel-green"] .sidebar-section-title {
+    color: var(--primary-dark);
+}
+
+[data-theme="pastel-green"] .section-title,
+[data-theme="pastel-green"] .name,
+[data-theme="pastel-green"] .timeline-title {
+    color: var(--primary-color);
+}
+
+[data-theme="pastel-green"] .tagline,
+[data-theme="pastel-green"] .timeline-company {
+    color: #81C784;
+}
+
+[data-theme="pastel-green"] .profile-image {
+    border-color: var(--primary-color);
+}
+
+[data-theme="pastel-green"] .key-achievement-icon {
+    color: #81C784;
+}
+
+[data-theme="pastel-green"] .timeline-content {
+    color: var(--primary-dark);
+}
+
+[data-theme="pastel-green"] .contact-item,
+[data-theme="pastel-green"] .contact-item a,
+[data-theme="pastel-green"] .education-title,
+[data-theme="pastel-green"] .education-institution,
+[data-theme="pastel-green"] .language-name,
+[data-theme="pastel-green"] .certification-name,
+[data-theme="pastel-green"] .certification-issuer {
+    color: #1B5E20;
+}
+
+[data-theme="pastel-green"] .timeline-location,
+[data-theme="pastel-green"] .timeline-period {
+    color: #1B5E20;
+}
+
+[data-theme="pastel-green"] .technologies-box {
+    color: var(--primary-dark);
+}
+
+/* ============================================
+   DARK CORPORATE BLUE THEME
+   ============================================ */
+:root[data-theme="dark-corporate-blue"],
+html[data-theme="dark-corporate-blue"],
+body[data-theme="dark-corporate-blue"] {
+    --primary-color: #3949AB;
+    --primary-dark: #1A237E;
+    --bg-sidebar: #283593;
+    --text-color: #FFFFFF;
+    --text-light: #E8EAF6;
+    --white: #FFFFFF;
+}
+
+[data-theme="dark-corporate-blue"] .sidebar {
+    background: var(--bg-sidebar);
+    color: var(--text-color);
+}
+
+[data-theme="dark-corporate-blue"] .sidebar-section-title {
+    color: var(--text-color);
+}
+
+[data-theme="dark-corporate-blue"] .section-title,
+[data-theme="dark-corporate-blue"] .name,
+[data-theme="dark-corporate-blue"] .timeline-title {
+    color: var(--primary-dark);
+}
+
+[data-theme="dark-corporate-blue"] .tagline,
+[data-theme="dark-corporate-blue"] .timeline-company {
+    color: var(--primary-color);
+}
+
+[data-theme="dark-corporate-blue"] .profile-image {
+    border-color: var(--primary-dark);
+}
+
+[data-theme="dark-corporate-blue"] .key-achievement-icon {
+    color: var(--primary-color);
+}
+
+[data-theme="dark-corporate-blue"] .timeline-location,
+[data-theme="dark-corporate-blue"] .timeline-period {
+    color: #9FA8DA; /* Slightly darker than text-light for better readability */
+}
+
+[data-theme="dark-corporate-blue"] .technologies-box {
+    color: var(--text-light);
+}
+
+[data-theme="dark-corporate-blue"] .timeline-content {
+    color: #9FA8DA; /* Slightly darker than #C5CAE9 for better readability */
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"] {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --bg-sidebar: #2d2d2d;
+    --text-color: #e2e8f0;
+    --text-light: #94a3b8;
+    --bg-light: #000000;
+    --bg-dark: #000000;
+    --border-color: #404040;
+    --white: #ffffff;
+}
+
+[data-theme="dark"],
+[data-theme="dark"] body {
+    background: var(--bg-light);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .resume-wrapper,
+[data-theme="dark"] .main-content {
+    background: var(--bg-light);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .sidebar {
+    background: var(--bg-sidebar);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .action-buttons-container,
+[data-theme="dark"] .theme-menu,
+[data-theme="dark"] .share-menu,
+[data-theme="dark"] .mobile-nav {
+    background: #1a1a1a;
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .tagline,
+[data-theme="dark"] .timeline-company {
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .timeline-title,
+[data-theme="dark"] .name,
+[data-theme="dark"] .sidebar-section-title {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .timeline-location,
+[data-theme="dark"] .timeline-period {
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .contact-item a,
+[data-theme="dark"] .contact-item a i {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .contact-item a:hover,
+[data-theme="dark"] .contact-item a:hover i {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .technologies-box,
+[data-theme="dark"] .technologies-box strong {
+    background: #1a1a1a;
+    color: var(--text-color);
+}
+
+/* Dark theme: Make timeline content (work experience description) lighter for better readability */
+[data-theme="dark"] .timeline-content {
+    color: #cbd5e1;
+}
+
+/* Dark theme mobile adjustments */
+@media screen and (max-width: 768px) {
+    [data-theme="dark"] .header-section,
+    [data-theme="dark"] .mobile-header-section {
+        background: var(--bg-light);
+    }
+    
+    [data-theme="dark"] .header-section .name,
+    [data-theme="dark"] .mobile-header-section .name {
+        color: var(--text-color);
+    }
+    
+    [data-theme="dark"] .header-section .tagline,
+    [data-theme="dark"] .mobile-header-section .tagline {
+        color: var(--primary-color);
+    }
+    
+    [data-theme="dark"] .sidebar,
+    [data-theme="dark"] .sidebar-section,
+    [data-theme="dark"] .profile-section,
+    [data-theme="dark"] .contact-section {
+        background: var(--bg-light);
+        color: var(--text-color);
+    }
+}
+
+/* ============================================
+   COLOR SCHEME PREVIEWS
+   ============================================ */
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(1) { background: #D32F2F; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(2) { background: #212121; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(3) { background: #FAFAFA; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(4) { background: #D32F2F; }
+
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(1) { background: #388E3C; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(2) { background: #C8E6C9; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(3) { background: #FFFFFF; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(4) { background: #81C784; }
+
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(1) { background: #1A237E; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(2) { background: #283593; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(3) { background: #FFFFFF; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(4) { background: #3949AB; }
+
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(1) { background: #6366f1; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(2) { background: #2d2d2d; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(3) { background: #000000; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(4) { background: #000000; }
+
+/* ============================================
+   PRINT - Ensure themes apply in print
+   ============================================ */
+@media print {
+    [data-theme] * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}

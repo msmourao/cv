@@ -1,0 +1,115 @@
+/**
+ * ============================================
+ * BASE STYLES - Variables, Reset, Typography
+ * ============================================
+ * 
+ * This file contains:
+ * - CSS custom properties (variables) for theming
+ * - Global reset styles
+ * - Base typography
+ * - System dark mode support
+ * 
+ * CSS Variable Hierarchy:
+ * 1. Base variables defined here (default theme)
+ * 2. Theme-specific overrides in themes.css
+ * 3. Template-specific overrides in templates/*.css
+ */
+
+:root {
+    /* Default Theme (Graphite Redline) */
+    /* These variables are overridden by theme-specific rules in themes.css */
+    --primary-color: #D32F2F;        /* Main accent color */
+    --primary-dark: #B71C1C;         /* Darker shade of primary */
+    --secondary-color: #64748b;      /* Secondary text/accent */
+    --text-color: #FAFAFA;           /* Main text color */
+    --text-light: #E0E0E0;          /* Lighter text for secondary content */
+    --bg-light: #f8fafc;             /* Light background */
+    --bg-dark: #1e293b;              /* Dark background */
+    --bg-sidebar: #212121;           /* Sidebar background */
+    --border-color: #e2e8f0;         /* Border color */
+    --white: #FAFAFA;                /* White color reference */
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background: var(--bg-light);
+    padding: 0;
+    margin: 0;
+}
+
+/**
+ * System Dark Mode Support
+ * Automatically adjusts colors based on user's system preference
+ * Note: This ONLY applies when NO theme is selected (no data-theme attribute)
+ * When a theme is selected, it takes precedence over system dark mode
+ */
+@media (prefers-color-scheme: dark) {
+    /* Só aplica se não houver tema selecionado */
+    :root:not([data-theme]) {
+        --text-color: #e2e8f0;
+        --text-light: #94a3b8;
+        --bg-light: #1e293b;
+        --bg-dark: #0f172a;
+        --border-color: #334155;
+    }
+    
+    body:not([data-theme]):not(.star-wars-template):not(.ats-friendly-template) {
+        background: var(--bg-dark);
+    }
+    
+    .resume-wrapper:not([data-theme]) {
+        background: var(--bg-light);
+    }
+    
+    .main-content:not([data-theme]) {
+        background: var(--bg-light);
+    }
+    
+    .action-buttons-container:not([data-theme]) {
+        background: var(--bg-light);
+        border-color: var(--border-color);
+        /* Always visible */
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .mobile-nav:not([data-theme]) {
+        background: var(--bg-light);
+        border-color: var(--border-color);
+    }
+}
+
+/* Não aplicar modo dark na impressão */
+@media print {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --text-color: #212121;
+            --bg-light: #ffffff;
+            --bg-dark: #ffffff;
+        }
+        
+        body {
+            background: #ffffff !important;
+        }
+        
+        .resume-wrapper {
+            background: #ffffff !important;
+        }
+        
+        .main-content {
+            background: #ffffff !important;
+        }
+    }
+}
+
