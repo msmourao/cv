@@ -18,10 +18,12 @@ export function toggleShareMenu() {
 
 /**
  * Shares the CV via WhatsApp
- * @param {Event} event - Click event
+ * @param {Event} event - Click event (optional)
  */
 export function shareViaWhatsApp(event) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     const menu = document.getElementById('share-menu');
     if (menu) {
         menu.classList.remove('show');
@@ -44,10 +46,12 @@ export function shareViaWhatsApp(event) {
 
 /**
  * Shares the CV via Email
- * @param {Event} event - Click event
+ * @param {Event} event - Click event (optional)
  */
 export function shareViaEmail(event) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     const menu = document.getElementById('share-menu');
     if (menu) {
         menu.classList.remove('show');
@@ -67,10 +71,12 @@ export function shareViaEmail(event) {
 
 /**
  * Shares the CV via LinkedIn
- * @param {Event} event - Click event
+ * @param {Event} event - Click event (optional)
  */
 export function shareViaLinkedIn(event) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     const menu = document.getElementById('share-menu');
     if (menu) {
         menu.classList.remove('show');

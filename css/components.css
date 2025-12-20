@@ -189,7 +189,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
-    color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -320,13 +320,14 @@
 
 [data-theme="dark"] .template-option.active .template-name,
 [data-theme="dark"] .color-scheme-option.active .color-scheme-name {
-    color: #212121 !important; /* Dark text for active items on white background */
+    color: #212121; /* Dark text for active items on white background */
     font-weight: 600;
 }
 
 [data-theme="dark"] .template-option:hover .template-name,
 [data-theme="dark"] .color-scheme-option:hover:not(.disabled) .color-scheme-name {
     color: #ffffff; /* White on hover */
+    color: #212121;
 }
 
 .color-scheme-preview {

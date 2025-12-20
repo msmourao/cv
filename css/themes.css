@@ -108,7 +108,6 @@ body:not([data-theme]) {
 :not([data-theme]) .share-button,
 :not([data-theme]) .theme-button,
 :not([data-theme]) .tts-button {
-    color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
