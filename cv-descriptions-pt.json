@@ -1,6 +1,17 @@
 {
   "about": "Arquiteto e desenvolvedor de software com mais de 17 anos de experiência em sistemas críticos para e‑commerce, telecomunicações e setor financeiro. Especialista em transformação de legados para arquiteturas modernas de microsserviços, com foco em alta disponibilidade e eficiência operacional. Experiência comprovada em otimização de desempenho de sistemas e implementação de observabilidade end‑to‑end, reduzindo tempo de resolução de incidentes. Profundo conhecimento em estratégias multi‑cloud e uso avançado de inteligência artificial para automação e melhoria contínua da qualidade de software. Reconhecido por alinhar tecnologia a objetivos de negócio e liderar iniciativas de inovação em ambientes complexos.",
   "workExperience": {
+    "momentum": {
+      "description": "Desenvolvedor Sênior no setor imobiliário, integrando equipe criada para internalizar demandas antes direcionadas a consultorias externas. Responsável pelo desenvolvimento e manutenção de sistemas internos em áreas como RH, vendas e administração de ativos, modernização de aplicações legadas e implementação de novas soluções. Atuei em projetos de integração de ferramentas corporativas, migração de relatórios e otimização de banco de dados.",
+      "bullets": [
+        "<strong>Migração de APIs:</strong> Modernização de aplicações legadas em .NET Framework 4.5.2 e .NET 7",
+		"<strong>Automatização de migração de relatórios:</strong> Desenvolvi uma solução automatizada e escalável para migração de relatórios de Crystal Reports para um formato próprio em Node.js baseado em templates HTML gerados automaticamente, reproduzindo o resultado dos relatórios originais e eliminando a dependência de licenças do Crystal Reports",
+		"<strong>Integração de Wiki.js:</strong> Integração do Wiki.js ao ambiente corporativo com autenticação personalizada, centralizando documentação técnica e processos internos e garantindo acesso seguro e integrado para os colaboradores",
+		"<strong>Integração de autenticação corporativa:</strong> Implementação de autenticação centralizada utilizando Azure Active Directory com Single Sign-On (SSO)",
+		"<strong>Suporte e evolução de sistemas:</strong> Suporte técnico, manutenção evolutiva, implementação de novas funcionalidades e otimização de consultas no Microsoft SQL Server"
+      ],
+      "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
+    },
     "eventsfinder": {
       "description": "Projeto pessoal ainda em construção. Concebi e desenvolvo o EventsFinder, plataforma de busca de eventos automatizada em redes sociais por localização com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD. Projeto do qual me afastarei quando tiver um novo emprego.",
       "bullets": [

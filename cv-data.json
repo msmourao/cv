@@ -18,6 +18,25 @@
   "workExperience": [
     {
       "period": {
+        "pt": "Março 2026 – Agosto 2026",
+        "en": "March 2026 – August 2026"
+      },
+      "title": {
+        "pt": "Programador Sênior",
+        "en": "Senior Programmer"
+      },
+      "company": {
+        "pt": "Momentum",
+        "en": "Momentum"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "momentum"
+    },
+    {
+      "period": {
         "pt": "Março 2024 – Presente",
         "en": "March 2024 – Present"
       },

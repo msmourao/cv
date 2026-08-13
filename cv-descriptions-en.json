@@ -1,6 +1,17 @@
 {
   "about": "Software Architect and Developer with over 17 years of experience building mission‑critical systems for e‑commerce, telecommunications, and financial services. Skilled in transforming legacy platforms into modern microservices architectures, driving improvements in deployment speed, availability, and overall system resilience. Proven track record in performance optimization and end‑to‑end observability, reducing incident resolution times and enhancing reliability. Deep expertise in multi‑cloud strategies and advanced use of artificial intelligence to automate processes and continuously improve software quality. Recognized for aligning technology with business goals and leading innovation in complex environments",
   "workExperience": {
+    "momentum": {
+      "description": "Senior Developer in the real estate sector, part of a team created to internalize demands previously handled by external consultancies. Responsible for developing and maintaining internal systems in areas such as HR, sales, and asset management, modernizing legacy applications and implementing new solutions. Contributed to projects involving corporate tool integration, report migration, and database optimization.",
+      "bullets": [
+		"<strong>API Migration:</strong> Modernization of legacy applications in .NET Framework 4.5.2 and .NET 7",
+		"<strong>Automated Report Migration:</strong> Designed and implemented a scalable automated solution to migrate Crystal Reports into a proprietary Node.js format based on automatically generated HTML templates, reproducing the original report outputs and eliminating dependency on Crystal Reports licenses",
+		"<strong>Wiki.js Integration:</strong> Integrated Wiki.js into the corporate environment with custom authentication, centralizing technical documentation and internal processes while ensuring secure and seamless employee access",
+		"<strong>Corporate Authentication Integration:</strong> Implemented centralized authentication using Azure Active Directory with Single Sign-On (SSO)",
+		"<strong>System Support and Evolution:</strong> Provided technical support, evolutionary maintenance, implementation of new features, and optimization of queries in Microsoft SQL Server"
+      ],
+      "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
+    },
     "eventsfinder": {
       "description": "Personal project currently under development. Conceived and developing EventsFinder, a platform for automated event search on social media by location with multi-cloud architecture. Implemented Clean Architecture, SOLID, CQRS, and TDD. Personal project I will step away from when I have a new job.",
       "bullets": [
