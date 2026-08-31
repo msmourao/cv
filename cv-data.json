@@ -389,13 +389,11 @@
     },
     {
       "key": "eventsfinder",
-      "icon": "bi-geo-alt",
-      "link": "https://github.com/msmourao/EventsFinder"
+      "icon": "bi-geo-alt"
     },
     {
       "key": "crystalReports",
-      "icon": "bi-file-earmark-pdf",
-      "link": "https://github.com/msmourao/crystalreports-to-devbox-converter"
+      "icon": "bi-file-earmark-pdf"
     }
   ]
 }

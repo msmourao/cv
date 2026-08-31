@@ -120,7 +120,7 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                             section.appendChild(p3);
                         }
                         if (job.link) {
-                            const link = createElement('a', lang === 'pt' ? 'Página de apresentação' : 'Presentation page');
+                            const link = createElement('a', job.link);
                             link.href = job.link;
                             link.target = '_blank';
                             link.rel = 'noopener noreferrer';
@@ -233,7 +233,7 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                         if (projText) {
                             li.textContent = projText;
                             if (project.link) {
-                                const link = createElement('a', lang === 'pt' ? ' Ver projeto' : ' View project');
+                                const link = createElement('a', project.link);
                                 link.href = project.link;
                                 link.target = '_blank';
                                 link.rel = 'noopener noreferrer';
