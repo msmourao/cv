@@ -18,6 +18,26 @@
   "workExperience": [
     {
       "period": {
+        "pt": "Março 2024 – Presente",
+        "en": "March 2024 – Present"
+      },
+      "title": {
+        "pt": "Arquiteto de Plataforma e Desenvolvedor Principal",
+        "en": "Platform Architect and Principal Developer"
+      },
+      "company": {
+        "pt": "PollyStack (projeto pessoal)",
+        "en": "PollyStack (personal project)"
+      },
+      "location": {
+        "pt": "São Paulo, Brazil",
+        "en": "São Paulo, Brazil"
+      },
+      "key": "pollyStack",
+      "link": "https://msmourao.github.io/getpollystack"
+    },
+    {
+      "period": {
         "pt": "Março 2026 – Agosto 2026",
         "en": "March 2026 – August 2026"
       },
@@ -34,26 +54,6 @@
         "en": "São Paulo, Brazil"
       },
       "key": "momentum"
-    },
-    {
-      "period": {
-        "pt": "Março 2024 – Presente",
-        "en": "March 2024 – Present"
-      },
-      "title": {
-        "pt": "Arquiteto e Desenvolvedor Principal",
-        "en": "Principal Architect and Developer"
-      },
-      "company": {
-        "pt": "PollyStack (projeto pessoal)",
-        "en": "PollyStack (personal project)"
-      },
-      "location": {
-        "pt": "São Paulo, Brazil",
-        "en": "São Paulo, Brazil"
-      },
-      "key": "pollyStack",
-      "link": "https://msmourao.github.io/getpollystack"
     },
     {
       "period": {

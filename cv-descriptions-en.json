@@ -13,14 +13,15 @@
       "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
     },
     "pollyStack": {
-      "description": "Personal platform engineering project focused on automating the composition, validation, and delivery of applications across multiple clouds. Conceived and developed PollyStack to abstract differences between AWS and Azure while keeping configurations, resources, and execution strategies consistent across local and cloud environments.",
+      "description": "Personal platform architecture and software engineering project, conceived and developed to automate the composition, validation, and delivery of applications across multiple clouds. PollyStack turns architecture decisions into governed configuration, reproducible resources, and reviewable delivery plans while keeping the experience consistent across local development and cloud environments.",
       "bullets": [
-        "<strong>Cloud abstractions:</strong> common model for AWS and Azure resources, supporting IaaS, PaaS, and serverless workloads.",
-        "<strong>Configuration and delivery:</strong> typed configuration editor, value validation, manual sharing of compatible keys, and pending actions generated for the CD plan.",
-        "<strong>Routing and service mesh:</strong> route planning for sidecar, egress, and interconnect proxies, with topology and public exposure visualization.",
-        "<strong>Infrastructure as code:</strong> integration with Terraform, Kubernetes, .NET Aspire, and GitHub Actions CI/CD automation."
+        "<strong>Multi-cloud architecture:</strong> designed a common model for AWS and Azure covering IaaS, PaaS, and serverless workloads without coupling the domain to a provider.",
+        "<strong>Control plane and configuration:</strong> developed a metadata-driven typed editor, schemas for nested objects, validation, capabilities, and reviewable desired state.",
+        "<strong>Resource composition:</strong> modeled modules, PostgreSQL/SQL Server databases, messaging, object storage, static frontends, identity, and local environments with .NET Aspire.",
+        "<strong>Traffic and service mesh:</strong> implemented route planning for sidecar, ingress, egress, and interconnect proxies using Envoy and YARP, including topology and public exposure visualization.",
+        "<strong>Delivery and governance:</strong> integrated CD dry-run, Terraform, Kubernetes, Docker, and GitHub Actions to generate traceable change plans before provisioning."
       ],
-      "technologies": ".NET, C#, AWS, Azure, .NET Aspire, Terraform, Kubernetes, Envoy, GitHub Actions, Docker, multi-cloud architecture, IaaS, PaaS, and serverless."
+      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, IaaS, PaaS, and serverless."
     },
     "ubs": {
       "description": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Significantly improved deployment time, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability. Developed business days calculation library replacing API queries, reducing latency in massive reports.",
