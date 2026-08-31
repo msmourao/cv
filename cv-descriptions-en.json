@@ -24,7 +24,7 @@
         "<strong>Communication and observability:</strong> implemented gRPC and REST for transport, plus OpenTelemetry for metrics, tracing, and event correlation.",
         "<strong>Frameworks and practices:</strong> used Entity Framework Core for persistence, alignment with TOGAF, and patterns such as 12-Factor App and Cloud Native Patterns."
       ],
-      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, CQRS, DDD, Entity Framework Core, gRPC, REST, OpenTelemetry, IaaS, PaaS, serverless, TOGAF, 12-Factor App, Cloud Native Patterns."
+      "technologies": ".NET 10, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, CQRS, DDD, Entity Framework Core, gRPC, REST, OpenTelemetry, IaaS, PaaS, serverless, TOGAF, 12-Factor App, Cloud Native Patterns."
     },
     "ubs": {
       "description": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Significantly improved deployment time, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability. Developed business days calculation library replacing API queries, reducing latency in massive reports.",
