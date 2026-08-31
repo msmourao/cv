@@ -45,14 +45,15 @@
         "en": "Principal Architect and Developer"
       },
       "company": {
-        "pt": "EventsFinder (projeto pessoal)",
-        "en": "EventsFinder (personal project)"
+        "pt": "PollyStack (projeto pessoal)",
+        "en": "PollyStack (personal project)"
       },
       "location": {
         "pt": "São Paulo, Brazil",
         "en": "São Paulo, Brazil"
       },
-      "key": "eventsfinder"
+      "key": "pollyStack",
+      "link": "https://msmourao.github.io/getpollystack/"
     },
     {
       "period": {
@@ -382,16 +383,19 @@
   ],
   "projects": [
     {
+      "key": "pollyStack",
+      "icon": "bi-cloud",
+      "link": "https://msmourao.github.io/getpollystack/"
+    },
+    {
       "key": "eventsfinder",
-      "icon": "bi-circle-fill"
+      "icon": "bi-geo-alt",
+      "link": "https://github.com/msmourao/EventsFinder"
     },
     {
-      "key": "framework",
-      "icon": "bi-circle-fill"
-    },
-    {
-      "key": "asyncflow",
-      "icon": "bi-circle-fill"
+      "key": "crystalReports",
+      "icon": "bi-file-earmark-pdf",
+      "link": "https://github.com/msmourao/crystalreports-to-devbox-converter"
     }
   ]
 }

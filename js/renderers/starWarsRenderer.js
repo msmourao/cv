@@ -119,6 +119,13 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                             const p3 = createElement('p', jobDesc.description);
                             section.appendChild(p3);
                         }
+                        if (job.link) {
+                            const link = createElement('a', lang === 'pt' ? 'Página de apresentação' : 'Presentation page');
+                            link.href = job.link;
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                            section.appendChild(link);
+                        }
                     }
                     
                     if (index < cvData.workExperience.length - 1) {
@@ -225,6 +232,13 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                         
                         if (projText) {
                             li.textContent = projText;
+                            if (project.link) {
+                                const link = createElement('a', lang === 'pt' ? ' Ver projeto' : ' View project');
+                                link.href = project.link;
+                                link.target = '_blank';
+                                link.rel = 'noopener noreferrer';
+                                li.appendChild(link);
+                            }
                             ul.appendChild(li);
                         }
                     }

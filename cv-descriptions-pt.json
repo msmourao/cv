@@ -12,19 +12,15 @@
       ],
       "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
     },
-    "eventsfinder": {
-      "description": "Projeto pessoal ainda em construção. Concebi e desenvolvo o EventsFinder, plataforma de busca de eventos automatizada em redes sociais por localização com arquitetura multi-cloud. Implementei Clean Architecture, SOLID, CQRS e TDD. Projeto do qual me afastarei quando tiver um novo emprego.",
+    "pollyStack": {
+      "description": "Projeto pessoal de arquitetura e engenharia de plataforma para automatizar a composição, validação e entrega de aplicações em múltiplas nuvens. Concebi e desenvolvo o PollyStack para abstrair diferenças entre AWS e Azure, mantendo configurações, recursos e estratégias de execução coerentes entre ambientes locais e cloud.",
       "bullets": [
-        "<strong>Backend:</strong> .NET 10 com ASP.NET Core, Entity Framework Core e múltiplos bancos de dados (PostgreSQL com PostGIS para geolocalização, SQL Server e Oracle).",
-        "<strong>Frontend:</strong> React com TypeScript, Vite e Tailwind CSS, garantindo experiência moderna e responsiva.",
-        "<strong>Deploy e infraestrutura:</strong> Deploy unificado em AWS e Azure, uso de Lambda Functions / Azure Functions, API Gateway, SQS/Service Bus e aplicações serverless.",
-        "<strong>Integrações externas:</strong> Conectores para redes sociais (Instagram, Facebook, Twitter/X), Google Maps API para geolocalização e integração com OpenAI para enriquecimento inteligente de dados.",
-        "<strong>Automação de correção de bugs:</strong> Sistema integrado de captura, agregação e priorização de erros com correção automatizada via IA, melhorando tempo de resolução e qualidade do código.",
-        "<strong>CI/CD:</strong> GitHub Actions com builds incrementais, deploy seletivo e multi-ambiente (staging/production).",
-        "<strong>Práticas de qualidade:</strong> TDD, testes unitários e de integração, mocks configuráveis, Result Pattern para tratamento seguro de erros.",
-        "<strong>Observabilidade:</strong> OpenTelemetry end-to-end, métricas, tracing distribuído, health checks e integração com Application Insights."
+        "<strong>Abstrações de cloud:</strong> modelo comum para recursos de AWS e Azure, com suporte a workloads IaaS, PaaS e serverless.",
+        "<strong>Configuração e entrega:</strong> editor de configurações tipadas, validação de valores, compartilhamento manual de chaves compatíveis e geração de ações pendentes para o plano de CD.",
+        "<strong>Roteamento e service mesh:</strong> planejamento de rotas, proxies sidecar, egress e interconnect, com visualização da topologia e das exposições públicas.",
+        "<strong>Infraestrutura como código:</strong> integração com Terraform, Kubernetes, .NET Aspire e automação de CI/CD com GitHub Actions."
       ],
-      "technologies": ".NET 10, C# 12, ASP.NET Core, Entity Framework Core, PostgreSQL/PostGIS, React, TypeScript, Vite, Tailwind CSS, AWS Lambda, Azure Functions, API Gateway, Amazon SQS, Azure Service Bus, SNS, S3, OpenTelemetry, Application Insights, OpenAI (modelos e embeddings), GitHub Actions, Docker, Aspire, JWT Authentication, Terraform, Kubernetes."
+      "technologies": ".NET, C#, AWS, Azure, .NET Aspire, Terraform, Kubernetes, Envoy, GitHub Actions, Docker, arquitetura multi-cloud, IaaS, PaaS e serverless."
     },
     "ubs": {
       "description": "Liderei modernização de aplicações legadas em time multinacional com comunicação diária em inglês, migrando sistemas críticos de .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços. Melhorei significativamente tempo de deploy, otimizei queries SQL reduzindo execução de relatórios de minutos para segundos, e implementei MVVM em Windows Forms melhorando testabilidade. Desenvolvi biblioteca de cálculo de dias úteis substituindo consultas a API, reduzindo latência em relatórios massivos.",
@@ -141,15 +137,15 @@
   "projects": {
     "eventsfinder": {
       "name": "Events Finder",
-      "description": "Plataforma completa de busca e gerenciamento de eventos com integração a redes sociais, geolocalização e enriquecimento inteligente de dados via IA. Inclui sistema de automação de correção de bugs, observabilidade end-to-end e CI/CD automatizado."
+      "description": "Plataforma pessoal para busca de eventos por localização, com integrações a redes sociais, geolocalização e enriquecimento inteligente de dados. Desenvolvida com arquitetura multi-cloud, observabilidade e automação de entrega."
     },
-    "framework": {
-      "name": "Framework Multi-cloud Ready",
-      "description": "Framework reutilizável para abstração de cloud providers (AWS e Azure), permitindo deploy unificado com configuração dinâmica. Arquitetura baseada em Clean Architecture, SOLID, CQRS e DDD, com abstrações para message publishing, image upload, message queue consumption e serverless hosting. Suporta Terraform para IaC e Kubernetes para orquestração de containers, garantindo portabilidade e escalabilidade entre diferentes ambientes cloud."
+    "pollyStack": {
+      "name": "PollyStack — Framework Multicloud Ready",
+      "description": "Framework de engenharia de plataforma que abstrai AWS e Azure para compor, validar e entregar aplicações multi-cloud com configuração dinâmica, recursos de mensageria, storage, serverless e infraestrutura como código."
     },
-    "asyncflow": {
-      "name": "Fluxo de Mensagens Assíncrono",
-      "description": "Framework reutilizável para orquestração de fluxos complexos de mensagens assíncronas, com sistema de tracking e controle de mensagens pendentes. Implementa controle de estado de execução de pipelines, rastreamento de progresso, gerenciamento de dependências entre etapas e recuperação de falhas. Suporta handlers distribuídos, processamento paralelo e integração com múltiplos sistemas de mensageria (SQS, Service Bus), garantindo confiabilidade e escalabilidade em fluxos de trabalho complexos."
+    "crystalReports": {
+      "name": "Crystal Reports to DevBox Converter",
+      "description": "Ferramenta que extrai metadados de relatórios Crystal Reports e gera templates HTML/Vash, controllers Node.js e artefatos para renderização em PDF, reduzindo dependência do runtime e de licenças do Crystal Reports."
     }
   },
   "keyAchievements": [

@@ -304,6 +304,19 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+.project-link {
+    display: inline-block;
+    margin-top: 0.6rem;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
 /* Right Main Content */
 .main-content {
     background: var(--white);

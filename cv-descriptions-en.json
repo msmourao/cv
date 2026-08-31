@@ -12,19 +12,15 @@
       ],
       "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
     },
-    "eventsfinder": {
-      "description": "Personal project currently under development. Conceived and developing EventsFinder, a platform for automated event search on social media by location with multi-cloud architecture. Implemented Clean Architecture, SOLID, CQRS, and TDD. Personal project I will step away from when I have a new job.",
+    "pollyStack": {
+      "description": "Personal platform engineering project focused on automating the composition, validation, and delivery of applications across multiple clouds. Conceived and developed PollyStack to abstract differences between AWS and Azure while keeping configurations, resources, and execution strategies consistent across local and cloud environments.",
       "bullets": [
-        "<strong>Backend:</strong> .NET 10 with ASP.NET Core, Entity Framework Core, and multiple databases (PostgreSQL with PostGIS for geolocation, SQL Server, and Oracle).",
-        "<strong>Frontend:</strong> React with TypeScript, Vite, and Tailwind CSS, ensuring a modern and responsive experience.",
-        "<strong>Deployment and infrastructure:</strong> Unified deployment on AWS and Azure, using Lambda Functions / Azure Functions, API Gateway, SQS/Service Bus, and serverless applications.",
-        "<strong>External integrations:</strong> Connectors for social networks (Instagram, Facebook, Twitter/X), Google Maps API for geolocation, and integration with OpenAI for intelligent data enrichment.",
-        "<strong>Bug fix automation:</strong> Integrated system for capturing, aggregating, and prioritizing errors with automated fixes via AI, improving resolution time and code quality.",
-        "<strong>CI/CD:</strong> GitHub Actions with incremental builds, selective deployment, and multi-environment (staging/production).",
-        "<strong>Quality practices:</strong> TDD, unit and integration tests, configurable mocks, Result Pattern for safe error handling.",
-        "<strong>Observability:</strong> End-to-end OpenTelemetry, metrics, distributed tracing, health checks, and Application Insights integration."
+        "<strong>Cloud abstractions:</strong> common model for AWS and Azure resources, supporting IaaS, PaaS, and serverless workloads.",
+        "<strong>Configuration and delivery:</strong> typed configuration editor, value validation, manual sharing of compatible keys, and pending actions generated for the CD plan.",
+        "<strong>Routing and service mesh:</strong> route planning for sidecar, egress, and interconnect proxies, with topology and public exposure visualization.",
+        "<strong>Infrastructure as code:</strong> integration with Terraform, Kubernetes, .NET Aspire, and GitHub Actions CI/CD automation."
       ],
-      "technologies": ".NET 10, C# 12, ASP.NET Core, Entity Framework Core, PostgreSQL/PostGIS, React, TypeScript, Vite, Tailwind CSS, AWS Lambda, Azure Functions, API Gateway, Amazon SQS, Azure Service Bus, SNS, S3, OpenTelemetry, Application Insights, OpenAI (models and embeddings), GitHub Actions, Docker, Aspire, JWT Authentication, Terraform, Kubernetes."
+      "technologies": ".NET, C#, AWS, Azure, .NET Aspire, Terraform, Kubernetes, Envoy, GitHub Actions, Docker, multi-cloud architecture, IaaS, PaaS, and serverless."
     },
     "ubs": {
       "description": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Significantly improved deployment time, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability. Developed business days calculation library replacing API queries, reducing latency in massive reports.",
@@ -142,15 +138,15 @@
   "projects": {
     "eventsfinder": {
       "name": "Events Finder",
-      "description": "Personal project currently under development. Platform for automated event search on social media by location, with geolocation and intelligent data enrichment via AI. Includes automated bug fix system, end-to-end observability, and automated CI/CD."
+      "description": "Personal platform for location-based event discovery, integrating social networks, geolocation, and intelligent data enrichment. Built with multi-cloud architecture, observability, and delivery automation."
     },
-    "framework": {
-      "name": "Multi-cloud Ready Framework",
-      "description": "Reusable framework for cloud provider abstraction (AWS and Azure), enabling unified deployment with dynamic configuration. Architecture based on Clean Architecture, SOLID, CQRS, and DDD, with abstractions for message publishing, image upload, message queue consumption, and serverless hosting. Supports Terraform for IaC and Kubernetes for container orchestration, ensuring portability and scalability across different cloud environments."
+    "pollyStack": {
+      "name": "PollyStack — Multicloud Ready Framework",
+      "description": "Platform engineering framework that abstracts AWS and Azure to compose, validate, and deliver multi-cloud applications with dynamic configuration, messaging, storage, serverless, and infrastructure-as-code capabilities."
     },
-    "asyncflow": {
-      "name": "Asynchronous Message Flow",
-      "description": "Reusable framework for orchestrating complex asynchronous message flows, with tracking and pending message control system. Implements pipeline execution state control, progress tracking, dependency management between steps, and failure recovery. Supports distributed handlers, parallel processing, and integration with multiple messaging systems (SQS, Service Bus), ensuring reliability and scalability in complex workflows."
+    "crystalReports": {
+      "name": "Crystal Reports to DevBox Converter",
+      "description": "Tool that extracts Crystal Reports metadata and generates HTML/Vash templates, Node.js controllers, and PDF rendering artifacts, reducing dependency on the Crystal Reports runtime and licenses."
     }
   },
   "keyAchievements": [
