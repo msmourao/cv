@@ -291,7 +291,7 @@ function renderCV() {
                     </div>
                     <div class="timeline-content">
                         <p>${jobDesc.description}</p>
-                        ${job.link ? `<a class="project-link" href="${job.link}" target="_blank" rel="noopener noreferrer">${job.link}</a>` : ''}
+                        ${job.link ? `<a class="project-link" href="${job.link}" target="_blank" rel="noopener noreferrer">${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}${job.link}</a>` : ''}
                         <ul>
                             ${jobDesc.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
                         </ul>
@@ -366,7 +366,7 @@ function renderCV() {
                 <div class="project-item">
                     <div class="project-title">${projDesc.name}</div>
                     <div class="project-description">${projDesc.description}</div>
-                    ${proj.link ? `<a class="project-link" href="${proj.link}" target="_blank" rel="noopener noreferrer">${proj.link}</a>` : ''}
+                    ${proj.link ? `<a class="project-link" href="${proj.link}" target="_blank" rel="noopener noreferrer">${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}${proj.link}</a>` : ''}
                 </div>
             `;
         }).join('');
