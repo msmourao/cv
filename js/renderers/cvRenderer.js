@@ -51,7 +51,7 @@ function formatDateToMMYYYY(dateStr, lang) {
             return part;
         };
         
-        return `${formatPart(parts[0])} - ${formatPart(parts[1])}`;
+        return `${formatPart(parts[0])} ${separator} ${formatPart(parts[1])}`;
     }
     
     return dateStr;
@@ -291,7 +291,8 @@ function renderCV() {
                     </div>
                     <div class="timeline-content">
                         <p>${jobDesc.description}</p>
-                        ${job.link ? `<a class="project-link" href="${job.link}" target="_blank" rel="noopener noreferrer">${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}${job.link}</a>` : ''}
+                        ${job.link ? `<span class="project-link"><span>${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}</span><a href="${job.link}" target="_blank" rel="noopener noreferrer">${job.link}</a></span>` : ''}
+                        ${job.key === 'pollyStack' ? `<h4 class="experience-highlights-label">${currentLang === 'pt' ? 'Principais contribuições e resultados:' : 'Key contributions and results:'}</h4>` : ''}
                         <ul>
                             ${jobDesc.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
                         </ul>
@@ -366,7 +367,7 @@ function renderCV() {
                 <div class="project-item">
                     <div class="project-title">${projDesc.name}</div>
                     <div class="project-description">${projDesc.description}</div>
-                    ${proj.link ? `<a class="project-link" href="${proj.link}" target="_blank" rel="noopener noreferrer">${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}${proj.link}</a>` : ''}
+                    ${proj.link ? `<span class="project-link"><span>${currentLang === 'pt' ? 'Veja mais: ' : 'See more: '}</span><a href="${proj.link}" target="_blank" rel="noopener noreferrer">${proj.link}</a></span>` : ''}
                 </div>
             `;
         }).join('');

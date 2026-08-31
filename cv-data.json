@@ -18,8 +18,8 @@
   "workExperience": [
     {
       "period": {
-        "pt": "Março 2024 – Presente",
-        "en": "March 2024 – Present"
+        "pt": "03/2024 – Presente",
+        "en": "03/2024 – Present"
       },
       "title": {
         "pt": "Arquiteto de Plataforma e Desenvolvedor Principal",
@@ -30,7 +30,7 @@
         "en": "PollyStack (personal project)"
       },
       "location": {
-        "pt": "São Paulo, Brazil",
+        "pt": "São Paulo, Brasil",
         "en": "São Paulo, Brazil"
       },
       "key": "pollyStack",

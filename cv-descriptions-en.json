@@ -13,15 +13,18 @@
       "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
     },
     "pollyStack": {
-      "description": "Personal platform architecture and software engineering project, conceived and developed to automate the composition, validation, and delivery of applications across multiple clouds. PollyStack turns architecture decisions into governed configuration, reproducible resources, and reviewable delivery plans while keeping the experience consistent across local development and cloud environments.",
+      "description": "Personal platform architecture and software engineering project, created to automate the composition, validation, and delivery of applications across multiple clouds. PollyStack turns architecture decisions into governed configuration, reproducible resources, and reviewable delivery plans while maintaining consistency across local development and cloud environments.",
       "bullets": [
-        "<strong>Multi-cloud architecture:</strong> designed a common model for AWS and Azure covering IaaS, PaaS, and serverless workloads without coupling the domain to a provider.",
-        "<strong>Control plane and configuration:</strong> developed a metadata-driven typed editor, schemas for nested objects, validation, capabilities, and reviewable desired state.",
-        "<strong>Resource composition:</strong> modeled modules, PostgreSQL/SQL Server databases, messaging, object storage, static frontends, identity, and local environments with .NET Aspire.",
-        "<strong>Traffic and service mesh:</strong> implemented route planning for sidecar, ingress, egress, and interconnect proxies using Envoy and YARP, including topology and public exposure visualization.",
-        "<strong>Delivery and governance:</strong> integrated CD dry-run, Terraform, Kubernetes, Docker, and GitHub Actions to generate traceable change plans before provisioning."
+        "<strong>Multi-cloud architecture:</strong> designed a common model for AWS and Azure covering IaaS, PaaS, and serverless workloads without provider coupling.",
+        "<strong>Governance and control plane:</strong> implemented a metadata-driven typed editor, schemas, validation, and capabilities for reviewable desired state.",
+        "<strong>Resource composition:</strong> modeled database modules (PostgreSQL/SQL Server), messaging (SQS/SNS, Azure Service Bus), storage, static frontends, and identity.",
+        "<strong>Traffic and service mesh:</strong> designed routes, sidecar proxies, ingress/egress, and interconnect with Envoy and YARP, including topology visualization.",
+        "<strong>Delivery and automation:</strong> integrated CD dry-run, Terraform, Kubernetes, Docker, and GitHub Actions for traceable plans before provisioning.",
+        "<strong>Architecture patterns:</strong> applied DDD and CQRS principles, with clear contracts and separation between domain and infrastructure.",
+        "<strong>Communication and observability:</strong> implemented gRPC and REST for transport, plus OpenTelemetry for metrics, tracing, and event correlation.",
+        "<strong>Frameworks and practices:</strong> used Entity Framework Core for persistence, alignment with TOGAF, and patterns such as 12-Factor App and Cloud Native Patterns."
       ],
-      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, IaaS, PaaS, and serverless."
+      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, CQRS, DDD, Entity Framework Core, gRPC, REST, OpenTelemetry, IaaS, PaaS, serverless, TOGAF, 12-Factor App, Cloud Native Patterns."
     },
     "ubs": {
       "description": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Significantly improved deployment time, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability. Developed business days calculation library replacing API queries, reducing latency in massive reports.",

@@ -120,10 +120,13 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                             section.appendChild(p3);
                         }
                         if (job.link) {
-                            const link = createElement('a', `${lang === 'pt' ? 'Veja mais: ' : 'See more: '}${job.link}`);
-                            link.href = job.link;
-                            link.target = '_blank';
-                            link.rel = 'noopener noreferrer';
+                            const link = createElement('span', null, 'project-link');
+                            link.appendChild(document.createTextNode(lang === 'pt' ? 'Veja mais: ' : 'See more: '));
+                            const anchor = createElement('a', job.link);
+                            anchor.href = job.link;
+                            anchor.target = '_blank';
+                            anchor.rel = 'noopener noreferrer';
+                            link.appendChild(anchor);
                             section.appendChild(link);
                         }
                     }
@@ -233,10 +236,13 @@ export function renderStarWarsCrawl(cvData, descriptions, lang) {
                         if (projText) {
                             li.textContent = projText;
                             if (project.link) {
-                                const link = createElement('a', `${lang === 'pt' ? 'Veja mais: ' : 'See more: '}${project.link}`);
-                                link.href = project.link;
-                                link.target = '_blank';
-                                link.rel = 'noopener noreferrer';
+                                const link = createElement('span', null, 'project-link');
+                                link.appendChild(document.createTextNode(lang === 'pt' ? 'Veja mais: ' : 'See more: '));
+                                const anchor = createElement('a', project.link);
+                                anchor.href = project.link;
+                                anchor.target = '_blank';
+                                anchor.rel = 'noopener noreferrer';
+                                link.appendChild(anchor);
                                 li.appendChild(link);
                             }
                             ul.appendChild(li);

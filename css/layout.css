@@ -313,7 +313,12 @@
     text-decoration: none;
 }
 
-.project-link:hover {
+.project-link a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-link a:hover {
     text-decoration: underline;
 }
 
@@ -435,6 +440,11 @@
 
 .timeline-content p {
     margin-bottom: 0.75rem;
+}
+
+.experience-highlights-label {
+    font-size: 0.95rem;
+    margin: 1rem 0 0.25rem;
 }
 
 .timeline-content ul {

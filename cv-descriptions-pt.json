@@ -13,15 +13,18 @@
       "technologies": ".NET Framework 4.5.2, .NET 7, C#, Node.js, Crystal Reports, Microsoft SQL Server, Docker, Git, Wiki.js, Azure Active Directory (SSO)."
     },
     "pollyStack": {
-      "description": "Projeto pessoal de arquitetura de plataforma e engenharia de software, concebido e desenvolvido para automatizar a composição, validação e entrega de aplicações em múltiplas nuvens. O PollyStack transforma decisões de arquitetura em configuração governada, recursos reproduzíveis e planos de entrega revisáveis, mantendo uma experiência coerente entre desenvolvimento local e cloud.",
+      "description": "Projeto pessoal de arquitetura de plataforma e engenharia de software, criado para automatizar a composição, validação e entrega de aplicações em múltiplas nuvens. O PollyStack transforma decisões de arquitetura em configuração governada, recursos reproduzíveis e planos de entrega revisáveis, mantendo consistência entre desenvolvimento local e cloud.",
       "bullets": [
-        "<strong>Arquitetura multi-cloud:</strong> desenhei um modelo comum para AWS e Azure, cobrindo workloads IaaS, PaaS e serverless sem acoplar o domínio a um provedor.",
-        "<strong>Control plane e configuração:</strong> desenvolvi editor tipado orientado por metadata, schemas para objetos aninhados, validações, capabilities e estado desejado revisável.",
-        "<strong>Composição de recursos:</strong> modelei módulos, bancos PostgreSQL/SQL Server, mensageria, storage de objetos, frontends estáticos, identidade e ambientes locais com .NET Aspire.",
-        "<strong>Tráfego e service mesh:</strong> implementei planejamento de rotas, proxies sidecar, ingress, egress e interconnect com Envoy e YARP, incluindo visualização de topologia e exposição pública.",
-        "<strong>Entrega e governança:</strong> integrei dry-run de CD, Terraform, Kubernetes, Docker e GitHub Actions para gerar planos de mudança rastreáveis antes do provisionamento."
+        "<strong>Arquitetura multi-cloud:</strong> desenhei modelo comum para AWS e Azure, cobrindo workloads IaaS, PaaS e serverless sem acoplamento ao provedor.",
+        "<strong>Governança e control plane:</strong> implementei editor tipado orientado por metadata, schemas, validações e capabilities para estado desejado revisável.",
+        "<strong>Composição de recursos:</strong> modelei módulos de banco (PostgreSQL/SQL Server), mensageria (SQS/SNS, Azure Service Bus), storage, frontends estáticos e identidade.",
+        "<strong>Tráfego e service mesh:</strong> projetei rotas, proxies sidecar, ingress/egress e interconnect com Envoy e YARP, incluindo visualização de topologia.",
+        "<strong>Entrega e automação:</strong> integrei dry-run de CD, Terraform, Kubernetes, Docker e GitHub Actions para planos rastreáveis antes do provisionamento.",
+        "<strong>Padrões de arquitetura:</strong> apliquei princípios de DDD e CQRS, com contratos claros e separação entre domínio e infraestrutura.",
+        "<strong>Comunicação e observabilidade:</strong> implementei gRPC e REST para transporte, além de OpenTelemetry para métricas, tracing e correlação de eventos.",
+        "<strong>Frameworks e práticas:</strong> utilizei Entity Framework Core para persistência, alinhamento com TOGAF e padrões como 12-Factor App e Cloud Native Patterns."
       ],
-      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, IaaS, PaaS e serverless."
+      "technologies": ".NET 8, C#, ASP.NET Core, .NET Aspire, AWS, AWS Lambda, Azure, Azure Functions, YARP, Envoy, Terraform, Kubernetes, Docker, GitHub Actions, PostgreSQL, SQL Server, LocalStack, IaC, service mesh, CQRS, DDD, Entity Framework Core, gRPC, REST, OpenTelemetry, IaaS, PaaS, serverless, TOGAF, 12-Factor App, Cloud Native Patterns."
     },
     "ubs": {
       "description": "Liderei modernização de aplicações legadas em time multinacional com comunicação diária em inglês, migrando sistemas críticos de .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços. Melhorei significativamente tempo de deploy, otimizei queries SQL reduzindo execução de relatórios de minutos para segundos, e implementei MVVM em Windows Forms melhorando testabilidade. Desenvolvi biblioteca de cálculo de dias úteis substituindo consultas a API, reduzindo latência em relatórios massivos.",
