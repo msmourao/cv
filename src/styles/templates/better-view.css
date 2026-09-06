@@ -1,0 +1,43 @@
+﻿@layer templates {
+/**
+ * Better View template — visual polish on top of layout/components.
+ */
+
+.better-view .bv-photo {
+  border-color: var(--color-primary);
+}
+
+.better-view__header .better-view__name {
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .better-view__header .better-view__name,
+[data-theme="dark"] .better-view__section-title {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .better-view__tagline,
+[data-theme="dark"] .bv-job__company {
+  color: var(--color-primary);
+}
+
+[data-theme="pastel-green"] .better-view__aside-title {
+  color: var(--color-primary-dark);
+}
+
+[data-theme="dark-corporate-blue"] .better-view__name,
+[data-theme="dark-corporate-blue"] .better-view__section-title {
+  color: var(--color-primary-dark);
+}
+
+@media screen and (max-width: 768px) {
+  [data-theme="graphite-redline"] .better-view__aside-title,
+  :root:not([data-theme]) .better-view__aside-title {
+    color: var(--color-primary);
+  }
+
+  [data-theme="dark"] .better-view__header {
+    background: var(--color-bg-main);
+  }
+}
+}

@@ -1,0 +1,162 @@
+﻿@layer layout {
+/**
+ * Layout — Better View shell (desktop 2-col + mobile data-tab panels).
+ * Breakpoint: 768px only. No JS layout.
+ */
+
+.better-view {
+  --bv-pad-x: var(--space-5);
+  background: var(--color-bg-main);
+  color: var(--color-text);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "aside header"
+    "aside main";
+}
+
+.better-view__header {
+  grid-area: header;
+  padding: var(--space-7) var(--space-7) var(--space-5);
+  background: var(--color-bg-main);
+}
+
+.better-view__aside {
+  grid-area: aside;
+  background: var(--color-bg-sidebar);
+  color: var(--color-text-on-sidebar);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.better-view__main {
+  grid-area: main;
+  padding: 0 var(--space-7) var(--space-7);
+  background: var(--color-bg-main);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.better-view__name {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-name);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.better-view__tagline {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-primary);
+}
+
+.better-view__section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-primary);
+  margin-bottom: var(--space-5);
+}
+
+.better-view__aside-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-on-sidebar);
+  margin-bottom: var(--space-4);
+}
+
+/* Desktop: all panels visible; hide mobile nav */
+.better-view__mobile-nav {
+  display: none;
+}
+
+.better-view [data-panel] {
+  display: block;
+}
+
+/* ---------- Mobile ≤768px: CSS-only tabs via [data-tab] ---------- */
+@media screen and (max-width: 768px) {
+  body:has(.better-view) {
+    padding-bottom: calc(var(--mobile-nav-height) + var(--space-4));
+  }
+
+  .better-view {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    min-height: 100vh;
+  }
+
+  .better-view__header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    padding: var(--space-5) var(--bv-pad-x) var(--space-4);
+    box-shadow: var(--shadow-sm);
+    background: var(--color-bg-main);
+  }
+
+  .better-view__name {
+    font-size: var(--font-size-name-mobile);
+  }
+
+  .better-view__tagline {
+    font-size: var(--font-size-base);
+  }
+
+  .better-view__aside,
+  .better-view__main {
+    display: contents;
+  }
+
+  .better-view__aside {
+    background: transparent;
+    color: var(--color-text);
+    padding: 0;
+  }
+
+  .better-view__main {
+    padding: 0;
+  }
+
+  /* Hide all panels by default on mobile */
+  .better-view [data-panel] {
+    display: none;
+    padding: var(--space-4) var(--bv-pad-x) var(--space-5);
+  }
+
+  /* Show panels matching active data-tab on the wrapper */
+  .better-view[data-tab="about"] [data-panel="about"],
+  .better-view[data-tab="tech"] [data-panel="tech"],
+  .better-view[data-tab="education"] [data-panel="education"],
+  .better-view[data-tab="projects"] [data-panel="projects"],
+  .better-view[data-tab="experience"] [data-panel="experience"] {
+    display: block;
+  }
+
+  /* Mobile: aside titles use main text colors */
+  .better-view__aside-title {
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+  }
+
+  .better-view__mobile-nav {
+    display: flex;
+  }
+}
+}

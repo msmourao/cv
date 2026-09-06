@@ -1,0 +1,214 @@
+/**
+ * Better View / app print — match on-screen layout; expand collapsed job details.
+ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0.6cm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: var(--color-bg-main, #fafafa) !important;
+  }
+
+  body:not(.star-wars-template):not(.ats-friendly-template) {
+    background: var(--color-bg-main) !important;
+  }
+
+  .action-buttons,
+  .action-buttons-container,
+  .theme-menu,
+  .share-menu,
+  .better-view__mobile-nav,
+  .no-print,
+  .sw-shell-controls,
+  .boot-loading,
+  .ats-chrome {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ---------- Better View: same 2-column shell as desktop web ---------- */
+  body:not(.star-wars-template) .app-shell,
+  body:not(.star-wars-template) .app-main {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  body:not(.star-wars-template) .better-view {
+    display: grid !important;
+    grid-template-columns: 280px 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    grid-template-areas:
+      "aside header"
+      "aside main" !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    background: var(--color-bg-main) !important;
+    color: var(--color-text) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.star-wars-template) .better-view__header {
+    grid-area: header !important;
+    position: static !important;
+    padding: 1.25rem 1.5rem 0.75rem !important;
+    background: var(--color-bg-main) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.star-wars-template) .better-view__aside {
+    grid-area: aside !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    padding: 1.25rem !important;
+    background: var(--color-bg-sidebar) !important;
+    color: var(--color-text-on-sidebar) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body:not(.star-wars-template) .better-view__main {
+    grid-area: main !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    padding: 0 1.5rem 1.5rem !important;
+    background: var(--color-bg-main) !important;
+    color: var(--color-text) !important;
+  }
+
+  /* Force all panels visible (ignore mobile data-tab) */
+  body:not(.star-wars-template) .better-view [data-panel] {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  body:not(.star-wars-template) .better-view__name {
+    font-size: 1.8rem !important;
+    color: var(--color-primary) !important;
+  }
+
+  body:not(.star-wars-template) .better-view__tagline,
+  body:not(.star-wars-template) .better-view__section-title {
+    color: var(--color-primary) !important;
+  }
+
+  body:not(.star-wars-template) .better-view__aside-title {
+    color: var(--color-text-on-sidebar) !important;
+  }
+
+  [data-theme="dark"] .better-view__name,
+  [data-theme="dark"] .better-view__section-title {
+    color: var(--color-text) !important;
+  }
+
+  [data-theme="dark"] .better-view__tagline {
+    color: var(--color-primary) !important;
+  }
+
+  .bv-photo {
+    width: 100px !important;
+    height: 100px !important;
+    border-width: 3px !important;
+    border-color: var(--color-primary) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .bv-contact__item,
+  .bv-contact__item a,
+  .bv-summary,
+  .bv-hobbies {
+    color: var(--color-text-on-sidebar) !important;
+  }
+
+  .bv-contact__icon {
+    fill: var(--color-text-on-sidebar) !important;
+  }
+
+  .bv-chip {
+    background: var(--color-chip-bg) !important;
+    color: var(--color-chip-text) !important;
+    border-color: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .bv-lang__name,
+  .bv-lang__level {
+    color: var(--color-text-on-sidebar) !important;
+  }
+
+  .bv-lang__dot.is-filled {
+    background: var(--color-primary) !important;
+  }
+
+  .bv-achievement,
+  .bv-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Allow experience entries to split across pages — avoid orphan section titles */
+  .bv-job {
+    break-inside: auto;
+    page-break-inside: auto;
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  .bv-job__company a,
+  .bv-card__title a {
+    color: var(--color-primary) !important;
+    text-decoration: underline;
+  }
+
+  /* Expand collapsed “Veja mais”: show body, hide the summary control */
+  details.bv-job__more {
+    display: block !important;
+  }
+
+  details.bv-job__more > summary,
+  details.bv-job__more > .bv-job__more-summary {
+    display: none !important;
+  }
+
+  details.bv-job__more > *:not(summary) {
+    display: block !important;
+  }
+
+  details.bv-job__more > ul.bv-job__bullets {
+    display: block !important;
+  }
+
+  /* Visible URLs for linked company/project names (not contact row) */
+  .better-view a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    font-weight: 400;
+    word-break: break-all;
+    color: var(--color-text-muted);
+  }
+
+  .bv-contact a[href]::after {
+    content: none !important;
+  }
+}

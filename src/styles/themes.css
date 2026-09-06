@@ -1,0 +1,126 @@
+﻿@layer themes {
+/**
+ * Themes — CSS variables only (applied via data-theme on html/body).
+ */
+
+:root:not([data-theme]),
+html:not([data-theme]),
+body:not([data-theme]),
+:root[data-theme="graphite-redline"],
+html[data-theme="graphite-redline"],
+body[data-theme="graphite-redline"] {
+  --color-primary: #d32f2f;
+  --color-primary-dark: #b71c1c;
+  --color-secondary: #64748b;
+  --color-text: #212121;
+  --color-text-muted: #424242;
+  --color-text-on-sidebar: #fafafa;
+  --color-text-on-sidebar-muted: #e0e0e0;
+  --color-bg: #f8fafc;
+  --color-bg-main: #fafafa;
+  --color-bg-sidebar: #212121;
+  --color-bg-elevated: #ffffff;
+  --color-border: #e2e8f0;
+  --color-controls: #d32f2f;
+  --color-white: #fafafa;
+  --color-chip-bg: rgba(255, 255, 255, 0.12);
+  --color-chip-text: #fafafa;
+  --color-link: #d32f2f;
+}
+
+:root[data-theme="pastel-green"],
+html[data-theme="pastel-green"],
+body[data-theme="pastel-green"] {
+  --color-primary: #388e3c;
+  --color-primary-dark: #2e7d32;
+  --color-secondary: #66bb6a;
+  --color-text: #1b5e20;
+  --color-text-muted: #2e7d32;
+  --color-text-on-sidebar: #1b5e20;
+  --color-text-on-sidebar-muted: #2e7d32;
+  --color-bg: #f1f8e9;
+  --color-bg-main: #ffffff;
+  --color-bg-sidebar: #c8e6c9;
+  --color-bg-elevated: #ffffff;
+  --color-border: #a5d6a7;
+  --color-controls: #388e3c;
+  --color-white: #ffffff;
+  --color-chip-bg: rgba(46, 125, 50, 0.12);
+  --color-chip-text: #1b5e20;
+  --color-link: #388e3c;
+}
+
+:root[data-theme="dark-corporate-blue"],
+html[data-theme="dark-corporate-blue"],
+body[data-theme="dark-corporate-blue"] {
+  --color-primary: #3949ab;
+  --color-primary-dark: #1a237e;
+  --color-secondary: #9fa8da;
+  --color-text: #1a237e;
+  --color-text-muted: #3949ab;
+  --color-text-on-sidebar: #ffffff;
+  --color-text-on-sidebar-muted: #e8eaf6;
+  --color-bg: #e8eaf6;
+  --color-bg-main: #ffffff;
+  --color-bg-sidebar: #283593;
+  --color-bg-elevated: #ffffff;
+  --color-border: #c5cae9;
+  --color-controls: #3949ab;
+  --color-white: #ffffff;
+  --color-chip-bg: rgba(255, 255, 255, 0.15);
+  --color-chip-text: #ffffff;
+  --color-link: #3949ab;
+}
+
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #94a3b8;
+  --color-text: #e2e8f0;
+  --color-text-muted: #cbd5e1;
+  --color-text-on-sidebar: #e2e8f0;
+  --color-text-on-sidebar-muted: #94a3b8;
+  --color-bg: #000000;
+  --color-bg-main: #000000;
+  --color-bg-sidebar: #2d2d2d;
+  --color-bg-elevated: #1a1a1a;
+  --color-border: #404040;
+  --color-controls: #e2e8f0;
+  --color-white: #ffffff;
+  --color-chip-bg: rgba(99, 102, 241, 0.2);
+  --color-chip-text: #e2e8f0;
+  --color-link: #6366f1;
+}
+
+/* Theme preview swatches (action rail / menus) */
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(1) { background: #d32f2f; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(2) { background: #212121; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(3) { background: #fafafa; }
+.color-scheme-preview[data-scheme="graphite-redline"] .color-preview-color:nth-child(4) { background: #d32f2f; }
+
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(1) { background: #388e3c; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(2) { background: #c8e6c9; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(3) { background: #ffffff; }
+.color-scheme-preview[data-scheme="pastel-green"] .color-preview-color:nth-child(4) { background: #81c784; }
+
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(1) { background: #1a237e; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(2) { background: #283593; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(3) { background: #ffffff; }
+.color-scheme-preview[data-scheme="dark-corporate-blue"] .color-preview-color:nth-child(4) { background: #3949ab; }
+
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(1) { background: #6366f1; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(2) { background: #2d2d2d; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(3) { background: #000000; }
+.color-scheme-preview[data-scheme="dark"] .color-preview-color:nth-child(4) { background: #000000; }
+
+@media print {
+  [data-theme] *,
+  :root * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+}

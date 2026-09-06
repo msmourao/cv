@@ -1,0 +1,21 @@
+{
+  "name": "interactive-cv",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Interactive bilingual CV (Better View, ATS parse-first, Star Wars) — data-driven via public/data/cv.json",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "publish:docs": "powershell -ExecutionPolicy Bypass -File scripts/publish-docs.ps1"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.2.2"
+  }
+}
