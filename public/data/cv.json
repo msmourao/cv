@@ -1030,12 +1030,12 @@
     },
     "seo": {
       "pt": {
-        "title": "Currículo - Marcelo Mourão | Arquiteto e Desenvolvedor de Software",
-        "description": "Arquiteto e Desenvolvedor de Software com 15+ anos construindo sistemas críticos. Migrei monólitos para microsserviços, otimizei performance, implementei soluções multi-cloud. Especialista em .NET 10,"
+        "title": "Marcelo Mourão — Arquiteto e Desenvolvedor de Software",
+        "description": "Currículo interativo: 17+ anos em sistemas críticos (e-commerce, telecom, finanças). Multi-cloud, .NET e PolyStack. Visual padrão, ATS e tema Star Wars."
       },
       "en": {
-        "title": "Resume - Marcelo Mourão | Software Architect and Developer",
-        "description": "Software Architect and Developer with 15+ years building critical systems. Migrated monoliths to microservices, optimized performance, implemented multi-cloud solutions. Expert in .NET 10, Frontend, P"
+        "title": "Marcelo Mourão — Software Architect and Developer",
+        "description": "Interactive resume: 17+ years building critical systems (e-commerce, telecom, finance). Multi-cloud, .NET, and PolyStack. Better View, ATS, and Star Wars theme."
       }
     }
   },
