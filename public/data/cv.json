@@ -860,8 +860,8 @@
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Framework de engenharia de plataforma que abstrai AWS e Azure para compor, validar e entregar aplicações multi-cloud com configuração dinâmica, recursos de mensageria, storage, serverless e infraestrutura como código.",
-          "en": "Platform engineering framework that abstracts AWS and Azure to compose, validate, and deliver multi-cloud applications with dynamic configuration, messaging, storage, serverless, and infrastructure-as-code capabilities."
+          "pt": "Framework de engenharia de plataforma que abstrai AWS e Azure para compor, validar e entregar aplicações multi-cloud com configuração dinâmica, recursos de mensageria, storage, serverless e infraestrutura como código. Lab Multicloud Canary (domínio e2etests): ApplyCloud AWS com App Runner (Canary+Peer), RDS PostgreSQL, SQS, S3/CloudFront e Mode B E2ECloud 4/4 (Peer hop), seguido de tear-down controlado — sem URLs efêmeras no currículo.",
+          "en": "Platform engineering framework that abstracts AWS and Azure to compose, validate, and deliver multi-cloud applications with dynamic configuration, messaging, storage, serverless, and infrastructure-as-code capabilities. Multicloud Canary lab (e2etests domain): AWS ApplyCloud with App Runner (Canary+Peer), RDS PostgreSQL, SQS, S3/CloudFront, and Mode B E2ECloud 4/4 (Peer hop), followed by controlled tear-down — no ephemeral URLs on the résumé."
         },
         "technologies": []
       },
@@ -922,8 +922,8 @@
           "en": "PolyStack — multi-cloud platform"
         },
         "summary": {
-          "pt": "Criei o PolyStack (https://getpolystack.com): framework Multicloud Ready com abstrações para AWS e Azure, permitindo consumir os melhores recursos de cada provedor com portabilidade, validação e otimização de custos.",
-          "en": "Built PolyStack (https://getpolystack.com): a Multicloud Ready framework with AWS/Azure abstractions so teams can consume the best of each provider with portability, validation, and cost optimization."
+          "pt": "Criei o PolyStack (https://getpolystack.com): framework Multicloud Ready com abstrações para AWS e Azure, permitindo consumir os melhores recursos de cada provedor com portabilidade, validação e otimização de custos. Comprovei cutover Multicloud Canary na AWS (App Runner, RDS, SQS, S3/CloudFront) e Mode B 4/4 com Peer hop, depois wipe do lab.",
+          "en": "Built PolyStack (https://getpolystack.com): a Multicloud Ready framework with AWS/Azure abstractions so teams can consume the best of each provider with portability, validation, and cost optimization. Proved Multicloud Canary cutover on AWS (App Runner, RDS, SQS, S3/CloudFront) and Mode B 4/4 Peer hop, then wiped the lab."
         }
       },
       {
