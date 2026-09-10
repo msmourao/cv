@@ -922,8 +922,8 @@
           "en": "PolyStack — multi-cloud platform"
         },
         "summary": {
-          "pt": "Criei o PolyStack (https://getpolystack.com): framework Multicloud Ready com abstrações para AWS e Azure, permitindo consumir os melhores recursos de cada provedor com portabilidade, validação e otimização de custos.",
-          "en": "Built PolyStack (https://getpolystack.com): a Multicloud Ready framework with AWS/Azure abstractions so teams can consume the best of each provider with portability, validation, and cost optimization."
+          "pt": "Criei o PolyStack (https://getpolystack.com): framework Multicloud Ready com abstrações para AWS e Azure, permitindo consumir os melhores recursos de cada provedor com portabilidade, validação e otimização de custos. Comprovei cutover Multicloud Canary na AWS (App Runner, RDS, SQS, S3/CloudFront) e Mode B 4/4 com Peer hop, depois wipe do lab.",
+          "en": "Built PolyStack (https://getpolystack.com): a Multicloud Ready framework with AWS/Azure abstractions so teams can consume the best of each provider with portability, validation, and cost optimization. Proved Multicloud Canary cutover on AWS (App Runner, RDS, SQS, S3/CloudFront) and Mode B 4/4 Peer hop, then wiped the lab."
         }
       },
       {
