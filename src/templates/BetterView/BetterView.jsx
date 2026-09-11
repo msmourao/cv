@@ -135,6 +135,59 @@ export default function BetterView({ cv, lang }) {
         </section>
 
         <section data-panel="tech">
+          <h2 className="better-view__aside-title">{L(cv, lang, "achievements", "Principais Conquistas")}</h2>
+          {(sections.achievements || []).map((a) => (
+            <article className="bv-achievement" key={a.id || pick(lang, a.title)}>
+              <h3 className="bv-achievement__title">{pick(lang, a.title)}</h3>
+              <p className="bv-achievement__body">{pick(lang, a.summary)}</p>
+            </article>
+          ))}
+        </section>
+
+        <section data-panel="projects">
+          <h2 className="better-view__aside-title">{L(cv, lang, "projects", "Projetos")}</h2>
+          {(sections.projects || []).map((project) => (
+            <article className="bv-card" key={project.id || pick(lang, project.name)}>
+              <h3 className="bv-card__title">
+                {project.url ? (
+                  <a href={project.url} target="_blank" rel="noopener noreferrer">
+                    {pick(lang, project.name)}
+                  </a>
+                ) : (
+                  pick(lang, project.name)
+                )}
+              </h3>
+              <p className="bv-card__body">{pick(lang, project.summary)}</p>
+            </article>
+          ))}
+        </section>
+
+        <section data-panel="education">
+          <h2 className="better-view__aside-title">{L(cv, lang, "education", "Formação")}</h2>
+          {(sections.education || []).map((edu) => (
+            <article className="bv-card" key={edu.id || pick(lang, edu.degree)}>
+              <h3 className="bv-card__title">{pick(lang, edu.degree)}</h3>
+              <p className="bv-card__meta">{pick(lang, edu.institution)}</p>
+              <p className="bv-card__meta">{pick(lang, edu.period)}</p>
+              {pick(lang, edu.note) || pick(lang, edu.summary) ? (
+                <p className="bv-card__body">{pick(lang, edu.note) || pick(lang, edu.summary)}</p>
+              ) : null}
+            </article>
+          ))}
+        </section>
+
+        <section data-panel="education">
+          <h2 className="better-view__aside-title">{L(cv, lang, "certifications", "Certificações")}</h2>
+          {(sections.certifications || []).map((cert) => (
+            <article className="bv-card" key={cert.id || pick(lang, cert.name)}>
+              <h3 className="bv-card__title">{pick(lang, cert.name)}</h3>
+              <p className="bv-card__meta">{pick(lang, cert.issuer)}</p>
+              <p className="bv-card__meta">{pick(lang, cert.period)}</p>
+            </article>
+          ))}
+        </section>
+
+        <section data-panel="tech">
           <h2 className="better-view__aside-title">{L(cv, lang, "skills", "Skills")}</h2>
           <ul className="bv-chips">
             {(sections.skills?.technical || []).map((skill) => (
@@ -190,16 +243,6 @@ export default function BetterView({ cv, lang }) {
       </aside>
 
       <main className="better-view__main">
-        <section data-panel="tech">
-          <h2 className="better-view__section-title">{L(cv, lang, "achievements", "Principais Conquistas")}</h2>
-          {(sections.achievements || []).map((a) => (
-            <article className="bv-achievement" key={a.id || pick(lang, a.title)}>
-              <h3 className="bv-achievement__title">{pick(lang, a.title)}</h3>
-              <p className="bv-achievement__body">{pick(lang, a.summary)}</p>
-            </article>
-          ))}
-        </section>
-
         <section data-panel="experience" className="work-experience-section">
           <h2 className="better-view__section-title">
             {L(cv, lang, "experience", "Experiência Profissional")}
@@ -262,49 +305,6 @@ export default function BetterView({ cv, lang }) {
               </article>
             );
           })}
-        </section>
-
-        <section data-panel="education">
-          <h2 className="better-view__section-title">{L(cv, lang, "education", "Formação")}</h2>
-          {(sections.education || []).map((edu) => (
-            <article className="bv-card" key={edu.id || pick(lang, edu.degree)}>
-              <h3 className="bv-card__title">{pick(lang, edu.degree)}</h3>
-              <p className="bv-card__meta">{pick(lang, edu.institution)}</p>
-              <p className="bv-card__meta">{pick(lang, edu.period)}</p>
-              {pick(lang, edu.note) || pick(lang, edu.summary) ? (
-                <p className="bv-card__body">{pick(lang, edu.note) || pick(lang, edu.summary)}</p>
-              ) : null}
-            </article>
-          ))}
-        </section>
-
-        <section data-panel="education">
-          <h2 className="better-view__section-title">{L(cv, lang, "certifications", "Certificações")}</h2>
-          {(sections.certifications || []).map((cert) => (
-            <article className="bv-card" key={cert.id || pick(lang, cert.name)}>
-              <h3 className="bv-card__title">{pick(lang, cert.name)}</h3>
-              <p className="bv-card__meta">{pick(lang, cert.issuer)}</p>
-              <p className="bv-card__meta">{pick(lang, cert.period)}</p>
-            </article>
-          ))}
-        </section>
-
-        <section data-panel="projects">
-          <h2 className="better-view__section-title">{L(cv, lang, "projects", "Projetos")}</h2>
-          {(sections.projects || []).map((project) => (
-            <article className="bv-card" key={project.id || pick(lang, project.name)}>
-              <h3 className="bv-card__title">
-                {project.url ? (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer">
-                    {pick(lang, project.name)}
-                  </a>
-                ) : (
-                  pick(lang, project.name)
-                )}
-              </h3>
-              <p className="bv-card__body">{pick(lang, project.summary)}</p>
-            </article>
-          ))}
         </section>
       </main>
 

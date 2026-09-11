@@ -292,6 +292,45 @@
   color: var(--color-text-muted);
 }
 
+/* Sidebar: cards / achievements inherit on-sidebar contrast (desktop) */
+.better-view__aside .bv-card__title,
+.better-view__aside .bv-achievement__title {
+  color: var(--color-text-on-sidebar);
+  font-size: var(--font-size-sm);
+}
+
+.better-view__aside .bv-card__title a {
+  color: inherit;
+}
+
+.better-view__aside .bv-card__meta,
+.better-view__aside .bv-card__body,
+.better-view__aside .bv-achievement__body {
+  color: var(--color-text-on-sidebar-muted);
+  font-size: var(--font-size-xs, 0.75rem);
+  line-height: 1.55;
+}
+
+.better-view__aside .bv-card,
+.better-view__aside .bv-achievement {
+  margin-bottom: var(--space-4);
+}
+
+@media screen and (max-width: 768px) {
+  .better-view__aside .bv-card__title,
+  .better-view__aside .bv-achievement__title {
+    color: var(--color-text);
+    font-size: var(--font-size-md);
+  }
+
+  .better-view__aside .bv-card__meta,
+  .better-view__aside .bv-card__body,
+  .better-view__aside .bv-achievement__body {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+  }
+}
+
 /* ---------- Action buttons (legacy icon rail) ---------- */
 .action-buttons {
   position: fixed;
