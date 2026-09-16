@@ -53,8 +53,8 @@
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Projeto pessoal de arquitetura de plataforma: o PolyStack automatiza composição, validação e entrega de aplicações em múltiplas nuvens — e agora também orquestra produtos com chat e IA local (LifeGraph / Product Ops). Site: https://getpolystack.com\n\nObservação: este CV foi publicado por um novo recurso de Product Ops por IA ainda em teste; o sucesso desta mensagem significa que o fluxo deu certo a partir de um modelo próprio que está em evolução.",
-          "en": "Personal platform architecture project: PolyStack automates composition, validation, and delivery of applications across clouds — and now also orchestrates products with chat and local AI (LifeGraph / Product Ops). Site: https://getpolystack.com\n\nNote: this CV was published by a new Product Ops AI feature still under test; the success of this message means the flow worked from a self-owned model that is still evolving."
+          "pt": "Projeto pessoal de arquitetura de plataforma: o PolyStack automatiza composição, validação e entrega de aplicações em múltiplas nuvens — e agora também orquestra produtos com chat e IA local (LifeGraph / Product Ops). Une control plane tipado, módulos de recursos (dados, mensageria, storage, identidade), tráfego/service mesh e planos de CD com dry-run, para o mesmo modelo servir no desenvolvimento local e na cloud. Site: https://getpolystack.com\n\nObservação: este CV foi publicado por um novo recurso de Product Ops por IA ainda em teste.",
+          "en": "Personal platform architecture project: PolyStack automates composition, validation, and delivery of applications across clouds — and now also orchestrates products with chat and local AI (LifeGraph / Product Ops). It unifies a typed control plane, resource modules (data, messaging, storage, identity), traffic/service mesh, and CD plans with dry-run, so the same model serves local development and the cloud. Site: https://getpolystack.com\n\nNote: this CV was published by a new Product Ops AI feature still under test."
         },
         "bullets": {
           "pt": [
