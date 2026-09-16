@@ -230,6 +230,7 @@
   margin-top: var(--space-3);
   color: var(--color-text-muted);
   line-height: 1.7;
+  white-space: pre-line;
 }
 
 .bv-job__bullets {
