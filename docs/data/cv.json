@@ -53,8 +53,8 @@
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Projeto pessoal de arquitetura de plataforma e engenharia de software: o PolyStack automatiza composição, validação e entrega de aplicações em múltiplas nuvens. Transforma decisões de arquitetura em configuração governada, recursos reproduzíveis e planos de entrega revisáveis — com o mesmo modelo no desenvolvimento local e na cloud. Site: https://getpolystack.com",
-          "en": "Personal platform architecture and software engineering project: PolyStack automates composition, validation, and delivery of applications across multiple clouds. It turns architecture decisions into governed configuration, reproducible resources, and reviewable delivery plans — with the same model from local development to the cloud. Site: https://getpolystack.com"
+          "pt": "Projeto pessoal de arquitetura de plataforma: o PolyStack automatiza composição, validação e entrega de aplicações em múltiplas nuvens — e agora também orquestra produtos com chat e IA local (LifeGraph / Product Ops). Site: https://getpolystack.com\n\nObservação: este CV foi publicado por um novo recurso de Product Ops por IA ainda em teste; o sucesso desta mensagem significa que o fluxo deu certo a partir de um modelo próprio que está em evolução.",
+          "en": "Personal platform architecture project: PolyStack automates composition, validation, and delivery of applications across clouds — and now also orchestrates products with chat and local AI (LifeGraph / Product Ops). Site: https://getpolystack.com\n\nNote: this CV was published by a new Product Ops AI feature still under test; the success of this message means the flow worked from a self-owned model that is still evolving."
         },
         "bullets": {
           "pt": [
@@ -63,9 +63,11 @@
             "Composição de recursos: modelei módulos de banco (PostgreSQL/SQL Server), mensageria (SQS/SNS, Azure Service Bus), storage, frontends estáticos e identidade.",
             "Tráfego e service mesh: projetei rotas, proxies sidecar, ingress/egress e interconnect com Envoy e YARP, incluindo visualização de topologia.",
             "Entrega e automação: integrei dry-run de CD, Terraform, Kubernetes, Docker e GitHub Actions para planos rastreáveis antes do provisionamento.",
+            "IA e Product Ops (2025–2026): integrei IAiCompletion (Ollama local / mock) no kit; LifeGraph usa chat Studio como porta para ProductOps, EventsFinder e publicação do CV.",
+            "Addons e planos: estrangulei ProductOps (inbox, kanban, Plans SoT), desambiguação amigável no chat, Domínios, GitHub Pages e interpretação de eventos com IA — sem inventar factos de vida.",
+            "Ciclo de confiança: o titular pede no chat; o runner ou o agente validam com testes e2e e princípios; mensagens de addon em linguagem clara, não jargão de infra.",
             "Padrões de arquitetura: apliquei princípios de DDD e CQRS, com contratos claros e separação entre domínio e infraestrutura.",
-            "Comunicação e observabilidade: implementei gRPC e REST para transporte, além de OpenTelemetry para métricas, tracing e correlação de eventos.",
-            "Frameworks e práticas: utilizei Entity Framework Core para persistência, alinhamento com TOGAF e padrões como 12-Factor App e Cloud Native Patterns."
+            "Comunicação e observabilidade: implementei gRPC e REST para transporte, além de OpenTelemetry para métricas, tracing e correlação de eventos."
           ],
           "en": [
             "Multi-cloud architecture: designed a common model for AWS and Azure covering IaaS, PaaS, and serverless workloads without provider coupling.",
@@ -73,9 +75,11 @@
             "Resource composition: modeled database modules (PostgreSQL/SQL Server), messaging (SQS/SNS, Azure Service Bus), storage, static frontends, and identity.",
             "Traffic and service mesh: designed routes, sidecar proxies, ingress/egress, and interconnect with Envoy and YARP, including topology visualization.",
             "Delivery and automation: integrated CD dry-run, Terraform, Kubernetes, Docker, and GitHub Actions for traceable plans before provisioning.",
+            "AI and Product Ops (2025–2026): wired IAiCompletion (local Ollama / mock) in the kit; LifeGraph uses Studio chat as the door for ProductOps, EventsFinder, and CV publishing.",
+            "Addons and plans: strangled ProductOps (inbox, kanban, Plans SoT), friendly chat disambiguation, Domains, GitHub Pages, and AI event interpretation — without inventing life facts.",
+            "Trust loop: the owner asks in chat; the runner or agent validates with e2e tests and principles; addon replies stay plain-language, not infra jargon.",
             "Architecture patterns: applied DDD and CQRS principles, with clear contracts and separation between domain and infrastructure.",
-            "Communication and observability: implemented gRPC and REST for transport, plus OpenTelemetry for metrics, tracing, and event correlation.",
-            "Frameworks and practices: used Entity Framework Core for persistence, alignment with TOGAF, and patterns such as 12-Factor App and Cloud Native Patterns."
+            "Communication and observability: implemented gRPC and REST for transport, plus OpenTelemetry for metrics, tracing, and event correlation."
           ]
         },
         "technologies": [
