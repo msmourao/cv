@@ -28,8 +28,8 @@
   },
   "sections": {
     "about": {
-      "pt": "Software Architect e Platform Engineer (.NET) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Criador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação e inventário de capacidades com claims, provas e cannot-do explícitos (evidence-based, sem teatro de keywords). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
-      "en": "Software Architect and Platform Engineer (.NET) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Creator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — capability inventory with explicit claims, proofs, and cannot-do (evidence-based, no keyword theater). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
+      "pt": "Software Architect e Platform Engineer (.NET 10) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Criador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação operacional e inventário de capacidades com claims e provas (evidence-based). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run antes de aplicar mudanças.",
+      "en": "Software Architect and Platform Engineer (.NET 10) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Creator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — operational governance and capability inventory with claims and proofs (evidence-based). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation before applying changes."
     },
     "experience": [
       {
@@ -53,22 +53,22 @@
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OTel, quality gates, Play Internal Testing e matriz LMS Degreed-shaped com claims + provas.\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
-          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OTel, quality gates, Play Internal Testing, and Degreed-shaped LMS matrix with claims + proofs.\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
+          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET 10 / Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OpenTelemetry, quality gates, distribuição Android via Play Internal Testing e importação LMS compatível com schema Degreed.\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
+          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET 10 / Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OpenTelemetry, quality gates, Android distribution via Play Internal Testing, and LMS import compatible with Degreed-shaped schema.\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
         },
         "bullets": {
           "pt": [
-            "Control plane tipado e composição multi-provedor (AWS, Azure, local) com dry-run; cutover ApplyCloud irrestrito blocked (CND-006).",
-            "LifeGraph: inventário honesto (claims/proof/cannot-do); Google Play Internal Testing (AAB + opt-in); adaptador LMS Degreed-shaped (schema + export HTTP) — sem parceria vendor Degreed nem loja pública GA."
+            "Control plane tipado e composição multi-provedor (AWS, Azure, local) com dry-run antes de aplicar — o mesmo modelo do desenvolvimento local à cloud.",
+            "LifeGraph: catálogo de capacidades com claims e provas; app Android (AAB) em Play Internal Testing; adaptador LMS (schema + export HTTP) alinhado a exports Degreed-shaped."
           ],
           "en": [
-            "Typed control plane and multi-provider composition (AWS, Azure, local) with dry-run; unrestricted ApplyCloud cutover blocked (CND-006).",
-            "LifeGraph: honest inventory (claims/proof/cannot-do); Google Play Internal Testing (AAB + opt-in); Degreed-shaped LMS adapter (schema + HTTP export) — not Degreed vendor partnership or public Play Store GA."
+            "Typed control plane and multi-provider composition (AWS, Azure, local) with dry-run before apply — same model from local development to cloud.",
+            "LifeGraph: capability catalog with claims and proofs; Android app (AAB) on Play Internal Testing; LMS adapter (schema + HTTP export) aligned with Degreed-shaped exports."
           ]
         },
         "technologies": [
           "C#",
-          ".NET 8 / .NET Core",
+          ".NET 10",
           "ASP.NET Web API",
           "Entity Framework",
           "Microservices",
@@ -590,7 +590,7 @@
     "skills": {
       "technical": [
         "C#",
-        ".NET 8 / .NET Core",
+        ".NET 10",
         "ASP.NET Web API",
         "Entity Framework",
         "Microservices / SOA",
@@ -690,12 +690,12 @@
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Plataforma e control plane multi-cloud em .NET Aspire: composição declarativa, Envoy, multi-provedor (AWS, Azure, local), dry-run e governação. O mesmo modelo do desenvolvimento local à publicação em nuvem/híbrido; cutover irrestrito permanece blocked. Guias para agentes: https://getpolystack.com/ai",
-          "en": "Multi-cloud platform and control plane on .NET Aspire: declarative composition, Envoy, multi-provider (AWS, Azure, local), dry-run, and governance. Same model from local development to cloud/hybrid publication; unrestricted cutover remains blocked. Agent guides: https://getpolystack.com/ai"
+          "pt": "Plataforma e control plane multi-cloud em .NET 10 / Aspire: composição declarativa, Envoy, multi-provedor (AWS, Azure, local), dry-run e governação. O mesmo modelo do desenvolvimento local à publicação em nuvem/híbrido. Guias para agentes: https://getpolystack.com/ai",
+          "en": "Multi-cloud platform and control plane on .NET 10 / Aspire: declarative composition, Envoy, multi-provider (AWS, Azure, local), dry-run, and governance. Same model from local development to cloud/hybrid publication. Agent guides: https://getpolystack.com/ai"
         },
         "technologies": [
           "C#",
-          ".NET 8 / .NET Core",
+          ".NET 10",
           "ASP.NET Web API",
           "Entity Framework",
           "Microservices / SOA",
@@ -737,11 +737,11 @@
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Ambiente de confiança sobre PolyStack: ProductOps, OTel, quality gates, Kafka opcional, Entra OIDC Studio, catálogo de claims com provas. Google Play Internal Testing (AAB + opt-in; não loja pública). Matriz de competências Degreed-shaped (schema + export HTTP + RAG lexical) — não integração vendor Degreed. ApplyCloud cutover irrestrito blocked.",
-          "en": "Trust environment on PolyStack: ProductOps, OTel, quality gates, optional Kafka, Entra OIDC Studio, claims catalog with proofs. Google Play Internal Testing (AAB + opt-in; not public store). Degreed-shaped skills matrix (schema + HTTP export + lexical RAG) — not Degreed vendor integration. Unrestricted ApplyCloud cutover blocked."
+          "pt": "Ambiente de confiança sobre PolyStack: ProductOps, OpenTelemetry, quality gates, Kafka opcional, Entra OIDC Studio e catálogo de claims com provas. Distribuição Android via Play Internal Testing (AAB + opt-in). Matriz de competências com import LMS (schema Degreed-shaped + export HTTP + RAG lexical).",
+          "en": "Trust environment on PolyStack: ProductOps, OpenTelemetry, quality gates, optional Kafka, Entra OIDC Studio, and claims catalog with proofs. Android distribution via Play Internal Testing (AAB + opt-in). Skills matrix with LMS import (Degreed-shaped schema + HTTP export + lexical RAG)."
         },
         "technologies": [
-          ".NET",
+          ".NET 10",
           "PolyStack",
           "OpenTelemetry",
           "Kafka",
