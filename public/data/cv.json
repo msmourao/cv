@@ -28,8 +28,8 @@
   },
   "sections": {
     "about": {
-      "pt": "Software Architect e Platform Engineer (.NET 10) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Criador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação operacional e inventário de capacidades com claims e provas (evidence-based). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run antes de aplicar mudanças.",
-      "en": "Software Architect and Platform Engineer (.NET 10) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Creator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — operational governance and capability inventory with claims and proofs (evidence-based). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation before applying changes."
+      "pt": "Software Architect e Platform Engineer (.NET) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum).\n\nCriador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação e inventário de capacidades com claims, provas e cannot-do explícitos (evidence-based, sem teatro de keywords). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
+      "en": "Software Architect and Platform Engineer (.NET) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum).\n\nCreator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — capability inventory with explicit claims, proofs, and cannot-do (evidence-based, no keyword theater). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
     },
     "experience": [
       {

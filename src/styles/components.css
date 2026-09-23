@@ -175,6 +175,7 @@
   font-size: var(--font-size-sm);
   line-height: 1.7;
   color: var(--color-text-on-sidebar-muted);
+  white-space: pre-line;
 }
 
 @media screen and (max-width: 768px) {
@@ -230,6 +231,7 @@
   margin-top: var(--space-3);
   color: var(--color-text-muted);
   line-height: 1.7;
+  white-space: pre-line;
 }
 
 .bv-job__bullets {
