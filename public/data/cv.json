@@ -22,25 +22,25 @@
       "en": "São Paulo, Brazil"
     },
     "tagline": {
-      "pt": "Desenvolvedor Sênior e Arquiteto de Software",
-      "en": "Senior Developer and Software Architect"
+      "pt": "Software Architect / Senior .NET & Platform Engineer",
+      "en": "Software Architect / Senior .NET & Platform Engineer"
     }
   },
   "sections": {
     "about": {
-      "pt": "Arquiteto e desenvolvedor de software com mais de 17 anos de experiência em sistemas críticos para e‑commerce, telecomunicações e setor financeiro. Especialista em transformação de legados para arquiteturas modernas de microsserviços, com foco em alta disponibilidade e eficiência operacional. Experiência comprovada em otimização de desempenho de sistemas e implementação de observabilidade end‑to‑end, reduzindo tempo de resolução de incidentes. Profundo conhecimento em estratégias multi‑cloud e uso avançado de inteligência artificial para automação e melhoria contínua da qualidade de software. Reconhecido por alinhar tecnologia a objetivos de negócio e liderar iniciativas de inovação em ambientes complexos.",
-      "en": "Software Architect and Developer with over 17 years of experience building mission‑critical systems for e‑commerce, telecommunications, and financial services. Skilled in transforming legacy platforms into modern microservices architectures, driving improvements in deployment speed, availability, and overall system resilience. Proven track record in performance optimization and end‑to‑end observability, reducing incident resolution times and enhancing reliability. Deep expertise in multi‑cloud strategies and advanced use of artificial intelligence to automate processes and continuously improve software quality. Recognized for aligning technology with business goals and leading innovation in complex environments"
+      "pt": "Software Architect e Platform Engineer (.NET) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Criador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação e inventário de capacidades com claims, provas e cannot-do explícitos (evidence-based, sem teatro de keywords). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
+      "en": "Software Architect and Platform Engineer (.NET) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Creator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — capability inventory with explicit claims, proofs, and cannot-do (evidence-based, no keyword theater). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
     },
     "experience": [
       {
         "id": "polyStack",
         "company": {
-          "pt": "PolyStack (projeto pessoal)",
-          "en": "PolyStack (personal project)"
+          "pt": "PolyStack (projeto independente)",
+          "en": "PolyStack (independent project)"
         },
         "title": {
-          "pt": "Arquiteto de Plataforma e Desenvolvedor Principal",
-          "en": "Platform Architect and Principal Developer"
+          "pt": "Software Architect / Platform Engineer",
+          "en": "Software Architect / Platform Engineer"
         },
         "location": {
           "pt": "São Paulo, Brasil",
@@ -53,63 +53,35 @@
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Projeto pessoal de arquitetura de plataforma e engenharia de software: o PolyStack automatiza composição, validação e entrega de aplicações em múltiplas nuvens. Transforma decisões de arquitetura em configuração governada, recursos reproduzíveis e planos de entrega revisáveis — com o mesmo modelo no desenvolvimento local e na cloud. Site: https://getpolystack.com",
-          "en": "Personal platform architecture and software engineering project: PolyStack automates composition, validation, and delivery of applications across multiple clouds. It turns architecture decisions into governed configuration, reproducible resources, and reviewable delivery plans — with the same model from local development to the cloud. Site: https://getpolystack.com"
+          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OTel, quality gates, Play Internal Testing e matriz LMS Degreed-shaped com claims + provas.\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
+          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OTel, quality gates, Play Internal Testing, and Degreed-shaped LMS matrix with claims + proofs.\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
         },
         "bullets": {
           "pt": [
-            "Arquitetura multi-cloud: desenhei modelo comum para AWS e Azure, cobrindo workloads IaaS, PaaS e serverless sem acoplamento ao provedor.",
-            "Governança e control plane: implementei editor tipado orientado por metadata, schemas, validações e capabilities para estado desejado revisável.",
-            "Composição de recursos: modelei módulos de banco (PostgreSQL/SQL Server), mensageria (SQS/SNS, Azure Service Bus), storage, frontends estáticos e identidade.",
-            "Tráfego e service mesh: projetei rotas, proxies sidecar, ingress/egress e interconnect com Envoy e YARP, incluindo visualização de topologia.",
-            "Entrega e automação: integrei dry-run de CD, Terraform, Kubernetes, Docker e GitHub Actions para planos rastreáveis antes do provisionamento.",
-            "Padrões de arquitetura: apliquei princípios de DDD e CQRS, com contratos claros e separação entre domínio e infraestrutura.",
-            "Comunicação e observabilidade: implementei gRPC e REST para transporte, além de OpenTelemetry para métricas, tracing e correlação de eventos.",
-            "Frameworks e práticas: utilizei Entity Framework Core para persistência, alinhamento com TOGAF e padrões como 12-Factor App e Cloud Native Patterns."
+            "Control plane tipado e composição multi-provedor (AWS, Azure, local) com dry-run; cutover ApplyCloud irrestrito blocked (CND-006).",
+            "LifeGraph: inventário honesto (claims/proof/cannot-do); Google Play Internal Testing (AAB + opt-in); adaptador LMS Degreed-shaped (schema + export HTTP) — sem parceria vendor Degreed nem loja pública GA."
           ],
           "en": [
-            "Multi-cloud architecture: designed a common model for AWS and Azure covering IaaS, PaaS, and serverless workloads without provider coupling.",
-            "Governance and control plane: implemented a metadata-driven typed editor, schemas, validation, and capabilities for reviewable desired state.",
-            "Resource composition: modeled database modules (PostgreSQL/SQL Server), messaging (SQS/SNS, Azure Service Bus), storage, static frontends, and identity.",
-            "Traffic and service mesh: designed routes, sidecar proxies, ingress/egress, and interconnect with Envoy and YARP, including topology visualization.",
-            "Delivery and automation: integrated CD dry-run, Terraform, Kubernetes, Docker, and GitHub Actions for traceable plans before provisioning.",
-            "Architecture patterns: applied DDD and CQRS principles, with clear contracts and separation between domain and infrastructure.",
-            "Communication and observability: implemented gRPC and REST for transport, plus OpenTelemetry for metrics, tracing, and event correlation.",
-            "Frameworks and practices: used Entity Framework Core for persistence, alignment with TOGAF, and patterns such as 12-Factor App and Cloud Native Patterns."
+            "Typed control plane and multi-provider composition (AWS, Azure, local) with dry-run; unrestricted ApplyCloud cutover blocked (CND-006).",
+            "LifeGraph: honest inventory (claims/proof/cannot-do); Google Play Internal Testing (AAB + opt-in); Degreed-shaped LMS adapter (schema + HTTP export) — not Degreed vendor partnership or public Play Store GA."
           ]
         },
         "technologies": [
-          ".NET 10",
           "C#",
-          "ASP.NET Core",
-          ".NET Aspire",
-          "AWS",
-          "AWS Lambda",
-          "Azure",
-          "Azure Functions",
-          "YARP",
-          "Envoy",
-          "Terraform",
-          "Kubernetes",
-          "Docker",
-          "GitHub Actions",
-          "PostgreSQL",
-          "SQL Server",
-          "LocalStack",
-          "IaC",
-          "service mesh",
-          "CQRS",
+          ".NET 8 / .NET Core",
+          "ASP.NET Web API",
+          "Entity Framework",
+          "Microservices",
+          "SOA",
+          "RESTful APIs",
           "DDD",
-          "Entity Framework Core",
-          "gRPC",
-          "REST",
-          "OpenTelemetry",
-          "IaaS",
-          "PaaS",
-          "serverless",
-          "TOGAF",
-          "12-Factor App",
-          "Cloud Native Patterns"
+          "Clean Architecture",
+          "Design Patterns",
+          "Multi-Cloud Integration",
+          ".NET Aspire",
+          "Docker",
+          "CI/CD",
+          "Envoy"
         ]
       },
       {
@@ -120,7 +92,7 @@
         },
         "title": {
           "pt": "Programador Sênior",
-          "en": "Senior Programmer"
+          "en": "Senior Developer"
         },
         "location": {
           "pt": "São Paulo, Brazil",
@@ -133,36 +105,31 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Desenvolvedor Sênior no setor imobiliário, integrando equipe criada para internalizar demandas antes direcionadas a consultorias externas. Responsável pelo desenvolvimento e manutenção de sistemas internos em áreas como RH, vendas e administração de ativos, modernização de aplicações legadas e implementação de novas soluções. Atuei em projetos de integração de ferramentas corporativas, migração de relatórios e otimização de banco de dados.",
-          "en": "Senior Developer in the real estate sector, part of a team created to internalize demands previously handled by external consultancies. Responsible for developing and maintaining internal systems in areas such as HR, sales, and asset management, modernizing legacy applications and implementing new solutions. Contributed to projects involving corporate tool integration, report migration, and database optimization."
+          "pt": "Desenvolvimento e sustentação de sistemas internos (RH, vendas, administração de ativos) numa equipa criada para internalizar demandas antes encaminhadas a consultorias. Foco em automação de migração de relatórios legados, modernização de APIs .NET e diagnóstico de falhas estruturais e de segurança em URLs e APIs de relatórios.",
+          "en": "Development and support of internal systems (HR, sales, asset administration) on a team created to internalize work previously sent to consultancies. Focus on automating legacy report migration, .NET API modernization, and diagnosing structural and security issues in report URLs and APIs."
         },
         "bullets": {
           "pt": [
-            "Migração de APIs: Modernização de aplicações legadas em .NET Framework 4.5.2 e .NET 7",
-            "Automatização de migração de relatórios: Desenvolvi uma solução automatizada e escalável para migração de relatórios de Crystal Reports para um formato próprio em Node.js baseado em templates HTML gerados automaticamente, reproduzindo o resultado dos relatórios originais e eliminando a dependência de licenças do Crystal Reports",
-            "Integração de Wiki.js: Integração do Wiki.js ao ambiente corporativo com autenticação personalizada, centralizando documentação técnica e processos internos e garantindo acesso seguro e integrado para os colaboradores",
-            "Integração de autenticação corporativa: Implementação de autenticação centralizada utilizando Azure Active Directory com Single Sign-On (SSO)",
-            "Suporte e evolução de sistemas: Suporte técnico, manutenção evolutiva, implementação de novas funcionalidades e otimização de consultas no Microsoft SQL Server"
+            "Automação de migração de Crystal Reports para templates HTML/Node.js, reduzindo dependência de runtime e licenciamento proprietário.",
+            "Modernização de APIs legadas (.NET Framework 4.5.2 / .NET 7) no ecossistema interno.",
+            "Diagnóstico e apontamento de vulnerabilidades estruturais e de segurança em URLs e APIs de relatórios.",
+            "Integração de autenticação corporativa com Azure AD (SSO) e centralização de documentação (Wiki.js)."
           ],
           "en": [
-            "API Migration: Modernization of legacy applications in .NET Framework 4.5.2 and .NET 7",
-            "Automated Report Migration: Designed and implemented a scalable automated solution to migrate Crystal Reports into a proprietary Node.js format based on automatically generated HTML templates, reproducing the original report outputs and eliminating dependency on Crystal Reports licenses",
-            "Wiki.js Integration: Integrated Wiki.js into the corporate environment with custom authentication, centralizing technical documentation and internal processes while ensuring secure and seamless employee access",
-            "Corporate Authentication Integration: Implemented centralized authentication using Azure Active Directory with Single Sign-On (SSO)",
-            "System Support and Evolution: Provided technical support, evolutionary maintenance, implementation of new features, and optimization of queries in Microsoft SQL Server"
+            "Automated Crystal Reports migration to HTML/Node.js templates, reducing proprietary runtime and licensing dependency.",
+            "Modernized legacy APIs (.NET Framework 4.5.2 / .NET 7) in the internal ecosystem.",
+            "Diagnosed and flagged structural and security issues in report URLs and APIs.",
+            "Integrated corporate authentication with Azure AD (SSO) and centralized documentation (Wiki.js)."
           ]
         },
         "technologies": [
-          ".NET Framework 4.5.2",
-          ".NET 7",
           "C#",
+          ".NET 7",
+          ".NET Framework 4.5.2",
           "Node.js",
-          "Crystal Reports",
-          "Microsoft SQL Server",
-          "Docker",
-          "Git",
-          "Wiki.js",
-          "Azure Active Directory (SSO)"
+          "SQL Server",
+          "Azure AD / SSO",
+          "Docker"
         ]
       },
       {
@@ -186,47 +153,31 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Liderei modernização de aplicações legadas em time multinacional com comunicação diária em inglês, migrando sistemas críticos de .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços. Melhorei significativamente tempo de deploy, otimizei queries SQL reduzindo execução de relatórios de minutos para segundos, e implementei MVVM em Windows Forms melhorando testabilidade. Desenvolvi biblioteca de cálculo de dias úteis substituindo consultas a API, reduzindo latência em relatórios massivos.",
-          "en": "Led legacy application modernization in a multinational team with daily English communication, migrating critical systems from .NET Framework 4.8 to .NET 8 with microservices architecture. Significantly improved deployment time, optimized SQL queries reducing report execution from minutes to seconds, and implemented MVVM in Windows Forms improving testability. Developed business days calculation library replacing API queries, reducing latency in massive reports."
+          "pt": "Modernização e refatoração de aplicações críticas em ambiente bancário multinacional (comunicação diária em inglês). Atuação em sistemas de validação de usuários e prevenção de fraudes: migração de monólitos .NET Framework 4.8 para .NET 8 com arquitetura de microsserviços, correção de decisões arquiteturais e melhoria de resiliência. Otimização de queries e relatórios de alto volume (tempos de execução reduzidos de minutos para segundos em casos medidos).",
+          "en": "Modernization and refactoring of critical applications in a multinational banking environment (daily English). Work on user-validation and fraud-prevention systems: migrating .NET Framework 4.8 monoliths to .NET 8 microservices, correcting architectural decisions, and improving resilience. Optimized high-volume queries and reports (execution times reduced from minutes to seconds in measured cases)."
         },
         "bullets": {
           "pt": [
-            "Modernização de monólito para microsserviços: arquitetei e executei migração de aplicações críticas do .NET Framework 4.8 para arquitetura de microsserviços .NET 8, garantindo compatibilidade total, segurança aprimorada e melhoria significativa em performance.",
-            "Padronização MVVM em Windows Forms: implementei padrão MVVM (Model-View-ViewModel) em aplicações Windows Forms, substituindo acesso direto ao banco de dados por comunicação via APIs, reduzindo acoplamento e melhorando testabilidade.",
-            "Aplicação de SOLID e design patterns: promovi e apliquei princípios SOLID e design patterns, melhorando qualidade e manutenibilidade do código, resultando em ganhos significativos no tempo de desenvolvimento.",
-            "Performance em banco de dados: otimizei queries SQL em sistemas críticos, reduzindo tempos de execução em relatórios com milhares de registros de minutos para segundos.",
-            "Reestruturação de CRM: transformei aplicação web legada em single page application com ASP.NET MVC e JavaScript, melhorando tempo de resposta e experiência do usuário.",
-            "Função de cálculo de dias úteis: desenvolvi biblioteca local com atualização periódica de feriados, substituindo consultas a API e banco de dados; aplicada em relatórios massivos, reduzindo latência e carga de infraestrutura.",
-            "Integração com múltiplos bancos: arquitetei integração com SQL Server e Couchbase, garantindo fluxo eficiente de dados entre diferentes camadas de persistência.",
-            "Colaboração com stakeholders: mantive contato contínuo com áreas de negócio, revisei requisitos e adaptei soluções para atender necessidades específicas de compliance e operação."
+            "Migração monólito → microsserviços (.NET Framework 4.8 → .NET 8) em fluxos de validação e prevenção de fraude.",
+            "Refatoração de decisões arquiteturais e padrões (SOLID, MVVM em Windows Forms) para testabilidade e manutenção.",
+            "Otimização de SQL e biblioteca local de dias úteis para reduzir latência em relatórios massivos.",
+            "Entrega e colaboração em time distribuído com code review e práticas de resiliência."
           ],
           "en": [
-            "Monolith to microservices modernization: architected and executed migration of critical applications from .NET Framework 4.8 to .NET 8 microservices architecture, ensuring full compatibility, enhanced security, and significant performance improvement.",
-            "MVVM standardization in Windows Forms: implemented MVVM (Model-View-ViewModel) pattern in Windows Forms applications, replacing direct database access with API communication, reducing coupling and improving testability.",
-            "SOLID and design patterns application: promoted and applied SOLID principles and design patterns, improving code quality and maintainability, resulting in significant gains in development time.",
-            "Database performance: optimized SQL queries in critical systems, reducing execution times in reports with thousands of records from minutes to seconds.",
-            "CRM restructuring: transformed legacy web application into single page application with ASP.NET MVC and JavaScript, improving response time and user experience.",
-            "Business days calculation function: developed local library with periodic holiday updates, replacing API and database queries; applied in massive reports, reducing latency and infrastructure load.",
-            "Integration with multiple databases: architected integration with SQL Server and Couchbase, ensuring efficient data flow between different persistence layers.",
-            "Stakeholder collaboration: maintained continuous contact with business areas, reviewed requirements, and adapted solutions to meet specific compliance and operation needs."
+            "Monolith → microservices migration (.NET Framework 4.8 → .NET 8) on user-validation and fraud-prevention flows.",
+            "Refactored architectural decisions and patterns (SOLID, MVVM on Windows Forms) for testability and maintainability.",
+            "SQL optimization and a local business-days library to cut latency on large reports.",
+            "Delivery and collaboration in a distributed team with code review and resilience practices."
           ]
         },
         "technologies": [
           ".NET 8",
-          ".NET Framework 4.8",
-          "ASP.NET MVC",
-          "JavaScript",
-          "Windows Forms",
-          "MVVM Pattern",
+          "C#",
+          "ASP.NET",
           "SQL Server",
           "Couchbase",
-          "Oracle. Practices: monolith to microservices migration",
-          "SOLID",
-          "design patterns",
-          "query optimization",
-          "code refactoring. Environment: multinational team",
-          "meetings in English",
-          "direct contact with stakeholders"
+          "Microservices",
+          "MVVM"
         ]
       },
       {
@@ -250,30 +201,17 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Atuei como consultor em projetos temporários para clientes estratégicos, modernizando ambientes SOA e otimizando performance. Migrei Oracle SOA Suite 11g/12c para 12c/Fusion Middleware em nuvem, garantindo compatibilidade total. Otimizei queries Oracle reduzindo significativamente tempos de execução e aumentando confiabilidade de processos de integração.",
-          "en": "Worked as a consultant on temporary projects for strategic clients, modernizing SOA environments and optimizing performance. Migrated Oracle SOA Suite 11g/12c to 12c/Fusion Middleware in the cloud, ensuring full compatibility. Optimized Oracle queries significantly reducing execution times and increasing integration process reliability."
+          "pt": "Consultoria temporária em clientes estratégicos (agro e aviação): atualização Oracle SOA Suite e otimização de performance em fluxos de integração críticos.",
+          "en": "Temporary consulting for strategic clients (agribusiness and aviation): Oracle SOA Suite upgrades and performance tuning on critical integration flows."
         },
         "bullets": {
-          "pt": [
-            "Frísia Agropecuária: conduzi projeto de atualização do ambiente Oracle SOA Suite, migrando versões legadas (11g/12c) para versão mais recente em nuvem (Oracle SOA Suite 12c/Fusion Middleware), garantindo compatibilidade total e integração com sistemas modernos.",
-            "Azul Linhas Aéreas: realizei análise detalhada de problemas em fluxos SOA, identificando gargalos e implementando correções; otimizei queries Oracle reduzindo significativamente tempos de execução e aumentando confiabilidade dos processos de integração.",
-            "Integração e suporte: trabalhei em ambientes de missão crítica, garantindo continuidade operacional durante migrações e ajustes de performance.",
-            "Consultoria técnica: forneci recomendações de melhores práticas para equipes internas, apoiando na adoção de versões atualizadas e na mitigação de riscos de performance."
-          ],
-          "en": [
-            "Frísia Agropecuária: led project to update Oracle SOA Suite environment, migrating legacy versions (11g/12c) to latest cloud version (Oracle SOA Suite 12c/Fusion Middleware), ensuring full compatibility and integration with modern systems.",
-            "Azul Airlines: performed detailed analysis of SOA flow problems, identifying bottlenecks and implementing fixes; optimized Oracle queries significantly reducing execution times and increasing integration process reliability.",
-            "Integration and support: worked in mission-critical environments, ensuring operational continuity during migrations and performance adjustments.",
-            "Technical consulting: provided best practice recommendations for internal teams, supporting adoption of updated versions and mitigating performance risks."
-          ]
+          "pt": [],
+          "en": []
         },
         "technologies": [
-          "Oracle SOA Suite (11g/12c → 12c/Fusion Middleware)",
-          "Oracle Database (complex queries",
-          "performance optimization)",
-          "SOA flows",
-          "log analysis and execution metrics. Environment: temporary consulting",
-          "working with large clients (agribusiness and aviation)"
+          "Oracle SOA Suite",
+          "Oracle Database",
+          "SOA"
         ]
       },
       {
@@ -297,38 +235,28 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Atuei no time de arquitetura e desenvolvimento do e-commerce da Despegar, desenhando e implementando funcionalidades críticas. Implementei mecanismos de proteção de dados em conformidade com LGPD, realizando code reviews em múltiplos times garantindo aderência a padrões de qualidade. Resolvi incidentes em produção mantendo estabilidade em períodos de alto tráfego, colaborando com equipes internacionais distribuídas.",
-          "en": "Worked in Despegar's e-commerce architecture and development team, designing and implementing critical features. Implemented data protection mechanisms in compliance with LGPD, conducting code reviews across multiple teams ensuring adherence to quality standards. Resolved production incidents maintaining stability during high-traffic periods, collaborating with distributed international teams."
+          "pt": "Time de arquitetura e desenvolvimento do e-commerce Despegar (período de reestruturação orçamentária pós-COVID / contrato encerrado com a reorganização). Funcionalidades críticas, conformidade LGPD, code reviews multi-time e estabilização em picos de tráfego, com colaboração internacional.",
+          "en": "Architecture and development team for Despegar e-commerce (post-COVID budget restructuring period / contract ended with the reorganization). Critical features, LGPD compliance, multi-team code reviews, and stabilization under traffic peaks, with international collaboration."
         },
         "bullets": {
           "pt": [
-            "Arquitetura e desenvolvimento: desenhei e implementei funcionalidades críticas do e-commerce, com foco em escalabilidade e experiência do usuário, melhorando tempos de carregamento de página.",
-            "Code reviews e boas práticas: conduzi code reviews em múltiplos times, garantindo aderência a padrões de qualidade e promovendo cultura de engenharia.",
-            "Adequação à LGPD: implementei mecanismos de proteção e privacidade de dados em total conformidade com a legislação, incluindo anonimização, consentimento e controles de acesso.",
-            "Resolução de problemas ongoing: analisei e corrigi incidentes em produção, mantendo alta estabilidade e disponibilidade da plataforma em períodos de alto tráfego.",
-            "Colaboração internacional: colaborei com equipes distribuídas e stakeholders em diferentes fusos horários, alinhando requisitos técnicos e de negócio em ambiente multicultural."
+            "Desenho e implementação de funcionalidades críticas do e-commerce (.NET 6/7, RabbitMQ, Couchbase).",
+            "Mecanismos de proteção de dados alinhados à LGPD (anonimização e controlo de acesso).",
+            "Code reviews e resolução de incidentes em produção em períodos de alto tráfego."
           ],
           "en": [
-            "Architecture and development: designed and implemented critical e-commerce features, focusing on scalability and user experience, improving page load times.",
-            "Code reviews and best practices: conducted code reviews across multiple teams, ensuring adherence to quality standards and promoting engineering culture.",
-            "LGPD compliance: implemented data protection and privacy mechanisms in full compliance with legislation, including anonymization, consent, and access controls.",
-            "Ongoing problem resolution: analyzed and fixed production incidents, maintaining high platform stability and availability during high-traffic periods.",
-            "International collaboration: collaborated with distributed teams and stakeholders across time zones, aligning technical and business requirements in multicultural environment."
+            "Designed and implemented critical e-commerce features (.NET 6/7, RabbitMQ, Couchbase).",
+            "Data-protection mechanisms aligned with LGPD (anonymization and access control).",
+            "Code reviews and production incident handling during high-traffic periods."
           ]
         },
         "technologies": [
-          ".NET 6 and 7",
-          "ASP.NET MVC",
-          "Windows Forms",
-          "SQL Server",
-          "Couchbase (NoSQL",
-          "caching and high availability)",
+          ".NET 6/7",
+          "C#",
           "RabbitMQ",
-          "Azure DevOps (CI/CD pipelines",
-          "repository management and releases). Practices: code review",
-          "LGPD compliance",
-          "production troubleshooting. Environment: large-scale e-commerce",
-          "international collaboration"
+          "Couchbase",
+          "SQL Server",
+          "Azure DevOps"
         ]
       },
       {
@@ -352,34 +280,30 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Atuei como arquiteto SOA desenvolvendo e mantendo APIs assíncronas críticas para diferentes áreas da companhia aérea. Implementei soluções em Oracle SOA Suite utilizando BPEL e Oracle Service Bus, garantindo orquestração de processos internos com alta disponibilidade. Analisei e corrigi problemas em integrações existentes, reduzindo falhas e mantendo continuidade operacional.",
-          "en": "Worked as SOA architect developing and maintaining critical asynchronous APIs for different airline departments. Implemented solutions in Oracle SOA Suite using BPEL and Oracle Service Bus, ensuring internal process orchestration with high availability. Analyzed and fixed issues in existing integrations, reducing failures and maintaining operational continuity."
+          "pt": "Sustentação e evolução (ongoing) de sistemas corporativos de integração na companhia aérea. Desenvolvimento e manutenção de APIs assíncronas em Oracle SOA Suite (BPEL, Service Bus), otimização e refatoração de scripts/fluxos automatizados, e melhorias de performance e estabilidade em ambiente de alta volumetria e disponibilidade.",
+          "en": "Ongoing support and evolution of corporate integration systems at the airline. Developed and maintained asynchronous APIs on Oracle SOA Suite (BPEL, Service Bus), optimized and refactored automated scripts/flows, and improved performance and stability in a high-volume, high-availability environment."
         },
         "bullets": {
           "pt": [
-            "Desenvolvimento de APIs assíncronas: implementei soluções em Oracle SOA Suite utilizando BPEL e Oracle Service Bus, orquestrando processos internos com alta disponibilidade.",
-            "Suporte a sistemas legados: analisei e corrigi problemas em integrações existentes, reduzindo falhas e garantindo continuidade operacional.",
-            "Integrações corporativas: criei serviços para comunicação entre departamentos internos, com foco em consistência e governança SOA.",
-            "Resolução de incidentes: realizei troubleshooting de fluxos críticos, identificando gargalos e implementando soluções rápidas, mantendo alta disponibilidade.",
-            "Colaboração com equipes de negócio: alinhei requisitos e forneci suporte técnico para atender demandas operacionais."
+            "APIs assíncronas e orquestração BPEL/OSB para processos internos críticos.",
+            "Refatoração e otimização de fluxos/scripts automatizados com foco em estabilidade.",
+            "Troubleshooting de integrações legadas sob alta volumetria, reduzindo falhas operacionais.",
+            "Governança SOA na comunicação entre departamentos e sistemas."
           ],
           "en": [
-            "Asynchronous API development: implemented solutions in Oracle SOA Suite using BPEL and Oracle Service Bus, orchestrating internal processes with high availability.",
-            "Legacy system support: analyzed and corrected problems in existing integrations, reducing failures and ensuring operational continuity.",
-            "Corporate integrations: created services for communication between internal departments, focusing on consistency and SOA governance.",
-            "Incident resolution: troubleshooted critical flows, identifying bottlenecks and implementing quick solutions, maintaining high availability.",
-            "Collaboration with business teams: aligned requirements and provided technical support to meet operational demands."
+            "Asynchronous APIs and BPEL/OSB orchestration for critical internal processes.",
+            "Refactored and optimized automated flows/scripts for stability.",
+            "Troubleshot legacy integrations under high volume, reducing operational failures.",
+            "SOA governance across departments and systems."
           ]
         },
         "technologies": [
-          "Oracle SOA Suite (BPEL",
-          "Oracle Service Bus)",
+          "Oracle SOA Suite",
+          "BPEL",
+          "Oracle Service Bus",
           "Oracle SQL",
-          "asynchronous APIs",
-          "internal messaging. Practices: troubleshooting",
-          "legacy maintenance",
-          "SOA governance. Environment: large airline",
-          "high-availability critical systems"
+          "SOA",
+          "Async APIs"
         ]
       },
       {
@@ -403,37 +327,19 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Desenvolvi APIs e funcionalidades para o e-commerce da ViajaNet com foco em performance e escalabilidade. Implementei soluções em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes. Utilizei RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído, garantindo alta disponibilidade. Realizei code reviews promovendo boas práticas e otimizei queries SQL Server reduzindo latência.",
-          "en": "Developed APIs and features for ViajaNet's e-commerce focusing on performance and scalability. Implemented solutions in .NET Core with Entity Framework Core, integrating data from multiple sources. Used RabbitMQ for asynchronous communication and Couchbase for distributed storage, ensuring high availability. Conducted code reviews promoting best practices and optimized SQL Server queries reducing latency."
+          "pt": "APIs .NET Core para e-commerce de viagens: Entity Framework Core, RabbitMQ, Couchbase e otimização de SQL Server.",
+          "en": ".NET Core APIs for travel e-commerce: Entity Framework Core, RabbitMQ, Couchbase, and SQL Server optimization."
         },
         "bullets": {
-          "pt": [
-            "Desenvolvimento de APIs: implementei soluções em .NET Core com Entity Framework Core, integrando dados de múltiplas fontes e garantindo alta performance.",
-            "Integrações e mensageria: implementei RabbitMQ para comunicação assíncrona e Couchbase para armazenamento distribuído e caching, garantindo escalabilidade.",
-            "Funcionalidades no e-commerce: desenvolvi novas features em toda a stack, melhorando experiência do usuário e mantendo alta disponibilidade durante picos de tráfego.",
-            "Code reviews: conduzi code reviews de outros desenvolvedores, promovendo boas práticas e consistência técnica.",
-            "Suporte operacional: realizei troubleshooting de incidentes e otimizei queries SQL Server, garantindo estabilidade durante períodos de alto tráfego."
-          ],
-          "en": [
-            "API development: implemented solutions in .NET Core with Entity Framework Core, integrating data from multiple sources and ensuring high performance.",
-            "Integrations and messaging: implemented RabbitMQ for asynchronous communication and Couchbase for distributed storage and caching, ensuring scalability.",
-            "E-commerce features: developed new features across the entire stack, improving user experience and maintaining high availability during peak traffic.",
-            "Code reviews: conducted code reviews for other developers, promoting best practices and technical consistency.",
-            "Operational support: troubleshooted incidents and optimized SQL Server queries, ensuring stability during high-traffic periods.",
-            "Performance optimization: analyzed and optimized complex queries and business processes, reducing latency and improving user experience."
-          ]
+          "pt": [],
+          "en": []
         },
         "technologies": [
           ".NET Core",
-          "Entity Framework Core",
-          "Windows Forms",
-          "SQL Server",
+          "EF Core",
+          "RabbitMQ",
           "Couchbase",
-          "RabbitMQ. Practices: code review",
-          "query optimization",
-          "troubleshooting",
-          "FullStack development. Environment: large-scale e-commerce",
-          "high transaction volume"
+          "SQL Server"
         ]
       },
       {
@@ -457,38 +363,24 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Iniciei como desenvolvedor em projeto de integração do sistema de ordens de serviço da Claro com Oracle Field Service, assumindo liderança técnica após dois meses. Coordenei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes. Solucionei problemas de modelagem e arquitetura que bloqueavam avanços do projeto, colaborando diretamente com time da Oracle e stakeholders internos.",
-          "en": "Started as developer on Claro's service order system integration with Oracle Field Service, assuming technical leadership after two months. Coordinated activities between Oracle SQL, Java, and Visual Basic 6 programmers, plus quality analysts, ensuring alignment and consistent deliveries. Solved modeling and architecture problems blocking project progress, collaborating directly with Oracle team and internal stakeholders."
+          "pt": "Liderança técnica em integrações corporativas (Oracle WebLogic / AquaLogic Service Bus): coordenação entre SQL, Java e VB6, e suporte a modelagem/arquitetura que bloqueava avanço de entregas.",
+          "en": "Technical leadership on corporate integrations (Oracle WebLogic / AquaLogic Service Bus): coordination across SQL, Java, and VB6, and support for modeling/architecture issues that blocked delivery."
         },
         "bullets": {
           "pt": [
-            "Integração corporativa: desenvolvi soluções conectando sistema de controle de ordens de serviço ao Oracle Field Service, garantindo gestão eficiente de equipes de manutenção e agendamento de clientes.",
-            "Arquitetura e direcionamento técnico: assumi papel de liderança técnica, solucionando problemas de modelagem e arquitetura que bloqueavam avanços do projeto.",
-            "Coordenação de equipes: organizei atividades entre programadores de Oracle SQL, Java e Visual Basic 6, além de analistas de qualidade, garantindo alinhamento e entregas consistentes.",
-            "Suporte a infraestrutura: colaborei com time de infraestrutura para deploy, handover e manutenção contínua.",
-            "Stakeholders e fornecedores: mantive contato direto com time da Oracle e stakeholders internos para definição de soluções e alinhamento de requisitos.",
-            "Tecnologias legadas: atuei em versões antigas do Oracle WebLogic Integration e AquaLogic Service Bus, superando limitações de documentação e suporte."
+            "Coordenação técnica entre programadores Oracle SQL, Java e VB6 e QA.",
+            "Desbloqueio de modelagem/arquitetura e colaboração com infraestrutura em deploys."
           ],
           "en": [
-            "Corporate integration: developed solutions connecting service order control system to Oracle Field Service, ensuring efficient management of maintenance teams and customer scheduling.",
-            "Architecture and technical direction: assumed technical leadership role, solving modeling and architecture problems blocking project progress.",
-            "Team coordination: organized activities between Oracle SQL, Java, and Visual Basic 6 programmers, plus quality analysts, ensuring alignment and consistent deliveries.",
-            "Infrastructure support: collaborated with infrastructure team for deployment, handover, and continuous maintenance.",
-            "Stakeholders and suppliers: maintained direct contact with Oracle team and internal stakeholders for solution definition and requirement alignment.",
-            "Legacy technologies: worked on old versions of Oracle WebLogic Integration and AquaLogic Service Bus, overcoming documentation and support limitations."
+            "Technical coordination across Oracle SQL, Java, VB6, and QA.",
+            "Unblocked modeling/architecture issues; collaborated with infrastructure on deploys."
           ]
         },
         "technologies": [
           "Oracle WebLogic Integration",
           "AquaLogic Service Bus",
           "Oracle SQL",
-          "Java",
-          "Visual Basic 6",
-          "Windows Forms",
-          "Oracle Field Service. Practices: architecture",
-          "technical coordination",
-          "modeling troubleshooting. Environment: telecommunications",
-          "large-scale corporate system integration"
+          "Java"
         ]
       },
       {
@@ -512,45 +404,28 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Atuei em projetos estratégicos de e-commerce e plataformas internas da CVC, evoluindo de desenvolvedor FullStack .NET para especialista em integrações SOA. Desenvolvi plataforma de vendas para agentes de viagem integrando motor de busca de voos e sistemas de precificação. Implementei conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica. Participei na adoção do Oracle SOA Suite, criando serviços de integração que suportaram novos canais digitais.",
-          "en": "Worked on strategic e-commerce projects and internal platforms at CVC, evolving from FullStack .NET developer to SOA integration specialist. Developed travel agent sales platform integrating flight search engine and pricing systems. Implemented connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing. Participated in Oracle SOA Suite adoption, creating integration services that supported new digital channels."
+          "pt": "Cinco anos em e-commerce e plataformas internas CVC: evolução de FullStack .NET para integrações SOA. Plataforma de vendas para agentes, integrações aéreas/hotelaria/GDS (Sabre, Amadeus) e participação na adoção do Oracle SOA Suite para novos canais digitais.",
+          "en": "Five years on CVC e-commerce and internal platforms: evolution from .NET FullStack to SOA integrations. Agent sales platform, airline/hotel/GDS integrations (Sabre, Amadeus), and participation in Oracle SOA Suite adoption for new digital channels."
         },
         "bullets": {
           "pt": [
-            "Plataforma de vendas para agentes de viagem: desenvolvi solução FullStack em .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrando motor de busca de voos e sistemas de precificação.",
-            "Integrações externas: implementei conexões com companhias aéreas, APIs de hotelaria e GDSs (Sabre, Amadeus), aplicando regras de cache e precificação dinâmica.",
-            "Governança SOA: participei na adoção do Oracle SOA Suite, criando serviços de integração suportando front-end e novos canais digitais.",
-            "Suporte contínuo: resolvi problemas de ambiente e mantive integrações críticas em produção.",
-            "Formação de novos desenvolvedores: conduzi sessões individuais de instrução em SOA, acelerando ramp-up de equipe e permitindo entrega mais rápida de projetos.",
-            "Finalização de projetos inacabados: entreguei soluções deixadas por consultorias externas, incluindo plataforma de turismo com Angular front-end e back-end em novas integrações SOA."
+            "Plataforma de vendas para agentes (.NET Framework) com motor de voos e precificação.",
+            "Integrações externas (companhias, hotelaria, Sabre/Amadeus) com cache e regras de preço.",
+            "Serviços SOA (Service Bus/BPEL) a suportarem front-end e canais digitais."
           ],
           "en": [
-            "Travel agent sales platform: developed FullStack solution in .NET Framework (ASP.NET, HTML, CSS, JavaScript), integrating flight search engine and pricing systems.",
-            "External integrations: implemented connections with airlines, hotel APIs, and GDSs (Sabre, Amadeus), applying cache rules and dynamic pricing.",
-            "SOA governance: participated in Oracle SOA Suite adoption, creating integration services supporting front-end and new digital channels.",
-            "Continuous support: resolved environment issues and maintained critical integrations in production.",
-            "New developer training: conducted individual SOA instruction sessions, accelerating team ramp-up and enabling faster project delivery.",
-            "Unfinished project completion: delivered solutions left by external consultancies, including tourism platform with Angular front-end and back-end in new SOA integrations."
+            "Agent sales platform (.NET Framework) with flight engine and pricing.",
+            "External integrations (airlines, hotels, Sabre/Amadeus) with cache and pricing rules.",
+            "SOA services (Service Bus/BPEL) supporting front-end and digital channels."
           ]
         },
         "technologies": [
-          "ASP.NET",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Angular",
           ".NET Framework",
-          "Windows Forms",
-          "Oracle SOA Suite (Service Bus",
-          "BPEL)",
-          "Oracle SQL",
+          "ASP.NET",
+          "Oracle SOA Suite",
           "Sabre",
           "Amadeus",
-          "hotel and airline APIs. Practices: SOA governance",
-          "troubleshooting",
-          "team training. Environment: tourism",
-          "large-scale e-commerce",
-          "high transaction volume"
+          "Oracle SQL"
         ]
       },
       {
@@ -574,30 +449,17 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Desenvolvi soluções FullStack .NET para plataforma B2B de fidelidade e recompensas, criando sistemas que permitiam resgate de pontos e milhas de parceiros. Implementei integrações com sistemas de parceiros, otimizando queries e processos garantindo alta estabilidade.",
-          "en": "Developed FullStack .NET solutions for B2B loyalty and rewards platform, creating systems enabling partners to redeem points and miles. Implemented integrations with partner systems, optimized queries and processes ensuring high stability."
+          "pt": "FullStack .NET em plataforma B2B de fidelidade/recompensas: resgate de pontos e milhas, integrações com parceiros e otimização de consultas sob volume.",
+          "en": ".NET FullStack on a B2B loyalty/rewards platform: points and miles redemption, partner integrations, and query optimization under load."
         },
         "bullets": {
-          "pt": [
-            "Plataforma B2B de fidelidade: desenvolvi soluções para resgate de pontos de cartão de crédito e milhas aéreas em passagens e reservas de hotéis.",
-            "Desenvolvimento FullStack: atuei em toda a stack de .NET Framework, incluindo front-end e back-end, garantindo integração eficiente entre camadas.",
-            "Integrações externas: implementei serviços para comunicação com sistemas de parceiros e provedores de recompensas.",
-            "Performance e confiabilidade: otimizei consultas e processos garantindo estabilidade em alto volume de transações."
-          ],
-          "en": [
-            "B2B loyalty platform: developed solutions for redeeming credit card points and airline miles in tickets and hotel reservations.",
-            "FullStack development: worked across entire .NET Framework stack, including front-end and back-end, ensuring efficient integration between layers.",
-            "External integrations: implemented services for communication with partner systems and reward providers.",
-            "Performance and reliability: optimized queries and processes ensuring stability in high transaction volumes."
-          ]
+          "pt": [],
+          "en": []
         },
         "technologies": [
-          ".NET Framework (ASP.NET",
-          "C#)",
-          "SQL Server",
-          "loyalty and miles partner APIs. Practices: FullStack development",
-          "query optimization",
-          "external integrations. Environment: B2B tourism and loyalty platform"
+          ".NET Framework",
+          "C#",
+          "SQL Server"
         ]
       },
       {
@@ -621,29 +483,18 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Atuei como programador em uma pequena agência de marketing, desenvolvendo páginas web e soluções simples para apoiar negócios locais. Essa experiência foi importante para consolidar minha base em desenvolvimento web e práticas de entrega rápida.",
-          "en": "I worked as a programmer at a small marketing agency, developing web pages and simple solutions to support local businesses. This experience was important for consolidating my foundation in web development and rapid delivery practices."
+          "pt": "Early career: sites e formulários web (HTML/CSS/JS, ASP.NET básico) em agência de marketing.",
+          "en": "Early career: web sites and forms (HTML/CSS/JS, basic ASP.NET) at a marketing agency."
         },
         "bullets": {
-          "pt": [
-            "Desenvolvimento de páginas web: criação de sites institucionais e páginas de cadastro com recursos básicos de interação.",
-            "Formulários e mailing: implementação de formulários de inscrição e sistemas de envio de e‑mails para campanhas de marketing.",
-            "Suporte a pequenos negócios: entrega de soluções acessíveis e funcionais para clientes locais, com foco em simplicidade e agilidade."
-          ],
-          "en": [
-            "Web page development: creation of institutional websites and registration pages with basic interaction features.",
-            "Forms and mailing: implementation of registration forms and email sending systems for marketing campaigns.",
-            "Small business support: delivery of accessible and functional solutions for local clients, focusing on simplicity and agility."
-          ]
+          "pt": [],
+          "en": []
         },
         "technologies": [
           "HTML",
           "CSS",
           "JavaScript",
-          "ASP.NET (basic features)",
-          "SQL Server (simple use). Practices: rapid development",
-          "small client support. Environment: digital marketing agency",
-          "low-cost and high-turnover projects"
+          "ASP.NET"
         ]
       },
       {
@@ -667,39 +518,19 @@
         "url": null,
         "highlight": false,
         "summary": {
-          "pt": "Primeira experiência profissional em tecnologia, iniciada como estagiário e rapidamente evoluída para programador júnior. Atuei em uma equipe dedicada a pesquisa e desenvolvimento de software, com foco em desempenho e segurança, além de desenvolvimento direto em sistemas corporativos.",
-          "en": "First professional experience in technology, started as an intern and quickly evolved to junior programmer. I worked on a team dedicated to software research and development, focusing on performance and security, in addition to direct development in corporate systems."
+          "pt": "Early career (estágio → júnior): VB6, ASP clássico e ASP.NET 2.0; análise de desempenho/segurança e ferramentas internas de relatório e timesheet.",
+          "en": "Early career (intern → junior): VB6, classic ASP, and ASP.NET 2.0; performance/security analysis and internal reporting/timesheet tools."
         },
         "bullets": {
-          "pt": [
-            "Desenvolvimento em VB6: implementação de funcionalidades e manutenção de sistemas corporativos em Visual Basic 6.",
-            "Aplicações web: desenvolvimento em ASP clássico e ASP.NET 2.0, criando páginas dinâmicas e integrações para clientes internos.",
-            "Análise de código: participação em projetos de revisão de software em diversas linguagens, com recomendações de desempenho e segurança.",
-            "Ferramentas internas: criação de soluções para monitoramento de performance, geração de relatórios e registro de timesheet.",
-            "Crescimento acelerado: promoção de estagiário para programador em apenas três meses, devido à qualidade das entregas e aprendizado rápido."
-          ],
-          "en": [
-            "VB6 development: implementation of features and maintenance of corporate systems in Visual Basic 6.",
-            "Web applications: development in classic ASP and ASP.NET 2.0, creating dynamic pages and integrations for internal clients.",
-            "Code analysis: participation in software review projects in various languages, with performance and security recommendations.",
-            "Internal tools: creation of solutions for performance monitoring, report generation, and timesheet recording.",
-            "Accelerated growth: promotion from intern to programmer in just three months, due to delivery quality and rapid learning."
-          ]
+          "pt": [],
+          "en": []
         },
         "technologies": [
           "VB6",
           "ASP",
           "ASP.NET 2.0",
           "C#",
-          "Java (in analyses)",
-          "Windows Forms",
-          "SQL Server. Practices: web development",
-          "performance analysis",
-          "code security",
-          "report automation. Environment: corporate IT office",
-          "focus on research",
-          "technical support",
-          "and internal system development"
+          "SQL Server"
         ]
       }
     ],
@@ -759,21 +590,20 @@
     "skills": {
       "technical": [
         "C#",
-        ".NET",
-        "Frontend",
-        "AWS",
-        "Azure",
+        ".NET 8 / .NET Core",
+        "ASP.NET Web API",
+        "Entity Framework",
+        "Microservices / SOA",
+        "RESTful APIs",
+        "DDD / Clean Architecture",
+        "Design Patterns",
+        "Multi-Cloud / .NET Aspire",
+        "Docker / CI/CD",
+        "Envoy",
+        "OIDC / Entra ID",
+        "SQL Server",
         "PostgreSQL",
-        "Oracle Database",
-        "MS SQL Server",
-        "Docker",
-        "Kubernetes",
-        "Terraform",
-        "IaC",
-        "Generative AI",
-        "Cursor",
-        "DevOps",
-        "CI/CD"
+        "Identity & Access Management"
       ],
       "soft": [
         {
@@ -855,28 +685,31 @@
       {
         "id": "polyStack",
         "name": {
-          "pt": "PolyStack — Framework Multicloud Ready",
-          "en": "PolyStack — Multicloud Ready Framework"
+          "pt": "PolyStack — Platform / Control Plane Multi-Cloud",
+          "en": "PolyStack — Platform / Control Plane Multi-Cloud"
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Framework Multicloud Ready que abstrai AWS e Azure para compor, validar e entregar aplicações com o mesmo modelo do local à cloud. Pergunte ao seu agente de IA do que se trata: getpolystack.com/ai",
-          "en": "Multicloud Ready framework that abstracts AWS and Azure to compose, validate, and deliver applications with the same model from local to cloud. Ask your AI agent what it's about: getpolystack.com/ai"
+          "pt": "Plataforma e control plane multi-cloud em .NET Aspire: composição declarativa, Envoy, multi-provedor (AWS, Azure, local), dry-run e governação. O mesmo modelo do desenvolvimento local à publicação em nuvem/híbrido; cutover irrestrito permanece blocked. Guias para agentes: https://getpolystack.com/ai",
+          "en": "Multi-cloud platform and control plane on .NET Aspire: declarative composition, Envoy, multi-provider (AWS, Azure, local), dry-run, and governance. Same model from local development to cloud/hybrid publication; unrestricted cutover remains blocked. Agent guides: https://getpolystack.com/ai"
         },
-        "technologies": []
-      },
-      {
-        "id": "eventsfinder",
-        "name": {
-          "pt": "Events Finder",
-          "en": "Events Finder"
-        },
-        "url": null,
-        "summary": {
-          "pt": "Plataforma pessoal para busca de eventos por localização, com integrações a redes sociais, geolocalização e enriquecimento inteligente de dados. Desenvolvida com arquitetura multi-cloud, observabilidade e automação de entrega.",
-          "en": "Personal platform for location-based event discovery, integrating social networks, geolocation, and intelligent data enrichment. Built with multi-cloud architecture, observability, and delivery automation."
-        },
-        "technologies": []
+        "technologies": [
+          "C#",
+          ".NET 8 / .NET Core",
+          "ASP.NET Web API",
+          "Entity Framework",
+          "Microservices / SOA",
+          "RESTful APIs",
+          "DDD / Clean Architecture",
+          "Design Patterns",
+          "Multi-Cloud / .NET Aspire",
+          "Docker / CI/CD",
+          "Envoy",
+          "OIDC / Entra ID",
+          "SQL Server",
+          "PostgreSQL",
+          "Identity & Access Management"
+        ]
       },
       {
         "id": "crystalReports",
@@ -884,57 +717,99 @@
           "pt": "Crystal Reports to Node.js Converter",
           "en": "Crystal Reports to Node.js Converter"
         },
-        "url": null,
+        "url": "",
         "summary": {
-          "pt": "Ferramenta que extrai metadados de relatórios Crystal Reports e gera templates HTML/Vash, controllers Node.js e artefatos para renderização em PDF, reduzindo dependência do runtime e de licenças do Crystal Reports.",
-          "en": "Tool that extracts Crystal Reports metadata and generates HTML/Vash templates, Node.js controllers, and PDF rendering artifacts, reducing dependency on the Crystal Reports runtime and licenses."
+          "pt": "Ferramenta de automação que extrai metadados de Crystal Reports e gera templates HTML/Vash, controllers Node.js e artefatos para PDF. Reduz dependência de runtime proprietário e acelera migração de relatórios legados (aplicada no contexto Momentum).",
+          "en": "Automation tool that extracts Crystal Reports metadata and generates HTML/Vash templates, Node.js controllers, and PDF artifacts. Reduces proprietary runtime dependency and speeds legacy report migration (applied in the Momentum context)."
         },
-        "technologies": []
+        "technologies": [
+          "Node.js",
+          "Crystal Reports",
+          "HTML",
+          "PDF"
+        ]
+      },
+      {
+        "id": "lifeGraph",
+        "name": {
+          "pt": "LifeGraph — Produto sibling sobre PolyStack",
+          "en": "LifeGraph — Sibling product on PolyStack"
+        },
+        "url": "https://getpolystack.com",
+        "summary": {
+          "pt": "Ambiente de confiança sobre PolyStack: ProductOps, OTel, quality gates, Kafka opcional, Entra OIDC Studio, catálogo de claims com provas. Google Play Internal Testing (AAB + opt-in; não loja pública). Matriz de competências Degreed-shaped (schema + export HTTP + RAG lexical) — não integração vendor Degreed. ApplyCloud cutover irrestrito blocked.",
+          "en": "Trust environment on PolyStack: ProductOps, OTel, quality gates, optional Kafka, Entra OIDC Studio, claims catalog with proofs. Google Play Internal Testing (AAB + opt-in; not public store). Degreed-shaped skills matrix (schema + HTTP export + lexical RAG) — not Degreed vendor integration. Unrestricted ApplyCloud cutover blocked."
+        },
+        "technologies": [
+          ".NET",
+          "PolyStack",
+          "OpenTelemetry",
+          "Kafka",
+          "Ollama",
+          "Unity / Android",
+          "Entra ID / OIDC"
+        ]
+      },
+      {
+        "id": "eventsfinder",
+        "name": {
+          "pt": "Events Finder — Demo de fluxo integrado",
+          "en": "Events Finder — Integrated flow demo"
+        },
+        "url": "",
+        "summary": {
+          "pt": "Demo de descoberta de eventos por localização (redes sociais, geolocalização, enriquecimento de dados) sobre a arquitetura PolyStack, para exercitar observabilidade e capacidades orientadas a eventos.",
+          "en": "Event-discovery demo by location (social networks, geolocation, data enrichment) on the PolyStack architecture, to exercise observability and event-oriented capabilities."
+        },
+        "technologies": [
+          "PolyStack",
+          ".NET"
+        ]
       }
     ],
     "achievements": [
       {
         "id": "ach-0",
         "title": {
-          "pt": "Melhorias de Performance",
-          "en": "Performance Improvements"
+          "pt": "Modernização em ambiente bancário (UBS)",
+          "en": "Banking modernization (UBS)"
         },
         "summary": {
-          "pt": "Otimizei fluxos e queries resultando em melhorias de performance superiores a 90%, transformando processos que levavam minutos em operações que executam em segundos.",
-          "en": "Optimized flows and queries resulting in performance improvements exceeding 90%, transforming processes that took minutes into operations that execute in seconds."
+          "pt": "Migração de monólitos .NET Framework para microsserviços .NET 8 em fluxos de validação de usuários e prevenção de fraudes; otimização de relatórios de alto volume (minutos → segundos em casos medidos).",
+          "en": "Migrated .NET Framework monoliths to .NET 8 microservices on user-validation and fraud-prevention flows; optimized high-volume reports (minutes → seconds in measured cases)."
         }
       },
       {
         "id": "ach-1",
         "title": {
-          "pt": "Refinamento de Ideias",
-          "en": "Idea Refinement"
+          "pt": "Integração aérea em alta volumetria (Gol)",
+          "en": "Airline integration at high volume (Gol)"
         },
         "summary": {
-          "pt": "Refinei ideias do usuário final resultando em aplicações com maior valor de negócio, traduzindo requisitos em soluções técnicas eficazes e alinhadas aos objetivos estratégicos.",
-          "en": "Refined end-user ideas resulting in applications with greater business value, translating requirements into effective technical solutions aligned with strategic objectives."
+          "pt": "Sustentação e evolução de APIs/orquestrações SOA (BPEL/OSB) com refatoração de fluxos automatizados e foco em estabilidade operacional.",
+          "en": "Supported and evolved SOA APIs/orchestrations (BPEL/OSB) with refactored automated flows and a focus on operational stability."
         }
       },
       {
         "id": "ach-2",
         "title": {
-          "pt": "PolyStack — plataforma multi-cloud",
-          "en": "PolyStack — multi-cloud platform"
+          "pt": "Automação de migração de relatórios (Crystal → Node.js)",
+          "en": "Report migration automation (Crystal → Node.js)"
         },
         "summary": {
-          "pt": "Criei o PolyStack (https://getpolystack.com): framework Multicloud Ready que deixa a aplicação escolher o melhor de AWS e Azure sem reescrever o domínio. Unifica configuração, infraestrutura e planos de entrega com validação e dry-run — reduzindo lock-in e o risco de cutovers multi-cloud.",
-          "en": "Built PolyStack (https://getpolystack.com): a Multicloud Ready framework so applications can use the best of AWS and Azure without rewriting the domain. It unifies configuration, infrastructure, and delivery plans with validation and dry-run — cutting lock-in and multi-cloud cutover risk."
+          "pt": "Solução de conversão de metadados Crystal Reports para templates HTML/Node.js e PDF, eliminando dependência de runtime proprietário (Momentum / projeto Crystal Converter).",
+          "en": "Crystal Reports metadata conversion to HTML/Node.js templates and PDF, removing proprietary runtime dependency (Momentum / Crystal Converter project)."
         }
       },
       {
         "id": "ach-3",
         "title": {
-          "pt": "Formação de Desenvolvedores",
-          "en": "Developer Training"
+          "pt": "Tenure e domínio travel/e-commerce (CVC)",
+          "en": "Tenure and travel/e-commerce domain (CVC)"
         },
         "summary": {
-          "pt": "Formei novos desenvolvedores através de mentorias e acompanhamento técnico, acelerando o crescimento da equipe e promovendo cultura de excelência e boas práticas.",
-          "en": "Trained new developers through mentoring and technical guidance, accelerating team growth and promoting a culture of excellence and best practices."
+          "pt": "Cinco anos evoluindo de FullStack .NET a integrações SOA/GDS (Sabre, Amadeus) em plataforma de vendas e canais digitais.",
+          "en": "Five years evolving from .NET FullStack to SOA/GDS integrations (Sabre, Amadeus) on sales platforms and digital channels."
         }
       }
     ],
