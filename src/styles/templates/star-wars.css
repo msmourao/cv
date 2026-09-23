@@ -719,6 +719,10 @@ body.star-wars-template .sw-lightsaber.show {
     box-sizing: border-box;
 }
 
+.sw-crawl-section[data-section="summary"] > p {
+    white-space: pre-line;
+}
+
 .sw-crawl-section > ul {
     list-style: none;
     padding: 0;
