@@ -920,35 +920,55 @@
     "crawlSource": "custom",
     "customCrawl": {
       "pt": {
-        "eyebrow": "Episódio PolyStack",
-        "title": "A Cruzada dos Muitos Céus",
-        "subtitle": "Uma paródia quase oficial da saga de um arquiteto teimoso",
+        "eyebrow": "EPISÓDIO IV: UMA NOVA ORDEM (AO CONTRÁRIO)",
+        "title": "O Padawan Fora de Ordem",
         "paragraphs": [
-          "Há muito tempo, em uma galáxia… bem, digamos: bem aqui na Terra, entre cafés, reuniões e nuvens que não se falam.",
-          "Marcelo Mourão enfrentava um Império invisível. Não havia Darth Vader de capa — havia sistemas antigos, times cansados de refazer o mesmo trabalho e “nuvens” diferentes (AWS, Azure e companhia) que se portavam como planetas rivais: cada um com suas regras, seus idiomas e zero vontade de cooperar.",
-          "Entregar software parecia um salto no hiperespaço sem mapa. O plano mudava no meio do caminho. O que funcionava “na minha máquina” virava drama em produção. Revisar o que ia ser construído era como tentar ler um holocron… sem tradução.",
-          "Em vez de render-se ao caos, Marcelo forjou o PolyStack — menos uma arma laser, mais um kit de sobrevivência para quem precisa desenhar, validar e entregar aplicações em várias nuvens sem jurar fidelidade eterna a um único senhor da guerra corporativo.",
-          "A ideia é simples o bastante para quem não é de TI: antes de gastar tempo (e dinheiro) construindo o castelo, você monta o projeto em linguagem clara, confere se as peças encaixam, e só então dá a ordem de construção — com um ensaio geral (dry-run) digno de Jedi.",
-          "Não é magia. É engenharia com cara de aventura: transformar decisões complicadas em configuração revisável, recursos reproduzíveis e pontes entre mundos que antes só se gritavam em dialetos técnicos.",
-          "A cruzada ainda não conquistou a galáxia. Mas o PolyStack já prova que dá para contar — e construir — essa história sem um manual de 800 páginas… e sem precisar explicar o que é um sidecar em um jantar de família.",
-          "Que a Força (e um bom plano antes do deploy) estejam com você."
+          "Grandes sagas raramente começam no Capítulo Um — Lucas sabia disso, e eu também. Minha jornada começou direto no Episódio IV: atirado ao meio de fogos de produção, monólitos legados e sistemas de alto throughput antes mesmo de saber que existia uma trilogia prequela de teorias formais de ciência da computação. Enfrentei primeiro os perigos reais da galáxia, aprendendo a navegar o caos, hotfixes e saltos no hiperespaço sem mapa."
+        ],
+        "blocks": [
+          {
+            "heading": "Dominando a Força (Sem o Lado Negro)",
+            "body": "Pelo caminho, encontrei a Força: Inteligência Artificial. Como todo poder na galáxia, tem dois lados. Usada com disciplina, acelera desenho, refatora legado e fortalece platform engineering. Render-se ao Lado Negro leva a desenvolvimento por atalho, arquiteturas alucinadas e teatro vazio de keywords. Domínio de verdade não é só brandir o sabre — é manter julgamento humano e verdade com evidência no comando."
+          },
+          {
+            "heading": "O Control Plane Multi-Cloud (PolyStack)",
+            "body": "Para trazer ordem a uma galáxia de provedores rivais (AWS, Azure e sistemas locais, cada um a gritar em dialetos diferentes), forjei o PolyStack. É um control plane multi-cloud (.NET 10 / .NET Aspire) feito para validar composições com dry-run antes do deploy. Sem cutovers cegos, sem drama galáctico — só regras declarativas para que cada planeta da infraestrutura fale a mesma língua."
+          },
+          {
+            "heading": "O Holocron da Evidência (LifeGraph)",
+            "body": "E porque a confiança na galáxia não deveria assentar em promessas, nasceu o LifeGraph como ambiente sibling de confiança. Age como um holocron auditável de capacidades em runtime, com escopo explícito, asserções, evidência e constraints estritas. Prova o que funciona em produção em vez de vender ilusões."
+          },
+          {
+            "heading": "Que o Equilíbrio Esteja Contigo",
+            "body": "Começar no meio não foi erro — foi o treino de batalha definitivo. Mais de 17 anos depois, a missão permanece: dominar a Força, impor governação rigorosa, construir para o mundo real e nunca ir a produção sem um dry-run sólido. Que a Força (e um pipeline de deploy limpo) estejam contigo."
+          }
         ],
         "closing": "Continue a missão em getpolystack.com — porque até rebeldes precisam de um site.",
         "url": "https://getpolystack.com"
       },
       "en": {
-        "eyebrow": "Episode PolyStack",
-        "title": "The Crusade of Many Skies",
-        "subtitle": "A nearly-official parody of one stubborn architect’s saga",
+        "eyebrow": "EPISODE IV: A NEW ORDER (IN REVERSE)",
+        "title": "The Out-of-Order Padawan",
         "paragraphs": [
-          "A long time ago, in a galaxy… well, right here on Earth — between coffee, meetings, and clouds that refuse to talk to each other.",
-          "Marcelo Mourão faced an invisible Empire. No cape-wearing villains — just legacy systems, teams tired of rebuilding the same thing, and rival “clouds” (AWS, Azure, and friends) acting like warring planets: each with its own rules, dialects, and zero interest in cooperation.",
-          "Shipping software felt like a hyperspace jump without a map. Plans changed mid-flight. What worked “on my machine” became production drama. Reviewing what would actually be built was like reading a holocron… with no translation.",
-          "Instead of surrendering to chaos, Marcelo forged PolyStack — less a lightsaber, more a survival kit for anyone who needs to design, validate, and deliver apps across multiple clouds without swearing eternal loyalty to a single corporate warlord.",
-          "The idea is simple enough for non-tech folks: before spending time (and money) building the castle, you draft the plan in plain language, check that the pieces fit, and only then give the build order — with a Jedi-grade dress rehearsal (a dry-run).",
-          "It isn’t magic. It’s engineering dressed as adventure: turning messy decisions into reviewable configuration, reproducible resources, and bridges between worlds that used to shout at each other in jargon.",
-          "The crusade hasn’t conquered the galaxy yet. But PolyStack already proves you can tell — and build — this story without an 800-page manual… or explaining what a sidecar is at a family dinner.",
-          "May the Force (and a solid plan before deploy) be with you."
+          "Great sagas rarely start at Chapter One — Lucas knew it, and so did I. My journey began straight in Episode IV: thrown into the middle of production fires, legacy monoliths, and high-throughput systems before I even knew there was a prequel trilogy of formal computer science theories. I faced the galaxy’s real dangers first, learning to navigate through chaos, hotfixes, and hyperspace jumps without a map."
+        ],
+        "blocks": [
+          {
+            "heading": "Mastering the Force (Without the Dark Side)",
+            "body": "Along the way, I encountered the Force: Artificial Intelligence. Like any power in the galaxy, it has two sides. Used with discipline, it accelerates design, refactors legacy code, and empowers platform engineering. But surrendering to its Dark Side leads to shortcut-driven development, hallucinated architectures, and empty keyword theater. True mastery isn't just wielding the saber — it’s keeping human judgment and evidence-backed truth at the helm."
+          },
+          {
+            "heading": "The Multi-Cloud Control Plane (PolyStack)",
+            "body": "To bring order to a galaxy of warring cloud providers (AWS, Azure, and local systems all shouting in different dialects), I forged PolyStack. It’s a multi-cloud control plane (.NET 10 / .NET Aspire) built to validate compositions through dry-runs before deployment. No blind cutovers, no galactic drama — just declarative rules ensuring every planet in your infrastructure talks the same language."
+          },
+          {
+            "heading": "The Holocron of Evidence (LifeGraph)",
+            "body": "And because trust in the galaxy shouldn't be based on promises, LifeGraph was born as the sibling trust environment. It acts as an auditable holocron of runtime capabilities, backed by explicit scope, assertions, evidence, and strict constraints. It proves what works in production instead of selling illusions."
+          },
+          {
+            "heading": "May the Balance Be With You",
+            "body": "Starting in the middle wasn't a mistake — it was the ultimate battle training. 17+ years later, the mission remains: master the Force, enforce strict governance, build for the real world, and never push to production without a solid dry-run. May the Force (and a clean deployment pipeline) be with you."
+          }
         ],
         "closing": "Continue the mission at getpolystack.com — even rebels need a homepage.",
         "url": "https://getpolystack.com"
