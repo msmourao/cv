@@ -24,12 +24,13 @@
     "tagline": {
       "pt": "Software Architect / Senior .NET & Platform Engineer",
       "en": "Software Architect / Senior .NET & Platform Engineer"
-    }
+    },
+    "emailSecondary": "getpolystack@gmail.com"
   },
   "sections": {
     "about": {
-      "pt": "Software Architect e Platform Engineer (.NET) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum).\n\nCriador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação e inventário de capacidades com claims, provas e cannot-do explícitos (evidence-based, sem teatro de keywords). Especialista em .NET Aspire, composição multi-cloud, OIDC/SSO e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
-      "en": "Software Architect and Platform Engineer (.NET) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum).\n\nCreator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — capability inventory with explicit claims, proofs, and cannot-do (evidence-based, no keyword theater). Specialist in .NET Aspire, multi-cloud composition, OIDC/SSO, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
+      "pt": "Software Architect e Platform Engineer (.NET, Python e sistemas) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Foco recente em reliability (timeouts, concorrência, CI), revisão de mudanças multi-arquivo e entrega evidence-based.\n\nCriador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação com claims, provas e cannot-do explícitos. Especialista em .NET Aspire, composição multi-cloud (AWS/Azure/local), frontends React estáticos, OIDC/SSO, OpenTelemetry e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
+      "en": "Software Architect and Platform Engineer (.NET, Python, and systems) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Recent focus on reliability (timeouts, concurrency, CI), multi-file change review, and evidence-based delivery.\n\nCreator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — governance with explicit claims, proofs, and cannot-do. Specialist in .NET Aspire, multi-cloud composition (AWS/Azure/local), static React frontends, OIDC/SSO, OpenTelemetry, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
     },
     "experience": [
       {
@@ -53,35 +54,51 @@
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET 10 / Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OpenTelemetry, quality gates, distribuição Android via Play Internal Testing e importação LMS compatível com schema Degreed.\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
-          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET 10 / Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OpenTelemetry, quality gates, Android distribution via Play Internal Testing, and LMS import compatible with Degreed-shaped schema.\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
+          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET 10 / Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OpenTelemetry, quality gates, distribuição Android via Play Internal Testing e importação LMS (schema + export HTTP).\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
+          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET 10 / Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OpenTelemetry, quality gates, Android distribution via Play Internal Testing, and LMS import (schema + HTTP export).\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
         },
         "bullets": {
           "pt": [
             "Control plane tipado e composição multi-provedor (AWS, Azure, local) com dry-run antes de aplicar — o mesmo modelo do desenvolvimento local à cloud.",
-            "LifeGraph: catálogo de capacidades com claims e provas; app Android (AAB) em Play Internal Testing; adaptador LMS (schema + export HTTP) alinhado a exports Degreed-shaped."
+            "Módulos de dados PostgreSQL/SQL Server e workloads AWS (incl. caminho Lambda/serverless no modelo Aspire), com Terraform/GitHub Actions nos planos de entrega.",
+            "Frontends React estáticos no composition multi-cloud (ex.: storefront/lab travel) consumindo APIs e contratos tipados da plataforma.",
+            "LifeGraph: catálogo de capacidades com claims e provas; app Android (AAB) em Play Internal Testing; observabilidade OpenTelemetry e quality gates.",
+            "OSS e reliability: PR Aspire AWS #247; CLs Go; hardening de timeouts/concorrência/fork com regressão mensurável."
           ],
           "en": [
             "Typed control plane and multi-provider composition (AWS, Azure, local) with dry-run before apply — same model from local development to cloud.",
-            "LifeGraph: capability catalog with claims and proofs; Android app (AAB) on Play Internal Testing; LMS adapter (schema + HTTP export) aligned with Degreed-shaped exports."
+            "PostgreSQL/SQL Server data modules and AWS workloads (including Lambda/serverless path in the Aspire model), with Terraform/GitHub Actions in delivery plans.",
+            "Static React frontends in multi-cloud composition (e.g. travel lab storefront) consuming platform APIs and typed contracts.",
+            "LifeGraph: capability catalog with claims and proofs; Android app (AAB) on Play Internal Testing; OpenTelemetry observability and quality gates.",
+            "OSS and reliability: AWS Aspire PR #247; Go CLs; timeout/concurrency/fork hardening with measurable regression."
           ]
         },
         "technologies": [
           "C#",
           ".NET 10",
           "ASP.NET Web API",
+          "Python",
+          "TypeScript",
+          "React",
           "Entity Framework",
+          "PostgreSQL",
+          "SQL Server",
           "Microservices",
-          "SOA",
           "RESTful APIs",
           "DDD",
           "Clean Architecture",
-          "Design Patterns",
           "Multi-Cloud Integration",
           ".NET Aspire",
+          "AWS",
+          "AWS Lambda",
+          "Azure",
           "Docker",
           "CI/CD",
-          "Envoy"
+          "GitHub Actions",
+          "Terraform",
+          "OpenTelemetry",
+          "Envoy",
+          "OIDC"
         ]
       },
       {
@@ -591,18 +608,29 @@
       "technical": [
         "C#",
         ".NET 10",
+        "Python",
+        "pytest",
+        "Go",
+        "TypeScript",
+        "React",
         "ASP.NET Web API",
+        "FastAPI-class APIs",
         "Entity Framework",
+        "PostgreSQL",
+        "SQL Server",
+        "Multi-Cloud / .NET Aspire",
+        "AWS",
+        "AWS Lambda",
+        "Azure",
+        "Docker / CI/CD",
+        "GitHub Actions",
+        "OpenTelemetry",
+        "Envoy",
+        "OIDC / Entra ID",
         "Microservices / SOA",
         "RESTful APIs",
         "DDD / Clean Architecture",
         "Design Patterns",
-        "Multi-Cloud / .NET Aspire",
-        "Docker / CI/CD",
-        "Envoy",
-        "OIDC / Entra ID",
-        "SQL Server",
-        "PostgreSQL",
         "Identity & Access Management"
       ],
       "soft": [
@@ -768,6 +796,17 @@
       }
     ],
     "achievements": [
+      {
+        "id": "ach-open-work",
+        "title": {
+          "pt": "Trabalho aberto selecionado (OSS)",
+          "en": "Selected open work (OSS)"
+        },
+        "summary": {
+          "pt": "PR aberto aws/integrations-on-dotnet-aspire-for-aws#247 (rotas HTTP reverse-proxy no emulador API Gateway). CLs no toolchain Go (runtime / gopls). Packs privados de hardening de runtime (fork/OTEL, failover, flakes de CI) com prova fail→pass — sem teatro de bounty farm.",
+          "en": "Open PR aws/integrations-on-dotnet-aspire-for-aws#247 (HTTP reverse-proxy routes on the API Gateway emulator). Go toolchain CLs (runtime / gopls). Private runtime hardening packs (fork/OTEL, failover, CI flakes) with fail→pass proof — not bounty-farm theater."
+        }
+      },
       {
         "id": "ach-0",
         "title": {

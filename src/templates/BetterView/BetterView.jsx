@@ -111,6 +111,14 @@ export default function BetterView({ cv, lang }) {
               </a>
             </li>
           ) : null}
+          {personal.emailSecondary ? (
+            <li className="bv-contact__item">
+              <a href={`mailto:${personal.emailSecondary}`}>
+                <IconMail />
+                <span>{personal.emailSecondary}</span>
+              </a>
+            </li>
+          ) : null}
           {personal.links?.linkedin ? (
             <li className="bv-contact__item">
               <a href={personal.links.linkedin} target="_blank" rel="noopener noreferrer">

@@ -12,6 +12,7 @@ function label(cv, lang, key, fallback) {
 function joinContact(personal) {
   const parts = [];
   if (personal?.email) parts.push(personal.email);
+  if (personal?.emailSecondary) parts.push(personal.emailSecondary);
   if (personal?.phone) parts.push(personal.phone);
   if (personal?.links?.linkedin) parts.push(personal.links.linkedin);
   if (personal?.links?.github) parts.push(personal.links.github);
