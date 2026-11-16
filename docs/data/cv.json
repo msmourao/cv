@@ -29,8 +29,8 @@
   },
   "sections": {
     "about": {
-      "pt": "Software Architect e Platform Engineer (.NET, Python e sistemas) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Foco recente em reliability (timeouts, concorrência, CI), revisão de mudanças multi-arquivo e entrega evidence-based.\n\nCriador do control plane multi-cloud PolyStack e do produto sibling LifeGraph — governação com claims, provas e cannot-do explícitos. Especialista em .NET Aspire, composição multi-cloud (AWS/Azure/local), frontends React estáticos, OIDC/SSO, OpenTelemetry e automação com dry-run; ApplyCloud cutover irrestrito permanece bloqueado por desenho.",
-      "en": "Software Architect and Platform Engineer (.NET, Python, and systems) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Recent focus on reliability (timeouts, concurrency, CI), multi-file change review, and evidence-based delivery.\n\nCreator of the PolyStack multi-cloud control plane and the LifeGraph sibling product — governance with explicit claims, proofs, and cannot-do. Specialist in .NET Aspire, multi-cloud composition (AWS/Azure/local), static React frontends, OIDC/SSO, OpenTelemetry, and dry-run automation; unrestricted ApplyCloud cutover remains blocked by design."
+      "pt": "Software Architect e Platform Engineer (.NET, Python e sistemas) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Foco recente em reliability (timeouts, concorrência, CI), revisão de mudanças multi-arquivo e entrega com evidência.\n\nCriador do PolyStack — control plane multi-cloud para compor e validar stacks AWS, Azure e local antes do deploy — e do LifeGraph, produto sibling de ProductOps, observabilidade e governação operacional. Trabalho prático em .NET Aspire, frontends React estáticos, OIDC/SSO, OpenTelemetry e automação com dry-run antes de aplicar mudanças na nuvem.",
+      "en": "Software Architect and Platform Engineer (.NET, Python, and systems) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Recent focus on reliability (timeouts, concurrency, CI), multi-file change review, and evidence-based delivery.\n\nCreator of PolyStack — a multi-cloud control plane for composing and validating AWS, Azure, and local stacks before deploy — and LifeGraph, its sibling for ProductOps, observability, and operational governance. Hands-on with .NET Aspire, static React frontends, OIDC/SSO, OpenTelemetry, and dry-run automation before applying cloud changes."
     },
     "experience": [
       {
@@ -799,12 +799,12 @@
       {
         "id": "ach-open-work",
         "title": {
-          "pt": "Trabalho aberto selecionado (OSS)",
-          "en": "Selected open work (OSS)"
+          "pt": "Código aberto e confiabilidade",
+          "en": "Open source and reliability"
         },
         "summary": {
-          "pt": "PR aberto aws/integrations-on-dotnet-aspire-for-aws#247 (rotas HTTP reverse-proxy no emulador API Gateway). CLs no toolchain Go (runtime / gopls). Packs privados de hardening de runtime (fork/OTEL, failover, flakes de CI) com prova fail→pass — sem teatro de bounty farm.",
-          "en": "Open PR aws/integrations-on-dotnet-aspire-for-aws#247 (HTTP reverse-proxy routes on the API Gateway emulator). Go toolchain CLs (runtime / gopls). Private runtime hardening packs (fork/OTEL, failover, CI flakes) with fail→pass proof — not bounty-farm theater."
+          "pt": "Pull request no repositório oficial de integração AWS do .NET Aspire (#247), melhorando reverse-proxy HTTP no emulador local do API Gateway. Contribuições ao toolchain Go (runtime e gopls). Pacotes privados de hardening que corrigiram falhas de fork de processo/OpenTelemetry, failover e CI instável — com prova de teste antes/depois.",
+          "en": "Pull request to the official AWS .NET Aspire integration repo (#247), improving HTTP reverse-proxy support in the local API Gateway emulator. Contributions to the Go toolchain (runtime and gopls). Private hardening packs that fixed process-fork/OpenTelemetry, failover, and flaky CI issues — with before/after test proof."
         }
       },
       {
