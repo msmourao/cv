@@ -29,10 +29,72 @@
   },
   "sections": {
     "about": {
-      "pt": "Software Architect e Platform Engineer (.NET, Python e sistemas) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum). Foco recente em reliability (timeouts, concorrência, CI), revisão de mudanças multi-arquivo e entrega com evidência.\n\nCriador do PolyStack — control plane multi-cloud para compor e validar stacks AWS, Azure e local antes do deploy — e do LifeGraph, produto sibling de ProductOps, observabilidade e governação operacional. Trabalho prático em .NET Aspire, frontends React estáticos, OIDC/SSO, OpenTelemetry e automação com dry-run antes de aplicar mudanças na nuvem.",
-      "en": "Software Architect and Platform Engineer (.NET, Python, and systems) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum). Recent focus on reliability (timeouts, concurrency, CI), multi-file change review, and evidence-based delivery.\n\nCreator of PolyStack — a multi-cloud control plane for composing and validating AWS, Azure, and local stacks before deploy — and LifeGraph, its sibling for ProductOps, observability, and operational governance. Hands-on with .NET Aspire, static React frontends, OIDC/SSO, OpenTelemetry, and dry-run automation before applying cloud changes."
+      "pt": "Software Architect e Platform Engineer (.NET, Python e sistemas) com trajetória em modernização e integração em ambientes de grande porte (UBS, Gol, Decolar, CVC, Momentum).\n\nCriador do PolyStack — plataforma .NET multi-cloud (AWS, Azure e GCP) com desenvolvimento local-first, dry-run e migração por configuração — projeto concluído em 07/2026. Em seguida, LifeGraph: produto de IA com controlo de partilha por addon, ProductOps e um modelo próprio de agente para reparo de software, com participação em benchmarks estilo SWE-bench e fine-tuning (LoRA).",
+      "en": "Software Architect and Platform Engineer (.NET, Python, and systems) with a track record modernizing and integrating large-scale environments (UBS, Gol, Decolar, CVC, Momentum).\n\nCreator of PolyStack — a multi-cloud .NET platform (AWS, Azure, and GCP) with local-first development, dry-run validation, and config-driven migration — completed July 2026. Next, LifeGraph: an AI product with per-addon sharing controls, ProductOps, and a proprietary coding-agent workflow, with SWE-bench-style benchmark participation and fine-tuning (LoRA)."
     },
     "experience": [
+      {
+        "id": "lifeGraph",
+        "company": {
+          "pt": "LifeGraph (produto independente)",
+          "en": "LifeGraph (independent product)"
+        },
+        "title": {
+          "pt": "Founder / Product & AI Systems Engineer",
+          "en": "Founder / Product & AI Systems Engineer"
+        },
+        "location": {
+          "pt": "São Paulo, Brasil",
+          "en": "São Paulo, Brazil"
+        },
+        "period": {
+          "pt": "07/2026 – Presente",
+          "en": "07/2026 – Present"
+        },
+        "url": "https://getpolystack.com",
+        "highlight": true,
+        "summary": {
+          "pt": "Construção do LifeGraph, um produto em que pessoas e times pequenos trabalham com IA sem entregar todos os dados a cada integração. O utilizador controla o que cada módulo (addon) pode ver, colabora em boards de projeto via ProductOps e opera o dia a dia numa consola com regras claras. Em paralelo, desenvolvimento de um fluxo próprio de agente para reparo e avaliação de software — usado em competições públicas e benchmarks estilo SWE-bench — com fine-tuning moderno (incluindo LoRA) e portões de evidência.",
+          "en": "Building LifeGraph, a product where people and small teams work with AI without giving every integration full access to their data. Users choose what each connected module (addon) may see, collaborate on shared project boards through ProductOps, and run day-to-day work in a controlled console. In parallel, developing a proprietary agent workflow for software repair and evaluation — used in public coding-agent competitions and SWE-bench-style benchmarks — with modern ML fine-tuning (including LoRA) and strict evidence gates."
+        },
+        "bullets": {
+          "pt": [
+            "Espaço de IA com privacidade: chat e integrações com vários provedores; o utilizador decide, por addon, quais informações podem ser partilhadas.",
+            "Modelo de addons sob as mesmas regras de consentimento. Exemplo incluído: EventsFinder, que procura redes sociais e eventos públicos perto do utilizador. Módulos de aprendizagem/bibliografia (skills e evidência, importação estilo LMS) seguem os mesmos controlos de partilha.",
+            "ProductOps (em uso e em evolução): funcionalidade de produto para trabalho multi-utilizador — boards de progresso partilhados, inbox de trabalho aprovado e visão clara do que está em curso vs pronto. Já usado no dia a dia; a superfície de colaboração continua a crescer.",
+            "Confiança e segurança: fluxos de login/consentimento, limites explícitos sobre o que o assistente pode afirmar, e dados pessoais sensíveis fora da superfície pública.",
+            "Modelo próprio de ações para agentes de código: localizar → diagnosticar → corrigir ou recusar quando a evidência é fraca — feito para repositórios reais, não demos de chatbot.",
+            "Competições e benchmarks: participação ativa em avaliações públicas de agentes de código; submissão do PolyStack Architect no SWE-bench Lite (300 tarefas). Nas nossas corridas no ambiente oficial de teste, todas passaram — esperamos cerca de 100% no ranking público quando a organização terminar a pontuação (ainda pendente). Chegamos lá exigindo acerto e tempo, parando quando a resposta não era segura o bastante, seguindo um processo claro de reparo e revalidando com testes reais: “sucesso” = o software funciona, não só o modelo parece confiante. A baseline pública anterior era bem mais baixa; o salto veio desse processo, não de prompts sortudos.",
+            "Stack de ML: pipelines Python de treino/avaliação, adapters PEFT/LoRA, corridas em GPU na cloud, inferência local quando útil (ex.: Ollama) e harnesses que pontuam patches contra suites de testes reais."
+          ],
+          "en": [
+            "Privacy-aware AI workspace: chat and integrations with multiple AI providers; the user decides, per addon, which information may be shared.",
+            "Addon model under the same consent rules. Built-in example: EventsFinder, which searches social networks and publicly listed events near the user. Learning/bibliography-style modules (skills and evidence, LMS-shaped import) follow the same sharing controls.",
+            "ProductOps (in use, evolving): a first-class product feature for multi-user work — shared progress boards, inbox of approved work, and a clear view of what is in progress vs ready. Already used in real day-to-day operation; collaboration surface continues to grow.",
+            "Trust and security: login/consent flows, explicit limits on what the assistant may assert, and sensitive personal data kept off the public surface.",
+            "Own action model for coding agents: locate → diagnose → patch or refuse when evidence is weak — built for real repositories, not chatbot demos.",
+            "Competition and benchmark track: active participation in public coding-agent evaluations; submitted PolyStack Architect on SWE-bench Lite (300 tasks). In our own runs on the official test setup, every task passed — we expect about 100% on the public board once the organizers finish scoring (result still pending). We got there by checking both correctness and speed, stopping when the answer wasn’t solid enough to trust, following a clear repair process, and re-checking with real tests so a “success” means the software actually works — not just that the model sounded confident. An earlier public baseline was much lower; the jump came from that disciplined process, not from lucky prompts.",
+            "ML stack: Python training/eval pipelines, PEFT/LoRA adapters, GPU cloud runs, local inference where useful (e.g. Ollama), and harnesses that score patches against real test suites."
+          ]
+        },
+        "technologies": [
+          "C#",
+          ".NET",
+          "TypeScript",
+          "React",
+          "Python",
+          "PEFT / LoRA",
+          "PyTorch",
+          "Ollama",
+          "OpenTelemetry",
+          "OIDC",
+          "Android",
+          "ProductOps",
+          "Docker",
+          "CI quality gates",
+          "Evaluation harnesses"
+        ]
+      },
       {
         "id": "polyStack",
         "company": {
@@ -48,57 +110,65 @@
           "en": "São Paulo, Brazil"
         },
         "period": {
-          "pt": "03/2024 – Presente",
-          "en": "03/2024 – Present"
+          "pt": "03/2024 – 07/2026",
+          "en": "03/2024 – 07/2026"
         },
         "url": "https://getpolystack.com",
         "highlight": true,
         "summary": {
-          "pt": "Desenvolvimento independente da plataforma e control plane multi-cloud PolyStack (.NET 10 / Aspire, composição declarativa, Envoy, dry-run e governação operacional). Sibling LifeGraph: ProductOps, OpenTelemetry, quality gates, distribuição Android via Play Internal Testing e importação LMS (schema + export HTTP).\n\nhttps://getpolystack.com · https://getpolystack.com/ai",
-          "en": "Independent development of the PolyStack multi-cloud platform and control plane (.NET 10 / Aspire, declarative composition, Envoy, dry-run, and operational governance). LifeGraph sibling: ProductOps, OpenTelemetry, quality gates, Android distribution via Play Internal Testing, and LMS import (schema + HTTP export).\n\nhttps://getpolystack.com · https://getpolystack.com/ai"
+          "pt": "Arquitetura e entrega de uma plataforma .NET agnóstica de nuvem: a mesma aplicação sobe em AWS, Azure ou Google Cloud — ou primeiro no laptop. Mudar de cloud ou de modelo de hospedagem (incluindo serverless vs hosted) faz-se atualizando a configuração e solicitando a atualização da plataforma, sem reescrever o código de negócio. Valida mudanças com dry-run automatizado e permite migração com zero downtime quando o edge de tráfego fica fora da nuvem migrada. Projeto concluído em 07/2026; preview e DevKit em getpolystack.com.",
+          "en": "Designed and delivered a cloud-agnostic .NET platform that lets teams build once and run the same application on AWS, Azure, or Google Cloud — or on a laptop first. Changing cloud or hosting model (including serverless vs traditional hosting) is done by updating configuration and requesting the platform update, not by rewriting business code. The platform validates changes with automated dry-runs and supports zero-downtime moves when the traffic edge stays outside the cloud being migrated. Project completed in July 2026; public preview and DevKit at getpolystack.com."
         },
         "bullets": {
           "pt": [
-            "Control plane tipado e composição multi-provedor (AWS, Azure, local) com dry-run antes de aplicar — o mesmo modelo do desenvolvimento local à cloud.",
-            "Módulos de dados PostgreSQL/SQL Server e workloads AWS (incl. caminho Lambda/serverless no modelo Aspire), com Terraform/GitHub Actions nos planos de entrega.",
-            "Frontends React estáticos no composition multi-cloud (ex.: storefront/lab travel) consumindo APIs e contratos tipados da plataforma.",
-            "LifeGraph: catálogo de capacidades com claims e provas; app Android (AAB) em Play Internal Testing; observabilidade OpenTelemetry e quality gates.",
-            "OSS e reliability: PR Aspire AWS #247; CLs Go; hardening de timeouts/concorrência/fork com regressão mensurável."
+            "Local-first, depois qualquer cloud: compor APIs, frontends, bases de dados, mensageria e storage no .NET Aspire localmente; a mesma composição é validada e entregue em AWS, Azure ou GCP. Stubs locais bastam no dia a dia; corridas reais no lab GCP provaram o caminho na própria Google Cloud.",
+            "Portabilidade por configuração: trocar de provedor ou mover um serviço entre serverless (ex.: AWS Lambda, Azure Functions, GCP Cloud Run) e runtime container/hosted alterando settings e pedindo a atualização — sem reescrever o domínio. Essa flexibilidade permite escala e custo imediatos.",
+            "Migração de cloud com zero downtime (caminho validado): quando o edge Envoy/proxy não faz parte da nuvem que está a ser movida, o tráfego continua enquanto os backends fazem cutover — zero downtime real para o utilizador. Quando o próprio edge precisa mudar, aplica-se o mesmo planeamento/dry-run (janela curta e controlada).",
+            "DevOps inteligente: GitHub Actions + Terraform, inventário de estado desejado, reconfiguração automática de proxy/gateway (Envoy/YARP) e planos de entrega que falham cedo antes de alterar produção.",
+            "Segurança por desenho: identidade por cloud (Amazon Cognito, Microsoft Entra ID, identidade GCP no lab), padrões IAM de menor privilégio e configuração revisável em vez de mudanças ad-hoc na consola.",
+            "Qualidade de engenharia: CQRS, SOLID, Clean Architecture/DDD; testes unitários, end-to-end e smoke em torno da app de referência Canary — arquitetura com prova executável.",
+            "Resultado comercial: control plane multi-cloud e DevKit concluídos, que reduzem lock-in e tornam decisões de cloud auditáveis para times de arquitetura e plataforma."
           ],
           "en": [
-            "Typed control plane and multi-provider composition (AWS, Azure, local) with dry-run before apply — same model from local development to cloud.",
-            "PostgreSQL/SQL Server data modules and AWS workloads (including Lambda/serverless path in the Aspire model), with Terraform/GitHub Actions in delivery plans.",
-            "Static React frontends in multi-cloud composition (e.g. travel lab storefront) consuming platform APIs and typed contracts.",
-            "LifeGraph: capability catalog with claims and proofs; Android app (AAB) on Play Internal Testing; OpenTelemetry observability and quality gates.",
-            "OSS and reliability: AWS Aspire PR #247; Go CLs; timeout/concurrency/fork hardening with measurable regression."
+            "Local-first, then any cloud: compose APIs, frontends, databases, messaging, and storage on .NET Aspire locally; the same composition is validated and delivered to AWS, Azure, or GCP. Local stubs are enough for day-to-day development; real GCP lab runs proved the path on Google Cloud itself.",
+            "Config-driven portability: switch provider or move a service between serverless (e.g. AWS Lambda, Azure Functions, GCP Cloud Run) and container/hosted runtimes by changing settings and requesting an update — without rewriting the domain. That flexibility enables immediate scale and cost choices.",
+            "Zero-downtime cloud migration (validated path): when the Envoy/proxy edge is not part of the cloud being moved, traffic keeps flowing while backends cut over — true zero downtime for users. When the edge itself must move, the same planning/dry-run path applies (short controlled window).",
+            "Intelligent DevOps: GitHub Actions + Terraform, desired-state inventory, automated proxy/gateway reconfiguration (Envoy/YARP), and fail-closed delivery plans before production changes.",
+            "Security by design: per-cloud identity (Amazon Cognito, Microsoft Entra ID, GCP identity in lab), least-privilege IAM patterns, and reviewable configuration instead of ad-hoc console edits.",
+            "Engineering quality: CQRS, SOLID, Clean Architecture/DDD; unit, end-to-end, and smoke tests around the Canary reference app — architecture backed by runnable proof.",
+            "Commercial outcome: a finished multi-cloud control plane and DevKit that reduces lock-in and makes cloud decisions auditable for architecture and platform teams."
           ]
         },
         "technologies": [
           "C#",
           ".NET 10",
-          "ASP.NET Web API",
-          "Python",
-          "TypeScript",
-          "React",
-          "Entity Framework",
-          "PostgreSQL",
-          "SQL Server",
-          "Microservices",
-          "RESTful APIs",
-          "DDD",
-          "Clean Architecture",
-          "Multi-Cloud Integration",
+          "ASP.NET Core",
           ".NET Aspire",
-          "AWS",
-          "AWS Lambda",
-          "Azure",
+          "CQRS / Mediator",
+          "Clean Architecture",
+          "DDD",
+          "SOLID",
+          "TDD",
+          "Unit / E2E / Smoke tests",
           "Docker",
-          "CI/CD",
-          "GitHub Actions",
-          "Terraform",
-          "OpenTelemetry",
           "Envoy",
-          "OIDC"
+          "YARP",
+          "OpenTelemetry",
+          "OIDC",
+          "AWS Lambda",
+          "API Gateway",
+          "SQS / SNS",
+          "S3",
+          "Cognito",
+          "Azure",
+          "Entra ID",
+          "GCP Cloud Run",
+          "Terraform",
+          "GitHub Actions",
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "SQL Server"
         ]
       },
       {
@@ -718,8 +788,8 @@
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Plataforma e control plane multi-cloud em .NET 10 / Aspire: composição declarativa, Envoy, multi-provedor (AWS, Azure, local), dry-run e governação. O mesmo modelo do desenvolvimento local à publicação em nuvem/híbrido. Guias para agentes: https://getpolystack.com/ai",
-          "en": "Multi-cloud platform and control plane on .NET 10 / Aspire: declarative composition, Envoy, multi-provider (AWS, Azure, local), dry-run, and governance. Same model from local development to cloud/hybrid publication. Agent guides: https://getpolystack.com/ai"
+          "pt": "Plataforma e control plane multi-cloud em .NET 10 / Aspire (AWS, Azure, GCP): local-first, dry-run, portabilidade por configuração entre serverless e hosted, zero downtime quando o edge fica fora da nuvem migrada. Projeto concluído 07/2026. Guias: https://getpolystack.com/ai",
+          "en": "Multi-cloud platform and control plane on .NET 10 / Aspire (AWS, Azure, GCP): local-first, dry-run, config-driven portability between serverless and hosted, zero downtime when the edge stays outside the migrated cloud. Completed 07/2026. Guides: https://getpolystack.com/ai"
         },
         "technologies": [
           "C#",
@@ -760,13 +830,13 @@
       {
         "id": "lifeGraph",
         "name": {
-          "pt": "LifeGraph — Produto sibling sobre PolyStack",
-          "en": "LifeGraph — Sibling product on PolyStack"
+          "pt": "LifeGraph — Produto de IA, ProductOps e agentes sobre a base PolyStack",
+          "en": "LifeGraph — AI product, ProductOps, and agents on the PolyStack foundation"
         },
         "url": "https://getpolystack.com",
         "summary": {
-          "pt": "Ambiente de confiança sobre PolyStack: ProductOps, OpenTelemetry, quality gates, Kafka opcional, Entra OIDC Studio e catálogo de claims com provas. Distribuição Android via Play Internal Testing (AAB + opt-in). Matriz de competências com import LMS (schema Degreed-shaped + export HTTP + RAG lexical).",
-          "en": "Trust environment on PolyStack: ProductOps, OpenTelemetry, quality gates, optional Kafka, Entra OIDC Studio, and claims catalog with proofs. Android distribution via Play Internal Testing (AAB + opt-in). Skills matrix with LMS import (Degreed-shaped schema + HTTP export + lexical RAG)."
+          "pt": "Produto com chat e addons sob consentimento do utilizador (ex.: EventsFinder), ProductOps com boards partilhados, e modelo próprio de agente para reparo/avaliação de código (SWE-bench Lite N=300, LoRA/PEFT). Android via Play Internal Testing.",
+          "en": "Product with chat and addons under user consent (e.g. EventsFinder), ProductOps with shared boards, and a proprietary coding-agent model for repair/evaluation (SWE-bench Lite N=300, LoRA/PEFT). Android via Play Internal Testing."
         },
         "technologies": [
           ".NET 10",
@@ -775,7 +845,11 @@
           "Kafka",
           "Ollama",
           "Unity / Android",
-          "Entra ID / OIDC"
+          "Entra ID / OIDC",
+          "PEFT / LoRA",
+          "ProductOps",
+          "Python",
+          "EventsFinder"
         ]
       },
       {
